@@ -84,6 +84,12 @@
     <Compile Include="BIEN.cs">
       <DependentUpon>modeleBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatalogueBiens.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatalogueBiens.Designer.cs">
+      <DependentUpon>CatalogueBiens.cs</DependentUpon>
+    </Compile>
     <Compile Include="COMMERCIAL.cs">
       <DependentUpon>modeleBase.tt</DependentUpon>
     </Compile>
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="FICHE_DE_SOUHAITS.cs">
       <DependentUpon>modeleBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListeVisites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeVisites.Designer.cs">
+      <DependentUpon>ListeVisites.cs</DependentUpon>
     </Compile>
     <Compile Include="modeleBase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -167,6 +179,9 @@
     <EmbeddedResource Include="AjoutClient.resx">
       <DependentUpon>AjoutClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CatalogueBiens.resx">
+      <DependentUpon>CatalogueBiens.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditionCommercial.resx">
       <DependentUpon>EditionCommercial.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FicheDuBien.resx">
       <DependentUpon>FicheDuBien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeVisites.resx">
+      <DependentUpon>ListeVisites.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
