@@ -1,0 +1,128 @@
+c:\users\paul\documents\visual studio 2015\Projects\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Paul\Documents\Visual Studio 2015\Projects\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Slash\Desktop\Projet\Interfaces\EcranAccueil2\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Vincent\Desktop\Cours et Audios\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.dll
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Paul\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Desktop\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Paul\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Paul\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache

@@ -1,0 +1,5 @@
+select * from BIEN
+where bien.PRIX_SOUHAITÉ <= (
+select budget from FICHE_DE_SOUHAITS where IDACHETEUR = (
+select IDACHETEUR from ACHETEUR where NOM_ACHETEUR = 'Felix')
+)

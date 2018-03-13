@@ -1,0 +1,4 @@
+-- select * from BIEN where Bien.STATUT = 'DISPONIBLE'
+-- select * from BIEN where Bien.STATUT = 'VENDU'
+-- select * from BIEN where Bien.STATUT = 'SOUS-SEING'
+ select * from BIEN where Bien.STATUT = 'RESERVE'

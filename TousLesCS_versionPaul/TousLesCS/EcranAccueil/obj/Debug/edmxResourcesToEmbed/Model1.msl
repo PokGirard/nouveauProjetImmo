@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnfinModelStoreContainer" CdmEntityContainer="MusiqueEntities">
+    <EntitySetMapping Name="Abonné">
+      <EntityTypeMapping TypeName="EnfinModel.Abonné">
+        <MappingFragment StoreEntitySet="Abonné">
+          <ScalarProperty Name="Code_Abonné" ColumnName="Code_Abonné" />
+          <ScalarProperty Name="Nom_Abonné" ColumnName="Nom_Abonné" />
+          <ScalarProperty Name="Prénom_Abonné" ColumnName="Prénom_Abonné" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Code_Pays" ColumnName="Code_Pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Acheter">
+      <EntityTypeMapping TypeName="EnfinModel.Acheter">
+        <MappingFragment StoreEntitySet="Acheter">
+          <ScalarProperty Name="Code_Enregistrement" ColumnName="Code_Enregistrement" />
+          <ScalarProperty Name="Code_Abonné" ColumnName="Code_Abonné" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Album">
+      <EntityTypeMapping TypeName="EnfinModel.Album">
+        <MappingFragment StoreEntitySet="Album">
+          <ScalarProperty Name="Code_Album" ColumnName="Code_Album" />
+          <ScalarProperty Name="Titre_Album" ColumnName="Titre_Album" />
+          <ScalarProperty Name="Année_Album" ColumnName="Année_Album" />
+          <ScalarProperty Name="Code_Genre" ColumnName="Code_Genre" />
+          <ScalarProperty Name="Code_Editeur" ColumnName="Code_Editeur" />
+          <ScalarProperty Name="Pochette" ColumnName="Pochette" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Catalogue">
+      <EntityTypeMapping TypeName="EnfinModel.Catalogue">
+        <MappingFragment StoreEntitySet="Catalogue">
+          <ScalarProperty Name="Code_Catalogue" ColumnName="Code_Catalogue" />
+          <ScalarProperty Name="Nom_Catalogue" ColumnName="Nom_Catalogue" />
+          <ScalarProperty Name="Musicien" ColumnName="Musicien" />
+          <ScalarProperty Name="Sens" ColumnName="Sens" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Composition">
+      <EntityTypeMapping TypeName="EnfinModel.Composition">
+        <MappingFragment StoreEntitySet="Composition">
+          <ScalarProperty Name="Code_Composition" ColumnName="Code_Composition" />
+          <ScalarProperty Name="Titre_Composition" ColumnName="Titre_Composition" />
+          <ScalarProperty Name="Composante_Composition" ColumnName="Composante_Composition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Composition_Disque">
+      <EntityTypeMapping TypeName="EnfinModel.Composition_Disque">
+        <MappingFragment StoreEntitySet="Composition_Disque">
+          <ScalarProperty Name="Code_Disque" ColumnName="Code_Disque" />
+          <ScalarProperty Name="Code_Enregistrement" ColumnName="Code_Enregistrement" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diriger">
+      <EntityTypeMapping TypeName="EnfinModel.Diriger">
+        <MappingFragment StoreEntitySet="Diriger">
+          <ScalarProperty Name="Code_Enregistrement" ColumnName="Code_Enregistrement" />
+          <ScalarProperty Name="Code_Orchestre" ColumnName="Code_Orchestre" />
+          <ScalarProperty Name="Code_Musicien" ColumnName="Code_Musicien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disque">
+      <EntityTypeMapping TypeName="EnfinModel.Disque">
+        <MappingFragment StoreEntitySet="Disque">
+          <ScalarProperty Name="Code_Disque" ColumnName="Code_Disque" />
+          <ScalarProperty Name="Code_Album" ColumnName="Code_Album" />
+          <ScalarProperty Name="Référence_Album" ColumnName="Référence_Album" />
+          <ScalarProperty Name="Référence_Disque" ColumnName="Référence_Disque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Editeur">
+      <EntityTypeMapping TypeName="EnfinModel.Editeur">
+        <MappingFragment StoreEntitySet="Editeur">
+          <ScalarProperty Name="Code_Editeur" ColumnName="Code_Editeur" />
+          <ScalarProperty Name="Nom_Editeur" ColumnName="Nom_Editeur" />
+          <ScalarProperty Name="Code_Pays" ColumnName="Code_Pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emprunter">
+      <EntityTypeMapping TypeName="EnfinModel.Emprunter">
+        <MappingFragment StoreEntitySet="Emprunter">
+          <ScalarProperty Name="Code_Abonné" ColumnName="Code_Abonné" />
+          <ScalarProperty Name="Code_Album" ColumnName="Code_Album" />
+          <ScalarProperty Name="Date_Emprunt" ColumnName="Date_Emprunt" />
+          <ScalarProperty Name="Date_Retour" ColumnName="Date_Retour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enregistrement">
+      <EntityTypeMapping TypeName="EnfinModel.Enregistrement">
+        <MappingFragment StoreEntitySet="Enregistrement">
+          <ScalarProperty Name="Code_Enregistrement" ColumnName="Code_Enregistrement" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Nom_de_Fichier" ColumnName="Nom_de_Fichier" />
+          <ScalarProperty Name="Durée" ColumnName="Durée" />
+          <ScalarProperty Name="Durée_Seconde" ColumnName="Durée_Seconde" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Code_Composition" ColumnName="Code_Composition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genre">
+      <EntityTypeMapping TypeName="EnfinModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="Code_Genre" ColumnName="Code_Genre" />
+          <ScalarProperty Name="Libellé_Abrégé" ColumnName="Libellé_Abrégé" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instrument">
+      <EntityTypeMapping TypeName="EnfinModel.Instrument">
+        <MappingFragment StoreEntitySet="Instrument">
+          <ScalarProperty Name="Code_Instrument" ColumnName="Code_Instrument" />
+          <ScalarProperty Name="Nom_Instrument" ColumnName="Nom_Instrument" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Interpréter">
+      <EntityTypeMapping TypeName="EnfinModel.Interpréter">
+        <MappingFragment StoreEntitySet="Interpréter">
+          <ScalarProperty Name="Code_Enregistrement" ColumnName="Code_Enregistrement" />
+          <ScalarProperty Name="Code_Instrument" ColumnName="Code_Instrument" />
+          <ScalarProperty Name="Code_Musicien" ColumnName="Code_Musicien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musicien">
+      <EntityTypeMapping TypeName="EnfinModel.Musicien">
+        <MappingFragment StoreEntitySet="Musicien">
+          <ScalarProperty Name="Code_Musicien" ColumnName="Code_Musicien" />
+          <ScalarProperty Name="Nom_Musicien" ColumnName="Nom_Musicien" />
+          <ScalarProperty Name="Prénom_Musicien" ColumnName="Prénom_Musicien" />
+          <ScalarProperty Name="Année_Naissance" ColumnName="Année_Naissance" />
+          <ScalarProperty Name="Année_Mort" ColumnName="Année_Mort" />
+          <ScalarProperty Name="Code_Pays" ColumnName="Code_Pays" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oeuvre">
+      <EntityTypeMapping TypeName="EnfinModel.Oeuvre">
+        <MappingFragment StoreEntitySet="Oeuvre">
+          <ScalarProperty Name="Code_Oeuvre" ColumnName="Code_Oeuvre" />
+          <ScalarProperty Name="Titre_Oeuvre" ColumnName="Titre_Oeuvre" />
+          <ScalarProperty Name="Sous_Titre" ColumnName="Sous_Titre" />
+          <ScalarProperty Name="Tonalité" ColumnName="Tonalité" />
+          <ScalarProperty Name="Année" ColumnName="Année" />
+          <ScalarProperty Name="Opus" ColumnName="Opus" />
+          <ScalarProperty Name="Numéro_Opus" ColumnName="Numéro_Opus" />
+          <ScalarProperty Name="Code_Type" ColumnName="Code_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orchestres">
+      <EntityTypeMapping TypeName="EnfinModel.Orchestres">
+        <MappingFragment StoreEntitySet="Orchestres">
+          <ScalarProperty Name="Code_Orchestre" ColumnName="Code_Orchestre" />
+          <ScalarProperty Name="Nom_Orchestre" ColumnName="Nom_Orchestre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays">
+      <EntityTypeMapping TypeName="EnfinModel.Pays">
+        <MappingFragment StoreEntitySet="Pays">
+          <ScalarProperty Name="Code_Pays" ColumnName="Code_Pays" />
+          <ScalarProperty Name="Nom_Pays" ColumnName="Nom_Pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EnfinModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Morceaux">
+      <EntityTypeMapping TypeName="EnfinModel.Type_Morceaux">
+        <MappingFragment StoreEntitySet="Type_Morceaux">
+          <ScalarProperty Name="Code_Type" ColumnName="Code_Type" />
+          <ScalarProperty Name="Libellé_Type" ColumnName="Libellé_Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays_back">
+      <EntityTypeMapping TypeName="EnfinModel.Pays_back">
+        <MappingFragment StoreEntitySet="Pays_back">
+          <ScalarProperty Name="Code_Pays" ColumnName="Code_Pays" />
+          <ScalarProperty Name="Nom_Pays" ColumnName="Nom_Pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Composer" TypeName="EnfinModel.Composer" StoreEntitySet="Composer">
+      <EndProperty Name="Musicien">
+        <ScalarProperty Name="Code_Musicien" ColumnName="Code_Musicien" />
+      </EndProperty>
+      <EndProperty Name="Oeuvre">
+        <ScalarProperty Name="Code_Oeuvre" ColumnName="Code_Oeuvre" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Composition_Oeuvre" TypeName="EnfinModel.Composition_Oeuvre" StoreEntitySet="Composition_Oeuvre">
+      <EndProperty Name="Composition">
+        <ScalarProperty Name="Code_Composition" ColumnName="Code_Composition" />
+      </EndProperty>
+      <EndProperty Name="Oeuvre">
+        <ScalarProperty Name="Code_Oeuvre" ColumnName="Code_Oeuvre" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

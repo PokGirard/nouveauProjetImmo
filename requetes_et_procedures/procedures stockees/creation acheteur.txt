@@ -1,0 +1,17 @@
+use Enfin
+
+DELETE from ACHETEUR
+
+
+INSERT INTO ACHETEUR(IDCOMMERCIAL, IDVILLE, NOM_ACHETEUR, PRENOM_ACHETEUR, ADRESSE, EMAIL, TÉLÉPHONE)
+VALUES(
+(select IDCommercial from COMMERCIAL where NOM_COMMERCIAL = 'Ries'),
+(select IDVille from VILLE where NOM_VILLE = 'Bordeaux'),
+'Felix', 'Patrick', '42 rue du protocole SMTP', 'DS_foireux@questionsEnDouble.fr', '0213456789')
+
+select * from ACHETEUR
+
+
+
+
+

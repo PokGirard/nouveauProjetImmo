@@ -1,0 +1,2 @@
+select * from BIEN
+where BIEN.IDVILLE = (select IDVILLE from VILLE where NOM_VILLE = 'Bordeaux')

@@ -1,0 +1,34 @@
+-- ================================================
+
+/* Creation des commerciaux */
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+
+-- =============================================
+CREATE PROCEDURE creation_commerciaux_testPok4
+	
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	
+DELETE FROM COMMERCIAL
+
+INSERT INTO COMMERCIAL (NOM_COMMERCIAL, PRENOM_COMMERCIAL, TÉLÉPHONE_FIXE_PRO, TÉLÉPHONE_MOBILE_PRO, EMAIL, STATUT_COMMERCIAL)
+ VALUES ('Uny', 'Christine', '837', '5', 'pgirard641@gmail.com', 'ACTIF'),
+ ('Mauryl', 'Girard', '837', '5', 'pgirard641@gmail.com', 'INACTIF'),
+ ('Cornibe', 'Sebastien', '837', '5', 'pgirard641@gmail.com', 'ACTIF'),
+ ('Ries', 'Lea', '837', '5', 'pgirard641@gmail.com', 'INACTIF'),
+ ('Picart', 'Ronan', '837', '5', 'pgirard641@gmail.com', 'ACTIF')
+
+ select * from COMMERCIAL
+
+
+
+END
+GO

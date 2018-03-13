@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8baa9e9000464ae8b291b9417c12c7b1" Name="Diagram1">
+        <EntityTypeShape EntityType="EnfinModele2.ACHETEUR" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.BIEN" Width="1.5" PointX="12" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.COMMERCIAL" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.FICHE_DE_SOUHAITS" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.PROPOSITION_VISITE" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.RDV" Width="1.5" PointX="9.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.VENDEUR" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModele2.VILLE" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="EnfinModele2.FK_ACHETEUR_COMMERCIAL" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_ACHETEUR_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_FICHE_DE_SOUHAITS_ACHETEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_BIEN_VENDEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_BIEN_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_PROPOSITION_VISITE_BIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_RDV_PROPOSITION_VISITE" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.FK_VENDEUR_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="EnfinModele2.RECHERCHE_DANS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

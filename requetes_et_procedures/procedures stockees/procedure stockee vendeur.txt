@@ -1,0 +1,9 @@
+DELETE from VENDEUR
+
+INSERT INTO VENDEUR (IDVILLE,NOM_VENDEUR, PRÉNOM_VENDEUR, ADRESSE_VENDEUR, TÉLÉPHONE, EMAIL)
+VALUES ((SELECT VILLE.IDVILLE FROM VILLE where NOM_VILLE = 'Bordeaux'),'Jean', 'Pierre', '18 rue des kebab', '0556124278', 'jean_pierre@gmail.com'),
+((SELECT VILLE.IDVILLE FROM VILLE where NOM_VILLE = 'Mérignac'),'Dupont', 'Anabelle', '187 avenue des conifères', '0557185278', 'anabelle_dupont@gmail.com'),
+((SELECT VILLE.IDVILLE FROM VILLE where NOM_VILLE = 'Talence'),'Sopena', 'Eric', '2, chemin des bons pédagogues', '051245278', 'merci@gmail.com'),
+((SELECT VILLE.IDVILLE FROM VILLE where NOM_VILLE = 'Arcachon'),'Keraba', 'Henriette', '12, rue des fruits de mer', '059999278', 'bulot@gmail.com')
+
+ select * from VENDEUR

@@ -1,0 +1,2 @@
+select * from BIEN
+where Bien.IDVENDEUR = (SELECT IDVENDEUR from VENDEUR where NOM_VENDEUR = 'Sopena')

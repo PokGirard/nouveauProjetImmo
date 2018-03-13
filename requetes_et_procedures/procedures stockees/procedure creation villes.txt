@@ -1,0 +1,30 @@
+-- ================================================
+
+/* Creation des commerciaux */
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+
+-- =============================================
+CREATE PROCEDURE creation_villes_pok2
+	
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	
+DELETE FROM VILLE
+
+INSERT INTO VILLE (NOM_VILLE, CODE_POSTAL)
+ VALUES ('Bordeaux',33000),('Talence',33400), ('Cestas',33610),('Mérignac', 33700), ('Arcachon',33120)
+
+ select * from VILLE
+
+
+
+END
+GO

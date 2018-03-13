@@ -1,0 +1,735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EnfinModele2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACHETEUR">
+          <Key>
+            <PropertyRef Name="IDACHETEUR" />
+          </Key>
+          <Property Name="IDACHETEUR" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCOMMERCIAL" Type="tinyint" Nullable="false" />
+          <Property Name="IDVILLE" Type="smallint" Nullable="false" />
+          <Property Name="NOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="PRENOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="ADRESSE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TÉLÉPHONE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BIEN">
+          <Key>
+            <PropertyRef Name="IDBIEN" />
+          </Key>
+          <Property Name="IDBIEN" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDVILLE" Type="smallint" Nullable="false" />
+          <Property Name="IDVENDEUR" Type="smallint" Nullable="false" />
+          <Property Name="SURFACE_HABITABLE" Type="int" Nullable="false" />
+          <Property Name="SURFACE_PARCELLE" Type="int" Nullable="false" />
+          <Property Name="NB_PIÈCES" Type="int" Nullable="false" />
+          <Property Name="NB_CHAMBRES" Type="int" Nullable="false" />
+          <Property Name="NB_SALLEDEBAIN" Type="int" Nullable="false" />
+          <Property Name="GARAGE" Type="bit" Nullable="false" />
+          <Property Name="CAVE" Type="bit" Nullable="false" />
+          <Property Name="PRIX_SOUHAITÉ" Type="int" Nullable="false" />
+          <Property Name="ADRESSE_BIEN" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="DATE_MISEENVENTE" Type="datetime" Nullable="false" />
+          <Property Name="STATUT" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="ZONE_DE_SAISIE" Type="char" MaxLength="32" />
+          <Property Name="NB_VISITES" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMERCIAL">
+          <Key>
+            <PropertyRef Name="IDCOMMERCIAL" />
+          </Key>
+          <Property Name="IDCOMMERCIAL" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="PRENOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_FIXE_PRO" Type="int" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE_PRO" Type="int" Nullable="false" />
+          <Property Name="TÉLÉPHONE_PERSONNEL" Type="int" />
+          <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="STATUT_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FICHE_DE_SOUHAITS">
+          <Key>
+            <PropertyRef Name="IDFICHESOUHAITS" />
+          </Key>
+          <Property Name="IDFICHESOUHAITS" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDACHETEUR" Type="smallint" Nullable="false" />
+          <Property Name="VILLE" Type="char" MaxLength="32" />
+          <Property Name="SURFACE_PARCELLE" Type="int" />
+          <Property Name="SURFACE_HABITABLE" Type="int" />
+          <Property Name="NB_PIÈCE" Type="int" />
+          <Property Name="NB_CHAMBRES" Type="int" />
+          <Property Name="NB_SALLEDEBAIN" Type="int" />
+          <Property Name="GARAGE" Type="bit" />
+          <Property Name="CAVE" Type="bit" />
+          <Property Name="BUDGET" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROPOSITION_VISITE">
+          <Key>
+            <PropertyRef Name="IDVISITE" />
+          </Key>
+          <Property Name="IDVISITE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDFICHESOUHAITS" Type="smallint" Nullable="false" />
+          <Property Name="IDBIEN" Type="smallint" Nullable="false" />
+          <Property Name="DATERDV" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RDV">
+          <Key>
+            <PropertyRef Name="IDRDV" />
+          </Key>
+          <Property Name="IDRDV" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDVISITE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECHERCHE_DANS">
+          <Key>
+            <PropertyRef Name="IDVILLE" />
+            <PropertyRef Name="IDFICHESOUHAITS" />
+          </Key>
+          <Property Name="IDVILLE" Type="smallint" Nullable="false" />
+          <Property Name="IDFICHESOUHAITS" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VENDEUR">
+          <Key>
+            <PropertyRef Name="IDVENDEUR" />
+          </Key>
+          <Property Name="IDVENDEUR" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDVILLE" Type="smallint" Nullable="false" />
+          <Property Name="NOM_VENDEUR" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="PRÉNOM_VENDEUR" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="ADRESSE_VENDEUR" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_FIXE" Type="int" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE" Type="int" />
+          <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VILLE">
+          <Key>
+            <PropertyRef Name="IDVILLE" />
+          </Key>
+          <Property Name="IDVILLE" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_VILLE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ACHETEUR_COMMERCIAL">
+          <End Role="COMMERCIAL" Type="Self.COMMERCIAL" Multiplicity="1" />
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMERCIAL">
+              <PropertyRef Name="IDCOMMERCIAL" />
+            </Principal>
+            <Dependent Role="ACHETEUR">
+              <PropertyRef Name="IDCOMMERCIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACHETEUR_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="ACHETEUR">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIEN_VENDEUR">
+          <End Role="VENDEUR" Type="Self.VENDEUR" Multiplicity="1" />
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDEUR">
+              <PropertyRef Name="IDVENDEUR" />
+            </Principal>
+            <Dependent Role="BIEN">
+              <PropertyRef Name="IDVENDEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIEN_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="BIEN">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHE_DE_SOUHAITS_ACHETEUR">
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="1" />
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACHETEUR">
+              <PropertyRef Name="IDACHETEUR" />
+            </Principal>
+            <Dependent Role="FICHE_DE_SOUHAITS">
+              <PropertyRef Name="IDACHETEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROPOSITION_VISITE_BIEN">
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="1" />
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIEN">
+              <PropertyRef Name="IDBIEN" />
+            </Principal>
+            <Dependent Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDBIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS">
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="1" />
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FICHE_DE_SOUHAITS">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Principal>
+            <Dependent Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RDV_PROPOSITION_VISITE">
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="1" />
+          <End Role="RDV" Type="Self.RDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDVISITE" />
+            </Principal>
+            <Dependent Role="RDV">
+              <PropertyRef Name="IDVISITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECHERCHE_DANS_FICHE_DE_SOUHAITS">
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="1" />
+          <End Role="RECHERCHE_DANS" Type="Self.RECHERCHE_DANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FICHE_DE_SOUHAITS">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Principal>
+            <Dependent Role="RECHERCHE_DANS">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECHERCHE_DANS_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="RECHERCHE_DANS" Type="Self.RECHERCHE_DANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="RECHERCHE_DANS">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENDEUR_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="VENDEUR" Type="Self.VENDEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="VENDEUR">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EnfinModele2StoreContainer">
+          <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIEN" EntityType="Self.BIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FICHE_DE_SOUHAITS" EntityType="Self.FICHE_DE_SOUHAITS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RDV" EntityType="Self.RDV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECHERCHE_DANS" EntityType="Self.RECHERCHE_DANS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VILLE" EntityType="Self.VILLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">
+            <End Role="COMMERCIAL" EntitySet="COMMERCIAL" />
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACHETEUR_VILLE" Association="Self.FK_ACHETEUR_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIEN_VENDEUR" Association="Self.FK_BIEN_VENDEUR">
+            <End Role="VENDEUR" EntitySet="VENDEUR" />
+            <End Role="BIEN" EntitySet="BIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIEN_VILLE" Association="Self.FK_BIEN_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="BIEN" EntitySet="BIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHE_DE_SOUHAITS_ACHETEUR" Association="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR">
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROPOSITION_VISITE_BIEN" Association="Self.FK_PROPOSITION_VISITE_BIEN">
+            <End Role="BIEN" EntitySet="BIEN" />
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" Association="Self.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS">
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RDV_PROPOSITION_VISITE" Association="Self.FK_RDV_PROPOSITION_VISITE">
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+            <End Role="RDV" EntitySet="RDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECHERCHE_DANS_FICHE_DE_SOUHAITS" Association="Self.FK_RECHERCHE_DANS_FICHE_DE_SOUHAITS">
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+            <End Role="RECHERCHE_DANS" EntitySet="RECHERCHE_DANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECHERCHE_DANS_VILLE" Association="Self.FK_RECHERCHE_DANS_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="RECHERCHE_DANS" EntitySet="RECHERCHE_DANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENDEUR_VILLE" Association="Self.FK_VENDEUR_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="VENDEUR" EntitySet="VENDEUR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnfinModele2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACHETEUR">
+          <Key>
+            <PropertyRef Name="IDACHETEUR" />
+          </Key>
+          <Property Name="IDACHETEUR" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" />
+          <Property Name="IDVILLE" Type="Int16" Nullable="false" />
+          <Property Name="NOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PRENOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TÉLÉPHONE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COMMERCIAL" Relationship="Self.FK_ACHETEUR_COMMERCIAL" FromRole="ACHETEUR" ToRole="COMMERCIAL" />
+          <NavigationProperty Name="VILLE" Relationship="Self.FK_ACHETEUR_VILLE" FromRole="ACHETEUR" ToRole="VILLE" />
+          <NavigationProperty Name="FICHE_DE_SOUHAITS" Relationship="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR" FromRole="ACHETEUR" ToRole="FICHE_DE_SOUHAITS" />
+        </EntityType>
+        <EntityType Name="BIEN">
+          <Key>
+            <PropertyRef Name="IDBIEN" />
+          </Key>
+          <Property Name="IDBIEN" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDVILLE" Type="Int16" Nullable="false" />
+          <Property Name="IDVENDEUR" Type="Int16" Nullable="false" />
+          <Property Name="SURFACE_HABITABLE" Type="Int32" Nullable="false" />
+          <Property Name="SURFACE_PARCELLE" Type="Int32" Nullable="false" />
+          <Property Name="NB_PIÈCES" Type="Int32" Nullable="false" />
+          <Property Name="NB_CHAMBRES" Type="Int32" Nullable="false" />
+          <Property Name="NB_SALLEDEBAIN" Type="Int32" Nullable="false" />
+          <Property Name="GARAGE" Type="Boolean" Nullable="false" />
+          <Property Name="CAVE" Type="Boolean" Nullable="false" />
+          <Property Name="PRIX_SOUHAITÉ" Type="Int32" Nullable="false" />
+          <Property Name="ADRESSE_BIEN" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DATE_MISEENVENTE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="STATUT" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ZONE_DE_SAISIE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="NB_VISITES" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="VENDEUR" Relationship="Self.FK_BIEN_VENDEUR" FromRole="BIEN" ToRole="VENDEUR" />
+          <NavigationProperty Name="VILLE" Relationship="Self.FK_BIEN_VILLE" FromRole="BIEN" ToRole="VILLE" />
+          <NavigationProperty Name="PROPOSITION_VISITE" Relationship="Self.FK_PROPOSITION_VISITE_BIEN" FromRole="BIEN" ToRole="PROPOSITION_VISITE" />
+        </EntityType>
+        <EntityType Name="COMMERCIAL">
+          <Key>
+            <PropertyRef Name="IDCOMMERCIAL" />
+          </Key>
+          <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PRENOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TÉLÉPHONE_FIXE_PRO" Type="Int32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE_PRO" Type="Int32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_PERSONNEL" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STATUT_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ACHETEUR" Relationship="Self.FK_ACHETEUR_COMMERCIAL" FromRole="COMMERCIAL" ToRole="ACHETEUR" />
+        </EntityType>
+        <EntityType Name="FICHE_DE_SOUHAITS">
+          <Key>
+            <PropertyRef Name="IDFICHESOUHAITS" />
+          </Key>
+          <Property Name="IDFICHESOUHAITS" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDACHETEUR" Type="Int16" Nullable="false" />
+          <Property Name="VILLE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="SURFACE_PARCELLE" Type="Int32" />
+          <Property Name="SURFACE_HABITABLE" Type="Int32" />
+          <Property Name="NB_PIÈCE" Type="Int32" />
+          <Property Name="NB_CHAMBRES" Type="Int32" />
+          <Property Name="NB_SALLEDEBAIN" Type="Int32" />
+          <Property Name="GARAGE" Type="Boolean" />
+          <Property Name="CAVE" Type="Boolean" />
+          <Property Name="BUDGET" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACHETEUR" Relationship="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR" FromRole="FICHE_DE_SOUHAITS" ToRole="ACHETEUR" />
+          <NavigationProperty Name="PROPOSITION_VISITE" Relationship="Self.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" FromRole="FICHE_DE_SOUHAITS" ToRole="PROPOSITION_VISITE" />
+          <NavigationProperty Name="VILLE1" Relationship="Self.RECHERCHE_DANS" FromRole="FICHE_DE_SOUHAITS" ToRole="VILLE" />
+        </EntityType>
+        <EntityType Name="PROPOSITION_VISITE">
+          <Key>
+            <PropertyRef Name="IDVISITE" />
+          </Key>
+          <Property Name="IDVISITE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDFICHESOUHAITS" Type="Int16" Nullable="false" />
+          <Property Name="IDBIEN" Type="Int16" Nullable="false" />
+          <Property Name="DATERDV" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BIEN" Relationship="Self.FK_PROPOSITION_VISITE_BIEN" FromRole="PROPOSITION_VISITE" ToRole="BIEN" />
+          <NavigationProperty Name="FICHE_DE_SOUHAITS" Relationship="Self.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" FromRole="PROPOSITION_VISITE" ToRole="FICHE_DE_SOUHAITS" />
+          <NavigationProperty Name="RDV" Relationship="Self.FK_RDV_PROPOSITION_VISITE" FromRole="PROPOSITION_VISITE" ToRole="RDV" />
+        </EntityType>
+        <EntityType Name="RDV">
+          <Key>
+            <PropertyRef Name="IDRDV" />
+          </Key>
+          <Property Name="IDRDV" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDVISITE" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="PROPOSITION_VISITE" Relationship="Self.FK_RDV_PROPOSITION_VISITE" FromRole="RDV" ToRole="PROPOSITION_VISITE" />
+        </EntityType>
+        <EntityType Name="VENDEUR">
+          <Key>
+            <PropertyRef Name="IDVENDEUR" />
+          </Key>
+          <Property Name="IDVENDEUR" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDVILLE" Type="Int16" Nullable="false" />
+          <Property Name="NOM_VENDEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PRÉNOM_VENDEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ADRESSE_VENDEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TÉLÉPHONE_FIXE" Type="Int32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BIEN" Relationship="Self.FK_BIEN_VENDEUR" FromRole="VENDEUR" ToRole="BIEN" />
+          <NavigationProperty Name="VILLE" Relationship="Self.FK_VENDEUR_VILLE" FromRole="VENDEUR" ToRole="VILLE" />
+        </EntityType>
+        <EntityType Name="VILLE">
+          <Key>
+            <PropertyRef Name="IDVILLE" />
+          </Key>
+          <Property Name="IDVILLE" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_VILLE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACHETEUR" Relationship="Self.FK_ACHETEUR_VILLE" FromRole="VILLE" ToRole="ACHETEUR" />
+          <NavigationProperty Name="BIEN" Relationship="Self.FK_BIEN_VILLE" FromRole="VILLE" ToRole="BIEN" />
+          <NavigationProperty Name="VENDEUR" Relationship="Self.FK_VENDEUR_VILLE" FromRole="VILLE" ToRole="VENDEUR" />
+          <NavigationProperty Name="FICHE_DE_SOUHAITS" Relationship="Self.RECHERCHE_DANS" FromRole="VILLE" ToRole="FICHE_DE_SOUHAITS" />
+        </EntityType>
+        <Association Name="FK_ACHETEUR_COMMERCIAL">
+          <End Role="COMMERCIAL" Type="Self.COMMERCIAL" Multiplicity="1" />
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMERCIAL">
+              <PropertyRef Name="IDCOMMERCIAL" />
+            </Principal>
+            <Dependent Role="ACHETEUR">
+              <PropertyRef Name="IDCOMMERCIAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACHETEUR_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="ACHETEUR">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FICHE_DE_SOUHAITS_ACHETEUR">
+          <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="1" />
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACHETEUR">
+              <PropertyRef Name="IDACHETEUR" />
+            </Principal>
+            <Dependent Role="FICHE_DE_SOUHAITS">
+              <PropertyRef Name="IDACHETEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIEN_VENDEUR">
+          <End Role="VENDEUR" Type="Self.VENDEUR" Multiplicity="1" />
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDEUR">
+              <PropertyRef Name="IDVENDEUR" />
+            </Principal>
+            <Dependent Role="BIEN">
+              <PropertyRef Name="IDVENDEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BIEN_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="BIEN">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROPOSITION_VISITE_BIEN">
+          <End Role="BIEN" Type="Self.BIEN" Multiplicity="1" />
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BIEN">
+              <PropertyRef Name="IDBIEN" />
+            </Principal>
+            <Dependent Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDBIEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS">
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="1" />
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FICHE_DE_SOUHAITS">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Principal>
+            <Dependent Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDFICHESOUHAITS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RDV_PROPOSITION_VISITE">
+          <End Role="PROPOSITION_VISITE" Type="Self.PROPOSITION_VISITE" Multiplicity="1" />
+          <End Role="RDV" Type="Self.RDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPOSITION_VISITE">
+              <PropertyRef Name="IDVISITE" />
+            </Principal>
+            <Dependent Role="RDV">
+              <PropertyRef Name="IDVISITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENDEUR_VILLE">
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="1" />
+          <End Role="VENDEUR" Type="Self.VENDEUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VILLE">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="VENDEUR">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RECHERCHE_DANS">
+          <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
+          <End Role="VILLE" Type="Self.VILLE" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SuiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" />
+          <EntitySet Name="BIEN" EntityType="Self.BIEN" />
+          <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" />
+          <EntitySet Name="FICHE_DE_SOUHAITS" EntityType="Self.FICHE_DE_SOUHAITS" />
+          <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" />
+          <EntitySet Name="RDV" EntityType="Self.RDV" />
+          <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" />
+          <EntitySet Name="VILLE" EntityType="Self.VILLE" />
+          <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">
+            <End Role="COMMERCIAL" EntitySet="COMMERCIAL" />
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACHETEUR_VILLE" Association="Self.FK_ACHETEUR_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FICHE_DE_SOUHAITS_ACHETEUR" Association="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR">
+            <End Role="ACHETEUR" EntitySet="ACHETEUR" />
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIEN_VENDEUR" Association="Self.FK_BIEN_VENDEUR">
+            <End Role="VENDEUR" EntitySet="VENDEUR" />
+            <End Role="BIEN" EntitySet="BIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BIEN_VILLE" Association="Self.FK_BIEN_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="BIEN" EntitySet="BIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROPOSITION_VISITE_BIEN" Association="Self.FK_PROPOSITION_VISITE_BIEN">
+            <End Role="BIEN" EntitySet="BIEN" />
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" Association="Self.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS">
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RDV_PROPOSITION_VISITE" Association="Self.FK_RDV_PROPOSITION_VISITE">
+            <End Role="PROPOSITION_VISITE" EntitySet="PROPOSITION_VISITE" />
+            <End Role="RDV" EntitySet="RDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENDEUR_VILLE" Association="Self.FK_VENDEUR_VILLE">
+            <End Role="VILLE" EntitySet="VILLE" />
+            <End Role="VENDEUR" EntitySet="VENDEUR" />
+          </AssociationSet>
+          <AssociationSet Name="RECHERCHE_DANS" Association="Self.RECHERCHE_DANS">
+            <End Role="FICHE_DE_SOUHAITS" EntitySet="FICHE_DE_SOUHAITS" />
+            <End Role="VILLE" EntitySet="VILLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnfinModele2StoreContainer" CdmEntityContainer="SuiteEntities">
+          <EntitySetMapping Name="ACHETEUR">
+            <EntityTypeMapping TypeName="EnfinModele2.ACHETEUR">
+              <MappingFragment StoreEntitySet="ACHETEUR">
+                <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
+                <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="NOM_ACHETEUR" ColumnName="NOM_ACHETEUR" />
+                <ScalarProperty Name="PRENOM_ACHETEUR" ColumnName="PRENOM_ACHETEUR" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TÉLÉPHONE" ColumnName="TÉLÉPHONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIEN">
+            <EntityTypeMapping TypeName="EnfinModele2.BIEN">
+              <MappingFragment StoreEntitySet="BIEN">
+                <ScalarProperty Name="IDBIEN" ColumnName="IDBIEN" />
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="IDVENDEUR" ColumnName="IDVENDEUR" />
+                <ScalarProperty Name="SURFACE_HABITABLE" ColumnName="SURFACE_HABITABLE" />
+                <ScalarProperty Name="SURFACE_PARCELLE" ColumnName="SURFACE_PARCELLE" />
+                <ScalarProperty Name="NB_PIÈCES" ColumnName="NB_PIÈCES" />
+                <ScalarProperty Name="NB_CHAMBRES" ColumnName="NB_CHAMBRES" />
+                <ScalarProperty Name="NB_SALLEDEBAIN" ColumnName="NB_SALLEDEBAIN" />
+                <ScalarProperty Name="GARAGE" ColumnName="GARAGE" />
+                <ScalarProperty Name="CAVE" ColumnName="CAVE" />
+                <ScalarProperty Name="PRIX_SOUHAITÉ" ColumnName="PRIX_SOUHAITÉ" />
+                <ScalarProperty Name="ADRESSE_BIEN" ColumnName="ADRESSE_BIEN" />
+                <ScalarProperty Name="DATE_MISEENVENTE" ColumnName="DATE_MISEENVENTE" />
+                <ScalarProperty Name="STATUT" ColumnName="STATUT" />
+                <ScalarProperty Name="ZONE_DE_SAISIE" ColumnName="ZONE_DE_SAISIE" />
+                <ScalarProperty Name="NB_VISITES" ColumnName="NB_VISITES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMERCIAL">
+            <EntityTypeMapping TypeName="EnfinModele2.COMMERCIAL">
+              <MappingFragment StoreEntitySet="COMMERCIAL">
+                <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
+                <ScalarProperty Name="NOM_COMMERCIAL" ColumnName="NOM_COMMERCIAL" />
+                <ScalarProperty Name="PRENOM_COMMERCIAL" ColumnName="PRENOM_COMMERCIAL" />
+                <ScalarProperty Name="TÉLÉPHONE_FIXE_PRO" ColumnName="TÉLÉPHONE_FIXE_PRO" />
+                <ScalarProperty Name="TÉLÉPHONE_MOBILE_PRO" ColumnName="TÉLÉPHONE_MOBILE_PRO" />
+                <ScalarProperty Name="TÉLÉPHONE_PERSONNEL" ColumnName="TÉLÉPHONE_PERSONNEL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STATUT_COMMERCIAL" ColumnName="STATUT_COMMERCIAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FICHE_DE_SOUHAITS">
+            <EntityTypeMapping TypeName="EnfinModele2.FICHE_DE_SOUHAITS">
+              <MappingFragment StoreEntitySet="FICHE_DE_SOUHAITS">
+                <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+                <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
+                <ScalarProperty Name="VILLE" ColumnName="VILLE" />
+                <ScalarProperty Name="SURFACE_PARCELLE" ColumnName="SURFACE_PARCELLE" />
+                <ScalarProperty Name="SURFACE_HABITABLE" ColumnName="SURFACE_HABITABLE" />
+                <ScalarProperty Name="NB_PIÈCE" ColumnName="NB_PIÈCE" />
+                <ScalarProperty Name="NB_CHAMBRES" ColumnName="NB_CHAMBRES" />
+                <ScalarProperty Name="NB_SALLEDEBAIN" ColumnName="NB_SALLEDEBAIN" />
+                <ScalarProperty Name="GARAGE" ColumnName="GARAGE" />
+                <ScalarProperty Name="CAVE" ColumnName="CAVE" />
+                <ScalarProperty Name="BUDGET" ColumnName="BUDGET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROPOSITION_VISITE">
+            <EntityTypeMapping TypeName="EnfinModele2.PROPOSITION_VISITE">
+              <MappingFragment StoreEntitySet="PROPOSITION_VISITE">
+                <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
+                <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+                <ScalarProperty Name="IDBIEN" ColumnName="IDBIEN" />
+                <ScalarProperty Name="DATERDV" ColumnName="DATERDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RDV">
+            <EntityTypeMapping TypeName="EnfinModele2.RDV">
+              <MappingFragment StoreEntitySet="RDV">
+                <ScalarProperty Name="IDRDV" ColumnName="IDRDV" />
+                <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENDEUR">
+            <EntityTypeMapping TypeName="EnfinModele2.VENDEUR">
+              <MappingFragment StoreEntitySet="VENDEUR">
+                <ScalarProperty Name="IDVENDEUR" ColumnName="IDVENDEUR" />
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="NOM_VENDEUR" ColumnName="NOM_VENDEUR" />
+                <ScalarProperty Name="PRÉNOM_VENDEUR" ColumnName="PRÉNOM_VENDEUR" />
+                <ScalarProperty Name="ADRESSE_VENDEUR" ColumnName="ADRESSE_VENDEUR" />
+                <ScalarProperty Name="TÉLÉPHONE_FIXE" ColumnName="TÉLÉPHONE_FIXE" />
+                <ScalarProperty Name="TÉLÉPHONE_MOBILE" ColumnName="TÉLÉPHONE_MOBILE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VILLE">
+            <EntityTypeMapping TypeName="EnfinModele2.VILLE">
+              <MappingFragment StoreEntitySet="VILLE">
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="NOM_VILLE" ColumnName="NOM_VILLE" />
+                <ScalarProperty Name="CODE_POSTAL" ColumnName="CODE_POSTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RECHERCHE_DANS" TypeName="EnfinModele2.RECHERCHE_DANS" StoreEntitySet="RECHERCHE_DANS">
+            <EndProperty Name="FICHE_DE_SOUHAITS">
+              <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+            </EndProperty>
+            <EndProperty Name="VILLE">
+              <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

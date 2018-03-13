@@ -1,0 +1,18 @@
+delete from FICHE_DE_SOUHAITS
+
+insert into FICHE_DE_SOUHAITS(IDACHETEUR, SURFACE_PARCELLE, SURFACE_HABITABLE, NB_PIÈCE, NB_CHAMBRES, NB_SALLEDEBAIN, GARAGE, CAVE, BUDGET)
+
+VALUES(
+(select IDACHETEUR from ACHETEUR where NOM_ACHETEUR = 'Felix'),
+null, null, null, null, null, 1, 1, 55000),
+
+
+(
+(select IDACHETEUR from ACHETEUR where NOM_ACHETEUR = 'Fosse' and PRENOM_ACHETEUR = 'Stephane'),
+450, 250 , 7, 9, 8, 0, 0, 225000)
+
+
+
+
+
+select * from FICHE_DE_SOUHAITS

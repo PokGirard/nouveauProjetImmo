@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnfinModel1StoreContainer" CdmEntityContainer="EnfinEntities">
+    <EntitySetMapping Name="ACHETEUR">
+      <EntityTypeMapping TypeName="EnfinModel1.ACHETEUR">
+        <MappingFragment StoreEntitySet="ACHETEUR">
+          <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
+          <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="NOM_ACHETEUR" ColumnName="NOM_ACHETEUR" />
+          <ScalarProperty Name="PRENOM_ACHETEUR" ColumnName="PRENOM_ACHETEUR" />
+          <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TÉLÉPHONE" ColumnName="TÉLÉPHONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BIEN">
+      <EntityTypeMapping TypeName="EnfinModel1.BIEN">
+        <MappingFragment StoreEntitySet="BIEN">
+          <ScalarProperty Name="IDBIEN" ColumnName="IDBIEN" />
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="IDVENDEUR" ColumnName="IDVENDEUR" />
+          <ScalarProperty Name="SURFACE_HABITABLE" ColumnName="SURFACE_HABITABLE" />
+          <ScalarProperty Name="SURFACE_PARCELLE" ColumnName="SURFACE_PARCELLE" />
+          <ScalarProperty Name="NB_PIÈCES" ColumnName="NB_PIÈCES" />
+          <ScalarProperty Name="NB_CHAMBRES" ColumnName="NB_CHAMBRES" />
+          <ScalarProperty Name="NB_SALLEDEBAIN" ColumnName="NB_SALLEDEBAIN" />
+          <ScalarProperty Name="GARAGE" ColumnName="GARAGE" />
+          <ScalarProperty Name="CAVE" ColumnName="CAVE" />
+          <ScalarProperty Name="PRIX_SOUHAITÉ" ColumnName="PRIX_SOUHAITÉ" />
+          <ScalarProperty Name="ADRESSE_BIEN" ColumnName="ADRESSE_BIEN" />
+          <ScalarProperty Name="DATE_MISEENVENTE" ColumnName="DATE_MISEENVENTE" />
+          <ScalarProperty Name="STATUT" ColumnName="STATUT" />
+          <ScalarProperty Name="ZONE_DE_SAISIE" ColumnName="ZONE_DE_SAISIE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMERCIAL">
+      <EntityTypeMapping TypeName="EnfinModel1.COMMERCIAL">
+        <MappingFragment StoreEntitySet="COMMERCIAL">
+          <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
+          <ScalarProperty Name="NOM_COMMERCIAL" ColumnName="NOM_COMMERCIAL" />
+          <ScalarProperty Name="PRENOM_COMMERCIAL" ColumnName="PRENOM_COMMERCIAL" />
+          <ScalarProperty Name="TÉLÉPHONE_FIXE_PRO" ColumnName="TÉLÉPHONE_FIXE_PRO" />
+          <ScalarProperty Name="TÉLÉPHONE_MOBILE_PRO" ColumnName="TÉLÉPHONE_MOBILE_PRO" />
+          <ScalarProperty Name="TÉLÉPHONE_PERSONNEL" ColumnName="TÉLÉPHONE_PERSONNEL" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="STATUT_COMMERCIAL" ColumnName="STATUT_COMMERCIAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FICHE_DE_SOUHAITS">
+      <EntityTypeMapping TypeName="EnfinModel1.FICHE_DE_SOUHAITS">
+        <MappingFragment StoreEntitySet="FICHE_DE_SOUHAITS">
+          <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+          <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
+          <ScalarProperty Name="SURFACE_PARCELLE" ColumnName="SURFACE_PARCELLE" />
+          <ScalarProperty Name="SURFACE_HABITABLE" ColumnName="SURFACE_HABITABLE" />
+          <ScalarProperty Name="NB_PIÈCE" ColumnName="NB_PIÈCE" />
+          <ScalarProperty Name="NB_CHAMBRES" ColumnName="NB_CHAMBRES" />
+          <ScalarProperty Name="NB_SALLEDEBAIN" ColumnName="NB_SALLEDEBAIN" />
+          <ScalarProperty Name="GARAGE" ColumnName="GARAGE" />
+          <ScalarProperty Name="CAVE" ColumnName="CAVE" />
+          <ScalarProperty Name="BUDGET" ColumnName="BUDGET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROPOSITION_VISITE">
+      <EntityTypeMapping TypeName="EnfinModel1.PROPOSITION_VISITE">
+        <MappingFragment StoreEntitySet="PROPOSITION_VISITE">
+          <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
+          <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+          <ScalarProperty Name="IDBIEN" ColumnName="IDBIEN" />
+          <ScalarProperty Name="DATERDV" ColumnName="DATERDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RDV">
+      <EntityTypeMapping TypeName="EnfinModel1.RDV">
+        <MappingFragment StoreEntitySet="RDV">
+          <ScalarProperty Name="IDRDV" ColumnName="IDRDV" />
+          <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENDEUR">
+      <EntityTypeMapping TypeName="EnfinModel1.VENDEUR">
+        <MappingFragment StoreEntitySet="VENDEUR">
+          <ScalarProperty Name="IDVENDEUR" ColumnName="IDVENDEUR" />
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="NOM_VENDEUR" ColumnName="NOM_VENDEUR" />
+          <ScalarProperty Name="PRÉNOM_VENDEUR" ColumnName="PRÉNOM_VENDEUR" />
+          <ScalarProperty Name="ADRESSE_VENDEUR" ColumnName="ADRESSE_VENDEUR" />
+          <ScalarProperty Name="TÉLÉPHONE" ColumnName="TÉLÉPHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VILLE">
+      <EntityTypeMapping TypeName="EnfinModel1.VILLE">
+        <MappingFragment StoreEntitySet="VILLE">
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="NOM_VILLE" ColumnName="NOM_VILLE" />
+          <ScalarProperty Name="CODE_POSTAL" ColumnName="CODE_POSTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RECHERCHE_DANS" TypeName="EnfinModel1.RECHERCHE_DANS" StoreEntitySet="RECHERCHE_DANS">
+      <EndProperty Name="FICHE_DE_SOUHAITS">
+        <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
+      </EndProperty>
+      <EndProperty Name="VILLE">
+        <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

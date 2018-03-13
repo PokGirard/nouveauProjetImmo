@@ -1,0 +1,45 @@
+Hello,
+
+Si vous voulez rajoutez la table des villes/code postaux sur votre BDD locale, voilà la marche à suivre :
+Pré-requis :
+
+- Utilisez le fichier VILLES.csv que Damien a filé sur Discord il y a quelques jours (je l'ai rajouté aussi sur Git)
+- Recréez la base avec le script base référence 10 mars ! (j'ai du faire quelques ajustements sur les types de la table VILLE)
+
+Ensuite :
+
+- Depuis SSMS, faites un clic droit sur le nom de la base (Enfin), allez dans le menu Tâches, puis "importer des données"
+- Dans l'assistant d'import/export, au moment du choix de la source, sélectionnez "Source du fichier plat", allez chercher 
+le fichier CSV dans son répertoire.
+- Pour le format, dans le 1er menu "Général" (plusieurs menus sur la gauche), 
+en séparateur de lignes d'en tête, mettez juste : " 
+- Décohez "noms de colonnes dans la 1ère ligne de données",
+- Menu "Colonnes", rien de particulier
+- Menu "Avancé", cliquez sur "suggérer les types" > Dans nombre de lignes, mettre 37200 (le fichier en fait 37177)
+- Décochez "suggérer le plus petit type de real", décochez "identifiez les colonnes booléennes" > OK
+Cette opération identifie coorectement le type de chaque colonne.
+- Pour le choix de la destination, sélectionnez SQL Server Native Client 11.0
+- Choisissez ensuite le même type d'authentification que celle que vous avez utilisez pour SSMS
+- Sélectionnez dans le dernier champ la base "Enfin", cliquez sur suivant
+- Là l'assistant propose de créer une nouvelle table nommée "[dbo].[VILLES]", la table présente dans notre base s'appelle
+[VILLE], donc cliquez sur le menu déroulant et sélectionnez bien la table [dbo].[VILLE] (sans S)
+
+- Cliquez sur "Modifier les mappages", le choix "ajouter des lignes..." doit déjà être sélectionné.
+- IMPORTANT : Cochez "Activer l'insertion d'identité" 
+
+Vous devez avoir une fenêtre vous montrant que les 3 colonnes seront bien implémentées avec des petits logos verts
+(s'il y'a des panneaux oranges, c'est qu'il y aura un problème d'ajout à la fin)
+- Cliquez sur suivant, la case "éxécutez immédiatement" doit rester cochée, clique à nouveau sur suivant.
+- Cliquez sur "Terminer"
+
+A la fin de l'opération, l'assistant doit vous indiquer "37177 lignes transférées".
+
+Et vérifiez ensuite avec un petit :
+
+USE Enfin
+Select * from VILLE
+
+
+
+
+
