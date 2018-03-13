@@ -21,6 +21,7 @@ namespace ImmobillyAjoutBien
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+            int a = 5;
         }
     }
 }

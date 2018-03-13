@@ -126,3 +126,26 @@ C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\
 C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Vincent\Desktop\Dépot perso\TousLesCS_paul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
