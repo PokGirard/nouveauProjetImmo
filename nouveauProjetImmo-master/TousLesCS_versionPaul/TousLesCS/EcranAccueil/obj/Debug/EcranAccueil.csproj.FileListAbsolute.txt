@@ -149,3 +149,31 @@ C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_vers
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.CatalogueBiens.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Visites_bien.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\kevin-adm\Downloads\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\kevin-adm\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\kevin-adm\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\kevin-adm\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
