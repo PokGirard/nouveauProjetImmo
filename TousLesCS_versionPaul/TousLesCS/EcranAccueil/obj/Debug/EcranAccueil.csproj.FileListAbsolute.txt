@@ -149,3 +149,6 @@ C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_vers
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Vincent\Desktop\Nouveau dépôt projet\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
