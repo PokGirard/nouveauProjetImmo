@@ -1,27 +1,4 @@
-/*
- ----------------------------------------------------------------------------
-             Génération d'une base de données pour
-                        SQL Server 2005
-                       (1/3/2018 14:21:49)
- ----------------------------------------------------------------------------
-     Nom de la base : Enfin
-     Projet : 
-     Auteur : CRIIUT
-     Date de dernière modification : 1/3/2018 14:21:23
- ----------------------------------------------------------------------------
-*/
-
-
-
-/* -----------------------------------------------------------------------------
-      OUVERTURE DE LA BASE Enfin
------------------------------------------------------------------------------ */
-
-create database Enfin
-go
-
-use Enfin
-go
+﻿go
 
 
 
@@ -62,8 +39,9 @@ create table BIEN
      CAVE bit  not null  ,
      PRIX_SOUHAITÉ int  not null  ,
      ADRESSE_BIEN char(32)  not null  ,
+     CODE_POSTAL int not null  ,
      DATE_MISEENVENTE datetime  not null  ,
-     STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RESERVE', 'SOUS-SEING')),
+     STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RETIRE', 'SOUS-SEING')),
      ZONE_DE_SAISIE char(32)  null,  
      NB_VISITES smallint not null default 0 
      ,
@@ -99,7 +77,7 @@ go
 
 create table COMMERCIAL
   (
-     IDCOMMERCIAL tinyint identity (1, 1)   ,
+     IDCOMMERCIAL smallint identity (1, 1)   ,
      NOM_COMMERCIAL char(32)  not null  ,
      PRENOM_COMMERCIAL char(32)  not null  ,
      TÉLÉPHONE_FIXE_PRO int  not null  ,
@@ -122,6 +100,7 @@ create table FICHE_DE_SOUHAITS
   (
      IDFICHESOUHAITS smallint identity (1, 1)   ,
      IDACHETEUR smallint  not null  ,
+	 STATUT char(32) null CHECK(statut in ('EN COURS', 'OBSOLETE')) DEFAULT 'EN COURS',
      VILLE char(32) null,
      SURFACE_PARCELLE int  null  ,
      SURFACE_HABITABLE int  null  ,
@@ -155,7 +134,9 @@ create table VENDEUR
      ADRESSE_VENDEUR char(32)  not null  ,
      TÉLÉPHONE_FIXE int  not null  ,
      TÉLÉPHONE_MOBILE int null  ,
-     EMAIL char(32)  not null  
+     EMAIL char(32)  not null  ,
+     CODE_POSTAL int not null  ,
+     DATE_CREATION datetime NOT NULL DEFAULT (GETDATE()) 
      ,
      constraint PK_VENDEUR primary key (IDVENDEUR)
   ) 
@@ -195,13 +176,16 @@ go
 create table ACHETEUR
   (
      IDACHETEUR smallint identity (1, 1)   ,
-     IDCOMMERCIAL tinyint  not null  ,
+     IDCOMMERCIAL smallint  not null  ,
      IDVILLE int  not null  ,
      NOM_ACHETEUR char(32)  not null  ,
      PRENOM_ACHETEUR char(32)  not null  ,
      ADRESSE char(32)  not null  ,
      EMAIL char(32)  not null  ,
-     TÉLÉPHONE int  not null  
+     TÉLÉPHONE int  not null  ,
+     CODE_POSTAL int not null  ,
+     TÉLÉPHONE_MOBILE int  not null,
+     DATE_CREATION datetime NOT NULL DEFAULT (GETDATE())    
      ,
      constraint PK_ACHETEUR primary key (IDACHETEUR)
   ) 
