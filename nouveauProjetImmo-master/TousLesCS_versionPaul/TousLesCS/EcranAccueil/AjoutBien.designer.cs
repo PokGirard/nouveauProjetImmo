@@ -1,4 +1,4 @@
-﻿namespace ImmobillyAjoutBien
+﻿namespace EcranAccueil
 {
     partial class AjoutBien
     {
@@ -31,58 +31,62 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nomClient = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.prénomVendeur = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.adresseVendeur = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.codePostalVendeur = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.villeVendeur = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.fixeVendeur = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.mobileVendeur = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.emailVendeur = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1_surfHab = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2_surfParc = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3_nbPieces = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4_nbChambres = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5_nbSdb = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6_prix = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox9_adresse = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox10_codePostal = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox11_ville = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1_miseEnVente = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.textBox12_commentaires = new System.Windows.Forms.TextBox();
+            this.button1_ajouterBien = new System.Windows.Forms.Button();
+            this.button2_imprimerFiche = new System.Windows.Forms.Button();
+            this.button3_supprimer = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            this.button5_annuler = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.checkBox1_garage = new System.Windows.Forms.CheckBox();
+            this.checkBox2_cave = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4_nbChambres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5_nbSdb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6_prix)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -115,12 +119,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "CLIENT";
             // 
-            // textBox1
+            // nomClient
             // 
-            this.textBox1.Location = new System.Drawing.Point(58, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 20);
-            this.textBox1.TabIndex = 3;
+            this.nomClient.Location = new System.Drawing.Point(58, 126);
+            this.nomClient.Name = "nomClient";
+            this.nomClient.Size = new System.Drawing.Size(145, 20);
+            this.nomClient.TabIndex = 3;
+            this.nomClient.TextChanged += new System.EventHandler(this.nom_TextChanged);
             // 
             // label3
             // 
@@ -142,12 +147,12 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Prénom";
             // 
-            // textBox2
+            // prénomVendeur
             // 
-            this.textBox2.Location = new System.Drawing.Point(288, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(162, 20);
-            this.textBox2.TabIndex = 6;
+            this.prénomVendeur.Location = new System.Drawing.Point(288, 126);
+            this.prénomVendeur.Name = "prénomVendeur";
+            this.prénomVendeur.Size = new System.Drawing.Size(162, 20);
+            this.prénomVendeur.TabIndex = 6;
             // 
             // label5
             // 
@@ -159,12 +164,12 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Adresse";
             // 
-            // textBox3
+            // adresseVendeur
             // 
-            this.textBox3.Location = new System.Drawing.Point(78, 160);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(372, 20);
-            this.textBox3.TabIndex = 8;
+            this.adresseVendeur.Location = new System.Drawing.Point(78, 160);
+            this.adresseVendeur.Name = "adresseVendeur";
+            this.adresseVendeur.Size = new System.Drawing.Size(372, 20);
+            this.adresseVendeur.TabIndex = 8;
             // 
             // label6
             // 
@@ -176,12 +181,12 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Code Postal";
             // 
-            // textBox4
+            // codePostalVendeur
             // 
-            this.textBox4.Location = new System.Drawing.Point(103, 197);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 10;
+            this.codePostalVendeur.Location = new System.Drawing.Point(103, 197);
+            this.codePostalVendeur.Name = "codePostalVendeur";
+            this.codePostalVendeur.Size = new System.Drawing.Size(100, 20);
+            this.codePostalVendeur.TabIndex = 10;
             // 
             // label7
             // 
@@ -193,12 +198,12 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Ville";
             // 
-            // textBox5
+            // villeVendeur
             // 
-            this.textBox5.Location = new System.Drawing.Point(284, 200);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(166, 20);
-            this.textBox5.TabIndex = 12;
+            this.villeVendeur.Location = new System.Drawing.Point(284, 200);
+            this.villeVendeur.Name = "villeVendeur";
+            this.villeVendeur.Size = new System.Drawing.Size(166, 20);
+            this.villeVendeur.TabIndex = 12;
             // 
             // label8
             // 
@@ -210,12 +215,12 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Téléphone fixe";
             // 
-            // textBox6
+            // fixeVendeur
             // 
-            this.textBox6.Location = new System.Drawing.Point(103, 241);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 14;
+            this.fixeVendeur.Location = new System.Drawing.Point(103, 241);
+            this.fixeVendeur.Name = "fixeVendeur";
+            this.fixeVendeur.Size = new System.Drawing.Size(100, 20);
+            this.fixeVendeur.TabIndex = 14;
             // 
             // label9
             // 
@@ -227,12 +232,12 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "Téléphone mobile";
             // 
-            // textBox7
+            // mobileVendeur
             // 
-            this.textBox7.Location = new System.Drawing.Point(350, 241);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 16;
+            this.mobileVendeur.Location = new System.Drawing.Point(350, 241);
+            this.mobileVendeur.Name = "mobileVendeur";
+            this.mobileVendeur.Size = new System.Drawing.Size(100, 20);
+            this.mobileVendeur.TabIndex = 16;
             // 
             // label10
             // 
@@ -244,12 +249,12 @@
             this.label10.TabIndex = 17;
             this.label10.Text = "Email";
             // 
-            // textBox8
+            // emailVendeur
             // 
-            this.textBox8.Location = new System.Drawing.Point(78, 283);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(372, 20);
-            this.textBox8.TabIndex = 18;
+            this.emailVendeur.Location = new System.Drawing.Point(78, 283);
+            this.emailVendeur.Name = "emailVendeur";
+            this.emailVendeur.Size = new System.Drawing.Size(372, 20);
+            this.emailVendeur.TabIndex = 18;
             // 
             // label11
             // 
@@ -270,12 +275,12 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "Surface habitable";
             // 
-            // numericUpDown1
+            // numericUpDown1_surfHab
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(129, 405);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown1.TabIndex = 21;
+            this.numericUpDown1_surfHab.Location = new System.Drawing.Point(129, 405);
+            this.numericUpDown1_surfHab.Name = "numericUpDown1_surfHab";
+            this.numericUpDown1_surfHab.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown1_surfHab.TabIndex = 21;
             // 
             // label13
             // 
@@ -287,12 +292,12 @@
             this.label13.TabIndex = 22;
             this.label13.Text = "Surface parcelle";
             // 
-            // numericUpDown2
+            // numericUpDown2_surfParc
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(129, 441);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown2.TabIndex = 23;
+            this.numericUpDown2_surfParc.Location = new System.Drawing.Point(129, 441);
+            this.numericUpDown2_surfParc.Name = "numericUpDown2_surfParc";
+            this.numericUpDown2_surfParc.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown2_surfParc.TabIndex = 23;
             // 
             // label14
             // 
@@ -304,12 +309,12 @@
             this.label14.TabIndex = 24;
             this.label14.Text = "Pièces";
             // 
-            // numericUpDown3
+            // numericUpDown3_nbPieces
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(129, 479);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown3.TabIndex = 25;
+            this.numericUpDown3_nbPieces.Location = new System.Drawing.Point(129, 479);
+            this.numericUpDown3_nbPieces.Name = "numericUpDown3_nbPieces";
+            this.numericUpDown3_nbPieces.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown3_nbPieces.TabIndex = 25;
             // 
             // label15
             // 
@@ -321,12 +326,12 @@
             this.label15.TabIndex = 26;
             this.label15.Text = "Chambres";
             // 
-            // numericUpDown4
+            // numericUpDown4_nbChambres
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(129, 520);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown4.TabIndex = 27;
+            this.numericUpDown4_nbChambres.Location = new System.Drawing.Point(129, 520);
+            this.numericUpDown4_nbChambres.Name = "numericUpDown4_nbChambres";
+            this.numericUpDown4_nbChambres.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown4_nbChambres.TabIndex = 27;
             // 
             // label16
             // 
@@ -338,97 +343,97 @@
             this.label16.TabIndex = 28;
             this.label16.Text = "Salles de bain";
             // 
-            // numericUpDown5
+            // numericUpDown5_nbSdb
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(129, 557);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown5.TabIndex = 29;
+            this.numericUpDown5_nbSdb.Location = new System.Drawing.Point(129, 557);
+            this.numericUpDown5_nbSdb.Name = "numericUpDown5_nbSdb";
+            this.numericUpDown5_nbSdb.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown5_nbSdb.TabIndex = 29;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(285, 412);
+            this.label17.Location = new System.Drawing.Point(281, 443);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 30;
             this.label17.Text = "Prix de vente";
             // 
-            // numericUpDown6
+            // numericUpDown6_prix
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(378, 405);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown6.TabIndex = 31;
+            this.numericUpDown6_prix.Location = new System.Drawing.Point(374, 436);
+            this.numericUpDown6_prix.Name = "numericUpDown6_prix";
+            this.numericUpDown6_prix.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown6_prix.TabIndex = 31;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(285, 443);
+            this.label18.Location = new System.Drawing.Point(281, 479);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(45, 13);
             this.label18.TabIndex = 32;
             this.label18.Text = "Adresse";
             // 
-            // textBox9
+            // textBox9_adresse
             // 
-            this.textBox9.Location = new System.Drawing.Point(378, 436);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(372, 20);
-            this.textBox9.TabIndex = 33;
+            this.textBox9_adresse.Location = new System.Drawing.Point(374, 472);
+            this.textBox9_adresse.Name = "textBox9_adresse";
+            this.textBox9_adresse.Size = new System.Drawing.Size(372, 20);
+            this.textBox9_adresse.TabIndex = 33;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(285, 481);
+            this.label19.Location = new System.Drawing.Point(281, 517);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(64, 13);
             this.label19.TabIndex = 34;
             this.label19.Text = "Code Postal";
             // 
-            // textBox10
+            // textBox10_codePostal
             // 
-            this.textBox10.Location = new System.Drawing.Point(378, 479);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 35;
+            this.textBox10_codePostal.Location = new System.Drawing.Point(374, 515);
+            this.textBox10_codePostal.Name = "textBox10_codePostal";
+            this.textBox10_codePostal.Size = new System.Drawing.Size(100, 20);
+            this.textBox10_codePostal.TabIndex = 35;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(532, 482);
+            this.label20.Location = new System.Drawing.Point(528, 518);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(26, 13);
             this.label20.TabIndex = 36;
             this.label20.Text = "Ville";
             // 
-            // textBox11
+            // textBox11_ville
             // 
-            this.textBox11.Location = new System.Drawing.Point(584, 479);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(166, 20);
-            this.textBox11.TabIndex = 37;
+            this.textBox11_ville.Location = new System.Drawing.Point(580, 515);
+            this.textBox11_ville.Name = "textBox11_ville";
+            this.textBox11_ville.Size = new System.Drawing.Size(166, 20);
+            this.textBox11_ville.TabIndex = 37;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(285, 522);
+            this.label21.Location = new System.Drawing.Point(281, 558);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(114, 13);
             this.label21.TabIndex = 38;
             this.label21.Text = "Date de mise en vente";
             // 
-            // dateTimePicker1
+            // dateTimePicker1_miseEnVente
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(416, 516);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 39;
+            this.dateTimePicker1_miseEnVente.Location = new System.Drawing.Point(412, 552);
+            this.dateTimePicker1_miseEnVente.Name = "dateTimePicker1_miseEnVente";
+            this.dateTimePicker1_miseEnVente.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1_miseEnVente.TabIndex = 39;
             // 
             // label22
             // 
@@ -439,40 +444,41 @@
             this.label22.TabIndex = 40;
             this.label22.Text = "COMMENTAIRES";
             // 
-            // textBox12
+            // textBox12_commentaires
             // 
-            this.textBox12.Location = new System.Drawing.Point(16, 653);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(734, 107);
-            this.textBox12.TabIndex = 41;
+            this.textBox12_commentaires.Location = new System.Drawing.Point(16, 653);
+            this.textBox12_commentaires.Multiline = true;
+            this.textBox12_commentaires.Name = "textBox12_commentaires";
+            this.textBox12_commentaires.Size = new System.Drawing.Size(734, 107);
+            this.textBox12_commentaires.TabIndex = 41;
             // 
-            // button1
+            // button1_ajouterBien
             // 
-            this.button1.Location = new System.Drawing.Point(208, 795);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 47);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "AJOUTER/MODIFIER";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1_ajouterBien.Location = new System.Drawing.Point(208, 795);
+            this.button1_ajouterBien.Name = "button1_ajouterBien";
+            this.button1_ajouterBien.Size = new System.Drawing.Size(156, 47);
+            this.button1_ajouterBien.TabIndex = 42;
+            this.button1_ajouterBien.Text = "AJOUTER/MODIFIER";
+            this.button1_ajouterBien.UseVisualStyleBackColor = true;
+            this.button1_ajouterBien.Click += new System.EventHandler(this.button1_ajouterBien_Click);
             // 
-            // button2
+            // button2_imprimerFiche
             // 
-            this.button2.Location = new System.Drawing.Point(402, 795);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 47);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "IMPRIMER FICHE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2_imprimerFiche.Location = new System.Drawing.Point(402, 795);
+            this.button2_imprimerFiche.Name = "button2_imprimerFiche";
+            this.button2_imprimerFiche.Size = new System.Drawing.Size(156, 47);
+            this.button2_imprimerFiche.TabIndex = 43;
+            this.button2_imprimerFiche.Text = "IMPRIMER FICHE";
+            this.button2_imprimerFiche.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button3_supprimer
             // 
-            this.button3.Location = new System.Drawing.Point(594, 795);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 47);
-            this.button3.TabIndex = 44;
-            this.button3.Text = "SUPPRIMER LE BIEN";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3_supprimer.Location = new System.Drawing.Point(594, 795);
+            this.button3_supprimer.Name = "button3_supprimer";
+            this.button3_supprimer.Size = new System.Drawing.Size(156, 47);
+            this.button3_supprimer.TabIndex = 44;
+            this.button3_supprimer.Text = "SUPPRIMER LE BIEN";
+            this.button3_supprimer.UseVisualStyleBackColor = true;
             // 
             // label23
             // 
@@ -499,79 +505,121 @@
             this.button4.Text = "PARCOURIR";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button5_annuler
             // 
-            this.button5.Location = new System.Drawing.Point(12, 795);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(156, 47);
-            this.button5.TabIndex = 48;
-            this.button5.Text = "ANNULER";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5_annuler.Location = new System.Drawing.Point(12, 795);
+            this.button5_annuler.Name = "button5_annuler";
+            this.button5_annuler.Size = new System.Drawing.Size(156, 47);
+            this.button5_annuler.TabIndex = 48;
+            this.button5_annuler.Text = "ANNULER";
+            this.button5_annuler.UseVisualStyleBackColor = true;
+            this.button5_annuler.Click += new System.EventHandler(this.button5_annuler_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(281, 404);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(42, 13);
+            this.label24.TabIndex = 49;
+            this.label24.Text = "Garage";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(406, 405);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(32, 13);
+            this.label25.TabIndex = 50;
+            this.label25.Text = "Cave";
+            // 
+            // checkBox1_garage
+            // 
+            this.checkBox1_garage.AutoSize = true;
+            this.checkBox1_garage.Location = new System.Drawing.Point(335, 404);
+            this.checkBox1_garage.Name = "checkBox1_garage";
+            this.checkBox1_garage.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1_garage.TabIndex = 51;
+            this.checkBox1_garage.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2_cave
+            // 
+            this.checkBox2_cave.AutoSize = true;
+            this.checkBox2_cave.Location = new System.Drawing.Point(444, 404);
+            this.checkBox2_cave.Name = "checkBox2_cave";
+            this.checkBox2_cave.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2_cave.TabIndex = 52;
+            this.checkBox2_cave.UseVisualStyleBackColor = true;
             // 
             // AjoutBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 881);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.checkBox2_cave);
+            this.Controls.Add(this.checkBox1_garage);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.button5_annuler);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.button3_supprimer);
+            this.Controls.Add(this.button2_imprimerFiche);
+            this.Controls.Add(this.button1_ajouterBien);
+            this.Controls.Add(this.textBox12_commentaires);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker1_miseEnVente);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.textBox11_ville);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBox10_codePostal);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.textBox9_adresse);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.numericUpDown6);
+            this.Controls.Add(this.numericUpDown6_prix);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.numericUpDown5_nbSdb);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.numericUpDown4_nbChambres);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.numericUpDown3_nbPieces);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown2_surfParc);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericUpDown1_surfHab);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.emailVendeur);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.mobileVendeur);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.fixeVendeur);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.villeVendeur);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.codePostalVendeur);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.adresseVendeur);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.prénomVendeur);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nomClient);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AjoutBien";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4_nbChambres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5_nbSdb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6_prix)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,52 +630,56 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1_surfHab;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown2_surfParc;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown3_nbPieces;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown4_nbChambres;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDown5_nbSdb;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown numericUpDown6_prix;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox9_adresse;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox10_codePostal;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox11_ville;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1_miseEnVente;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox12_commentaires;
+        private System.Windows.Forms.Button button1_ajouterBien;
+        private System.Windows.Forms.Button button2_imprimerFiche;
+        private System.Windows.Forms.Button button3_supprimer;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button5_annuler;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox checkBox1_garage;
+        private System.Windows.Forms.CheckBox checkBox2_cave;
+        internal System.Windows.Forms.TextBox prénomVendeur;
+        internal System.Windows.Forms.TextBox adresseVendeur;
+        internal System.Windows.Forms.TextBox codePostalVendeur;
+        internal System.Windows.Forms.TextBox villeVendeur;
+        internal System.Windows.Forms.TextBox fixeVendeur;
+        internal System.Windows.Forms.TextBox mobileVendeur;
+        internal System.Windows.Forms.TextBox emailVendeur;
+        public System.Windows.Forms.TextBox nomClient;
     }
 }
 

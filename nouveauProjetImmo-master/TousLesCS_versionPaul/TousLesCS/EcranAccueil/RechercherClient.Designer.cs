@@ -34,24 +34,26 @@
             this.textBoxCommercial = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxMobile = new System.Windows.Forms.TextBox();
-            this.textBoxCodePostal = new System.Windows.Forms.TextBox();
+            this.textBoxVille = new System.Windows.Forms.TextBox();
             this.CritèreRecherche = new System.Windows.Forms.Label();
-            this.Nom = new System.Windows.Forms.Label();
-            this.Prenom = new System.Windows.Forms.Label();
-            this.CodePostal = new System.Windows.Forms.Label();
-            this.TelephoneFixe = new System.Windows.Forms.Label();
-            this.TelephoneMobile = new System.Windows.Forms.Label();
-            this.Email = new System.Windows.Forms.Label();
-            this.DateAjout = new System.Windows.Forms.Label();
-            this.Commercial = new System.Windows.Forms.Label();
+            this.LabelNom = new System.Windows.Forms.Label();
+            this.LabelPrenom = new System.Windows.Forms.Label();
+            this.labelVille = new System.Windows.Forms.Label();
+            this.LabelTelephoneFixe = new System.Windows.Forms.Label();
+            this.LabelTelephoneMobile = new System.Windows.Forms.Label();
+            this.LabelEmail = new System.Windows.Forms.Label();
+            this.LabelDateAjout = new System.Windows.Forms.Label();
+            this.LabelCommercial = new System.Windows.Forms.Label();
             this.dateTimeAjout = new System.Windows.Forms.DateTimePicker();
             this.buttonVendeur = new System.Windows.Forms.Button();
             this.buttonAcheteur = new System.Windows.Forms.Button();
             this.listView_resultat = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonLancerRecherche = new System.Windows.Forms.Button();
+            this.buttonModifierClient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxNom
@@ -61,7 +63,6 @@
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(76, 20);
             this.textBoxNom.TabIndex = 0;
-            this.textBoxNom.TextChanged += new System.EventHandler(this.textBoxNom_TextChanged);
             // 
             // textBoxPrenom
             // 
@@ -70,7 +71,6 @@
             this.textBoxPrenom.Name = "textBoxPrenom";
             this.textBoxPrenom.Size = new System.Drawing.Size(76, 20);
             this.textBoxPrenom.TabIndex = 1;
-            this.textBoxPrenom.TextChanged += new System.EventHandler(this.textBoxPrenom_TextChanged);
             // 
             // textBoxFixe
             // 
@@ -79,7 +79,6 @@
             this.textBoxFixe.Name = "textBoxFixe";
             this.textBoxFixe.Size = new System.Drawing.Size(76, 20);
             this.textBoxFixe.TabIndex = 2;
-            this.textBoxFixe.TextChanged += new System.EventHandler(this.textBoxFixe_TextChanged);
             // 
             // textBoxCommercial
             // 
@@ -88,7 +87,6 @@
             this.textBoxCommercial.Name = "textBoxCommercial";
             this.textBoxCommercial.Size = new System.Drawing.Size(76, 20);
             this.textBoxCommercial.TabIndex = 3;
-            this.textBoxCommercial.TextChanged += new System.EventHandler(this.textBoxCommercial_TextChanged);
             // 
             // textBoxEmail
             // 
@@ -97,7 +95,6 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(76, 20);
             this.textBoxEmail.TabIndex = 5;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // textBoxMobile
             // 
@@ -107,13 +104,13 @@
             this.textBoxMobile.Size = new System.Drawing.Size(76, 20);
             this.textBoxMobile.TabIndex = 6;
             // 
-            // textBoxCodePostal
+            // textBoxVille
             // 
-            this.textBoxCodePostal.Location = new System.Drawing.Point(19, 141);
-            this.textBoxCodePostal.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCodePostal.Name = "textBoxCodePostal";
-            this.textBoxCodePostal.Size = new System.Drawing.Size(76, 20);
-            this.textBoxCodePostal.TabIndex = 7;
+            this.textBoxVille.Location = new System.Drawing.Point(19, 141);
+            this.textBoxVille.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxVille.Name = "textBoxVille";
+            this.textBoxVille.Size = new System.Drawing.Size(76, 20);
+            this.textBoxVille.TabIndex = 7;
             // 
             // CritèreRecherche
             // 
@@ -125,85 +122,85 @@
             this.CritèreRecherche.TabIndex = 8;
             this.CritèreRecherche.Text = "Critère de recherche";
             // 
-            // Nom
+            // LabelNom
             // 
-            this.Nom.AutoSize = true;
-            this.Nom.Location = new System.Drawing.Point(36, 32);
-            this.Nom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Nom.Name = "Nom";
-            this.Nom.Size = new System.Drawing.Size(32, 13);
-            this.Nom.TabIndex = 9;
-            this.Nom.Text = "Nom:";
+            this.LabelNom.AutoSize = true;
+            this.LabelNom.Location = new System.Drawing.Point(36, 32);
+            this.LabelNom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelNom.Name = "LabelNom";
+            this.LabelNom.Size = new System.Drawing.Size(32, 13);
+            this.LabelNom.TabIndex = 9;
+            this.LabelNom.Text = "Nom:";
             // 
-            // Prenom
+            // LabelPrenom
             // 
-            this.Prenom.AutoSize = true;
-            this.Prenom.Location = new System.Drawing.Point(36, 80);
-            this.Prenom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Prenom.Name = "Prenom";
-            this.Prenom.Size = new System.Drawing.Size(49, 13);
-            this.Prenom.TabIndex = 10;
-            this.Prenom.Text = "Prenom :";
+            this.LabelPrenom.AutoSize = true;
+            this.LabelPrenom.Location = new System.Drawing.Point(36, 80);
+            this.LabelPrenom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelPrenom.Name = "LabelPrenom";
+            this.LabelPrenom.Size = new System.Drawing.Size(49, 13);
+            this.LabelPrenom.TabIndex = 10;
+            this.LabelPrenom.Text = "Prenom :";
             // 
-            // CodePostal
+            // labelVille
             // 
-            this.CodePostal.AutoSize = true;
-            this.CodePostal.Location = new System.Drawing.Point(24, 124);
-            this.CodePostal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CodePostal.Name = "CodePostal";
-            this.CodePostal.Size = new System.Drawing.Size(67, 13);
-            this.CodePostal.TabIndex = 11;
-            this.CodePostal.Text = "Code Postal:";
+            this.labelVille.AutoSize = true;
+            this.labelVille.Location = new System.Drawing.Point(24, 124);
+            this.labelVille.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVille.Name = "labelVille";
+            this.labelVille.Size = new System.Drawing.Size(32, 13);
+            this.labelVille.TabIndex = 11;
+            this.labelVille.Text = "Ville :";
             // 
-            // TelephoneFixe
+            // LabelTelephoneFixe
             // 
-            this.TelephoneFixe.AutoSize = true;
-            this.TelephoneFixe.Location = new System.Drawing.Point(16, 161);
-            this.TelephoneFixe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TelephoneFixe.Name = "TelephoneFixe";
-            this.TelephoneFixe.Size = new System.Drawing.Size(83, 13);
-            this.TelephoneFixe.TabIndex = 12;
-            this.TelephoneFixe.Text = "Telephone Fixe:";
+            this.LabelTelephoneFixe.AutoSize = true;
+            this.LabelTelephoneFixe.Location = new System.Drawing.Point(16, 161);
+            this.LabelTelephoneFixe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelTelephoneFixe.Name = "LabelTelephoneFixe";
+            this.LabelTelephoneFixe.Size = new System.Drawing.Size(83, 13);
+            this.LabelTelephoneFixe.TabIndex = 12;
+            this.LabelTelephoneFixe.Text = "Telephone Fixe:";
             // 
-            // TelephoneMobile
+            // LabelTelephoneMobile
             // 
-            this.TelephoneMobile.AutoSize = true;
-            this.TelephoneMobile.Location = new System.Drawing.Point(9, 197);
-            this.TelephoneMobile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.TelephoneMobile.Name = "TelephoneMobile";
-            this.TelephoneMobile.Size = new System.Drawing.Size(95, 13);
-            this.TelephoneMobile.TabIndex = 13;
-            this.TelephoneMobile.Text = "Telephone Mobile:";
+            this.LabelTelephoneMobile.AutoSize = true;
+            this.LabelTelephoneMobile.Location = new System.Drawing.Point(9, 197);
+            this.LabelTelephoneMobile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelTelephoneMobile.Name = "LabelTelephoneMobile";
+            this.LabelTelephoneMobile.Size = new System.Drawing.Size(95, 13);
+            this.LabelTelephoneMobile.TabIndex = 13;
+            this.LabelTelephoneMobile.Text = "Telephone Mobile:";
             // 
-            // Email
+            // LabelEmail
             // 
-            this.Email.AutoSize = true;
-            this.Email.Location = new System.Drawing.Point(36, 234);
-            this.Email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(32, 13);
-            this.Email.TabIndex = 14;
-            this.Email.Text = "Email";
+            this.LabelEmail.AutoSize = true;
+            this.LabelEmail.Location = new System.Drawing.Point(36, 234);
+            this.LabelEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelEmail.Name = "LabelEmail";
+            this.LabelEmail.Size = new System.Drawing.Size(32, 13);
+            this.LabelEmail.TabIndex = 14;
+            this.LabelEmail.Text = "Email";
             // 
-            // DateAjout
+            // LabelDateAjout
             // 
-            this.DateAjout.AutoSize = true;
-            this.DateAjout.Location = new System.Drawing.Point(22, 278);
-            this.DateAjout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DateAjout.Name = "DateAjout";
-            this.DateAjout.Size = new System.Drawing.Size(67, 13);
-            this.DateAjout.TabIndex = 15;
-            this.DateAjout.Text = "Date d\'ajout:";
+            this.LabelDateAjout.AutoSize = true;
+            this.LabelDateAjout.Location = new System.Drawing.Point(22, 278);
+            this.LabelDateAjout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelDateAjout.Name = "LabelDateAjout";
+            this.LabelDateAjout.Size = new System.Drawing.Size(67, 13);
+            this.LabelDateAjout.TabIndex = 15;
+            this.LabelDateAjout.Text = "Date d\'ajout:";
             // 
-            // Commercial
+            // LabelCommercial
             // 
-            this.Commercial.AutoSize = true;
-            this.Commercial.Location = new System.Drawing.Point(16, 314);
-            this.Commercial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Commercial.Name = "Commercial";
-            this.Commercial.Size = new System.Drawing.Size(88, 13);
-            this.Commercial.TabIndex = 16;
-            this.Commercial.Text = "Commercial affilié";
+            this.LabelCommercial.AutoSize = true;
+            this.LabelCommercial.Location = new System.Drawing.Point(16, 314);
+            this.LabelCommercial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelCommercial.Name = "LabelCommercial";
+            this.LabelCommercial.Size = new System.Drawing.Size(88, 13);
+            this.LabelCommercial.TabIndex = 16;
+            this.LabelCommercial.Text = "Commercial affilié";
             // 
             // dateTimeAjout
             // 
@@ -242,13 +239,19 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.listView_resultat.FullRowSelect = true;
             this.listView_resultat.Location = new System.Drawing.Point(249, 83);
+            this.listView_resultat.MultiSelect = false;
             this.listView_resultat.Name = "listView_resultat";
             this.listView_resultat.Size = new System.Drawing.Size(440, 231);
             this.listView_resultat.TabIndex = 20;
             this.listView_resultat.UseCompatibleStateImageBehavior = false;
             this.listView_resultat.View = System.Windows.Forms.View.Details;
-            this.listView_resultat.SelectedIndexChanged += new System.EventHandler(this.listView_resultat_SelectedIndexChanged);
+            this.listView_resultat.Click += new System.EventHandler(this.listView_resultat_Click);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "ID Client";
             // 
             // columnHeader1
             // 
@@ -265,29 +268,47 @@
             this.columnHeader3.Text = "Email";
             this.columnHeader3.Width = 186;
             // 
-            // columnHeader4
+            // buttonLancerRecherche
             // 
-            this.columnHeader4.Text = "ID Client";
+            this.buttonLancerRecherche.Location = new System.Drawing.Point(19, 390);
+            this.buttonLancerRecherche.Name = "buttonLancerRecherche";
+            this.buttonLancerRecherche.Size = new System.Drawing.Size(151, 23);
+            this.buttonLancerRecherche.TabIndex = 21;
+            this.buttonLancerRecherche.Text = "Lancer la recherche";
+            this.buttonLancerRecherche.UseVisualStyleBackColor = true;
+            this.buttonLancerRecherche.Click += new System.EventHandler(this.buttonLancerRecherche_Click);
+            // 
+            // buttonModifierClient
+            // 
+            this.buttonModifierClient.Location = new System.Drawing.Point(235, 390);
+            this.buttonModifierClient.Name = "buttonModifierClient";
+            this.buttonModifierClient.Size = new System.Drawing.Size(151, 23);
+            this.buttonModifierClient.TabIndex = 22;
+            this.buttonModifierClient.Text = "Modifier le client";
+            this.buttonModifierClient.UseVisualStyleBackColor = true;
+            this.buttonModifierClient.Click += new System.EventHandler(this.buttonModifierClient_Click);
             // 
             // RechercherClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 452);
+            this.Controls.Add(this.buttonModifierClient);
+            this.Controls.Add(this.buttonLancerRecherche);
             this.Controls.Add(this.listView_resultat);
             this.Controls.Add(this.buttonAcheteur);
             this.Controls.Add(this.buttonVendeur);
             this.Controls.Add(this.dateTimeAjout);
-            this.Controls.Add(this.Commercial);
-            this.Controls.Add(this.DateAjout);
-            this.Controls.Add(this.Email);
-            this.Controls.Add(this.TelephoneMobile);
-            this.Controls.Add(this.TelephoneFixe);
-            this.Controls.Add(this.CodePostal);
-            this.Controls.Add(this.Prenom);
-            this.Controls.Add(this.Nom);
+            this.Controls.Add(this.LabelCommercial);
+            this.Controls.Add(this.LabelDateAjout);
+            this.Controls.Add(this.LabelEmail);
+            this.Controls.Add(this.LabelTelephoneMobile);
+            this.Controls.Add(this.LabelTelephoneFixe);
+            this.Controls.Add(this.labelVille);
+            this.Controls.Add(this.LabelPrenom);
+            this.Controls.Add(this.LabelNom);
             this.Controls.Add(this.CritèreRecherche);
-            this.Controls.Add(this.textBoxCodePostal);
+            this.Controls.Add(this.textBoxVille);
             this.Controls.Add(this.textBoxMobile);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxCommercial);
@@ -310,16 +331,16 @@
         private System.Windows.Forms.TextBox textBoxCommercial;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxMobile;
-        private System.Windows.Forms.TextBox textBoxCodePostal;
+        private System.Windows.Forms.TextBox textBoxVille;
         private System.Windows.Forms.Label CritèreRecherche;
-        private System.Windows.Forms.Label Nom;
-        private System.Windows.Forms.Label Prenom;
-        private System.Windows.Forms.Label CodePostal;
-        private System.Windows.Forms.Label TelephoneFixe;
-        private System.Windows.Forms.Label TelephoneMobile;
-        private System.Windows.Forms.Label Email;
-        private System.Windows.Forms.Label DateAjout;
-        private System.Windows.Forms.Label Commercial;
+        private System.Windows.Forms.Label LabelNom;
+        private System.Windows.Forms.Label LabelPrenom;
+        private System.Windows.Forms.Label labelVille;
+        private System.Windows.Forms.Label LabelTelephoneFixe;
+        private System.Windows.Forms.Label LabelTelephoneMobile;
+        private System.Windows.Forms.Label LabelEmail;
+        private System.Windows.Forms.Label LabelDateAjout;
+        private System.Windows.Forms.Label LabelCommercial;
         private System.Windows.Forms.DateTimePicker dateTimeAjout;
         private System.Windows.Forms.Button buttonVendeur;
         private System.Windows.Forms.Button buttonAcheteur;
@@ -328,5 +349,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button buttonLancerRecherche;
+        private System.Windows.Forms.Button buttonModifierClient;
     }
 }

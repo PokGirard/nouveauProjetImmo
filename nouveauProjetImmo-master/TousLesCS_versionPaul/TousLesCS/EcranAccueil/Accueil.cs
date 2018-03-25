@@ -1,12 +1,4 @@
-﻿using ImmobillyAjoutBien;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace EcranAccueil
@@ -39,6 +31,12 @@ namespace EcranAccueil
         {
             VueCommerciaux commerciaux = new VueCommerciaux();
             commerciaux.Show();
+        }
+
+        private void button_catalogue_Click(object sender, EventArgs e)
+        {
+            CatalogueBiens catalogue = new CatalogueBiens();
+            catalogue.Show();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace EcranAccueil
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VueCommerciaux());
+            Application.Run(new Accueil());
         }
     }
 }
