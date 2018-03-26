@@ -254,3 +254,6 @@ C:\Users\Léa\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.Gener
 C:\Users\Léa\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\Léa\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
 C:\Users\Léa\Desktop\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
