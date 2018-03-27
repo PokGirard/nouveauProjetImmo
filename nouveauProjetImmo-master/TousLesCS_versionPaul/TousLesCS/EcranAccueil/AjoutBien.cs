@@ -35,7 +35,7 @@ namespace EcranAccueil
             this.prénomVendeur.Text = monVendeur.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = monVendeur.ADRESSE_VENDEUR;
 
-            var nomVille = (from v in RechercherClient.modeleBase.VILLE
+            var nomVille = (from v in Accueil.modeleBase.VILLE
                             where v.IDVILLE == monVendeur.VILLE.IDVILLE
                             select v.NOM_VILLE);
 
@@ -72,12 +72,12 @@ namespace EcranAccueil
         {
             BIEN nouveauBien = new BIEN();
 
-            var idville = (from v in RechercherClient.modeleBase.VILLE
+            var idville = (from v in Accueil.modeleBase.VILLE
                            where v.NOM_VILLE == textBox11_ville.Text
                            select v.IDVILLE);
             nouveauBien.IDVILLE = idville.First();
 
-            var idvendeur = (from ve in RechercherClient.modeleBase.VENDEUR
+            var idvendeur = (from ve in Accueil.modeleBase.VENDEUR
                              where ve.EMAIL == emailVendeur.Text
                              select ve.IDVENDEUR);
             nouveauBien.IDVENDEUR = idvendeur.First();

@@ -26,24 +26,40 @@ namespace EcranAccueil
         {
             etatRecherché = EtatBien.DISPONIBLE;
             remplir_listeview();
+            disponible_button.Font = new Font(disponible_button.Font, FontStyle.Bold);
+            sous_seing_button.Font = new Font(sous_seing_button.Font, FontStyle.Regular);
+            vendu_button.Font = new Font(vendu_button.Font, FontStyle.Regular);
+            archive_button.Font = new Font(archive_button.Font, FontStyle.Regular);
         }
 
         private void sous_seing_button_Click(object sender, EventArgs e)
         {
             etatRecherché = EtatBien.SOUSSEING;
             remplir_listeview();
+            disponible_button.Font = new Font(disponible_button.Font, FontStyle.Regular);
+            sous_seing_button.Font = new Font(sous_seing_button.Font, FontStyle.Bold);
+            vendu_button.Font = new Font(vendu_button.Font, FontStyle.Regular);
+            archive_button.Font = new Font(archive_button.Font, FontStyle.Regular);
         }
 
         private void vendu_button_Click(object sender, EventArgs e)
         {
             etatRecherché = EtatBien.VENDU;
             remplir_listeview();
+            disponible_button.Font = new Font(disponible_button.Font, FontStyle.Regular);
+            sous_seing_button.Font = new Font(sous_seing_button.Font, FontStyle.Regular);
+            vendu_button.Font = new Font(vendu_button.Font, FontStyle.Bold);
+            archive_button.Font = new Font(archive_button.Font, FontStyle.Regular);
         }
 
         private void archive_button_Click(object sender, EventArgs e)
         {
             etatRecherché = EtatBien.RETIRE;
             remplir_listeview();
+            disponible_button.Font = new Font(disponible_button.Font, FontStyle.Regular);
+            sous_seing_button.Font = new Font(sous_seing_button.Font, FontStyle.Regular);
+            vendu_button.Font = new Font(vendu_button.Font, FontStyle.Regular);
+            archive_button.Font = new Font(archive_button.Font, FontStyle.Bold);
         }
 
         private void remplir_listeview()
@@ -67,7 +83,7 @@ namespace EcranAccueil
 
             }
 
-            List<BIEN> biens = (from b in RechercherClient.modeleBase.BIEN
+            List<BIEN> biens = (from b in Accueil.modeleBase.BIEN
                                 where (b.STATUT == etatbienrecherche)
                                 select b).ToList();
 
@@ -77,7 +93,7 @@ namespace EcranAccueil
                 {
                     var numVille = biens[i].IDVILLE;
 
-                    string nomVille = (from v in RechercherClient.modeleBase.VILLE
+                    string nomVille = (from v in Accueil.modeleBase.VILLE
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
                     nomVille = nomVille.Replace(" ", string.Empty);
@@ -90,6 +106,11 @@ namespace EcranAccueil
                     listViewbiens.Items[i].SubItems.Add(biens[i].CAVE == true ? "Oui" : "Non");
                 }
             }
+        }
+
+        private void voir_bien_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

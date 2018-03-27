@@ -21,19 +21,15 @@ namespace EcranAccueil
         BIEN bien_en_cours;
         PropositionVisite fenetreProposition;
 
-        ACHETEUR acheteur_reference = (from a in RechercherClient.modeleBase.ACHETEUR
+        ACHETEUR acheteur_reference = (from a in Accueil.modeleBase.ACHETEUR
                                        where a.IDACHETEUR == 2
                                        select a
                                        ).FirstOrDefault();
 
-        FICHE_DE_SOUHAITS fiche_de_reference = (from f in RechercherClient.modeleBase.FICHE_DE_SOUHAITS
+        FICHE_DE_SOUHAITS fiche_de_reference = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                                                 where f.IDFICHESOUHAITS == 1
                                                 select f
                                        ).FirstOrDefault();
-
-
-
-
 
         public FicheDeSouhaits()
         {
@@ -44,7 +40,7 @@ namespace EcranAccueil
 
         private void Charger_Liste_Villes()
         {
-            List<VILLE> villes = (from v in RechercherClient.modeleBase.VILLE
+            List<VILLE> villes = (from v in Accueil.modeleBase.VILLE
                                   select v).ToList();
             villes.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
             foreach (VILLE v in villes)
@@ -58,7 +54,7 @@ namespace EcranAccueil
 
         private void Charger_Liste_Commerciaux()
         {
-            List<COMMERCIAL> commerciaux = (from c in RechercherClient.modeleBase.COMMERCIAL
+            List<COMMERCIAL> commerciaux = (from c in Accueil.modeleBase.COMMERCIAL
                                             select c).ToList();
 
             foreach (COMMERCIAL c in commerciaux)
@@ -94,7 +90,7 @@ namespace EcranAccueil
                     GARAGE = (garage ? true : false),
 
                 };
-                RechercherClient.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
+                Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
             }
             catch (Exception e1)
             {
@@ -105,7 +101,7 @@ namespace EcranAccueil
             // Submit the change to the database.
             try
             {
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.SaveChanges();
             }
             catch (Exception e2)
             {
@@ -189,11 +185,11 @@ namespace EcranAccueil
 
                 string enCours = listViewVillesDeroulante.SelectedItems[0].Text;
 
-                int idVille = (from v in RechercherClient.modeleBase.VILLE
+                int idVille = (from v in Accueil.modeleBase.VILLE
                                where (v.NOM_VILLE == enCours)
                                select v.IDVILLE).First();
 
-                VILLE v2 = (from v in RechercherClient.modeleBase.VILLE
+                VILLE v2 = (from v in Accueil.modeleBase.VILLE
                             where (v.IDVILLE == idVille)
                             select v).First();
 
@@ -254,7 +250,7 @@ namespace EcranAccueil
 
             short id_fiche_selectionnee = 1;
 
-            FICHE_DE_SOUHAITS fiche_a_traiter = (from f in RechercherClient.modeleBase.FICHE_DE_SOUHAITS
+            FICHE_DE_SOUHAITS fiche_a_traiter = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                                                  where (f.IDFICHESOUHAITS == id_fiche_selectionnee)
                                                  select f
                                                ).FirstOrDefault();
@@ -305,7 +301,7 @@ namespace EcranAccueil
                 }
 
 
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.SaveChanges();
 
             }
             catch (Exception e4)
@@ -350,7 +346,7 @@ namespace EcranAccueil
 
             int budget_choisi = int.Parse(textBoxBudget.Text);
 
-            biens = (from b in RechercherClient.modeleBase.BIEN
+            biens = (from b in Accueil.modeleBase.BIEN
                      where (b.STATUT == "DISPONIBLE")
                      && (textBoxBudget.Text != null ? b.PRIX_SOUHAITÉ <= budget_choisi : true)
                         && (b.CAVE == cave ? true : false)
@@ -368,7 +364,7 @@ namespace EcranAccueil
                 {
                     var numVille = biens[i].IDVILLE;
 
-                    string nomVille = (from v in RechercherClient.modeleBase.VILLE
+                    string nomVille = (from v in Accueil.modeleBase.VILLE
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
 

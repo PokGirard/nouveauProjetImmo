@@ -56,7 +56,7 @@ namespace EcranAccueil
 
                 VENDEUR vendeur = new VENDEUR();
 
-                var idville = (from v in RechercherClient.modeleBase.VILLE
+                var idville = (from v in Accueil.modeleBase.VILLE
                                where v.CODE_POSTAL.ToString() == codePostal.Text
                                select v.IDVILLE);
 
@@ -73,8 +73,8 @@ namespace EcranAccueil
                 vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
                 vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
-                RechercherClient.modeleBase.VENDEUR.Add(vendeur);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.VENDEUR.Add(vendeur);
+                Accueil.modeleBase.SaveChanges();
 
             }
 
@@ -86,7 +86,7 @@ namespace EcranAccueil
                 Refresh();
 
                 ACHETEUR acheteur = new ACHETEUR();
-                var idville = (from v in RechercherClient.modeleBase.VILLE
+                var idville = (from v in Accueil.modeleBase.VILLE
                                where v.CODE_POSTAL.ToString() == codePostal.Text
                                select v.IDVILLE);
 
@@ -100,13 +100,13 @@ namespace EcranAccueil
                 acheteur.TÉLÉPHONE_MOBILE = Int32.Parse(mobile.Text);
                 acheteur.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
-                var idcommercial = (from v in RechercherClient.modeleBase.COMMERCIAL
+                var idcommercial = (from v in Accueil.modeleBase.COMMERCIAL
                                     where v.NOM_COMMERCIAL == listBoxCommerciaux.SelectedItem.ToString()
                 select v.IDCOMMERCIAL);
                 acheteur.IDCOMMERCIAL = idcommercial.First();
 
-                RechercherClient.modeleBase.ACHETEUR.Add(acheteur);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.ACHETEUR.Add(acheteur);
+                Accueil.modeleBase.SaveChanges();
             }
         }
 
@@ -119,7 +119,7 @@ namespace EcranAccueil
                 listBoxCommerciaux.Visible = true;
 
                 listBoxCommerciaux.Items.Clear();
-                var nomCommerciaux = (from c in RechercherClient.modeleBase.COMMERCIAL
+                var nomCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
                                       select c.NOM_COMMERCIAL);
                 foreach (string nom in nomCommerciaux)
                 {
@@ -147,7 +147,7 @@ namespace EcranAccueil
 
                 VENDEUR vendeur = new VENDEUR();
 
-                var idville = (from v in RechercherClient.modeleBase.VILLE
+                var idville = (from v in Accueil.modeleBase.VILLE
                                where v.CODE_POSTAL.ToString() == codePostal.Text
                                where v.NOM_VILLE == comboBox1_villes.Text
                                select v.IDVILLE).First();
@@ -165,8 +165,8 @@ namespace EcranAccueil
                 vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
                 vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
-                RechercherClient.modeleBase.VENDEUR.Add(vendeur);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.VENDEUR.Add(vendeur);
+                Accueil.modeleBase.SaveChanges();
 
 
                 maFenetreBien = new AjoutBien(vendeur);
@@ -180,7 +180,7 @@ namespace EcranAccueil
             if (checkBox_Acheteur.Checked)
             {
                 ACHETEUR acheteur = new ACHETEUR();
-                var idville = (from v in RechercherClient.modeleBase.VILLE
+                var idville = (from v in Accueil.modeleBase.VILLE
                                where v.CODE_POSTAL == Int32.Parse(codePostal.Text)
                                select v.IDVILLE);
 
@@ -192,13 +192,13 @@ namespace EcranAccueil
                 acheteur.TÉLÉPHONE = Int32.Parse(fixe.Text);
                 acheteur.TÉLÉPHONE_MOBILE = Int32.Parse(mobile.Text);
 
-                var idcommercial = (from v in RechercherClient.modeleBase.COMMERCIAL
+                var idcommercial = (from v in Accueil.modeleBase.COMMERCIAL
                                     where v.NOM_COMMERCIAL == listBoxCommerciaux.SelectedItem.ToString()
                                     select v.IDCOMMERCIAL);
                 acheteur.IDCOMMERCIAL = idcommercial.First();
 
-                RechercherClient.modeleBase.ACHETEUR.Add(acheteur);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.ACHETEUR.Add(acheteur);
+                Accueil.modeleBase.SaveChanges();
 
                 maFiche = new FicheDeSouhaits(/*acheteur*/);
             }
@@ -209,7 +209,7 @@ namespace EcranAccueil
         {
             comboBox1_villes.Items.Clear();
 
-            var nomVille = (from v in RechercherClient.modeleBase.VILLE
+            var nomVille = (from v in Accueil.modeleBase.VILLE
                             where v.CODE_POSTAL.ToString() == codePostal.Text
                          select v.NOM_VILLE);
 
@@ -228,7 +228,7 @@ namespace EcranAccueil
                 vendeur_en_cours_fc.PRÉNOM_VENDEUR = prénom.Text;
 
 
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.SaveChanges();
             }
         }
     }

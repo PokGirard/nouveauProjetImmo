@@ -65,11 +65,11 @@ namespace EcranAccueil
 
 
 
-            RechercherClient.modeleBase.PROPOSITION_VISITE.Add(proposition);
+            Accueil.modeleBase.PROPOSITION_VISITE.Add(proposition);
 
             try
             {
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.SaveChanges();
             }
             catch (Exception e9)
             {

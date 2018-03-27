@@ -38,10 +38,10 @@
             this.prix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.surface_parcelle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.surface_habitable = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.voir_bien_button = new System.Windows.Forms.Button();
             this.nb_pieces = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.garage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.voir_bien_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label15
@@ -133,15 +133,6 @@
             this.surface_habitable.Text = "Habitable";
             this.surface_habitable.Width = 71;
             // 
-            // voir_bien_button
-            // 
-            this.voir_bien_button.Location = new System.Drawing.Point(303, 518);
-            this.voir_bien_button.Name = "voir_bien_button";
-            this.voir_bien_button.Size = new System.Drawing.Size(179, 39);
-            this.voir_bien_button.TabIndex = 59;
-            this.voir_bien_button.Text = "VOIR LE BIEN";
-            this.voir_bien_button.UseVisualStyleBackColor = true;
-            // 
             // nb_pieces
             // 
             this.nb_pieces.Text = "Nombre de pièces";
@@ -156,6 +147,16 @@
             // 
             this.cave.Text = "Cave";
             this.cave.Width = 86;
+            // 
+            // voir_bien_button
+            // 
+            this.voir_bien_button.Location = new System.Drawing.Point(303, 518);
+            this.voir_bien_button.Name = "voir_bien_button";
+            this.voir_bien_button.Size = new System.Drawing.Size(179, 39);
+            this.voir_bien_button.TabIndex = 59;
+            this.voir_bien_button.Text = "VOIR LE BIEN";
+            this.voir_bien_button.UseVisualStyleBackColor = true;
+            this.voir_bien_button.Click += new System.EventHandler(this.voir_bien_button_Click);
             // 
             // CatalogueBiens
             // 

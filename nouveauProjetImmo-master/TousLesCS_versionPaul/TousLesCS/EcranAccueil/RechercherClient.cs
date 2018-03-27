@@ -15,7 +15,7 @@ namespace EcranAccueil
 
         static AjoutClient fenetreModificationClient;
 
-        public static base1Entities modeleBase = new base1Entities();
+       
         TypeClient typeClientChoisi = TypeClient.ACHETEUR;
         int ID_client_selectionne;
         List<ACHETEUR> acheteurs;
@@ -77,11 +77,11 @@ namespace EcranAccueil
 
         private void Requete_acheteurs()
         {
-            acheteurs = (from a in modeleBase.ACHETEUR
+            acheteurs = (from a in Accueil.modeleBase.ACHETEUR
                          where (textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text) : true) &&
                          (textBoxPrenom.Text != "" ? a.PRENOM_ACHETEUR.StartsWith(textBoxPrenom.Text) : true) &&
                            (textBoxEmail.Text != "" ? a.EMAIL.StartsWith(textBoxEmail.Text) : true) &&
-                         (textBoxVille.Text != "" ? a.IDVILLE == (from v in modeleBase.VILLE
+                         (textBoxVille.Text != "" ? a.IDVILLE == (from v in Accueil.modeleBase.VILLE
                                                                   where v.NOM_VILLE.Equals(textBoxVille.Text)
                                                                   select v.IDVILLE).FirstOrDefault() : true) &&
                         (textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text) : true) &&
@@ -109,13 +109,13 @@ namespace EcranAccueil
 
         private void Requete_vendeurs()
         {
-            vendeurs = (from v in modeleBase.VENDEUR
+            vendeurs = (from v in Accueil.modeleBase.VENDEUR
                         where (textBoxNom.Text != "" ? v.NOM_VENDEUR.StartsWith(textBoxNom.Text) : true) &&
                         (textBoxPrenom.Text != "" ? v.PRÉNOM_VENDEUR.StartsWith(textBoxPrenom.Text) : true) &&
                           (textBoxEmail.Text != "" ? v.EMAIL.StartsWith(textBoxEmail.Text) : true) &&
                                (textBoxFixe.Text != "" ? v.TÉLÉPHONE_FIXE.ToString().StartsWith(textBoxFixe.Text) : true) &&
                               (textBoxMobile.Text != "" ? v.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text) : true) &&
-                            (textBoxVille.Text != "" ? v.IDVILLE == (from v2 in modeleBase.VILLE
+                            (textBoxVille.Text != "" ? v.IDVILLE == (from v2 in Accueil.modeleBase.VILLE
                                                                      where v2.NOM_VILLE.Equals(textBoxVille.Text)
                                                                      select v2.IDVILLE).FirstOrDefault() : true)
    && (v.DATE_CREATION <= dateTimeAjout.Value)
@@ -132,7 +132,7 @@ namespace EcranAccueil
 
             if (typeClientChoisi == TypeClient.VENDEUR)
             {
-                vendeur_en_cours_fc = (from v in RechercherClient.modeleBase.VENDEUR
+                vendeur_en_cours_fc = (from v in Accueil.modeleBase.VENDEUR
                                        where v.IDVENDEUR == /*Convert.ToInt16(*/ID_client_selectionne//)
                                        select v
                                        ).First();
@@ -140,7 +140,7 @@ namespace EcranAccueil
             }
             else
             {
-                acheteur_en_cours_fc = (from a in RechercherClient.modeleBase.ACHETEUR
+                acheteur_en_cours_fc = (from a in Accueil.modeleBase.ACHETEUR
                                         where a.IDACHETEUR == /*Convert.ToInt16(*/ID_client_selectionne//)
                                         select a).First();
                 //fenetreModificationClient = new AjoutClient(acheteur_en_cours_fc);

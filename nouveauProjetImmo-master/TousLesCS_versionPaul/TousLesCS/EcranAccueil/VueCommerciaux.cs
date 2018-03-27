@@ -24,7 +24,7 @@ namespace EcranAccueil
             InitializeComponent();
 
 
-            IQueryable<COMMERCIAL> ca = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
                                          select x);
             foreach (COMMERCIAL c in ca)
             {
@@ -49,11 +49,11 @@ namespace EcranAccueil
 
         private void supprimerCommercial_Click(object sender, EventArgs e)
         {
-            COMMERCIAL c = (from x in RechercherClient.modeleBase.COMMERCIAL
+            COMMERCIAL c = (from x in Accueil.modeleBase.COMMERCIAL
                             where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                             select x).First();
-            RechercherClient.modeleBase.COMMERCIAL.Remove(c);
-            RechercherClient.modeleBase.SaveChanges();
+            Accueil.modeleBase.COMMERCIAL.Remove(c);
+            Accueil.modeleBase.SaveChanges();
             effacer();
         }
 
@@ -66,7 +66,7 @@ namespace EcranAccueil
         private void nom_TextChanged(object sender, EventArgs e)
         {
 
-            IQueryable<COMMERCIAL> c = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> c = (from x in Accueil.modeleBase.COMMERCIAL
                                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                         select x);
             if (c.Count() == 0)
@@ -90,7 +90,7 @@ namespace EcranAccueil
 
             effacer();
 
-            IQueryable<COMMERCIAL> ca = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
                                          select x);
             foreach (COMMERCIAL c in ca)
             {
@@ -150,7 +150,7 @@ namespace EcranAccueil
             listView1.Items.Clear();
            // listView1.Clear();
 
-            IQueryable<COMMERCIAL> commercial = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "ACTIF"
                                         select x);
            foreach (COMMERCIAL c in commercial)
@@ -176,7 +176,7 @@ namespace EcranAccueil
             effacer();
             listView1.Items.Clear();
 
-            IQueryable<COMMERCIAL> commercial = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "INACTIF"
                                         select x);
 
@@ -200,7 +200,7 @@ namespace EcranAccueil
             effacer();
             listView1.Items.Clear();
    
-            IQueryable<COMMERCIAL> commercial = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
                                         select x);
 
             foreach (COMMERCIAL c in commercial)
@@ -291,7 +291,7 @@ namespace EcranAccueil
         {
             if (!verifier_champs()) return;
 
-            IQueryable<COMMERCIAL> ca = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
                                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                          select x);
 
@@ -312,12 +312,12 @@ namespace EcranAccueil
                 commercial.EMAIL = email.Text;
                 commercial.STATUT_COMMERCIAL = status;
 
-                RechercherClient.modeleBase.COMMERCIAL.Add(commercial);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.COMMERCIAL.Add(commercial);
+                Accueil.modeleBase.SaveChanges();
             }
             else
             {
-                COMMERCIAL c = (from x in RechercherClient.modeleBase.COMMERCIAL
+                COMMERCIAL c = (from x in Accueil.modeleBase.COMMERCIAL
                                 where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                 select x).First();
                 actif.Enabled = true;
@@ -343,9 +343,9 @@ namespace EcranAccueil
                 }
 
                 commercial.STATUT_COMMERCIAL = status;
-                RechercherClient.modeleBase.COMMERCIAL.Add(commercial);
-                RechercherClient.modeleBase.COMMERCIAL.Remove(c);
-                RechercherClient.modeleBase.SaveChanges();
+                Accueil.modeleBase.COMMERCIAL.Add(commercial);
+                Accueil.modeleBase.COMMERCIAL.Remove(c);
+                Accueil.modeleBase.SaveChanges();
             }
             nom.Text = "";
             prenom.Text = "";
@@ -355,7 +355,7 @@ namespace EcranAccueil
             telephonePerso.Text = "";
             email.Text = "";
             listView2.Items.Clear();
-            IQueryable<COMMERCIAL> commercials = (from x in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> commercials = (from x in Accueil.modeleBase.COMMERCIAL
                                                  select x);
 
             foreach (COMMERCIAL c in commercials)
@@ -376,7 +376,7 @@ namespace EcranAccueil
         {
             listView1.Items.Clear();
 
-            IQueryable<COMMERCIAL> c = (from v in RechercherClient.modeleBase.COMMERCIAL
+            IQueryable<COMMERCIAL> c = (from v in Accueil.modeleBase.COMMERCIAL
                                             where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
                                             (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
                                               (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
@@ -436,7 +436,7 @@ namespace EcranAccueil
                    mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
                    ville = listView2.SelectedItems[i].SubItems[6].Text.ToString(),date = listView2.SelectedItems[i].SubItems[7].Text.ToString();
                 
-                acheteur = (from v in RechercherClient.modeleBase.ACHETEUR
+                acheteur = (from v in Accueil.modeleBase.ACHETEUR
                             where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
                                (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
                                (v.TÉLÉPHONE.Equals(phone)) &&
@@ -491,7 +491,7 @@ namespace EcranAccueil
                         inactif.Checked = false;
                     }
                     
-                    COMMERCIAL commercial = (from v in RechercherClient.modeleBase.COMMERCIAL
+                    COMMERCIAL commercial = (from v in Accueil.modeleBase.COMMERCIAL
                                              where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
                                              (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
                                                (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
