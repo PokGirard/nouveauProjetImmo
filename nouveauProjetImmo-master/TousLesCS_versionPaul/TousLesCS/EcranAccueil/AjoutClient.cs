@@ -14,20 +14,40 @@ namespace EcranAccueil
    
     public partial class AjoutClient : Form
     {
-
+        
         AjoutBien maFenetreBien;
         FicheDeSouhaits maFiche;
         private VENDEUR vendeur_en_cours_fc;
+
+
+        public ACHETEUR monAcheteur { get; set; }
+        //public VENDEUR vendeur_en_cours_fc { get; set; }
 
         public AjoutClient()
         {
             InitializeComponent();
         }
 
+        public AjoutClient(ACHETEUR monACheteur)
+        {
+            InitializeComponent();
+            this.checkBox_Acheteur.Checked = true;
+            this.nom.Text = monACheteur.NOM_ACHETEUR;
+            this.prénom.Text = monACheteur.PRENOM_ACHETEUR;
+            this.adresse.Text = monACheteur.ADRESSE;
+            this.codePostal.Text = monACheteur.CODE_POSTAL.ToString();
+            this.dateTimePicker1_créationClient.Value = monACheteur.DATE_CREATION;
+            this.fixe.Text = monACheteur.TÉLÉPHONE.ToString();
+            this.mobile.Text = monACheteur.TÉLÉPHONE_MOBILE.ToString();
+            this.email.Text = monACheteur.EMAIL;
+
+        }
+
         public AjoutClient(VENDEUR vendeur_en_cours_fc)
         {
             this.vendeur_en_cours_fc = vendeur_en_cours_fc;
         }
+
 
         private void créer_Click(object sender, EventArgs e)
         {
@@ -129,9 +149,10 @@ namespace EcranAccueil
 
                 var idville = (from v in RechercherClient.modeleBase.VILLE
                                where v.CODE_POSTAL.ToString() == codePostal.Text
-                               select v.IDVILLE);
+                               where v.NOM_VILLE == comboBox1_villes.Text
+                               select v.IDVILLE).First();
 
-                vendeur.IDVILLE = idville.First();
+                vendeur.IDVILLE = idville;
                 vendeur.CODE_POSTAL = Int32.Parse(codePostal.Text);
                 vendeur.NOM_VENDEUR = nom.Text;
                 vendeur.PRÉNOM_VENDEUR = prénom.Text;
@@ -179,7 +200,7 @@ namespace EcranAccueil
                 RechercherClient.modeleBase.ACHETEUR.Add(acheteur);
                 RechercherClient.modeleBase.SaveChanges();
 
-                maFiche = new FicheDeSouhaits();
+                maFiche = new FicheDeSouhaits(/*acheteur*/);
             }
 
         }
@@ -196,6 +217,18 @@ namespace EcranAccueil
             {
                 //string villes_normales = ville.Replace(" ", string.Empty);
                 comboBox1_villes.Items.Add(ville);
+            }
+        }
+
+        private void éditerInfos_Click(object sender, EventArgs e)
+        {
+            if(vendeur_en_cours_fc.IDVENDEUR != null)
+            {
+                vendeur_en_cours_fc.NOM_VENDEUR = nom.Text;
+                vendeur_en_cours_fc.PRÉNOM_VENDEUR = prénom.Text;
+
+
+                RechercherClient.modeleBase.SaveChanges();
             }
         }
     }

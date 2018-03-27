@@ -11,7 +11,6 @@ using System.Windows.Forms;
 namespace EcranAccueil
 {
 
-
     public partial class FicheDeSouhaits : Form
     {
 
@@ -41,10 +40,6 @@ namespace EcranAccueil
             InitializeComponent();
             Charger_Liste_Villes();
             Charger_Liste_Commerciaux();
-           // listViewVillesDeroulante.Items.Add("Bordeaux");
-           // listViewVillesDeroulante.Items.Add("Paris");
-
-
         }
 
         private void Charger_Liste_Villes()
@@ -98,19 +93,14 @@ namespace EcranAccueil
                     CAVE = (cave ? true : false),
                     GARAGE = (garage ? true : false),
 
-
                 };
                 RechercherClient.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
-
-
-
             }
             catch (Exception e1)
             {
                 MessageBox.Show(e1.Message);
 
             }
-
 
             // Submit the change to the database.
             try
@@ -127,21 +117,37 @@ namespace EcranAccueil
         private void buttonOuiCave_Click(object sender, EventArgs e)
         {
             cave = true;
+            buttonOuiCave.ForeColor = Color.Green;
+            buttonOuiCave.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
+            buttonNonCave.ForeColor = Color.Black;
+            buttonNonCave.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
         }
 
         private void buttonNonCave_Click(object sender, EventArgs e)
         {
             cave = false;
+            buttonOuiCave.ForeColor = Color.Black;
+            buttonOuiCave.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Regular);
+            buttonNonCave.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Bold);
+            buttonNonCave.ForeColor = Color.Red;
         }
 
         private void buttonOuiGarage_Click(object sender, EventArgs e)
         {
             garage = true;
+            buttonOuiGarage.ForeColor = Color.Green;
+            buttonOuiGarage.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
+            buttonNonGarage.ForeColor = Color.Black;
+            buttonNonGarage.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
         }
 
         private void buttonNonGarage_Click(object sender, EventArgs e)
         {
             garage = false;
+            buttonOuiGarage.ForeColor = Color.Black;
+            buttonOuiGarage.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Regular);
+            buttonNonGarage.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Bold);
+            buttonNonGarage.ForeColor = Color.Red;
         }
 
         private void buttonStatut_En_Cours_Click(object sender, EventArgs e)
@@ -160,64 +166,47 @@ namespace EcranAccueil
 
         private void buttonAjouterVille_Click(object sender, EventArgs e)
         {
-            
-            villes_selectionnees.Add(ville_en_cours);
-            listVillesSelectionnees.Clear();
-            villes_selectionnees.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
-            foreach (VILLE v in villes_selectionnees)
+            if (listViewVillesDeroulante.SelectedItems.Count != 0 && !villes_selectionnees.Contains(ville_en_cours))
             {
-                string nomV = v.NOM_VILLE;
-                nomV = nomV.Replace(" ", string.Empty);
-                listVillesSelectionnees.Items.Add(nomV);
-            }
-            /*string nomV = ville_en_cours.NOM_VILLE;
-            nomV = nomV.Replace(" ", string.Empty);
-            listVillesSelectionnees.Items.Add(nomV);*/
-
-            // villes_selectionnees.ForEach(v => Console.WriteLine(v.NOM_VILLE.ToString()));
-
-        }
-        
-        private void listViewVillesDeroulante_Click(object sender, EventArgs e)
-        {
-
-            string enCours = listViewVillesDeroulante.SelectedItems[0].Text;
-            
-            int idVille = (from v in RechercherClient.modeleBase.VILLE
-                           where (v.NOM_VILLE == enCours)
-                           select v.IDVILLE).First();
-            
-            VILLE v2 = (from v in RechercherClient.modeleBase.VILLE
-                        where (v.IDVILLE == idVille)
-                        select v).First();
-
-            ville_en_cours = v2;        
-        }
-        /*
-        private void comboBoxListeVille_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-            Graphics g = e.Graphics;
-
-            for (int i = 0; i < listVillesSelectionnees.Items.Count; i++)
-            {
-
-                if (villes_selectionnees.Contains(listVillesSelectionnees.Items[i]))
+                villes_selectionnees.Add(ville_en_cours);
+                listVillesSelectionnees.Clear();
+                villes_selectionnees.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
+                foreach (VILLE v in villes_selectionnees)
                 {
-
-                    SolidBrush b = (SolidBrush)new SolidBrush(Color.Green);
-                    e.Graphics.DrawString(b.Color.Name, new Font("Veranda", 12, FontStyle.Bold), new SolidBrush(Color.Red), e.Bounds);
-                    e.DrawFocusRectangle();
+                    string nomV = v.NOM_VILLE;
+                    nomV = nomV.Replace(" ", string.Empty);
+                    listVillesSelectionnees.Items.Add(nomV);
                 }
             }
 
-            Refresh();
-        }*/
+        }
+
+        private void listViewVillesDeroulante_Click(object sender, EventArgs e)
+        {
+
+            if (listViewVillesDeroulante.SelectedItems.Count != 0)
+            {
+
+                string enCours = listViewVillesDeroulante.SelectedItems[0].Text;
+
+                int idVille = (from v in RechercherClient.modeleBase.VILLE
+                               where (v.NOM_VILLE == enCours)
+                               select v.IDVILLE).First();
+
+                VILLE v2 = (from v in RechercherClient.modeleBase.VILLE
+                            where (v.IDVILLE == idVille)
+                            select v).First();
+
+                ville_en_cours = v2;
+            }
+        }
+
 
         private void buttonSupprimerVille_Click(object sender, EventArgs e)
         {
             if (villes_selectionnees.Count() != 0 && villes_selectionnees.Contains(ville_en_cours))
             {
+                listVillesSelectionnees.Items.Remove(listVillesSelectionnees.SelectedItems[0]);
                 villes_selectionnees.Remove(ville_en_cours);
             }
         }
@@ -342,11 +331,7 @@ namespace EcranAccueil
 
         private void listView_resultats_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-                 var sel = listView_resultats.SelectedItems[0];
-
-          
-
+            var sel = listView_resultats.SelectedItems[0];
             foreach (BIEN b in biens)
             {
                 if (b.IDBIEN == Int16.Parse((sel.SubItems[7].Text)))
@@ -355,9 +340,6 @@ namespace EcranAccueil
                     return;
                 }
             }
-
-
-
 
         }
 
@@ -403,7 +385,6 @@ namespace EcranAccueil
             }
         }
 
-
         private void graphisme_statut_obsolete()
         {
             buttonStatut_En_Cours.ForeColor = Color.Black;
@@ -412,7 +393,6 @@ namespace EcranAccueil
             buttonStatut_Obsolete.ForeColor = Color.Red;
         }
 
-
         private void graphisme_statut_en_cours()
         {
             buttonStatut_En_Cours.ForeColor = Color.Green;
@@ -420,7 +400,6 @@ namespace EcranAccueil
             buttonStatut_Obsolete.ForeColor = Color.Black;
             buttonStatut_Obsolete.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
         }
-
 
     }
 }

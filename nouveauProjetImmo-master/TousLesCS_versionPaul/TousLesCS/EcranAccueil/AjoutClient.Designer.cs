@@ -56,11 +56,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.ajouterBien = new System.Windows.Forms.Button();
             this.créerFicheSouhaits = new System.Windows.Forms.Button();
-            this.éditer = new System.Windows.Forms.Button();
+            this.éditerInfos = new System.Windows.Forms.Button();
             this.créer = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.checkBox_Vendeur = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.checkBox_Acheteur = new System.Windows.Forms.CheckBox();
             this.listBoxCommerciaux = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -307,14 +305,15 @@
             this.créerFicheSouhaits.UseVisualStyleBackColor = true;
             this.créerFicheSouhaits.Click += new System.EventHandler(this.créerFicheSouhaits_Click);
             // 
-            // éditer
+            // éditerInfos
             // 
-            this.éditer.Location = new System.Drawing.Point(565, 494);
-            this.éditer.Name = "éditer";
-            this.éditer.Size = new System.Drawing.Size(164, 23);
-            this.éditer.TabIndex = 47;
-            this.éditer.Text = "Editer les informations";
-            this.éditer.UseVisualStyleBackColor = true;
+            this.éditerInfos.Location = new System.Drawing.Point(565, 494);
+            this.éditerInfos.Name = "éditerInfos";
+            this.éditerInfos.Size = new System.Drawing.Size(164, 49);
+            this.éditerInfos.TabIndex = 47;
+            this.éditerInfos.Text = "Mettre à jour les informations";
+            this.éditerInfos.UseVisualStyleBackColor = true;
+            this.éditerInfos.Click += new System.EventHandler(this.éditerInfos_Click);
             // 
             // créer
             // 
@@ -326,41 +325,25 @@
             this.créer.UseVisualStyleBackColor = true;
             this.créer.Click += new System.EventHandler(this.créer_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(16, 65);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 15);
-            this.label14.TabIndex = 49;
-            this.label14.Text = "Vendeur";
-            // 
             // checkBox_Vendeur
             // 
             this.checkBox_Vendeur.AutoSize = true;
-            this.checkBox_Vendeur.Location = new System.Drawing.Point(75, 66);
+            this.checkBox_Vendeur.Location = new System.Drawing.Point(19, 67);
             this.checkBox_Vendeur.Name = "checkBox_Vendeur";
-            this.checkBox_Vendeur.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_Vendeur.Size = new System.Drawing.Size(72, 19);
             this.checkBox_Vendeur.TabIndex = 50;
+            this.checkBox_Vendeur.Text = "Vendeur";
             this.checkBox_Vendeur.UseVisualStyleBackColor = true;
             this.checkBox_Vendeur.CheckedChanged += new System.EventHandler(this.checkBox_Vendeur_CheckedChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(126, 66);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 15);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "Acheteur";
             // 
             // checkBox_Acheteur
             // 
             this.checkBox_Acheteur.AutoSize = true;
-            this.checkBox_Acheteur.Location = new System.Drawing.Point(189, 67);
+            this.checkBox_Acheteur.Location = new System.Drawing.Point(125, 69);
             this.checkBox_Acheteur.Name = "checkBox_Acheteur";
-            this.checkBox_Acheteur.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_Acheteur.Size = new System.Drawing.Size(74, 19);
             this.checkBox_Acheteur.TabIndex = 52;
+            this.checkBox_Acheteur.Text = "Acheteur";
             this.checkBox_Acheteur.UseVisualStyleBackColor = true;
             this.checkBox_Acheteur.CheckedChanged += new System.EventHandler(this.checkBox_Acheteur_CheckedChanged);
             // 
@@ -419,11 +402,9 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBoxCommerciaux);
             this.Controls.Add(this.checkBox_Acheteur);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.checkBox_Vendeur);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.créer);
-            this.Controls.Add(this.éditer);
+            this.Controls.Add(this.éditerInfos);
             this.Controls.Add(this.créerFicheSouhaits);
             this.Controls.Add(this.ajouterBien);
             this.Controls.Add(this.button6);
@@ -487,11 +468,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button ajouterBien;
         private System.Windows.Forms.Button créerFicheSouhaits;
-        private System.Windows.Forms.Button éditer;
+        private System.Windows.Forms.Button éditerInfos;
         private System.Windows.Forms.Button créer;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBox_Vendeur;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkBox_Acheteur;
         private System.Windows.Forms.ListBox listBoxCommerciaux;
         private System.Windows.Forms.Label label7;
