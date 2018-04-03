@@ -12,7 +12,7 @@ namespace EcranAccueil
 {
     public partial class CatalogueBiens : Form
     {
-        BIEN bien;
+        BIEN bien_en_cours;
         EtatBien etatRecherché = EtatBien.DISPONIBLE;
         public CatalogueBiens()
         {
@@ -97,20 +97,42 @@ namespace EcranAccueil
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
                     nomVille = nomVille.Replace(" ", string.Empty);
-                    listViewbiens.Items.Add(nomVille).SubItems.Add(biens[i].PRIX_SOUHAITÉ.ToString());
-
+                    listViewbiens.Items.Add(biens[i].IDBIEN.ToString()).SubItems.Add(nomVille);
+                    listViewbiens.Items[i].SubItems.Add(biens[i].PRIX_SOUHAITÉ.ToString());
                     listViewbiens.Items[i].SubItems.Add(biens[i].SURFACE_PARCELLE.ToString());
                     listViewbiens.Items[i].SubItems.Add(biens[i].SURFACE_HABITABLE.ToString());
                     listViewbiens.Items[i].SubItems.Add(biens[i].NB_PIÈCES.ToString());
                     listViewbiens.Items[i].SubItems.Add(biens[i].GARAGE == true ? "Oui" : "Non");
                     listViewbiens.Items[i].SubItems.Add(biens[i].CAVE == true ? "Oui" : "Non");
+
                 }
             }
         }
 
         private void voir_bien_button_Click(object sender, EventArgs e)
         {
+            if(bien_en_cours != null)
+            {
+                AjoutBien fenetreBien = new AjoutBien(bien_en_cours);
+            }
+        }
 
+       private void listViewbiens_Click(object sender, EventArgs e)
+        {
+          /*  if(listViewbiens.SelectedItems.Count != 0)
+            {
+                string enCours = listViewbiens.SelectedItems[0].Text;
+
+                int idBien = (from v in Accueil.modeleBase.VILLE
+                               where (v.NOM_VILLE == enCours)
+                               select v.IDVILLE).First();
+
+                VILLE v2 = (from v in Accueil.modeleBase.VILLE
+                            where (v.IDVILLE == idVille)
+                            select v).First();
+
+                ville_en_cours = v2;
+            }*/
         }
     }
 }

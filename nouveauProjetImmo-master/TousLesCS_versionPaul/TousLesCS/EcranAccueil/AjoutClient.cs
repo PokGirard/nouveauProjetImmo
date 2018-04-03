@@ -202,9 +202,8 @@ namespace EcranAccueil
                 return;
             }
 
-            if (checkBox_Vendeur.Checked)
+            if (verifier_champs_vendeur())
             {
-
 
                 VENDEUR vendeur = new VENDEUR();
 

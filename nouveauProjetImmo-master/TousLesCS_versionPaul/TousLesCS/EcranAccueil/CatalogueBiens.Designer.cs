@@ -42,6 +42,7 @@
             this.garage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.voir_bien_button = new System.Windows.Forms.Button();
+            this.idBien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label15
@@ -97,6 +98,7 @@
             // listViewbiens
             // 
             this.listViewbiens.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idBien,
             this.ville,
             this.prix,
             this.surface_parcelle,
@@ -112,6 +114,7 @@
             this.listViewbiens.TabIndex = 58;
             this.listViewbiens.UseCompatibleStateImageBehavior = false;
             this.listViewbiens.View = System.Windows.Forms.View.Details;
+            this.listViewbiens.Click += new System.EventHandler(this.listViewbiens_Click);
             // 
             // ville
             // 
@@ -121,30 +124,35 @@
             // prix
             // 
             this.prix.Text = "Prix";
-            this.prix.Width = 124;
+            this.prix.Width = 108;
             // 
             // surface_parcelle
             // 
+            this.surface_parcelle.DisplayIndex = 2;
             this.surface_parcelle.Text = "Parcelle";
             this.surface_parcelle.Width = 75;
             // 
             // surface_habitable
             // 
+            this.surface_habitable.DisplayIndex = 3;
             this.surface_habitable.Text = "Habitable";
             this.surface_habitable.Width = 71;
             // 
             // nb_pieces
             // 
+            this.nb_pieces.DisplayIndex = 4;
             this.nb_pieces.Text = "Nombre de pièces";
             this.nb_pieces.Width = 106;
             // 
             // garage
             // 
+            this.garage.DisplayIndex = 5;
             this.garage.Text = "Garage";
             this.garage.Width = 89;
             // 
             // cave
             // 
+            this.cave.DisplayIndex = 6;
             this.cave.Text = "Cave";
             this.cave.Width = 86;
             // 
@@ -157,6 +165,10 @@
             this.voir_bien_button.Text = "VOIR LE BIEN";
             this.voir_bien_button.UseVisualStyleBackColor = true;
             this.voir_bien_button.Click += new System.EventHandler(this.voir_bien_button_Click);
+            // 
+            // idBien
+            // 
+            this.idBien.Text = "IDBien";
             // 
             // CatalogueBiens
             // 
@@ -186,12 +198,13 @@
         private System.Windows.Forms.Button archive_button;
         private System.Windows.Forms.ListView listViewbiens;
         private System.Windows.Forms.ColumnHeader ville;
-        private System.Windows.Forms.ColumnHeader prix;
         private System.Windows.Forms.ColumnHeader surface_parcelle;
         private System.Windows.Forms.ColumnHeader surface_habitable;
         private System.Windows.Forms.Button voir_bien_button;
         private System.Windows.Forms.ColumnHeader nb_pieces;
         private System.Windows.Forms.ColumnHeader garage;
         private System.Windows.Forms.ColumnHeader cave;
+        private System.Windows.Forms.ColumnHeader idBien;
+        private System.Windows.Forms.ColumnHeader prix;
     }
 }

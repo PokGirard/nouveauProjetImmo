@@ -226,7 +226,7 @@
             // 
             this.labelCommercial.AutoSize = true;
             this.labelCommercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCommercial.Location = new System.Drawing.Point(562, 104);
+            this.labelCommercial.Location = new System.Drawing.Point(512, 146);
             this.labelCommercial.Name = "labelCommercial";
             this.labelCommercial.Size = new System.Drawing.Size(118, 13);
             this.labelCommercial.TabIndex = 37;
@@ -243,11 +243,11 @@
             // 
             // buttonSupprimer
             // 
-            this.buttonSupprimer.Location = new System.Drawing.Point(565, 57);
+            this.buttonSupprimer.Location = new System.Drawing.Point(515, 375);
             this.buttonSupprimer.Name = "buttonSupprimer";
-            this.buttonSupprimer.Size = new System.Drawing.Size(75, 23);
+            this.buttonSupprimer.Size = new System.Drawing.Size(164, 23);
             this.buttonSupprimer.TabIndex = 39;
-            this.buttonSupprimer.Text = "Supprimer";
+            this.buttonSupprimer.Text = "Supprimer le client";
             this.buttonSupprimer.UseVisualStyleBackColor = true;
             this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
@@ -289,7 +289,7 @@
             // 
             // ajouterBien
             // 
-            this.ajouterBien.Location = new System.Drawing.Point(565, 417);
+            this.ajouterBien.Location = new System.Drawing.Point(515, 417);
             this.ajouterBien.Name = "ajouterBien";
             this.ajouterBien.Size = new System.Drawing.Size(164, 23);
             this.ajouterBien.TabIndex = 45;
@@ -299,7 +299,7 @@
             // 
             // créerFicheSouhaits
             // 
-            this.créerFicheSouhaits.Location = new System.Drawing.Point(565, 455);
+            this.créerFicheSouhaits.Location = new System.Drawing.Point(515, 455);
             this.créerFicheSouhaits.Name = "créerFicheSouhaits";
             this.créerFicheSouhaits.Size = new System.Drawing.Size(164, 23);
             this.créerFicheSouhaits.TabIndex = 46;
@@ -309,7 +309,7 @@
             // 
             // éditerInfos
             // 
-            this.éditerInfos.Location = new System.Drawing.Point(565, 494);
+            this.éditerInfos.Location = new System.Drawing.Point(515, 493);
             this.éditerInfos.Name = "éditerInfos";
             this.éditerInfos.Size = new System.Drawing.Size(164, 49);
             this.éditerInfos.TabIndex = 47;
@@ -331,7 +331,7 @@
             // checkBox_Acheteur
             // 
             this.checkBox_Acheteur.AutoSize = true;
-            this.checkBox_Acheteur.Location = new System.Drawing.Point(125, 69);
+            this.checkBox_Acheteur.Location = new System.Drawing.Point(125, 67);
             this.checkBox_Acheteur.Name = "checkBox_Acheteur";
             this.checkBox_Acheteur.Size = new System.Drawing.Size(74, 19);
             this.checkBox_Acheteur.TabIndex = 52;
@@ -402,7 +402,7 @@
             // comboBoxCommerciaux
             // 
             this.comboBoxCommerciaux.FormattingEnabled = true;
-            this.comboBoxCommerciaux.Location = new System.Drawing.Point(565, 125);
+            this.comboBoxCommerciaux.Location = new System.Drawing.Point(515, 162);
             this.comboBoxCommerciaux.Name = "comboBoxCommerciaux";
             this.comboBoxCommerciaux.Size = new System.Drawing.Size(115, 21);
             this.comboBoxCommerciaux.TabIndex = 59;
@@ -436,7 +436,7 @@
             // 
             // buttonAccepterVisite
             // 
-            this.buttonAccepterVisite.Location = new System.Drawing.Point(565, 561);
+            this.buttonAccepterVisite.Location = new System.Drawing.Point(515, 612);
             this.buttonAccepterVisite.Name = "buttonAccepterVisite";
             this.buttonAccepterVisite.Size = new System.Drawing.Size(164, 23);
             this.buttonAccepterVisite.TabIndex = 61;
@@ -449,7 +449,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 659);
+            this.ClientSize = new System.Drawing.Size(707, 659);
             this.Controls.Add(this.buttonAccepterVisite);
             this.Controls.Add(this.buttonBienProposes);
             this.Controls.Add(this.comboBoxCommerciaux);
