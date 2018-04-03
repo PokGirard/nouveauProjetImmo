@@ -53,7 +53,6 @@ namespace EcranAccueil
             this.mobile.Text = monAcheteur.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = monAcheteur.EMAIL;
 
-
             chargerComboboxCommerciaux();
 
         }
@@ -167,7 +166,7 @@ namespace EcranAccueil
                 button4_biensVente.Visible = false;
 
                 /*   comboBoxCommerciaux.Items.Clear();
-                   var nomCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
+                   var nomCommerciaux = (from c in Accueil.Enfin.COMMERCIAL
                                          select c.NOM_COMMERCIAL);
                    foreach (string nom in nomCommerciaux)
                    {
@@ -205,32 +204,42 @@ namespace EcranAccueil
             if (verifier_champs_vendeur())
             {
 
-                VENDEUR vendeur = new VENDEUR();
+                if (MON_VENDEUR == null)
+                {
+                    VENDEUR vendeur = new VENDEUR();
 
-                var idville = (from v in Accueil.modeleBase.VILLE
-                               where v.CODE_POSTAL.ToString() == codePostal.Text
-                               where v.NOM_VILLE == comboBox1_villes.Text
-                               select v.IDVILLE).First();
-
-                vendeur.IDVILLE = idville;
-                vendeur.CODE_POSTAL = Int32.Parse(codePostal.Text);
-                vendeur.NOM_VENDEUR = nom.Text;
-                vendeur.PRÉNOM_VENDEUR = prénom.Text;
-                vendeur.ADRESSE_VENDEUR = adresse.Text;
-                vendeur.EMAIL = email.Text;
-
-                string a = fixe.Text.Replace(" ", string.Empty);
-                string b = mobile.Text.Replace(" ", string.Empty);
-                vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
-                vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
-                vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
-
-                Accueil.modeleBase.VENDEUR.Add(vendeur);
-                Accueil.modeleBase.SaveChanges();
+                    var idville = (from v in Accueil.modeleBase.VILLE
+                                   where v.CODE_POSTAL.ToString() == codePostal.Text &&
+                                    v.NOM_VILLE == comboBox1_villes.Text
+                                   select v.IDVILLE).FirstOrDefault();
 
 
+                    vendeur.IDVILLE = idville;
+                    vendeur.CODE_POSTAL = Int32.Parse(codePostal.Text);
+                    vendeur.NOM_VENDEUR = nom.Text;
+                    vendeur.PRÉNOM_VENDEUR = prénom.Text;
+                    vendeur.ADRESSE_VENDEUR = adresse.Text;
+                    vendeur.EMAIL = email.Text;
 
-                maFenetreBien = new AjoutBien(vendeur);
+                    string a = fixe.Text.Replace(" ", string.Empty);
+                    string b = mobile.Text.Replace(" ", string.Empty);
+                    vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
+                    vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
+
+                    vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
+
+                    Accueil.modeleBase.VENDEUR.Add(vendeur);
+                    Accueil.modeleBase.SaveChanges();
+
+
+
+                    maFenetreBien = new AjoutBien(vendeur, false);
+
+                }
+                else
+                {
+                    maFenetreBien = new AjoutBien(MON_VENDEUR, false);
+                }
                 maFenetreBien.Show();
             }
         }
@@ -309,14 +318,52 @@ namespace EcranAccueil
 
         private void éditerInfos_Click(object sender, EventArgs e)
         {
-            if (MON_VENDEUR != null)
+
+            if (checkBox_Vendeur.Checked && MON_VENDEUR != null && verifier_champs_vendeur())
             {
-                MON_VENDEUR.NOM_VENDEUR = nom.Text;
-                MON_VENDEUR.PRÉNOM_VENDEUR = prénom.Text;
+                try
+                {
+                    MON_VENDEUR.NOM_VENDEUR = nom.Text;
+                    MON_VENDEUR.PRÉNOM_VENDEUR = prénom.Text;
+                    MON_VENDEUR.TÉLÉPHONE_MOBILE = int.Parse(mobile.Text);
+                    MON_VENDEUR.TÉLÉPHONE_FIXE = int.Parse(fixe.Text);
+                    MON_VENDEUR.CODE_POSTAL = int.Parse(codePostal.Text);
 
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show("Les modifications ont bien été enregistrées");
 
-                Accueil.modeleBase.SaveChanges();
+                }
+                catch (Exception e45)
+                {
+                    MessageBox.Show(e45.Message);
+                }
             }
+
+            else if (checkBox_Acheteur.Checked && MON_ACHETEUR != null && verifier_champs_acheteur())
+            {
+                try
+                {
+                    MON_ACHETEUR.NOM_ACHETEUR = nom.Text;
+                    MON_ACHETEUR.PRENOM_ACHETEUR = prénom.Text;
+                    MON_ACHETEUR.TÉLÉPHONE_MOBILE = int.Parse(mobile.Text);
+                    MON_ACHETEUR.TÉLÉPHONE = int.Parse(fixe.Text);
+                    MON_ACHETEUR.CODE_POSTAL = int.Parse(codePostal.Text);
+
+
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show("Les modifications ont bien été enregistrées");
+
+                }
+                catch (Exception e45)
+                {
+                    MessageBox.Show(e45.Message);
+                }
+            }
+
+
+
+
+
         }
 
         private bool verifier_champs_acheteur()   // créer 2ème méthode vérif' pour champs vendeur
@@ -487,7 +534,7 @@ namespace EcranAccueil
                 listView1.Columns[3].Text = "Nb Pièces";
                 listView1.Columns[4].Text = "Adresse";
 
-                for (int i = 0; i < biens_En_Vente.Count(); i++)
+                for (int i = 0; i < biens_En_Vente.Count; i++)
                 {
 
 
@@ -517,7 +564,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne);
+                maFenetreBien = new AjoutBien(bien_selectionne, false);
                 maFenetreBien.Show();
                 return;
             }
@@ -530,7 +577,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne);
+                maFenetreBien = new AjoutBien(bien_selectionne, false);
                 maFenetreBien.Show();
                 return;
             }
@@ -571,7 +618,7 @@ namespace EcranAccueil
                 listView1.Columns[3].Text = "Surface";
                 listView1.Columns[4].Text = "Nombre pièces";
 
-                for (int i = 0; i < fd_souhait_acheteur.Count(); i++)
+                for (int i = 0; i < fd_souhait_acheteur.Count; i++)
                 {
 
 
@@ -611,7 +658,7 @@ namespace EcranAccueil
             listView1.Columns[3].Text = "Prix";
             listView1.Columns[4].Text = "Date";
 
-            for (int i = 0; i < visites_effectuees.Count(); i++)
+            for (int i = 0; i < visites_effectuees.Count; i++)
             {
 
                 int index = visites_effectuees[i].IDVISITE;

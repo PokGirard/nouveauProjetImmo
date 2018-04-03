@@ -113,26 +113,22 @@ namespace EcranAccueil
         {
             if(bien_en_cours != null)
             {
-                AjoutBien fenetreBien = new AjoutBien(bien_en_cours);
+                AjoutBien fenetreBien = new AjoutBien(bien_en_cours, false);
+                fenetreBien.Show();
             }
         }
 
        private void listViewbiens_Click(object sender, EventArgs e)
         {
-          /*  if(listViewbiens.SelectedItems.Count != 0)
+          if(listViewbiens.SelectedItems.Count != 0)
             {
-                string enCours = listViewbiens.SelectedItems[0].Text;
+                int idBien = int.Parse(listViewbiens.SelectedItems[0].Text);
 
-                int idBien = (from v in Accueil.modeleBase.VILLE
-                               where (v.NOM_VILLE == enCours)
-                               select v.IDVILLE).First();
-
-                VILLE v2 = (from v in Accueil.modeleBase.VILLE
-                            where (v.IDVILLE == idVille)
-                            select v).First();
-
-                ville_en_cours = v2;
-            }*/
+                bien_en_cours = (from b in Accueil.modeleBase.BIEN
+                            where (b.IDBIEN == idBien)
+                            select b).First();
+                
+            }
         }
     }
 }

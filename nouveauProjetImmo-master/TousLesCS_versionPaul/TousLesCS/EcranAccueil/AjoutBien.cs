@@ -24,13 +24,18 @@ namespace EcranAccueil
         public AjoutBien()
         {
             InitializeComponent();
-            
+                
         }
 
-
-
-        public AjoutBien(VENDEUR monVendeur)
+        public AjoutBien(VENDEUR monVendeur, bool nouveauClient)
         {
+            if (!nouveauClient)
+            {/*BUGGGGGGG*/
+              //  titreFenetreAjoutBien.ResetText();
+                titreFenetreAjoutBien.Text = "VOIR LE BIEN";
+
+                blocageBox(nouveauClient);
+            }
             this.monVendeur = monVendeur;
             InitializeComponent();
             this.comboBox1_status.Text = "DISPONIBLE";
@@ -49,8 +54,15 @@ namespace EcranAccueil
             this.emailVendeur.Text = monVendeur.EMAIL;
         }
 
-        public AjoutBien(BIEN bien_en_cours)
+        public AjoutBien(BIEN bien_en_cours, bool nouveauClient)
         {
+            if (!nouveauClient)
+            {
+                // titreFenetreAjoutBien.ResetText();    
+               titreFenetreAjoutBien.Text = "VOIR LE BIEN";
+               blocageBox(nouveauClient);
+            }
+
             this.bien_en_cours = bien_en_cours;
             InitializeComponent();
             this.comboBox1_status.Text = bien_en_cours.STATUT;
@@ -86,6 +98,17 @@ namespace EcranAccueil
 
         }
 
+        private void blocageBox(bool blocage)
+        {
+            nomClient.ReadOnly = !blocage;
+            prénomVendeur.ReadOnly = !blocage;
+            adresseVendeur.ReadOnly = !blocage;
+            codePostalVendeur.ReadOnly = !blocage;
+            fixeVendeur.ReadOnly = !blocage;
+            mobileVendeur.ReadOnly = !blocage;
+            emailVendeur.ReadOnly = !blocage;
+            villeVendeur.ReadOnly = !blocage;
+        }
         private void button5_annuler_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -102,17 +125,94 @@ namespace EcranAccueil
 
         private void button1_ajouterBien_Click(object sender, EventArgs e)
         {
-            if (bien_en_cours == null)
+            if (bien_en_cours == null && verifier_champs())
             {
                 creation_nouveau_bien();
             }
 
-            else
-            {
-                
-            }
         }
 
+        private bool verifier_champs()
+        {
+            bool valide = true;
+
+            string message_erreur = "Informations manquantes : \nVeuillez renseigner les champs suivants :\n";
+
+            if (numericUpDown1_surfHab.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer une surface habitable \n";
+                valide = false;
+            }
+
+            if (numericUpDown2_surfParc.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer une surface de parcelle";
+                valide = false;
+            }
+
+
+            if (numericUpDown3_nbPieces.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un nombre de pièces. \n";
+                valide = false;
+            }
+
+            if (numericUpDown4_nbChambres.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un nombre de chambres";
+                valide = false;
+            }
+
+            if (numericUpDown5_nbSdb.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un nombre de salles de bain. \n";
+                valide = false;
+            }
+
+            if (numericUpDown6_prix.Value == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un prix.";
+                valide = false;
+            }
+
+
+            if (textBox9_adresse.Text == "" || textBox9_adresse.Text == null)
+            {
+                message_erreur += " --> Veuillez indiquer une adresse. \n";
+                valide = false;
+            }
+
+            if (textBox10_codePostal.Text == "" || textBox10_codePostal.Text == null)
+            {
+                message_erreur += " --> Veuillez indiquer un code postal.";
+                valide = false;
+            }
+
+
+            // vérifier si la ville est contenue dans la base
+            var ville = (from v in Accueil.modeleBase.VILLE
+                         where v.NOM_VILLE == textBox11_ville.Text.Replace(" ", string.Empty) &&
+                         v.CODE_POSTAL == int.Parse(textBox10_codePostal.Text)
+                         select v).FirstOrDefault();
+
+            if (textBox11_ville.Text == "" || textBox11_ville.Text == null || ville == null)
+            {
+
+
+                message_erreur += " --> Veuillez indiquer une ville.";
+                valide = false;
+
+            }
+
+
+            if (!valide)
+            {
+                MessageBox.Show(message_erreur);
+
+            }
+
+            return valide;
+        }
 
         private void creation_nouveau_bien()
         {
