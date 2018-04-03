@@ -11,10 +11,13 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
+
+    //RESTE A REMETTRE LES INFORMATIONS D ORIGINES LORSQUE L ON ANNULE LES MODIFICATIONS EN COURS
     public partial class AjoutBien : Form
     {
 
         public BIEN bien_en_cours { get; set; }
+        private bool existeDeja = false;
         #region propriétés
 
         public VENDEUR monVendeur { get; set; }
@@ -24,48 +27,49 @@ namespace EcranAccueil
         public AjoutBien()
         {
             InitializeComponent();
-                
+
         }
 
-        public AjoutBien(VENDEUR monVendeur, bool nouveauClient)
+        public AjoutBien(VENDEUR monVendeur)
         {
-            if (!nouveauClient)
-            {/*BUGGGGGGG*/
-              //  titreFenetreAjoutBien.ResetText();
-                titreFenetreAjoutBien.Text = "VOIR LE BIEN";
-
-                blocageBox(nouveauClient);
-            }
-            this.monVendeur = monVendeur;
             InitializeComponent();
+
+            this.titreFenetreAjoutBien.Text = "CREER UN BIEN";
+
+            blocageBoxVendeur(false);
+
+            this.monVendeur = monVendeur;
             this.comboBox1_status.Text = "DISPONIBLE";
             this.nomClient.Text = monVendeur.NOM_VENDEUR;
             this.prénomVendeur.Text = monVendeur.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = monVendeur.ADRESSE_VENDEUR;
 
             var maVille = (from v in Accueil.modeleBase.VILLE
-                            where v.IDVILLE == monVendeur.IDVILLE
-                            select v.NOM_VILLE).First();
+                           where v.IDVILLE == monVendeur.IDVILLE
+                           select v.NOM_VILLE).First();
 
             this.villeVendeur.Text = maVille;
             this.codePostalVendeur.Text = monVendeur.CODE_POSTAL.ToString();
             this.fixeVendeur.Text = monVendeur.TÉLÉPHONE_FIXE.ToString();
             this.mobileVendeur.Text = monVendeur.TÉLÉPHONE_MOBILE.ToString();
             this.emailVendeur.Text = monVendeur.EMAIL;
+
+            
         }
 
-        public AjoutBien(BIEN bien_en_cours, bool nouveauClient)
+        public AjoutBien(BIEN bien_en_cours)
         {
-            if (!nouveauClient)
-            {
-                // titreFenetreAjoutBien.ResetText();    
-               titreFenetreAjoutBien.Text = "VOIR LE BIEN";
-               blocageBox(nouveauClient);
-            }
+            InitializeComponent();
+
+            this.titreFenetreAjoutBien.Text = "VOIR LE BIEN";
+            this.button1_ajouterBien.Text = "MODIFIER LE BIEN";
+
+            blocageBoxVendeur(false);
+            blocageBoxBien(false);
 
             this.bien_en_cours = bien_en_cours;
-            InitializeComponent();
-            this.comboBox1_status.Text = bien_en_cours.STATUT;
+
+            this.comboBox1_status.Text = bien_en_cours.STATUT.Replace(" ", string.Empty);
             this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
             this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
@@ -74,7 +78,6 @@ namespace EcranAccueil
             this.fixeVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_FIXE.ToString();
             this.mobileVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_MOBILE.ToString();
             this.emailVendeur.Text = bien_en_cours.VENDEUR.EMAIL;
-
 
             this.numericUpDown1_surfHab.Value = bien_en_cours.SURFACE_HABITABLE;
             this.numericUpDown2_surfParc.Value = bien_en_cours.SURFACE_PARCELLE;
@@ -96,25 +99,51 @@ namespace EcranAccueil
             this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
             this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
 
+            existeDeja = true;
         }
 
-        private void blocageBox(bool blocage)
+        private void blocageBoxBien(Boolean estModifiable)
         {
-            nomClient.ReadOnly = !blocage;
-            prénomVendeur.ReadOnly = !blocage;
-            adresseVendeur.ReadOnly = !blocage;
-            codePostalVendeur.ReadOnly = !blocage;
-            fixeVendeur.ReadOnly = !blocage;
-            mobileVendeur.ReadOnly = !blocage;
-            emailVendeur.ReadOnly = !blocage;
-            villeVendeur.ReadOnly = !blocage;
+            numericUpDown1_surfHab.Enabled = estModifiable;
+            numericUpDown2_surfParc.Enabled = estModifiable;
+            numericUpDown3_nbPieces.Enabled = estModifiable;
+            numericUpDown4_nbChambres.Enabled = estModifiable;
+            numericUpDown5_nbSdb.Enabled = estModifiable;
+            numericUpDown6_prix.Enabled = estModifiable;
+            textBox11_ville.Enabled = estModifiable;
+            textBox12_commentaires.Enabled = estModifiable;
+            textBox9_adresse.Enabled = estModifiable;
+            textBox10_codePostal.Enabled = estModifiable;
+            checkBox1_garage.Enabled = estModifiable;
+            checkBox2_cave.Enabled = estModifiable;
+            comboBox1_status.Enabled = estModifiable;
+            dateTimePicker1_miseEnVente.Enabled = estModifiable;
+
+            
+        }
+        private void blocageBoxVendeur(bool estModifiable)
+        {
+            this.nomClient.Enabled = estModifiable;
+            this.prénomVendeur.Enabled = estModifiable;
+            this.adresseVendeur.Enabled = estModifiable;
+            codePostalVendeur.Enabled = estModifiable;
+            fixeVendeur.Enabled = estModifiable;
+            mobileVendeur.Enabled = estModifiable;
+            emailVendeur.Enabled = estModifiable;
+            villeVendeur.Enabled = estModifiable;
         }
         private void button5_annuler_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (button5_annuler.Text.Equals("ANNULER LES MODIFICATIONS"))
+            {
+                blocageBoxBien(false);
+                button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                button5_annuler.Text = "ANNULER";
+            }
+            else this.Close();
         }
 
-      
+
         private void nom_TextChanged(object sender, EventArgs e)
         {
             //var nomVendeur = (from v in modeleBase.VENDEUR
@@ -125,9 +154,31 @@ namespace EcranAccueil
 
         private void button1_ajouterBien_Click(object sender, EventArgs e)
         {
-            if (bien_en_cours == null && verifier_champs())
+            if (bien_en_cours == null && verifier_champs() && !existeDeja)
             {
                 creation_nouveau_bien();
+                button1_ajouterBien.Text = "MODIFIER LE BIEN";
+            }
+            else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
+            {
+                blocageBoxBien(true);
+                button1_ajouterBien.Text = "VALIDER LES MODIFICATIONS";
+                button5_annuler.Text = "ANNULER LES MODIFICATIONS";
+            }
+            else
+            {
+                blocageBoxBien(false);
+                button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                button5_annuler.Text = "ANNULER";
+                try
+                {
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show("Modifications sauvegardées");
+                }
+                catch(Exception e1)
+                {
+                    MessageBox.Show("Echec de la sauvegarde");
+                }
             }
 
         }
@@ -190,18 +241,19 @@ namespace EcranAccueil
 
 
             // vérifier si la ville est contenue dans la base
-            var ville = (from v in Accueil.modeleBase.VILLE
-                         where v.NOM_VILLE == textBox11_ville.Text.Replace(" ", string.Empty) &&
-                         v.CODE_POSTAL == int.Parse(textBox10_codePostal.Text)
-                         select v).FirstOrDefault();
 
-            if (textBox11_ville.Text == "" || textBox11_ville.Text == null || ville == null)
+            if (textBox11_ville.Text == "" || textBox11_ville.Text == null)
             {
+                message_erreur += " --> Veuillez indiquer une ville."; valide = false;
+            }
 
-
-                message_erreur += " --> Veuillez indiquer une ville.";
-                valide = false;
-
+            else
+            {
+                string ville1 = textBox11_ville.Text.Replace(" ", string.Empty);
+                int cp = int.Parse(textBox10_codePostal.Text); // vérifier si la ville est contenue dans la base 
+                var ville = (from v in Accueil.modeleBase.VILLE
+                             where v.NOM_VILLE == ville1 && v.CODE_POSTAL == cp
+                             select v).FirstOrDefault();
             }
 
 

@@ -90,11 +90,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(587, 41);
+            this.label1.Location = new System.Drawing.Point(591, 321);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "STATUT BIEN";
+            this.label1.Text = "STATUT";
             // 
             // comboBox1_status
             // 
@@ -103,7 +103,7 @@
             "DISPONIBLE",
             "RESERVE",
             "VENDU"});
-            this.comboBox1_status.Location = new System.Drawing.Point(582, 57);
+            this.comboBox1_status.Location = new System.Drawing.Point(595, 337);
             this.comboBox1_status.Name = "comboBox1_status";
             this.comboBox1_status.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_status.TabIndex = 1;
@@ -486,7 +486,7 @@
             this.button1_ajouterBien.Name = "button1_ajouterBien";
             this.button1_ajouterBien.Size = new System.Drawing.Size(156, 47);
             this.button1_ajouterBien.TabIndex = 42;
-            this.button1_ajouterBien.Text = "AJOUTER/MODIFIER";
+            this.button1_ajouterBien.Text = "AJOUTER LE BIEN";
             this.button1_ajouterBien.UseVisualStyleBackColor = true;
             this.button1_ajouterBien.Click += new System.EventHandler(this.button1_ajouterBien_Click);
             // 

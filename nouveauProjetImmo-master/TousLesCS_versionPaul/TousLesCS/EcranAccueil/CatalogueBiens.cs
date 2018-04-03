@@ -113,7 +113,7 @@ namespace EcranAccueil
         {
             if(bien_en_cours != null)
             {
-                AjoutBien fenetreBien = new AjoutBien(bien_en_cours, false);
+                AjoutBien fenetreBien = new AjoutBien(bien_en_cours);
                 fenetreBien.Show();
             }
         }

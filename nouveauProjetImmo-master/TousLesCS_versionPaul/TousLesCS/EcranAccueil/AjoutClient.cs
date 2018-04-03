@@ -233,12 +233,12 @@ namespace EcranAccueil
 
 
 
-                    maFenetreBien = new AjoutBien(vendeur, false);
+                    maFenetreBien = new AjoutBien(vendeur/*, false*/);
 
                 }
                 else
                 {
-                    maFenetreBien = new AjoutBien(MON_VENDEUR, false);
+                    maFenetreBien = new AjoutBien(MON_VENDEUR/*, false*/);
                 }
                 maFenetreBien.Show();
             }
@@ -564,7 +564,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne, false);
+                maFenetreBien = new AjoutBien(bien_selectionne/*, false*/);
                 maFenetreBien.Show();
                 return;
             }
@@ -577,7 +577,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne, false);
+                maFenetreBien = new AjoutBien(bien_selectionne/*, false*/);
                 maFenetreBien.Show();
                 return;
             }
