@@ -10,32 +10,113 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
-
     public partial class FicheDeSouhaits : Form
     {
 
-        bool cave, garage, enCours;
-        List<BIEN> biens;
+        List<BIEN> biens_selectionnes;
+        BIEN bien_en_cours;
         List<VILLE> villes_selectionnees = new List<VILLE>();
         VILLE ville_en_cours;
-        BIEN bien_en_cours;
+
         PropositionVisite fenetreProposition;
 
-        ACHETEUR acheteur_reference = (from a in Accueil.modeleBase.ACHETEUR
-                                       where a.IDACHETEUR == 2
-                                       select a
-                                       ).FirstOrDefault();
-
-        FICHE_DE_SOUHAITS fiche_de_reference = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                                                where f.IDFICHESOUHAITS == 1
-                                                select f
-                                       ).FirstOrDefault();
+        ACHETEUR acheteur_de_reference;
+        FICHE_DE_SOUHAITS fiche_de_reference;
 
         public FicheDeSouhaits()
         {
+
+            InitializeComponent();
+            Charger_Liste_Villes();
+            ChargerListe_Villes_selectionnees();
+            Charger_Liste_Commerciaux();
+            Preremplir_champs_client();
+        }
+        public FicheDeSouhaits(ACHETEUR acheteur_de_reference)
+        {
+            this.acheteur_de_reference = acheteur_de_reference;
             InitializeComponent();
             Charger_Liste_Villes();
             Charger_Liste_Commerciaux();
+            Preremplir_champs_client();
+        }
+
+        private void Preremplir_champs_client()
+        {
+            textBoxNom.Text = acheteur_de_reference.NOM_ACHETEUR;
+            textBoxPrenom.Text = acheteur_de_reference.PRENOM_ACHETEUR;
+            textBoxAdresseClient.Text = acheteur_de_reference.ADRESSE;
+            textBoxEmail.Text = acheteur_de_reference.EMAIL;
+            textBoxVilleClient.Text = acheteur_de_reference.VILLE.NOM_VILLE;
+            textBoxTelFixe.Text = acheteur_de_reference.TÉLÉPHONE.ToString();
+            textBoxTelMobile.Text = acheteur_de_reference.TÉLÉPHONE_MOBILE.ToString();
+
+        }
+
+        public FicheDeSouhaits(FICHE_DE_SOUHAITS fiche_de_reference)
+        {
+
+            this.fiche_de_reference = fiche_de_reference;
+
+            acheteur_de_reference = fiche_de_reference.ACHETEUR;
+
+            InitializeComponent();
+            Charger_Liste_Villes();
+            ChargerListe_Villes_selectionnees();
+            Charger_Liste_Commerciaux();
+            Preremplir_champs_client();
+            Preremplir_champs_fiche();
+
+        }
+
+        private void Preremplir_champs_fiche()
+        {
+            textBoxBudget.Text = fiche_de_reference.BUDGET.ToString();
+            numericSurfaceHab.Value = (decimal)fiche_de_reference.SURFACE_HABITABLE;
+            numericSurfParcelle.Value = (decimal)fiche_de_reference.SURFACE_PARCELLE;
+            numericUpDownNbPieces.Value = (decimal)fiche_de_reference.NB_PIÈCE;
+
+            if ((bool)fiche_de_reference.CAVE) checkBoxCave.Checked = true;
+            if ((bool)fiche_de_reference.GARAGE) checkBoxGarage.Checked = true;
+
+            string statut = fiche_de_reference.STATUT.Replace(" ", string.Empty);
+
+            if (statut == "ENCOURS")
+            {
+
+                graphisme_statut_en_cours();
+            }
+            else if (statut == "OBSOLETE")
+            {
+
+                graphisme_statut_obsolete();
+            }
+
+            Refresh();
+
+        }
+
+        private static string supprimer_espaces(string statut)
+        {
+
+            statut.TrimEnd(' ');
+
+            return statut;
+        }
+
+        private void ChargerListe_Villes_selectionnees()
+        {
+            villes_selectionnees = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                                    from v in f.VILLE1
+                                    where f.IDFICHESOUHAITS == fiche_de_reference.IDFICHESOUHAITS
+                                    select v).ToList();
+
+            foreach (VILLE v in villes_selectionnees)
+            {
+                listVillesSelectionnees.Items.Add(v.NOM_VILLE);
+
+            }
+
         }
 
         private void Charger_Liste_Villes()
@@ -50,54 +131,38 @@ namespace EcranAccueil
                 listViewVillesDeroulante.Items.Add(nomV);
             }
         }
-
-
         private void Charger_Liste_Commerciaux()
         {
             List<COMMERCIAL> commerciaux = (from c in Accueil.modeleBase.COMMERCIAL
                                             select c).ToList();
 
             foreach (COMMERCIAL c in commerciaux)
-
                 comboBoxListeCommerciaux.Items.Add(c.NOM_COMMERCIAL);
         }
-
-
         private void button_creation_fiche_Click(object sender, EventArgs e)
         {
+            FICHE_DE_SOUHAITS nouvelleFiche = null;
             try
             {
-
-                string villeA = ville_en_cours.NOM_VILLE;
-                villeA = villeA.Replace(" ", string.Empty);
-
-                int surfHab = (int)numericSurfaceHab.Value;
-                int surfParc = (int)numericSurfParcelle.Value;
-
-                int budg = int.Parse(textBoxBudget.Text);
-
-
-                // Create a new Order object.
-                FICHE_DE_SOUHAITS nouvelleFiche = new FICHE_DE_SOUHAITS()
+                nouvelleFiche = new FICHE_DE_SOUHAITS()
                 {
-
-                    IDACHETEUR = 2, // Felix
-                    VILLE = villeA,
+                    IDACHETEUR = acheteur_de_reference.IDACHETEUR,
                     BUDGET = int.Parse(textBoxBudget.Text),
-                    SURFACE_HABITABLE = surfHab,
-                    SURFACE_PARCELLE = surfParc,
-                    CAVE = (cave ? true : false),
-                    GARAGE = (garage ? true : false),
-
+                    SURFACE_HABITABLE = (int)numericSurfaceHab.Value,
+                    SURFACE_PARCELLE = (int)numericSurfParcelle.Value,
+                    NB_PIÈCE = (int)numericUpDownNbPieces.Value,
+                    CAVE = checkBoxCave.Checked,
+                    GARAGE = checkBoxGarage.Checked,
+                    STATUT = "EN COURS"
                 };
                 Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
+
             }
             catch (Exception e1)
             {
                 MessageBox.Show(e1.Message);
 
             }
-
             // Submit the change to the database.
             try
             {
@@ -108,54 +173,49 @@ namespace EcranAccueil
                 MessageBox.Show(e2.Message);
 
             }
-        }
+            FICHE_DE_SOUHAITS fiche_recup = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                                             where f.IDACHETEUR == nouvelleFiche.IDACHETEUR &&
+                                              f.BUDGET == nouvelleFiche.BUDGET &&
+                                                f.SURFACE_HABITABLE == nouvelleFiche.SURFACE_HABITABLE &&
+                    f.SURFACE_PARCELLE == nouvelleFiche.SURFACE_PARCELLE &&
+                    f.CAVE == nouvelleFiche.CAVE &&
+                    f.GARAGE == nouvelleFiche.GARAGE &&
+                    f.STATUT == nouvelleFiche.STATUT
+                                             select f).FirstOrDefault();
+            var f1 = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                      where f.IDFICHESOUHAITS == fiche_recup.IDFICHESOUHAITS
+                      select f).First();
 
-        private void buttonOuiCave_Click(object sender, EventArgs e)
-        {
-            cave = true;
-            buttonOuiCave.ForeColor = Color.Green;
-            buttonOuiCave.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
-            buttonNonCave.ForeColor = Color.Black;
-            buttonNonCave.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
-        }
+            Accueil.modeleBase.FICHE_DE_SOUHAITS.Attach(f1);
 
-        private void buttonNonCave_Click(object sender, EventArgs e)
-        {
-            cave = false;
-            buttonOuiCave.ForeColor = Color.Black;
-            buttonOuiCave.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Regular);
-            buttonNonCave.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Bold);
-            buttonNonCave.ForeColor = Color.Red;
-        }
+            foreach (VILLE v in villes_selectionnees)
+            {
+                Accueil.modeleBase.VILLE.Attach(v);
+                f1.VILLE1.Add(v);
+                Accueil.modeleBase.SaveChanges();
+            }
 
-        private void buttonOuiGarage_Click(object sender, EventArgs e)
-        {
-            garage = true;
-            buttonOuiGarage.ForeColor = Color.Green;
-            buttonOuiGarage.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
-            buttonNonGarage.ForeColor = Color.Black;
-            buttonNonGarage.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
-        }
+            try
+            {
+                Accueil.modeleBase.SaveChanges();
 
-        private void buttonNonGarage_Click(object sender, EventArgs e)
-        {
-            garage = false;
-            buttonOuiGarage.ForeColor = Color.Black;
-            buttonOuiGarage.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Regular);
-            buttonNonGarage.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Bold);
-            buttonNonGarage.ForeColor = Color.Red;
+            }
+            catch (Exception e78)
+            {
+                MessageBox.Show("non");
+            }
         }
 
         private void buttonStatut_En_Cours_Click(object sender, EventArgs e)
         {
-            enCours = true;
+
             graphisme_statut_en_cours();
             Refresh();
         }
 
         private void buttonStatut_Obsolete_Click(object sender, EventArgs e)
         {
-            enCours = false;
+
             graphisme_statut_obsolete();
             Refresh();
         }
@@ -174,6 +234,7 @@ namespace EcranAccueil
                     listVillesSelectionnees.Items.Add(nomV);
                 }
             }
+            listVillesSelectionnees.Refresh();
 
         }
 
@@ -197,17 +258,19 @@ namespace EcranAccueil
             }
         }
 
-
         private void buttonSupprimerVille_Click(object sender, EventArgs e)
         {
-            if (villes_selectionnees.Count() != 0 && villes_selectionnees.Contains(ville_en_cours))
+            if (villes_selectionnees.Count() != 0 && listVillesSelectionnees.SelectedItems.Count != 0)
             {
+                string a = listVillesSelectionnees.SelectedItems[0].Text.Replace(" ", string.Empty);
+                ville_en_cours = (from v1 in Accueil.modeleBase.VILLE
+                                  where v1.NOM_VILLE == a
+                                  select v1).FirstOrDefault();
                 listVillesSelectionnees.Items.Remove(listVillesSelectionnees.SelectedItems[0]);
                 villes_selectionnees.Remove(ville_en_cours);
+
             }
         }
-
-
         private bool verifier_champs()
         {
             bool valide = true;
@@ -225,8 +288,6 @@ namespace EcranAccueil
                 message_erreur += " --> Aucune ville n'est sélectionnée.";
                 valide = false;
             }
-
-
             if (!valide)
             {
                 MessageBox.Show(message_erreur);
@@ -234,8 +295,6 @@ namespace EcranAccueil
             }
 
             return valide;
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -246,63 +305,36 @@ namespace EcranAccueil
         private void button_modifier_fiche_Click(object sender, EventArgs e)
         {
 
-            // attribuer les nouveaux champs s'ils sont remplis et modifiés.
-
-            short id_fiche_selectionnee = 1;
-
-            FICHE_DE_SOUHAITS fiche_a_traiter = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                                                 where (f.IDFICHESOUHAITS == id_fiche_selectionnee)
-                                                 select f
-                                               ).FirstOrDefault();
+            List<VILLE> villes_stockees_base = fiche_de_reference.VILLE1.ToList();
 
             try
             {
 
-                if (!fiche_a_traiter.VILLE.Equals(ville_en_cours))
-                {
-                    fiche_a_traiter.VILLE = "Talence";
+                if (!villes_stockees_base.All(villes_selectionnees.Contains) || !villes_selectionnees.All(villes_stockees_base.Contains))
 
-                }
+                    MAJ_villes_recherche(villes_stockees_base);
+                if (fiche_de_reference.BUDGET != int.Parse(textBoxBudget.Text))
 
-                if (!cave == fiche_a_traiter.CAVE)
-                {
-                    {
-                        fiche_a_traiter.CAVE = cave;
+                    fiche_de_reference.BUDGET = int.Parse(textBoxBudget.Text);
+                if (checkBoxCave.Checked != fiche_de_reference.CAVE)
+                    fiche_de_reference.CAVE = checkBoxCave.Checked;
 
-                    }
+                if (checkBoxGarage.Checked != fiche_de_reference.GARAGE)
 
-                }
+                    fiche_de_reference.GARAGE = checkBoxGarage.Checked;
 
-                if (!garage == fiche_a_traiter.GARAGE)
-                {
-                    {
-                        fiche_a_traiter.GARAGE = garage;
+                if (numericUpDownNbPieces.Value != fiche_de_reference.NB_PIÈCE)
 
-                    }
-                }
+                    fiche_de_reference.NB_PIÈCE = (int)numericUpDownNbPieces.Value;
+                if (numericSurfaceHab.Value != fiche_de_reference.SURFACE_HABITABLE)
 
+                    fiche_de_reference.SURFACE_HABITABLE = (int)numericSurfaceHab.Value;
 
-                if (numericUpDownNbPieces.Value != fiche_a_traiter.NB_PIÈCE)
-                {
-                    fiche_a_traiter.NB_PIÈCE = (int)numericUpDownNbPieces.Value;
+                if (numericSurfParcelle.Value != fiche_de_reference.SURFACE_PARCELLE)
 
-                }
-
-
-                if (numericSurfaceHab.Value != fiche_a_traiter.SURFACE_HABITABLE)
-                {
-                    fiche_a_traiter.SURFACE_HABITABLE = (int)numericSurfaceHab.Value;
-                }
-
-
-                if (numericSurfParcelle.Value != fiche_a_traiter.SURFACE_PARCELLE)
-                {
-                    fiche_a_traiter.SURFACE_PARCELLE = (int)numericSurfParcelle.Value;
-                }
-
+                    fiche_de_reference.SURFACE_PARCELLE = (int)numericSurfParcelle.Value;
 
                 Accueil.modeleBase.SaveChanges();
-
             }
             catch (Exception e4)
             {
@@ -312,32 +344,38 @@ namespace EcranAccueil
 
             MessageBox.Show("Les modifications ont bien été enregistrées");
 
+        }
 
+        private void MAJ_villes_recherche(List<VILLE> villes_base)
+        {
+            // supression
+            foreach (VILLE v in villes_base)
 
+                if (!villes_selectionnees.Contains(v))
+                    fiche_de_reference.VILLE1.Remove(v);
+            // ajout
+            foreach (VILLE v in villes_selectionnees)
+
+                if (!villes_base.Contains(v))
+
+                    fiche_de_reference.VILLE1.Add(v);
         }
 
         private void buttonPropositionVisite_Click(object sender, EventArgs e)
         {
-            fenetreProposition = new PropositionVisite(fiche_de_reference, bien_en_cours, acheteur_reference.COMMERCIAL);
+
+            short sel = Int16.Parse(listView_resultats.SelectedItems[0].SubItems[7].Text);
+
+            bien_en_cours = (from b in Accueil.modeleBase.BIEN
+                             where b.IDBIEN == sel
+                             select b).FirstOrDefault();
+                   
+            fenetreProposition = new PropositionVisite(fiche_de_reference, bien_en_cours, acheteur_de_reference.COMMERCIAL);
 
             fenetreProposition.Show();
         }
 
-
-
-        private void listView_resultats_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var sel = listView_resultats.SelectedItems[0];
-            foreach (BIEN b in biens)
-            {
-                if (b.IDBIEN == Int16.Parse((sel.SubItems[7].Text)))
-                {
-                    bien_en_cours = b;
-                    return;
-                }
-            }
-
-        }
+      
 
         private void button_recherche_biens_Click(object sender, EventArgs e)
         {
@@ -346,41 +384,40 @@ namespace EcranAccueil
 
             int budget_choisi = int.Parse(textBoxBudget.Text);
 
-            biens = (from b in Accueil.modeleBase.BIEN
-                     where (b.STATUT == "DISPONIBLE")
-                     && (textBoxBudget.Text != null ? b.PRIX_SOUHAITÉ <= budget_choisi : true)
-                        && (b.CAVE == cave ? true : false)
-                     && (b.GARAGE == garage ? true : false)
-                                      && (b.NB_PIÈCES >= numericUpDownNbPieces.Value)
-                     && (b.SURFACE_HABITABLE >= numericSurfaceHab.Value)
-                     && (b.SURFACE_PARCELLE >= numericSurfParcelle.Value)
-                     select b).ToList();
+            biens_selectionnes = (from b in Accueil.modeleBase.BIEN
+                                  where (b.STATUT == "DISPONIBLE")
+                                  && (textBoxBudget.Text != null ? b.PRIX_SOUHAITÉ <= budget_choisi : true)
+                                     && (b.CAVE == checkBoxCave.Checked ? true : false)
+                                  && (b.GARAGE == checkBoxGarage.Checked ? true : false)
+                                                   && (b.NB_PIÈCES >= numericUpDownNbPieces.Value)
+                                  && (b.SURFACE_HABITABLE >= numericSurfaceHab.Value)
+                                  && (b.SURFACE_PARCELLE >= numericSurfParcelle.Value)
+                                  select b).ToList();
 
-            biens.RemoveAll(x => !villes_selectionnees.Contains(x.VILLE));
+            biens_selectionnes.RemoveAll(x => !villes_selectionnees.Contains(x.VILLE));
 
-            if (biens.Count != 0)
+            if (biens_selectionnes.Count != 0)
             {
-                for (int i = 0; i < biens.Count; i++)
+                for (int i = 0; i < biens_selectionnes.Count; i++)
                 {
-                    var numVille = biens[i].IDVILLE;
+                    var numVille = biens_selectionnes[i].IDVILLE;
 
                     string nomVille = (from v in Accueil.modeleBase.VILLE
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
 
-                    listView_resultats.Items.Add(nomVille).SubItems.Add(biens[i].PRIX_SOUHAITÉ.ToString());
+                    listView_resultats.Items.Add(nomVille).SubItems.Add(biens_selectionnes[i].PRIX_SOUHAITÉ.ToString());
 
-                    listView_resultats.Items[i].SubItems.Add(biens[i].SURFACE_PARCELLE.ToString());
-                    listView_resultats.Items[i].SubItems.Add(biens[i].SURFACE_HABITABLE.ToString());
-                    listView_resultats.Items[i].SubItems.Add(biens[i].NB_PIÈCES.ToString());
-                    listView_resultats.Items[i].SubItems.Add(biens[i].GARAGE == true ? "Oui" : "Non");
-                    listView_resultats.Items[i].SubItems.Add(biens[i].CAVE == true ? "Oui" : "Non");
-                    listView_resultats.Items[i].SubItems.Add(biens[i].IDBIEN.ToString());
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].SURFACE_PARCELLE.ToString());
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].SURFACE_HABITABLE.ToString());
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].NB_PIÈCES.ToString());
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].GARAGE == true ? "Oui" : "Non");
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].CAVE == true ? "Oui" : "Non");
+                    listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].IDBIEN.ToString());
 
                 }
             }
         }
-
         private void graphisme_statut_obsolete()
         {
             buttonStatut_En_Cours.ForeColor = Color.Black;
@@ -396,6 +433,5 @@ namespace EcranAccueil
             buttonStatut_Obsolete.ForeColor = Color.Black;
             buttonStatut_Obsolete.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
         }
-
     }
 }

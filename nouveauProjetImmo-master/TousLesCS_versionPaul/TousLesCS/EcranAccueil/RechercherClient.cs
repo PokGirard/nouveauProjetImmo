@@ -15,7 +15,6 @@ namespace EcranAccueil
 
         static AjoutClient fenetreModificationClient;
 
-       
         TypeClient typeClientChoisi = TypeClient.ACHETEUR;
         int ID_client_selectionne;
         List<ACHETEUR> acheteurs;
@@ -85,6 +84,7 @@ namespace EcranAccueil
                                                                   where v.NOM_VILLE.Equals(textBoxVille.Text)
                                                                   select v.IDVILLE).FirstOrDefault() : true) &&
                         (textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text) : true) &&
+                         (textBoxMobile.Text != "" ? a.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text) : true) &&
                             (textBoxCommercial.Text != "" ? a.COMMERCIAL.NOM_COMMERCIAL.StartsWith(textBoxCommercial.Text) : true)
                             && (a.DATE_CREATION <= dateTimeAjout.Value)
                          select a).ToList();
@@ -132,37 +132,45 @@ namespace EcranAccueil
 
             if (typeClientChoisi == TypeClient.VENDEUR)
             {
+                int id_vendeur = int.Parse(listView_resultat.SelectedItems[0].SubItems[0].Text);
+
                 vendeur_en_cours_fc = (from v in Accueil.modeleBase.VENDEUR
-                                       where v.IDVENDEUR == /*Convert.ToInt16(*/ID_client_selectionne//)
-                                       select v
-                                       ).First();
+                                       where v.IDVENDEUR == (short)id_vendeur
+                                       select v).FirstOrDefault();
+
                 fenetreModificationClient = new AjoutClient(vendeur_en_cours_fc);
+                fenetreModificationClient.Show();
             }
             else
             {
-                acheteur_en_cours_fc = (from a in Accueil.modeleBase.ACHETEUR
-                                        where a.IDACHETEUR == /*Convert.ToInt16(*/ID_client_selectionne//)
-                                        select a).First();
-                //fenetreModificationClient = new AjoutClient(acheteur_en_cours_fc);
+
+                int id_acheteur = int.Parse(listView_resultat.SelectedItems[0].SubItems[0].Text);
+
+                acheteur_en_cours_fc = (from v in Accueil.modeleBase.ACHETEUR
+                                        where v.IDACHETEUR == (short)id_acheteur
+                                        select v).FirstOrDefault();
+
+                fenetreModificationClient = new AjoutClient(acheteur_en_cours_fc);
+                fenetreModificationClient.Show();
             }
-            
+
 
 
         }
 
         private void listView_resultat_Click(object sender, EventArgs e)
         {
-            
-                if (typeClientChoisi == TypeClient.VENDEUR)
-                {
-                    ID_client_selectionne = vendeurs[0].IDVENDEUR;
 
-                }
-                else if (typeClientChoisi == TypeClient.ACHETEUR)
-                {
-                    ID_client_selectionne = acheteurs[0].IDACHETEUR;
-                }
-            
+            if (typeClientChoisi == TypeClient.VENDEUR)
+            {
+                ID_client_selectionne = vendeurs[0].IDVENDEUR;
+
+            }
+            else if (typeClientChoisi == TypeClient.ACHETEUR)
+            {
+                ID_client_selectionne = acheteurs[0].IDACHETEUR;
+            }
+
             Console.WriteLine(ID_client_selectionne);
         }
     }

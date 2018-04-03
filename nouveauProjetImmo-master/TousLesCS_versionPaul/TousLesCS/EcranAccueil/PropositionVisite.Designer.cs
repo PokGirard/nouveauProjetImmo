@@ -100,28 +100,32 @@
             // 
             this.textBoxCommercial.Location = new System.Drawing.Point(157, 57);
             this.textBoxCommercial.Name = "textBoxCommercial";
-            this.textBoxCommercial.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCommercial.ReadOnly = true;
+            this.textBoxCommercial.Size = new System.Drawing.Size(200, 20);
             this.textBoxCommercial.TabIndex = 10;
             // 
             // textBoxPrenomClient
             // 
             this.textBoxPrenomClient.Location = new System.Drawing.Point(157, 150);
             this.textBoxPrenomClient.Name = "textBoxPrenomClient";
-            this.textBoxPrenomClient.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrenomClient.ReadOnly = true;
+            this.textBoxPrenomClient.Size = new System.Drawing.Size(200, 20);
             this.textBoxPrenomClient.TabIndex = 11;
             // 
             // textBoxDesignation
             // 
             this.textBoxDesignation.Location = new System.Drawing.Point(157, 189);
             this.textBoxDesignation.Name = "textBoxDesignation";
-            this.textBoxDesignation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDesignation.ReadOnly = true;
+            this.textBoxDesignation.Size = new System.Drawing.Size(200, 20);
             this.textBoxDesignation.TabIndex = 12;
             // 
             // textBoxNomClient
             // 
             this.textBoxNomClient.Location = new System.Drawing.Point(157, 120);
             this.textBoxNomClient.Name = "textBoxNomClient";
-            this.textBoxNomClient.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNomClient.ReadOnly = true;
+            this.textBoxNomClient.Size = new System.Drawing.Size(200, 20);
             this.textBoxNomClient.TabIndex = 13;
             // 
             // labelNomClient
@@ -141,12 +145,14 @@
             this.labelPrenomClient.Size = new System.Drawing.Size(43, 13);
             this.labelPrenomClient.TabIndex = 15;
             this.labelPrenomClient.Text = "Prénom";
+//            this.labelPrenomClient.Click += new System.EventHandler(this.labelPrenomClient_Click);
             // 
             // textBoxAdresse
             // 
             this.textBoxAdresse.Location = new System.Drawing.Point(157, 226);
             this.textBoxAdresse.Name = "textBoxAdresse";
-            this.textBoxAdresse.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAdresse.ReadOnly = true;
+            this.textBoxAdresse.Size = new System.Drawing.Size(200, 20);
             this.textBoxAdresse.TabIndex = 16;
             // 
             // labelAdresse

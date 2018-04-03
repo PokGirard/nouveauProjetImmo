@@ -161,6 +161,12 @@
     <Compile Include="RDV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="RDV_Visite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RDV_Visite.Designer.cs">
+      <DependentUpon>RDV_Visite.cs</DependentUpon>
+    </Compile>
     <Compile Include="RechercherClient.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ColumnHeader columnHeader1;
+            System.Windows.Forms.ColumnHeader columnHeader2;
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,11 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDownNbPieces = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonOuiCave = new System.Windows.Forms.Button();
-            this.buttonNonCave = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.buttonOuiGarage = new System.Windows.Forms.Button();
-            this.buttonNonGarage = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.numericSurfaceHab = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,6 +46,15 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.labelBiens_correspondants = new System.Windows.Forms.Label();
+            this.listView_resultats = new System.Windows.Forms.ListView();
+            this.columnVille = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnPrix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnParcelle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnSurfHab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnNbPieces = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnGarage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonStatut_En_Cours = new System.Windows.Forms.Button();
             this.buttonStatut_Obsolete = new System.Windows.Forms.Button();
             this.labelNom = new System.Windows.Forms.Label();
@@ -72,23 +79,28 @@
             this.comboBoxListeCommerciaux = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewVillesDeroulante = new System.Windows.Forms.ListView();
+            this.buttonPropositionVisite = new System.Windows.Forms.Button();
             this.listVillesSelectionnees = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.buttonPropositionVisite = new System.Windows.Forms.Button();
-            this.listView_resultats = new System.Windows.Forms.ListView();
-            this.columnVille = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnPrix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnParcelle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnSurfHab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnNbPieces = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnGarage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelBiens_correspondants = new System.Windows.Forms.Label();
+            this.checkBoxCave = new System.Windows.Forms.CheckBox();
+            this.checkBoxGarage = new System.Windows.Forms.CheckBox();
+            columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNbPieces)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSurfaceHab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSurfParcelle)).BeginInit();
             this.SuspendLayout();
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "";
+            columnHeader1.Width = 130;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "";
+            columnHeader2.Width = 100;
             // 
             // label1
             // 
@@ -104,7 +116,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(563, 65);
+            this.label11.Location = new System.Drawing.Point(37, 345);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(170, 13);
             this.label11.TabIndex = 37;
@@ -114,7 +126,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(560, 95);
+            this.label3.Location = new System.Drawing.Point(34, 375);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 42;
@@ -122,7 +134,7 @@
             // 
             // textBoxBudget
             // 
-            this.textBoxBudget.Location = new System.Drawing.Point(659, 95);
+            this.textBoxBudget.Location = new System.Drawing.Point(133, 375);
             this.textBoxBudget.Name = "textBoxBudget";
             this.textBoxBudget.Size = new System.Drawing.Size(113, 20);
             this.textBoxBudget.TabIndex = 43;
@@ -131,7 +143,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(836, 138);
+            this.label4.Location = new System.Drawing.Point(310, 418);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 44;
@@ -139,7 +151,7 @@
             // 
             // numericUpDownNbPieces
             // 
-            this.numericUpDownNbPieces.Location = new System.Drawing.Point(991, 131);
+            this.numericUpDownNbPieces.Location = new System.Drawing.Point(465, 411);
             this.numericUpDownNbPieces.Name = "numericUpDownNbPieces";
             this.numericUpDownNbPieces.Size = new System.Drawing.Size(97, 20);
             this.numericUpDownNbPieces.TabIndex = 45;
@@ -148,67 +160,27 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(563, 148);
+            this.label5.Location = new System.Drawing.Point(37, 428);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 46;
             this.label5.Text = "Cave : ";
             // 
-            // buttonOuiCave
-            // 
-            this.buttonOuiCave.Location = new System.Drawing.Point(653, 138);
-            this.buttonOuiCave.Name = "buttonOuiCave";
-            this.buttonOuiCave.Size = new System.Drawing.Size(61, 23);
-            this.buttonOuiCave.TabIndex = 47;
-            this.buttonOuiCave.Text = "Oui";
-            this.buttonOuiCave.UseVisualStyleBackColor = true;
-            this.buttonOuiCave.Click += new System.EventHandler(this.buttonOuiCave_Click);
-            // 
-            // buttonNonCave
-            // 
-            this.buttonNonCave.Location = new System.Drawing.Point(711, 138);
-            this.buttonNonCave.Name = "buttonNonCave";
-            this.buttonNonCave.Size = new System.Drawing.Size(61, 23);
-            this.buttonNonCave.TabIndex = 48;
-            this.buttonNonCave.Text = "Non";
-            this.buttonNonCave.UseVisualStyleBackColor = true;
-            this.buttonNonCave.Click += new System.EventHandler(this.buttonNonCave_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(563, 188);
+            this.label7.Location = new System.Drawing.Point(37, 468);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 49;
             this.label7.Text = "Garage :";
             // 
-            // buttonOuiGarage
-            // 
-            this.buttonOuiGarage.Location = new System.Drawing.Point(653, 184);
-            this.buttonOuiGarage.Name = "buttonOuiGarage";
-            this.buttonOuiGarage.Size = new System.Drawing.Size(61, 23);
-            this.buttonOuiGarage.TabIndex = 50;
-            this.buttonOuiGarage.Text = "Oui";
-            this.buttonOuiGarage.UseVisualStyleBackColor = true;
-            this.buttonOuiGarage.Click += new System.EventHandler(this.buttonOuiGarage_Click);
-            // 
-            // buttonNonGarage
-            // 
-            this.buttonNonGarage.Location = new System.Drawing.Point(711, 184);
-            this.buttonNonGarage.Name = "buttonNonGarage";
-            this.buttonNonGarage.Size = new System.Drawing.Size(61, 23);
-            this.buttonNonGarage.TabIndex = 51;
-            this.buttonNonGarage.Text = "Non";
-            this.buttonNonGarage.UseVisualStyleBackColor = true;
-            this.buttonNonGarage.Click += new System.EventHandler(this.buttonNonGarage_Click);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(836, 169);
+            this.label8.Location = new System.Drawing.Point(310, 449);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(142, 13);
             this.label8.TabIndex = 52;
@@ -216,7 +188,7 @@
             // 
             // numericSurfaceHab
             // 
-            this.numericSurfaceHab.Location = new System.Drawing.Point(991, 167);
+            this.numericSurfaceHab.Location = new System.Drawing.Point(465, 447);
             this.numericSurfaceHab.Maximum = new decimal(new int[] {
             2500,
             0,
@@ -230,7 +202,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(836, 198);
+            this.label9.Location = new System.Drawing.Point(310, 478);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(133, 13);
             this.label9.TabIndex = 54;
@@ -238,7 +210,7 @@
             // 
             // numericSurfParcelle
             // 
-            this.numericSurfParcelle.Location = new System.Drawing.Point(991, 196);
+            this.numericSurfParcelle.Location = new System.Drawing.Point(465, 476);
             this.numericSurfParcelle.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -286,6 +258,69 @@
             this.button8.TabIndex = 59;
             this.button8.Text = "Imprimer la fiche";
             this.button8.UseVisualStyleBackColor = true;
+            // 
+            // labelBiens_correspondants
+            // 
+            this.labelBiens_correspondants.AutoSize = true;
+            this.labelBiens_correspondants.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBiens_correspondants.Location = new System.Drawing.Point(808, 65);
+            this.labelBiens_correspondants.Name = "labelBiens_correspondants";
+            this.labelBiens_correspondants.Size = new System.Drawing.Size(253, 13);
+            this.labelBiens_correspondants.TabIndex = 60;
+            this.labelBiens_correspondants.Text = "BIENS CORRESPONDANTS DISPONIBLES\r\n";
+            // 
+            // listView_resultats
+            // 
+            this.listView_resultats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnVille,
+            this.columnPrix,
+            this.columnParcelle,
+            this.columnSurfHab,
+            this.columnNbPieces,
+            this.columnGarage,
+            this.columnCave});
+            this.listView_resultats.FullRowSelect = true;
+            this.listView_resultats.HideSelection = false;
+            this.listView_resultats.Location = new System.Drawing.Point(577, 81);
+            this.listView_resultats.MultiSelect = false;
+            this.listView_resultats.Name = "listView_resultats";
+            this.listView_resultats.Size = new System.Drawing.Size(605, 213);
+            this.listView_resultats.TabIndex = 61;
+            this.listView_resultats.UseCompatibleStateImageBehavior = false;
+            this.listView_resultats.View = System.Windows.Forms.View.Details;
+    //        this.listView_resultats.SelectedIndexChanged += new System.EventHandler(this.listView_resultats_SelectedIndexChanged);
+            // 
+            // columnVille
+            // 
+            this.columnVille.Text = "Ville";
+            // 
+            // columnPrix
+            // 
+            this.columnPrix.Text = "Prix";
+            this.columnPrix.Width = 72;
+            // 
+            // columnParcelle
+            // 
+            this.columnParcelle.Text = "Parcelle";
+            this.columnParcelle.Width = 61;
+            // 
+            // columnSurfHab
+            // 
+            this.columnSurfHab.Text = "Surf. Habitable";
+            this.columnSurfHab.Width = 92;
+            // 
+            // columnNbPieces
+            // 
+            this.columnNbPieces.Text = "Nb Pièces";
+            this.columnNbPieces.Width = 77;
+            // 
+            // columnGarage
+            // 
+            this.columnGarage.Text = "Garage";
+            // 
+            // columnCave
+            // 
+            this.columnCave.Text = "Cave";
             // 
             // buttonStatut_En_Cours
             // 
@@ -443,7 +478,7 @@
             // 
             this.labelCommercial.AutoSize = true;
             this.labelCommercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCommercial.Location = new System.Drawing.Point(563, 242);
+            this.labelCommercial.Location = new System.Drawing.Point(37, 522);
             this.labelCommercial.Name = "labelCommercial";
             this.labelCommercial.Size = new System.Drawing.Size(88, 13);
             this.labelCommercial.TabIndex = 80;
@@ -473,7 +508,7 @@
             // 
             this.comboBoxListeCommerciaux.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxListeCommerciaux.FormattingEnabled = true;
-            this.comboBoxListeCommerciaux.Location = new System.Drawing.Point(559, 271);
+            this.comboBoxListeCommerciaux.Location = new System.Drawing.Point(33, 551);
             this.comboBoxListeCommerciaux.Name = "comboBoxListeCommerciaux";
             this.comboBoxListeCommerciaux.Size = new System.Drawing.Size(121, 21);
             this.comboBoxListeCommerciaux.TabIndex = 84;
@@ -490,18 +525,34 @@
             // 
             // listViewVillesDeroulante
             // 
+            this.listViewVillesDeroulante.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader1});
             this.listViewVillesDeroulante.Location = new System.Drawing.Point(27, 252);
             this.listViewVillesDeroulante.MultiSelect = false;
             this.listViewVillesDeroulante.Name = "listViewVillesDeroulante";
             this.listViewVillesDeroulante.Size = new System.Drawing.Size(152, 75);
             this.listViewVillesDeroulante.TabIndex = 86;
             this.listViewVillesDeroulante.UseCompatibleStateImageBehavior = false;
-            this.listViewVillesDeroulante.View = System.Windows.Forms.View.List;
+            this.listViewVillesDeroulante.View = System.Windows.Forms.View.Details;
             this.listViewVillesDeroulante.Click += new System.EventHandler(this.listViewVillesDeroulante_Click);
+            // 
+            // buttonPropositionVisite
+            // 
+            this.buttonPropositionVisite.Location = new System.Drawing.Point(986, 314);
+            this.buttonPropositionVisite.Name = "buttonPropositionVisite";
+            this.buttonPropositionVisite.Size = new System.Drawing.Size(130, 44);
+            this.buttonPropositionVisite.TabIndex = 87;
+            this.buttonPropositionVisite.Text = "Créer proposition de visite";
+            this.buttonPropositionVisite.UseVisualStyleBackColor = true;
+            this.buttonPropositionVisite.Click += new System.EventHandler(this.buttonPropositionVisite_Click);
             // 
             // listVillesSelectionnees
             // 
+            this.listVillesSelectionnees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader2});
+            this.listVillesSelectionnees.HideSelection = false;
             this.listVillesSelectionnees.Location = new System.Drawing.Point(266, 252);
+            this.listVillesSelectionnees.MultiSelect = false;
             this.listVillesSelectionnees.Name = "listVillesSelectionnees";
             this.listVillesSelectionnees.Size = new System.Drawing.Size(151, 75);
             this.listVillesSelectionnees.TabIndex = 88;
@@ -528,88 +579,35 @@
             this.label6.TabIndex = 90;
             this.label6.Text = "Villes disponibles";
             // 
-            // buttonPropositionVisite
+            // checkBoxCave
             // 
-            this.buttonPropositionVisite.Location = new System.Drawing.Point(958, 431);
-            this.buttonPropositionVisite.Name = "buttonPropositionVisite";
-            this.buttonPropositionVisite.Size = new System.Drawing.Size(130, 44);
-            this.buttonPropositionVisite.TabIndex = 93;
-            this.buttonPropositionVisite.Text = "Créer proposition de visite";
-            this.buttonPropositionVisite.UseVisualStyleBackColor = true;
+            this.checkBoxCave.AutoSize = true;
+            this.checkBoxCave.Location = new System.Drawing.Point(185, 427);
+            this.checkBoxCave.Name = "checkBoxCave";
+            this.checkBoxCave.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxCave.TabIndex = 91;
+            this.checkBoxCave.UseVisualStyleBackColor = true;
             // 
-            // listView_resultats
+            // checkBoxGarage
             // 
-            this.listView_resultats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnVille,
-            this.columnPrix,
-            this.columnParcelle,
-            this.columnSurfHab,
-            this.columnNbPieces,
-            this.columnGarage,
-            this.columnCave});
-            this.listView_resultats.FullRowSelect = true;
-            this.listView_resultats.HideSelection = false;
-            this.listView_resultats.Location = new System.Drawing.Point(250, 346);
-            this.listView_resultats.MultiSelect = false;
-            this.listView_resultats.Name = "listView_resultats";
-            this.listView_resultats.Size = new System.Drawing.Size(702, 213);
-            this.listView_resultats.TabIndex = 92;
-            this.listView_resultats.UseCompatibleStateImageBehavior = false;
-            this.listView_resultats.View = System.Windows.Forms.View.Details;
-            // 
-            // columnVille
-            // 
-            this.columnVille.Text = "Ville";
-            // 
-            // columnPrix
-            // 
-            this.columnPrix.Text = "Prix";
-            this.columnPrix.Width = 72;
-            // 
-            // columnParcelle
-            // 
-            this.columnParcelle.Text = "Parcelle";
-            this.columnParcelle.Width = 61;
-            // 
-            // columnSurfHab
-            // 
-            this.columnSurfHab.Text = "Surface Habitable";
-            this.columnSurfHab.Width = 109;
-            // 
-            // columnNbPieces
-            // 
-            this.columnNbPieces.Text = "Nombre de Pièces";
-            this.columnNbPieces.Width = 108;
-            // 
-            // columnGarage
-            // 
-            this.columnGarage.Text = "Garage";
-            // 
-            // columnCave
-            // 
-            this.columnCave.Text = "Cave";
-            // 
-            // labelBiens_correspondants
-            // 
-            this.labelBiens_correspondants.AutoSize = true;
-            this.labelBiens_correspondants.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBiens_correspondants.Location = new System.Drawing.Point(481, 330);
-            this.labelBiens_correspondants.Name = "labelBiens_correspondants";
-            this.labelBiens_correspondants.Size = new System.Drawing.Size(253, 13);
-            this.labelBiens_correspondants.TabIndex = 91;
-            this.labelBiens_correspondants.Text = "BIENS CORRESPONDANTS DISPONIBLES\r\n";
+            this.checkBoxGarage.AutoSize = true;
+            this.checkBoxGarage.Location = new System.Drawing.Point(185, 467);
+            this.checkBoxGarage.Name = "checkBoxGarage";
+            this.checkBoxGarage.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxGarage.TabIndex = 92;
+            this.checkBoxGarage.UseVisualStyleBackColor = true;
             // 
             // FicheDeSouhaits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 657);
-            this.Controls.Add(this.buttonPropositionVisite);
-            this.Controls.Add(this.listView_resultats);
-            this.Controls.Add(this.labelBiens_correspondants);
+            this.Controls.Add(this.checkBoxGarage);
+            this.Controls.Add(this.checkBoxCave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listVillesSelectionnees);
+            this.Controls.Add(this.buttonPropositionVisite);
             this.Controls.Add(this.listViewVillesDeroulante);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxListeCommerciaux);
@@ -634,6 +632,8 @@
             this.Controls.Add(this.labelNom);
             this.Controls.Add(this.buttonStatut_Obsolete);
             this.Controls.Add(this.buttonStatut_En_Cours);
+            this.Controls.Add(this.listView_resultats);
+            this.Controls.Add(this.labelBiens_correspondants);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -642,11 +642,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericSurfaceHab);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.buttonNonGarage);
-            this.Controls.Add(this.buttonOuiGarage);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.buttonNonCave);
-            this.Controls.Add(this.buttonOuiCave);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDownNbPieces);
             this.Controls.Add(this.label4);
@@ -673,11 +669,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDownNbPieces;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button buttonOuiCave;
-        private System.Windows.Forms.Button buttonNonCave;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button buttonOuiGarage;
-        private System.Windows.Forms.Button buttonNonGarage;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numericSurfaceHab;
         private System.Windows.Forms.Label label9;
@@ -686,6 +678,15 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label labelBiens_correspondants;
+        private System.Windows.Forms.ListView listView_resultats;
+        private System.Windows.Forms.ColumnHeader columnParcelle;
+        private System.Windows.Forms.ColumnHeader columnSurfHab;
+        private System.Windows.Forms.ColumnHeader columnNbPieces;
+        private System.Windows.Forms.ColumnHeader columnGarage;
+        private System.Windows.Forms.ColumnHeader columnCave;
+        private System.Windows.Forms.ColumnHeader columnPrix;
+        private System.Windows.Forms.ColumnHeader columnVille;
         private System.Windows.Forms.Button buttonStatut_En_Cours;
         private System.Windows.Forms.Button buttonStatut_Obsolete;
         private System.Windows.Forms.Label labelNom;
@@ -710,18 +711,11 @@
         private System.Windows.Forms.ComboBox comboBoxListeCommerciaux;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listViewVillesDeroulante;
+        private System.Windows.Forms.Button buttonPropositionVisite;
         private System.Windows.Forms.ListView listVillesSelectionnees;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button buttonPropositionVisite;
-        private System.Windows.Forms.ListView listView_resultats;
-        private System.Windows.Forms.ColumnHeader columnVille;
-        private System.Windows.Forms.ColumnHeader columnPrix;
-        private System.Windows.Forms.ColumnHeader columnParcelle;
-        private System.Windows.Forms.ColumnHeader columnSurfHab;
-        private System.Windows.Forms.ColumnHeader columnNbPieces;
-        private System.Windows.Forms.ColumnHeader columnGarage;
-        private System.Windows.Forms.ColumnHeader columnCave;
-        private System.Windows.Forms.Label labelBiens_correspondants;
+        private System.Windows.Forms.CheckBox checkBoxCave;
+        private System.Windows.Forms.CheckBox checkBoxGarage;
     }
 }

@@ -48,23 +48,29 @@
             this.label11 = new System.Windows.Forms.Label();
             this.labelCommercial = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonSupprimer = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button4_biensVente = new System.Windows.Forms.Button();
+            this.button5_bienVisités = new System.Windows.Forms.Button();
+            this.button6_ficheSouhaits = new System.Windows.Forms.Button();
             this.ajouterBien = new System.Windows.Forms.Button();
             this.créerFicheSouhaits = new System.Windows.Forms.Button();
             this.éditerInfos = new System.Windows.Forms.Button();
-            this.créer = new System.Windows.Forms.Button();
             this.checkBox_Vendeur = new System.Windows.Forms.CheckBox();
             this.checkBox_Acheteur = new System.Windows.Forms.CheckBox();
-            this.listBoxCommerciaux = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox1_villes = new System.Windows.Forms.ComboBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.column1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.comboBoxCommerciaux = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
+            this.buttonBienProposes = new System.Windows.Forms.Button();
+            this.buttonAccepterVisite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -235,22 +241,15 @@
             this.label13.TabIndex = 38;
             this.label13.Text = "BIENS ET SOUHAITS";
             // 
-            // button3
+            // buttonSupprimer
             // 
-            this.button3.Location = new System.Drawing.Point(565, 57);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Supprimer";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(19, 446);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(432, 160);
-            this.listBox1.TabIndex = 40;
+            this.buttonSupprimer.Location = new System.Drawing.Point(565, 57);
+            this.buttonSupprimer.Name = "buttonSupprimer";
+            this.buttonSupprimer.Size = new System.Drawing.Size(75, 23);
+            this.buttonSupprimer.TabIndex = 39;
+            this.buttonSupprimer.Text = "Supprimer";
+            this.buttonSupprimer.UseVisualStyleBackColor = true;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // imageList1
             // 
@@ -258,32 +257,35 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // button4
+            // button4_biensVente
             // 
-            this.button4.Location = new System.Drawing.Point(19, 417);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(149, 23);
-            this.button4.TabIndex = 41;
-            this.button4.Text = "Biens à vendre";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4_biensVente.Location = new System.Drawing.Point(19, 417);
+            this.button4_biensVente.Name = "button4_biensVente";
+            this.button4_biensVente.Size = new System.Drawing.Size(106, 23);
+            this.button4_biensVente.TabIndex = 41;
+            this.button4_biensVente.Text = "Biens à vendre";
+            this.button4_biensVente.UseVisualStyleBackColor = true;
+            this.button4_biensVente.Click += new System.EventHandler(this.button4_biensVente_Click);
             // 
-            // button5
+            // button5_bienVisités
             // 
-            this.button5.Location = new System.Drawing.Point(169, 417);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(137, 23);
-            this.button5.TabIndex = 42;
-            this.button5.Text = "Biens visités";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5_bienVisités.Location = new System.Drawing.Point(235, 417);
+            this.button5_bienVisités.Name = "button5_bienVisités";
+            this.button5_bienVisités.Size = new System.Drawing.Size(110, 23);
+            this.button5_bienVisités.TabIndex = 42;
+            this.button5_bienVisités.Text = "Biens visités";
+            this.button5_bienVisités.UseVisualStyleBackColor = true;
+            this.button5_bienVisités.Click += new System.EventHandler(this.button5_bienVisités_Click);
             // 
-            // button6
+            // button6_ficheSouhaits
             // 
-            this.button6.Location = new System.Drawing.Point(306, 417);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(145, 23);
-            this.button6.TabIndex = 43;
-            this.button6.Text = "Fiches de souhaits";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6_ficheSouhaits.Location = new System.Drawing.Point(342, 417);
+            this.button6_ficheSouhaits.Name = "button6_ficheSouhaits";
+            this.button6_ficheSouhaits.Size = new System.Drawing.Size(132, 23);
+            this.button6_ficheSouhaits.TabIndex = 43;
+            this.button6_ficheSouhaits.Text = "Fiches de souhaits";
+            this.button6_ficheSouhaits.UseVisualStyleBackColor = true;
+            this.button6_ficheSouhaits.Click += new System.EventHandler(this.button6_ficheSouhaits_Click);
             // 
             // ajouterBien
             // 
@@ -315,16 +317,6 @@
             this.éditerInfos.UseVisualStyleBackColor = true;
             this.éditerInfos.Click += new System.EventHandler(this.éditerInfos_Click);
             // 
-            // créer
-            // 
-            this.créer.Location = new System.Drawing.Point(565, 583);
-            this.créer.Name = "créer";
-            this.créer.Size = new System.Drawing.Size(164, 23);
-            this.créer.TabIndex = 48;
-            this.créer.Text = "Créer / Modifier";
-            this.créer.UseVisualStyleBackColor = true;
-            this.créer.Click += new System.EventHandler(this.créer_Click);
-            // 
             // checkBox_Vendeur
             // 
             this.checkBox_Vendeur.AutoSize = true;
@@ -347,31 +339,6 @@
             this.checkBox_Acheteur.UseVisualStyleBackColor = true;
             this.checkBox_Acheteur.CheckedChanged += new System.EventHandler(this.checkBox_Acheteur_CheckedChanged);
             // 
-            // listBoxCommerciaux
-            // 
-            this.listBoxCommerciaux.FormattingEnabled = true;
-            this.listBoxCommerciaux.Location = new System.Drawing.Point(520, 127);
-            this.listBoxCommerciaux.Name = "listBoxCommerciaux";
-            this.listBoxCommerciaux.Size = new System.Drawing.Size(209, 173);
-            this.listBoxCommerciaux.TabIndex = 53;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 257);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 13);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "Date";
-            // 
-            // dateTimePicker1_créationClient
-            // 
-            this.dateTimePicker1_créationClient.Location = new System.Drawing.Point(59, 251);
-            this.dateTimePicker1_créationClient.Name = "dateTimePicker1_créationClient";
-            this.dateTimePicker1_créationClient.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1_créationClient.TabIndex = 55;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -391,27 +358,115 @@
             this.comboBox1_villes.Size = new System.Drawing.Size(162, 21);
             this.comboBox1_villes.TabIndex = 57;
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.column1,
+            this.column2,
+            this.column3,
+            this.column4,
+            this.column5});
+            this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(19, 455);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(455, 180);
+            this.listView1.TabIndex = 58;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
+            // 
+            // column1
+            // 
+            this.column1.Text = "Prix du bien";
+            this.column1.Width = 90;
+            // 
+            // column2
+            // 
+            this.column2.Text = "Surface";
+            this.column2.Width = 90;
+            // 
+            // column3
+            // 
+            this.column3.Width = 90;
+            // 
+            // column4
+            // 
+            this.column4.Width = 90;
+            // 
+            // column5
+            // 
+            this.column5.Width = 90;
+            // 
+            // comboBoxCommerciaux
+            // 
+            this.comboBoxCommerciaux.FormattingEnabled = true;
+            this.comboBoxCommerciaux.Location = new System.Drawing.Point(565, 125);
+            this.comboBoxCommerciaux.Name = "comboBoxCommerciaux";
+            this.comboBoxCommerciaux.Size = new System.Drawing.Size(115, 21);
+            this.comboBoxCommerciaux.TabIndex = 59;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(16, 257);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Date";
+            // 
+            // dateTimePicker1_créationClient
+            // 
+            this.dateTimePicker1_créationClient.Location = new System.Drawing.Point(59, 251);
+            this.dateTimePicker1_créationClient.Name = "dateTimePicker1_créationClient";
+            this.dateTimePicker1_créationClient.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1_créationClient.TabIndex = 55;
+            // 
+            // buttonBienProposes
+            // 
+            this.buttonBienProposes.Location = new System.Drawing.Point(125, 417);
+            this.buttonBienProposes.Name = "buttonBienProposes";
+            this.buttonBienProposes.Size = new System.Drawing.Size(114, 23);
+            this.buttonBienProposes.TabIndex = 60;
+            this.buttonBienProposes.Text = "Biens proposés";
+            this.buttonBienProposes.UseVisualStyleBackColor = true;
+            this.buttonBienProposes.Click += new System.EventHandler(this.buttonBienProposes_Click);
+            // 
+            // buttonAccepterVisite
+            // 
+            this.buttonAccepterVisite.Location = new System.Drawing.Point(565, 561);
+            this.buttonAccepterVisite.Name = "buttonAccepterVisite";
+            this.buttonAccepterVisite.Size = new System.Drawing.Size(164, 23);
+            this.buttonAccepterVisite.TabIndex = 61;
+            this.buttonAccepterVisite.Text = "Accepter la visite";
+            this.buttonAccepterVisite.UseVisualStyleBackColor = true;
+            this.buttonAccepterVisite.Visible = false;
+            this.buttonAccepterVisite.Click += new System.EventHandler(this.buttonAccepterVisite_Click);
+            // 
             // AjoutClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 659);
+            this.Controls.Add(this.buttonAccepterVisite);
+            this.Controls.Add(this.buttonBienProposes);
+            this.Controls.Add(this.comboBoxCommerciaux);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.comboBox1_villes);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.dateTimePicker1_créationClient);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.listBoxCommerciaux);
             this.Controls.Add(this.checkBox_Acheteur);
             this.Controls.Add(this.checkBox_Vendeur);
-            this.Controls.Add(this.créer);
             this.Controls.Add(this.éditerInfos);
             this.Controls.Add(this.créerFicheSouhaits);
             this.Controls.Add(this.ajouterBien);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button6_ficheSouhaits);
+            this.Controls.Add(this.button5_bienVisités);
+            this.Controls.Add(this.button4_biensVente);
+            this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.labelCommercial);
             this.Controls.Add(this.label11);
@@ -460,22 +515,28 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label labelCommercial;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button4_biensVente;
+        private System.Windows.Forms.Button button5_bienVisités;
+        private System.Windows.Forms.Button button6_ficheSouhaits;
         private System.Windows.Forms.Button ajouterBien;
         private System.Windows.Forms.Button créerFicheSouhaits;
         private System.Windows.Forms.Button éditerInfos;
-        private System.Windows.Forms.Button créer;
         private System.Windows.Forms.CheckBox checkBox_Vendeur;
         private System.Windows.Forms.CheckBox checkBox_Acheteur;
-        private System.Windows.Forms.ListBox listBoxCommerciaux;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1_villes;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader column1;
+        private System.Windows.Forms.ColumnHeader column2;
+        private System.Windows.Forms.ColumnHeader column3;
+        private System.Windows.Forms.ColumnHeader column4;
+        private System.Windows.Forms.ColumnHeader column5;
+        private System.Windows.Forms.ComboBox comboBoxCommerciaux;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
+        private System.Windows.Forms.Button buttonBienProposes;
+        private System.Windows.Forms.Button buttonAccepterVisite;
     }
 }
