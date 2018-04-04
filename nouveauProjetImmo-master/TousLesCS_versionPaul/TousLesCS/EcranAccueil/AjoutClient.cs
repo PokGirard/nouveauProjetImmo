@@ -564,7 +564,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne/*, false*/);
+                maFenetreBien = new AjoutBien(bien_selectionne);
                 maFenetreBien.Show();
                 return;
             }
@@ -577,7 +577,7 @@ namespace EcranAccueil
                                          where b.IDBIEN == id_selec
                                          select b).FirstOrDefault();
 
-                maFenetreBien = new AjoutBien(bien_selectionne/*, false*/);
+                maFenetreBien = new AjoutBien(bien_selectionne);
                 maFenetreBien.Show();
                 return;
             }
@@ -735,6 +735,7 @@ namespace EcranAccueil
                     {
                         Accueil.modeleBase.SaveChanges();
                         MessageBox.Show("Suppression effectuée.");
+                        this.Close();
                     }
                     catch (Exception e125)
                     {

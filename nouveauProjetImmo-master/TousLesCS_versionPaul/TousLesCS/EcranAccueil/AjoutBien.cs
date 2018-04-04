@@ -54,7 +54,7 @@ namespace EcranAccueil
             this.mobileVendeur.Text = monVendeur.TÉLÉPHONE_MOBILE.ToString();
             this.emailVendeur.Text = monVendeur.EMAIL;
 
-            
+
         }
 
         public AjoutBien(BIEN bien_en_cours)
@@ -69,35 +69,8 @@ namespace EcranAccueil
 
             this.bien_en_cours = bien_en_cours;
 
-            this.comboBox1_status.Text = bien_en_cours.STATUT.Replace(" ", string.Empty);
-            this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
-            this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
-            this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
-            this.villeVendeur.Text = bien_en_cours.VENDEUR.VILLE.NOM_VILLE;
-            this.codePostalVendeur.Text = bien_en_cours.VENDEUR.VILLE.CODE_POSTAL.ToString();
-            this.fixeVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_FIXE.ToString();
-            this.mobileVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_MOBILE.ToString();
-            this.emailVendeur.Text = bien_en_cours.VENDEUR.EMAIL;
+            actualisationBien();
 
-            this.numericUpDown1_surfHab.Value = bien_en_cours.SURFACE_HABITABLE;
-            this.numericUpDown2_surfParc.Value = bien_en_cours.SURFACE_PARCELLE;
-            this.numericUpDown3_nbPieces.Value = bien_en_cours.NB_PIÈCES;
-            this.numericUpDown4_nbChambres.Value = bien_en_cours.NB_CHAMBRES;
-            this.numericUpDown5_nbSdb.Value = bien_en_cours.NB_SALLEDEBAIN;
-
-            if (bien_en_cours.GARAGE)
-                this.checkBox1_garage.Checked = true;
-            if (bien_en_cours.CAVE)
-                this.checkBox2_cave.Checked = true;
-            this.numericUpDown6_prix.Value = bien_en_cours.PRIX_SOUHAITÉ;
-            this.textBox9_adresse.Text = bien_en_cours.ADRESSE_BIEN;
-            this.textBox10_codePostal.Text = bien_en_cours.CODE_POSTAL.ToString();
-            var ville = (from v in Accueil.modeleBase.VILLE
-                         where v.IDVILLE == bien_en_cours.IDVILLE
-                         select v.NOM_VILLE).FirstOrDefault();
-            this.textBox11_ville.Text = ville;
-            this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
-            this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
 
             existeDeja = true;
         }
@@ -118,8 +91,10 @@ namespace EcranAccueil
             checkBox2_cave.Enabled = estModifiable;
             comboBox1_status.Enabled = estModifiable;
             dateTimePicker1_miseEnVente.Enabled = estModifiable;
+            //on peut supprimer et imprimer par contre
+            button2_imprimerFiche.Enabled = !estModifiable;
+            button3_supprimer.Enabled = !estModifiable;
 
-            
         }
         private void blocageBoxVendeur(bool estModifiable)
         {
@@ -138,7 +113,7 @@ namespace EcranAccueil
             {
                 blocageBoxBien(false);
                 button1_ajouterBien.Text = "MODIFIER LE BIEN";
-                button5_annuler.Text = "ANNULER";
+                button5_annuler.Text = "RETOUR MENU";
             }
             else this.Close();
         }
@@ -156,8 +131,9 @@ namespace EcranAccueil
         {
             if (bien_en_cours == null && verifier_champs() && !existeDeja)
             {
-                creation_nouveau_bien();
+                modification_ou_creation_bien();
                 button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                blocageBoxBien(false);
             }
             else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
             {
@@ -167,15 +143,18 @@ namespace EcranAccueil
             }
             else
             {
-                blocageBoxBien(false);
-                button1_ajouterBien.Text = "MODIFIER LE BIEN";
-                button5_annuler.Text = "ANNULER";
+
                 try
                 {
+                    modification_ou_creation_bien();
                     Accueil.modeleBase.SaveChanges();
+                    blocageBoxBien(false);
+                    button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                    button5_annuler.Text = "RETOUR MENU";
+                    actualisationBien();
                     MessageBox.Show("Modifications sauvegardées");
                 }
-                catch(Exception e1)
+                catch (Exception e1)
                 {
                     MessageBox.Show("Echec de la sauvegarde");
                 }
@@ -266,44 +245,115 @@ namespace EcranAccueil
             return valide;
         }
 
-        private void creation_nouveau_bien()
+        private void modification_ou_creation_bien()
         {
-            BIEN nouveauBien = new BIEN();
-
-            var idville = (from v in Accueil.modeleBase.VILLE
-                           where v.NOM_VILLE == textBox11_ville.Text
-                           select v.IDVILLE);
-            nouveauBien.IDVILLE = idville.First();
-
-            var idvendeur = (from ve in Accueil.modeleBase.VENDEUR
-                             where ve.EMAIL == emailVendeur.Text
-                             select ve.IDVENDEUR).FirstOrDefault();
-
-            nouveauBien.IDVENDEUR = idvendeur;
-
-            nouveauBien.SURFACE_HABITABLE = (int)numericUpDown1_surfHab.Value;
-            nouveauBien.SURFACE_PARCELLE = (int)numericUpDown2_surfParc.Value;
-            nouveauBien.NB_PIÈCES = (int)numericUpDown3_nbPieces.Value;
-            nouveauBien.NB_CHAMBRES = (int)numericUpDown4_nbChambres.Value;
-            nouveauBien.NB_SALLEDEBAIN = (int)numericUpDown5_nbSdb.Value;
-            nouveauBien.PRIX_SOUHAITÉ = (int)numericUpDown6_prix.Value;
-            nouveauBien.ADRESSE_BIEN = textBox9_adresse.Text;
-            nouveauBien.ZONE_DE_SAISIE = textBox12_commentaires.Text;
-            nouveauBien.CODE_POSTAL = Int32.Parse(textBox10_codePostal.Text);
-            nouveauBien.DATE_MISEENVENTE = dateTimePicker1_miseEnVente.Value;
-            nouveauBien.STATUT = comboBox1_status.Text;
-            nouveauBien.NB_VISITES = 0;
-
-            if (checkBox1_garage.Checked)
+            BIEN bien_en_modification;
+            if (!existeDeja)
             {
-                nouveauBien.GARAGE = true;
+                bien_en_modification = new BIEN();
+
+                var idville = (from v in Accueil.modeleBase.VILLE
+                               where v.NOM_VILLE == textBox11_ville.Text
+                               select v.IDVILLE);
+                bien_en_modification.IDVILLE = idville.First();
+
+                var idvendeur = (from ve in Accueil.modeleBase.VENDEUR
+                                 where ve.EMAIL == emailVendeur.Text
+                                 select ve.IDVENDEUR).FirstOrDefault();
+
+                bien_en_modification.IDVENDEUR = idvendeur;
             }
-            if (checkBox2_cave.Checked)
+            else
             {
-                nouveauBien.CAVE = true;
+                bien_en_modification = bien_en_cours;
             }
-            Accueil.modeleBase.BIEN.Add(nouveauBien);
+            bien_en_modification.SURFACE_HABITABLE = (int)numericUpDown1_surfHab.Value;
+            bien_en_modification.SURFACE_PARCELLE = (int)numericUpDown2_surfParc.Value;
+            bien_en_modification.NB_PIÈCES = (int)numericUpDown3_nbPieces.Value;
+            bien_en_modification.NB_CHAMBRES = (int)numericUpDown4_nbChambres.Value;
+            bien_en_modification.NB_SALLEDEBAIN = (int)numericUpDown5_nbSdb.Value;
+            bien_en_modification.PRIX_SOUHAITÉ = (int)numericUpDown6_prix.Value;
+            bien_en_modification.ADRESSE_BIEN = textBox9_adresse.Text;
+            bien_en_modification.ZONE_DE_SAISIE = textBox12_commentaires.Text;
+            bien_en_modification.CODE_POSTAL = Int32.Parse(textBox10_codePostal.Text);
+            bien_en_modification.DATE_MISEENVENTE = dateTimePicker1_miseEnVente.Value;
+            bien_en_modification.STATUT = comboBox1_status.Text;
+            
+
+            if (checkBox1_garage.Checked) bien_en_modification.GARAGE = true;  
+            else bien_en_modification.GARAGE = false;
+
+            if (checkBox2_cave.Checked) bien_en_modification.CAVE = true;
+            else bien_en_modification.CAVE = false;
+
+            if (!existeDeja)
+            {
+                Accueil.modeleBase.BIEN.Add(bien_en_modification);
+                bien_en_modification.NB_VISITES = 0;
+            }
+                Accueil.modeleBase.SaveChanges();
+        }
+
+        private void button3_supprimer_Click(object sender, EventArgs e)
+        {
+            bien_en_cours.STATUT = "RETIRE";
             Accueil.modeleBase.SaveChanges();
+            actualisationBien();
+
+        }
+
+        private void actualisationBien()
+        {
+            this.comboBox1_status.Text = bien_en_cours.STATUT.Replace(" ", string.Empty);
+            if (comboBox1_status.Text.Equals("RETIRE"))
+            {
+                button1_ajouterBien.Enabled = false;
+            }
+            this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
+            this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
+            this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
+            this.villeVendeur.Text = bien_en_cours.VENDEUR.VILLE.NOM_VILLE;
+            this.codePostalVendeur.Text = bien_en_cours.VENDEUR.VILLE.CODE_POSTAL.ToString();
+            this.fixeVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_FIXE.ToString();
+            this.mobileVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_MOBILE.ToString();
+            this.emailVendeur.Text = bien_en_cours.VENDEUR.EMAIL;
+
+            this.numericUpDown1_surfHab.Value = bien_en_cours.SURFACE_HABITABLE;
+            this.numericUpDown2_surfParc.Value = bien_en_cours.SURFACE_PARCELLE;
+            this.numericUpDown3_nbPieces.Value = bien_en_cours.NB_PIÈCES;
+            this.numericUpDown4_nbChambres.Value = bien_en_cours.NB_CHAMBRES;
+            this.numericUpDown5_nbSdb.Value = bien_en_cours.NB_SALLEDEBAIN;
+
+            if (bien_en_cours.GARAGE)
+                this.checkBox1_garage.Checked = true;
+            if (bien_en_cours.CAVE)
+                this.checkBox2_cave.Checked = true;
+            this.numericUpDown6_prix.Value = bien_en_cours.PRIX_SOUHAITÉ;
+            this.textBox9_adresse.Text = bien_en_cours.ADRESSE_BIEN;
+            this.textBox10_codePostal.Text = bien_en_cours.CODE_POSTAL.ToString();
+            var ville = (from v in Accueil.modeleBase.VILLE
+                         where v.IDVILLE == bien_en_cours.IDVILLE
+                         select v.NOM_VILLE).FirstOrDefault();
+            this.textBox11_ville.Text = ville;
+            this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
+            this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
+        }
+
+        Bitmap bmp;
+
+        private void button2_imprimerFiche_Click(object sender, EventArgs e)
+        {
+
+            Graphics g = this.CreateGraphics();
+            bmp = new Bitmap(this.Size.Width, this.Size.Height, g);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
         }
     }
 }
