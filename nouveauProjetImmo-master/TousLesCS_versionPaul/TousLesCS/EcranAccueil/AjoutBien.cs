@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace EcranAccueil
 {
 
-    //RESTE A REMETTRE LES INFORMATIONS D ORIGINES LORSQUE L ON ANNULE LES MODIFICATIONS EN COURS
+    //RESTE A FAIRE UNE BELLE IMPRESSION
     public partial class AjoutBien : Form
     {
 
@@ -114,6 +114,7 @@ namespace EcranAccueil
                 blocageBoxBien(false);
                 button1_ajouterBien.Text = "MODIFIER LE BIEN";
                 button5_annuler.Text = "RETOUR MENU";
+                actualisationBien();
             }
             else this.Close();
         }

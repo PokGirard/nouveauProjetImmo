@@ -30,6 +30,7 @@ namespace EcranAccueil
             BIENS_A_VENDRE, BIENS_PROPOSES, BIENS_VISITES, FICHE_DE_SOUHAITS
         }
 
+        #region constructeurs
         public AjoutClient()
         {
 
@@ -38,7 +39,7 @@ namespace EcranAccueil
             chargerComboboxCommerciaux();
 
         }
-
+      
         public AjoutClient(ACHETEUR monAcheteur)
         {
             this.MON_ACHETEUR = monAcheteur;
@@ -54,21 +55,6 @@ namespace EcranAccueil
             this.email.Text = monAcheteur.EMAIL;
 
             chargerComboboxCommerciaux();
-
-        }
-
-        private void chargerComboboxCommerciaux()
-        {
-
-            var commerciaux = (from c in Accueil.modeleBase.COMMERCIAL
-                               select c).ToList();
-
-            foreach (COMMERCIAL c in commerciaux)
-            {
-                comboBoxCommerciaux.Items.Add(c.NOM_COMMERCIAL);
-            }
-
-
         }
 
         public AjoutClient(VENDEUR vendeur_en_cours_fc)
@@ -86,10 +72,24 @@ namespace EcranAccueil
             this.email.Text = vendeur_en_cours_fc.EMAIL;
 
             chargerComboboxCommerciaux();
+        }
+
+        #endregion constructeurs
+
+        private void chargerComboboxCommerciaux()
+        {
+
+            var commerciaux = (from c in Accueil.modeleBase.COMMERCIAL
+                               where c.STATUT_COMMERCIAL == "ACTIF"
+                               select c).ToList();
+
+            foreach (COMMERCIAL c in commerciaux)
+            {
+                comboBoxCommerciaux.Items.Add(c.NOM_COMMERCIAL);
+            }
 
 
         }
-
 
         private void créer_Click(object sender, EventArgs e)
         {
@@ -156,17 +156,17 @@ namespace EcranAccueil
         {
             if (checkBox_Acheteur.Checked)
             {
-                ajouterBien.Visible = false;
-                créerFicheSouhaits.Visible = true;
+                ajouterBien.Enabled = false;
+                créerFicheSouhaits.Enabled = true;
                 checkBox_Vendeur.Checked = false;
-                labelCommercial.Visible = true;
-                comboBoxCommerciaux.Visible = true;
-                button5_bienVisités.Visible = true;
-                button6_ficheSouhaits.Visible = true;
-                button4_biensVente.Visible = false;
+                labelCommercial.Enabled = true;
+                comboBoxCommerciaux.Enabled = true;
+                button5_bienVisités.Enabled = true;
+                button6_ficheSouhaits.Enabled = true;
+                button4_biensVente.Enabled = false;
 
                 /*   comboBoxCommerciaux.Items.Clear();
-                   var nomCommerciaux = (from c in Accueil.Enfin.COMMERCIAL
+                   var nomCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
                                          select c.NOM_COMMERCIAL);
                    foreach (string nom in nomCommerciaux)
                    {
@@ -180,14 +180,14 @@ namespace EcranAccueil
         {
             if (checkBox_Vendeur.Checked)
             {
-                ajouterBien.Visible = true;
-                créerFicheSouhaits.Visible = false;
-                button4_biensVente.Visible = true;
+                ajouterBien.Enabled = true;
+                créerFicheSouhaits.Enabled = false;
+                button4_biensVente.Enabled = true;
                 checkBox_Acheteur.Checked = false;
-                labelCommercial.Visible = false;
-                button5_bienVisités.Visible = false;
-                button6_ficheSouhaits.Visible = false;
-                comboBoxCommerciaux.Visible = false;
+                labelCommercial.Enabled = false;
+                button5_bienVisités.Enabled = false;
+                button6_ficheSouhaits.Enabled = false;
+                comboBoxCommerciaux.Enabled = false;
                 Refresh();
             }
         }
@@ -515,7 +515,7 @@ namespace EcranAccueil
         private void button4_biensVente_Click(object sender, EventArgs e)
         {
             monChoixAffichage = ChoixAffichage.BIENS_A_VENDRE;
-            buttonAccepterVisite.Visible = false;
+            buttonAccepterVisite.Enabled = false;
 
             if (MON_VENDEUR != null)
             {
@@ -552,7 +552,6 @@ namespace EcranAccueil
 
             }
         }
-
 
         private void listView1_Click(object sender, EventArgs e)
         {
@@ -603,7 +602,7 @@ namespace EcranAccueil
         private void button6_ficheSouhaits_Click(object sender, EventArgs e)
         {
             monChoixAffichage = ChoixAffichage.FICHE_DE_SOUHAITS;
-            buttonAccepterVisite.Visible = false;
+            buttonAccepterVisite.Enabled = false;
 
             if (MON_ACHETEUR != null)
             {
@@ -637,7 +636,7 @@ namespace EcranAccueil
         private void button5_bienVisités_Click(object sender, EventArgs e)
         {
             monChoixAffichage = ChoixAffichage.BIENS_VISITES;
-            buttonAccepterVisite.Visible = false;
+            buttonAccepterVisite.Enabled = false;
 
             var id_fiche = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                             where f.IDACHETEUR == MON_ACHETEUR.IDACHETEUR
@@ -683,10 +682,6 @@ namespace EcranAccueil
 
             }
         }
-
-
-
-
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
@@ -756,7 +751,7 @@ namespace EcranAccueil
         {
 
             monChoixAffichage = ChoixAffichage.BIENS_PROPOSES;
-            buttonAccepterVisite.Visible = true;
+            buttonAccepterVisite.Enabled = true;
 
             if (MON_ACHETEUR != null)
             {

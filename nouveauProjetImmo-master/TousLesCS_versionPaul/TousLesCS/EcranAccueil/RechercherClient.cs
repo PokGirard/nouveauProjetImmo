@@ -57,7 +57,7 @@ namespace EcranAccueil
 
         public void recherche_acheteurs()
         {
-            Requete_acheteurs();
+            Requetes_tout_acheteurs();
 
             if (acheteurs.Count != 0)
 
@@ -67,6 +67,36 @@ namespace EcranAccueil
 
         }
 
+        public void recherche_acheteurs_actifs()
+        {
+            var idAcheteurs = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                               where f.STATUT == "EN COURS"
+                               select f.IDACHETEUR).Distinct().ToList();
+
+            if (idAcheteurs.Count != 0)
+            {
+
+                for (int i = 0; i < idAcheteurs.Count; i++)
+                {
+                    int t = idAcheteurs[i];
+
+                    ACHETEUR a = (from a1 in Accueil.modeleBase.ACHETEUR
+                                  where a1.IDACHETEUR == t
+                                  select a1).FirstOrDefault();
+                    afficher_resultats_acheteurs(a, i);
+
+                }
+            }
+
+        }
+
+        private void afficher_resultats_acheteurs(ACHETEUR a, int i)
+        {
+            listView_resultat.Items.Add(a.IDACHETEUR.ToString()).SubItems.Add(a.NOM_ACHETEUR);
+            listView_resultat.Items[i].SubItems.Add(a.PRENOM_ACHETEUR);
+            listView_resultat.Items[i].SubItems.Add(a.EMAIL);
+        }
+
         private void afficher_resultats_acheteurs(int i)
         {
             listView_resultat.Items.Add(acheteurs[i].IDACHETEUR.ToString()).SubItems.Add(acheteurs[i].NOM_ACHETEUR);
@@ -74,7 +104,7 @@ namespace EcranAccueil
             listView_resultat.Items[i].SubItems.Add(acheteurs[i].EMAIL);
         }
 
-        private void Requete_acheteurs()
+        private void Requetes_tout_acheteurs()
         {
             acheteurs = (from a in Accueil.modeleBase.ACHETEUR
                          where (textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text) : true) &&
@@ -118,13 +148,36 @@ namespace EcranAccueil
                             (textBoxVille.Text != "" ? v.IDVILLE == (from v2 in Accueil.modeleBase.VILLE
                                                                      where v2.NOM_VILLE.Equals(textBoxVille.Text)
                                                                      select v2.IDVILLE).FirstOrDefault() : true)
-   && (v.DATE_CREATION <= dateTimeAjout.Value)
+    && (v.DATE_CREATION <= dateTimeAjout.Value)
                         select v).ToList();
         }
 
         private void buttonLancerRecherche_Click(object sender, EventArgs e)
         {
-            fonction_recherche();
+
+            if (typeClientChoisi == TypeClient.ACHETEUR)
+            {
+
+                if (checkBox1_toutesFiches.Checked)
+                {
+                    fonction_recherche();
+                }
+
+                else
+                {
+                    recherche_acheteurs_actifs();
+                }
+
+            }
+            else
+            {
+                fonction_recherche();
+            }
+
+
+
+
+
         }
 
         private void buttonModifierClient_Click(object sender, EventArgs e)

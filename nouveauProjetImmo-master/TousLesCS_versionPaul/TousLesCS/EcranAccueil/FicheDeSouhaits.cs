@@ -17,6 +17,7 @@ namespace EcranAccueil
         BIEN bien_en_cours;
         List<VILLE> villes_selectionnees = new List<VILLE>();
         VILLE ville_en_cours;
+        string statut_fiche;
 
         PropositionVisite fenetreProposition;
 
@@ -31,6 +32,7 @@ namespace EcranAccueil
             ChargerListe_Villes_selectionnees();
             Charger_Liste_Commerciaux();
             Preremplir_champs_client();
+            statut_fiche = "EN COURS";
         }
         public FicheDeSouhaits(ACHETEUR acheteur_de_reference)
         {
@@ -39,6 +41,7 @@ namespace EcranAccueil
             Charger_Liste_Villes();
             Charger_Liste_Commerciaux();
             Preremplir_champs_client();
+            statut_fiche = "EN COURS";
         }
 
         private void Preremplir_champs_client()
@@ -66,6 +69,7 @@ namespace EcranAccueil
             Charger_Liste_Commerciaux();
             Preremplir_champs_client();
             Preremplir_champs_fiche();
+            statut_fiche = fiche_de_reference.STATUT;
 
         }
 
@@ -208,14 +212,14 @@ namespace EcranAccueil
 
         private void buttonStatut_En_Cours_Click(object sender, EventArgs e)
         {
-
+            statut_fiche = "EN COURS";
             graphisme_statut_en_cours();
             Refresh();
         }
 
         private void buttonStatut_Obsolete_Click(object sender, EventArgs e)
         {
-
+            statut_fiche = "OBSOLETE";
             graphisme_statut_obsolete();
             Refresh();
         }
@@ -334,6 +338,11 @@ namespace EcranAccueil
 
                     fiche_de_reference.SURFACE_PARCELLE = (int)numericSurfParcelle.Value;
 
+                if (statut_fiche != fiche_de_reference.STATUT)
+                {
+                    fiche_de_reference.STATUT = statut_fiche;
+                }
+
                 Accueil.modeleBase.SaveChanges();
             }
             catch (Exception e4)
@@ -369,13 +378,13 @@ namespace EcranAccueil
             bien_en_cours = (from b in Accueil.modeleBase.BIEN
                              where b.IDBIEN == sel
                              select b).FirstOrDefault();
-                   
+
             fenetreProposition = new PropositionVisite(fiche_de_reference, bien_en_cours, acheteur_de_reference.COMMERCIAL);
 
             fenetreProposition.Show();
         }
 
-      
+
 
         private void button_recherche_biens_Click(object sender, EventArgs e)
         {

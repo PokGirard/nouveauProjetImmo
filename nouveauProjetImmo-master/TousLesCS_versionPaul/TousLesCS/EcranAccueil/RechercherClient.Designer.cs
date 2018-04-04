@@ -54,6 +54,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonLancerRecherche = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
+            this.checkBox1_toutesFiches = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxNom
@@ -288,11 +289,22 @@
             this.buttonModifierClient.UseVisualStyleBackColor = true;
             this.buttonModifierClient.Click += new System.EventHandler(this.buttonModifierClient_Click);
             // 
+            // checkBox1_toutesFiches
+            // 
+            this.checkBox1_toutesFiches.AutoSize = true;
+            this.checkBox1_toutesFiches.Location = new System.Drawing.Point(498, 60);
+            this.checkBox1_toutesFiches.Name = "checkBox1_toutesFiches";
+            this.checkBox1_toutesFiches.Size = new System.Drawing.Size(116, 17);
+            this.checkBox1_toutesFiches.TabIndex = 23;
+            this.checkBox1_toutesFiches.Text = "Tous les acheteurs";
+            this.checkBox1_toutesFiches.UseVisualStyleBackColor = true;
+            // 
             // RechercherClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 452);
+            this.Controls.Add(this.checkBox1_toutesFiches);
             this.Controls.Add(this.buttonModifierClient);
             this.Controls.Add(this.buttonLancerRecherche);
             this.Controls.Add(this.listView_resultat);
@@ -351,5 +363,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button buttonLancerRecherche;
         private System.Windows.Forms.Button buttonModifierClient;
+        private System.Windows.Forms.CheckBox checkBox1_toutesFiches;
     }
 }
