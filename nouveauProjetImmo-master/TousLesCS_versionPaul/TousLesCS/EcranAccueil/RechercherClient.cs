@@ -12,7 +12,7 @@ namespace EcranAccueil
 {
     public partial class RechercherClient : Form
     {
-        //BUG EN CLIQUANT SUR LES ACHETEURS !!!
+        //DOIT CLEAR LES LISTES DE RESULTATS LOSQUE L ON CLIQUE SUR RECHERCHER A NOUVEAU (SINON RESULTATS EN DOUBLON, TRIPLE, ETC...)
 
         static AjoutClient fenetreModificationClient;
 

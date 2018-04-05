@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RDV_Visite));
             this.buttonAnnuler = new System.Windows.Forms.Button();
             this.buttonCréer = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -44,25 +45,29 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.labelCommercial = new System.Windows.Forms.Label();
             this.LabelTitre = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.SuspendLayout();
             // 
             // buttonAnnuler
             // 
-            this.buttonAnnuler.Location = new System.Drawing.Point(201, 350);
+            this.buttonAnnuler.Location = new System.Drawing.Point(227, 350);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(75, 23);
             this.buttonAnnuler.TabIndex = 36;
             this.buttonAnnuler.Text = "Annuler";
             this.buttonAnnuler.UseVisualStyleBackColor = true;
+            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click_1);
             // 
             // buttonCréer
             // 
-            this.buttonCréer.Location = new System.Drawing.Point(62, 350);
+            this.buttonCréer.Location = new System.Drawing.Point(86, 350);
             this.buttonCréer.Name = "buttonCréer";
             this.buttonCréer.Size = new System.Drawing.Size(75, 23);
             this.buttonCréer.TabIndex = 35;
             this.buttonCréer.Text = "Créer";
             this.buttonCréer.UseVisualStyleBackColor = true;
+            this.buttonCréer.Click += new System.EventHandler(this.buttonCréer_Click_1);
             // 
             // dateTimePicker1
             // 
@@ -85,7 +90,7 @@
             this.textBoxAdresse.Location = new System.Drawing.Point(140, 241);
             this.textBoxAdresse.Name = "textBoxAdresse";
             this.textBoxAdresse.ReadOnly = true;
-            this.textBoxAdresse.Size = new System.Drawing.Size(200, 20);
+            this.textBoxAdresse.Size = new System.Drawing.Size(233, 20);
             this.textBoxAdresse.TabIndex = 32;
             // 
             // labelPrenomClient
@@ -111,7 +116,7 @@
             this.textBoxNomClient.Location = new System.Drawing.Point(140, 135);
             this.textBoxNomClient.Name = "textBoxNomClient";
             this.textBoxNomClient.ReadOnly = true;
-            this.textBoxNomClient.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNomClient.Size = new System.Drawing.Size(136, 20);
             this.textBoxNomClient.TabIndex = 29;
             // 
             // textBoxDesignation
@@ -119,7 +124,7 @@
             this.textBoxDesignation.Location = new System.Drawing.Point(140, 204);
             this.textBoxDesignation.Name = "textBoxDesignation";
             this.textBoxDesignation.ReadOnly = true;
-            this.textBoxDesignation.Size = new System.Drawing.Size(200, 20);
+            this.textBoxDesignation.Size = new System.Drawing.Size(233, 20);
             this.textBoxDesignation.TabIndex = 28;
             // 
             // textBoxPrenomClient
@@ -127,7 +132,7 @@
             this.textBoxPrenomClient.Location = new System.Drawing.Point(140, 165);
             this.textBoxPrenomClient.Name = "textBoxPrenomClient";
             this.textBoxPrenomClient.ReadOnly = true;
-            this.textBoxPrenomClient.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPrenomClient.Size = new System.Drawing.Size(136, 20);
             this.textBoxPrenomClient.TabIndex = 27;
             // 
             // textBoxCommercial
@@ -135,7 +140,7 @@
             this.textBoxCommercial.Location = new System.Drawing.Point(140, 72);
             this.textBoxCommercial.Name = "textBoxCommercial";
             this.textBoxCommercial.ReadOnly = true;
-            this.textBoxCommercial.Size = new System.Drawing.Size(200, 20);
+            this.textBoxCommercial.Size = new System.Drawing.Size(136, 20);
             this.textBoxCommercial.TabIndex = 26;
             // 
             // labelDate
@@ -182,17 +187,32 @@
             // 
             this.LabelTitre.AutoSize = true;
             this.LabelTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelTitre.Location = new System.Drawing.Point(10, 24);
+            this.LabelTitre.Location = new System.Drawing.Point(104, 9);
             this.LabelTitre.Name = "LabelTitre";
-            this.LabelTitre.Size = new System.Drawing.Size(266, 13);
+            this.LabelTitre.Size = new System.Drawing.Size(185, 13);
             this.LabelTitre.TabIndex = 21;
-            this.LabelTitre.Text = "CREATION D\'UNE PROPOSITION DE VISITE";
+            this.LabelTitre.Text = "CREATION DU RENDEZ-VOUS";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // RDV_Visite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 402);
+            this.ClientSize = new System.Drawing.Size(385, 402);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonCréer);
             this.Controls.Add(this.dateTimePicker1);
@@ -210,6 +230,7 @@
             this.Controls.Add(this.labelCommercial);
             this.Controls.Add(this.LabelTitre);
             this.Name = "RDV_Visite";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RDV_Visite";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,5 +255,7 @@
         private System.Windows.Forms.Label labelClient;
         private System.Windows.Forms.Label labelCommercial;
         private System.Windows.Forms.Label LabelTitre;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

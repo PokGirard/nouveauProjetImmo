@@ -411,7 +411,6 @@
             this.buttonAccepterVisite.TabIndex = 61;
             this.buttonAccepterVisite.Text = "Accepter la visite";
             this.buttonAccepterVisite.UseVisualStyleBackColor = true;
-            this.buttonAccepterVisite.Visible = false;
             this.buttonAccepterVisite.Click += new System.EventHandler(this.buttonAccepterVisite_Click);
             // 
             // AjoutClient

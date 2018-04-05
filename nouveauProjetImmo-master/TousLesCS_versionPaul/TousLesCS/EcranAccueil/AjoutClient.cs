@@ -863,20 +863,7 @@ namespace EcranAccueil
 
             maFenetreRDV = new RDV_Visite(proposition_retenue);
 
-
-
-            RDV rdv = new RDV
-            {
-                IDVISITE = proposition_retenue.IDVISITE
-            };
-
-            Accueil.modeleBase.RDV.Add(rdv);
-            Accueil.modeleBase.SaveChanges();
-
             maFenetreRDV.Show();
-
-
-
 
         }
     }

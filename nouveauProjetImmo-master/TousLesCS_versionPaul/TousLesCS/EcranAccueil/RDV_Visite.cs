@@ -13,7 +13,13 @@ namespace EcranAccueil
     public partial class RDV_Visite : Form
     {
 
-        public PROPOSITION_VISITE PROPOSITION_SELECTIONNEE { get; set; }
+        public PROPOSITION_VISITE proposition_selectionnee { get; set; }
+        public BIEN bien_en_cours { get; set; }
+
+        public COMMERCIAL commercial_fenetre_proposition { get; set; }
+
+        public FICHE_DE_SOUHAITS fiche_en_cours { get; set; }
+        public ACHETEUR acheteur_en_cours { get; set; }
         public RDV_Visite()
         {
             InitializeComponent();
@@ -21,31 +27,18 @@ namespace EcranAccueil
 
         public RDV_Visite(PROPOSITION_VISITE proposition_en_cours)
         {
-           /* this.PROPOSITION_SELECTIONNEE = proposition_en_cours;
-            this.bien_en_cours = bien_en_cours;
-            commercial_fenetre_proposition = proposition_en_cours.;
+            proposition_selectionnee = proposition_en_cours;
+            bien_en_cours = proposition_selectionnee.BIEN;
+            acheteur_en_cours = proposition_selectionnee.FICHE_DE_SOUHAITS.ACHETEUR;
+            commercial_fenetre_proposition = proposition_selectionnee.FICHE_DE_SOUHAITS.ACHETEUR.COMMERCIAL;
             InitializeComponent();
             Initialisation_des_champs();
-            InitializeComponent();*/
         }
-
-        #region proprietes
-
-        public BIEN bien_en_cours { get; set; }
-
-        public COMMERCIAL commercial_fenetre_proposition { get; set; }
-
-        public FICHE_DE_SOUHAITS fiche_en_cours { get; set; }
-
-
-        #endregion
-
-    
 
         private void Initialisation_des_champs()
         {
-            textBoxNomClient.Text = fiche_en_cours.ACHETEUR.NOM_ACHETEUR;
-            textBoxPrenomClient.Text = fiche_en_cours.ACHETEUR.PRENOM_ACHETEUR;
+            textBoxNomClient.Text = acheteur_en_cours.NOM_ACHETEUR;
+            textBoxPrenomClient.Text = acheteur_en_cours.PRENOM_ACHETEUR;
             textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE + " ) ";
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
             commercial_fenetre_proposition.NOM_COMMERCIAL = commercial_fenetre_proposition.NOM_COMMERCIAL.Replace(" ", string.Empty);
@@ -88,6 +81,40 @@ namespace EcranAccueil
 
         }
 
+        private void buttonAnnuler_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void buttonCréer_Click_1(object sender, EventArgs e)
+        {
+
+            RDV rdv = new RDV
+            {
+                IDVISITE = proposition_selectionnee.IDVISITE
+                
+            };
+
+            Accueil.modeleBase.RDV.Add(rdv);
+            Accueil.modeleBase.SaveChanges();
+
+            imprimerFiche(sender, e);
+        }
+
+        Bitmap bmp;
+
+        private void imprimerFiche(object sender, EventArgs e)
+        {
+            Graphics g = this.CreateGraphics();
+            bmp = new Bitmap(this.Size.Width, this.Size.Height, g);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
     }
 }
