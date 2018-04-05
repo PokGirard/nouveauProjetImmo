@@ -15,170 +15,236 @@ namespace EcranAccueil
     public partial class VueCommerciaux : Form
     {
 
-        string inactifs = "INACTIF";
-        string actifs = "ACTIF";
-        string status = "ACTIF";
-        
+
         public VueCommerciaux()
         {
             InitializeComponent();
+            charger_listView_commerciaux();
 
-
-            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
-                                         select x);
-            foreach (COMMERCIAL c in ca)
-            {
-                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
-
-                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
-                lvi.SubItems.Add(c.EMAIL);
-                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
-                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
-                listView1.Items.Add(lvi);
-            }
-
-            
         }
-
-
-
-
 
 
         private void supprimerCommercial_Click(object sender, EventArgs e)
         {
-            COMMERCIAL c = (from x in Accueil.modeleBase.COMMERCIAL
-                            where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                            select x).First();
-            Accueil.modeleBase.COMMERCIAL.Remove(c);
-            Accueil.modeleBase.SaveChanges();
-            effacer();
+            var id_selec = listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty);
+
+            short id = short.Parse(id_selec);
+
+            COMMERCIAL commercial_a_supprimer = (from c in Accueil.modeleBase.COMMERCIAL
+                                                 where c.IDCOMMERCIAL == id
+                                                 select c).FirstOrDefault();
+
+            try
+            {
+
+                Accueil.modeleBase.COMMERCIAL.Remove(commercial_a_supprimer);
+                Accueil.modeleBase.SaveChanges();
+                MessageBox.Show("Le commmercial a bien été supprimé de la base de données");
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message + " -- erreur lors de la suppression.");
+            }
+            effacer_champs();
+
+            charger_listView_commerciaux();
         }
 
         private void ajoutCommercial_Click(object sender, EventArgs e)
         {
-            sauvegarde();
+            if (listView1.SelectedItems.Count != 0)
+                modifier_commercial();
+            else
+                ajouter_commercial();
+
+
+            charger_listView_commerciaux();
 
         }
 
-        private void nom_TextChanged(object sender, EventArgs e)
+
+        private void ajouter_commercial()
         {
 
-            IQueryable<COMMERCIAL> c = (from x in Accueil.modeleBase.COMMERCIAL
-                                        where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                        select x);
-            if (c.Count() == 0)
+            if (!verifier_champs()) return;
+
+            if (present_dans_base())
             {
-                actif.Checked = true;
-                actif.Enabled = false;
-                inactif.Checked = false;
-                inactif.Enabled = false;
-            }
-            else
-            {
-                actif.Enabled = true;
-                inactif.Enabled = true;
+                MessageBox.Show("Le commercial est déjà présent dans la base");
+                return;
+
             }
 
+            COMMERCIAL commercial = new COMMERCIAL();
+            commercial.NOM_COMMERCIAL = nom.Text.Replace(" ", string.Empty);
+            commercial.PRENOM_COMMERCIAL = prenom.Text.Replace(" ", string.Empty);
+            commercial.EMAIL = email.Text.Replace(" ", string.Empty);
+            commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.Replace(" ", string.Empty));
+            commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.Replace(" ", string.Empty));
+            commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.Replace(" ", string.Empty));
+            commercial.EMAIL = email.Text.Replace(" ", string.Empty);
+            commercial.STATUT_COMMERCIAL = "ACTIF";
+
+            try
+            {
+
+                Accueil.modeleBase.COMMERCIAL.Add(commercial);
+                Accueil.modeleBase.SaveChanges();
+
+                MessageBox.Show(" Le commercial a bien été ajouté dans la base");
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(" Erreur lors de l'ajout : -- " + e1.Message);
+            }
         }
-        
+
+        private bool present_dans_base()
+        {
+
+            COMMERCIAL commercial_deja_present = (from v in Accueil.modeleBase.COMMERCIAL
+                                                  where v.NOM_COMMERCIAL.Replace(" ", string.Empty) == nom.Text.Replace(" ", string.Empty) &&
+                                                     v.PRENOM_COMMERCIAL.Replace(" ", string.Empty) == prenom.Text.Replace(" ", string.Empty) &&
+                                                    v.EMAIL.Replace(" ", string.Empty) == email.Text.Replace(" ", string.Empty) &&
+                                                    v.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty) == fixePro.Text.Replace(" ", string.Empty) &&
+                                                           v.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty) == portablePro.Text.Replace(" ", string.Empty) &&
+                                                          v.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty) == fixePro.Text.Replace(" ", string.Empty)
+                                                  select v).FirstOrDefault();
+
+            if (commercial_deja_present != null) return true;
+            return false;
+        }
+
+        private void modifier_commercial()
+        {
+
+
+            if (!verifier_champs()) return;
+
+
+            try
+            {
+                short id = short.Parse(listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty));
+
+                COMMERCIAL co = (from c in Accueil.modeleBase.COMMERCIAL
+                                 where c.IDCOMMERCIAL == id
+                                 select c).FirstOrDefault();
+
+                if (nom.Text.ToString().Replace(" ", string.Empty) != co.NOM_COMMERCIAL.Replace(" ", string.Empty))
+                {
+                    co.NOM_COMMERCIAL = nom.Text.ToString();
+                }
+
+                if (prenom.Text.ToString().Replace(" ", string.Empty) != co.PRENOM_COMMERCIAL.Replace(" ", string.Empty))
+                {
+                    co.PRENOM_COMMERCIAL = prenom.Text.ToString();
+                }
+
+                if (email.Text.ToString().Replace(" ", string.Empty) != co.EMAIL.Replace(" ", string.Empty))
+                {
+                    co.EMAIL = email.Text.ToString();
+                }
+
+                if (telPerso.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_PERSONNEL.ToString().Replace(" ", string.Empty))
+                {
+                    co.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.ToString().Replace(" ", string.Empty));
+                }
+
+                if (portablePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty))
+                {
+                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().Replace(" ", string.Empty));
+                }
+
+
+                if (fixePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty))
+                {
+                    co.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.ToString().Replace(" ", string.Empty));
+                }
+
+                if (portablePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty))
+                {
+                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().Replace(" ", string.Empty));
+                }
+
+
+                if (inactif.Checked && co.STATUT_COMMERCIAL.ToString().Replace(" ", string.Empty) == "ACTIF")
+                {
+                    co.STATUT_COMMERCIAL = "INACTIF";
+                }
+
+                if (actif.Checked && co.STATUT_COMMERCIAL.ToString().Replace(" ", string.Empty) == "INACTIF")
+                {
+                    co.STATUT_COMMERCIAL = "ACTIF";
+                }
+
+
+                Accueil.modeleBase.SaveChanges();
+                MessageBox.Show(" Le commercial a bien été modifié.");
+
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(" Erreur lors de la modification. -- " + e1.Message);
+            }
+        }
 
         private void clear_Click(object sender, EventArgs e)
         {
 
-            effacer();
+            effacer_champs();
 
-            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
-                                         select x);
-            foreach (COMMERCIAL c in ca)
-            {
-                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
 
-                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
-                lvi.SubItems.Add(c.EMAIL);
-                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
-                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
-                listView1.Items.Add(lvi);
-            }
         }
 
-
-        private void actif_CheckedChanged(object sender, EventArgs e)
+        void effacer_champs()
         {
-            CheckBox chk = (CheckBox)sender;
-            if (chk.Checked)
-            {
-                status = "ACTIF";
-                inactif.Checked = false;
-
-            }
-
-        }
-
-        private void inactif_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = (CheckBox)sender;
-            if (chk.Checked)
-            {
-                status = "INACTIF";
-                actif.Checked = false;
-
-            }
-
-
-        }
-        void effacer() {
             nom.Text = "";
             prenom.Text = "";
             email.Text = "";
             portablePro.Text = "";
             fixePro.Text = "";
-            telephonePerso.Text = "";
+            telPerso.Text = "";
             email.Text = "";
-            listView2.Items.Clear();
 
         }
 
         private void actifView_Click(object sender, EventArgs e)
         {
 
-            effacer();
+            effacer_champs();
             listView1.Items.Clear();
-           // listView1.Clear();
+
 
             IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
-                                        where x.STATUT_COMMERCIAL == "ACTIF"
-                                        select x);
-           foreach (COMMERCIAL c in commercial)
+                                                 where x.STATUT_COMMERCIAL == "ACTIF"
+                                                 select x);
+            foreach (COMMERCIAL c in commercial)
             {
 
-                    ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
 
-                    lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
-                    lvi.SubItems.Add(c.EMAIL);
-                    lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
-                    lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
-                    lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
-                    lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                lvi.SubItems.Add(c.IDCOMMERCIAL.ToString());
 
-                    listView1.Items.Add(lvi);
-    
+                listView1.Items.Add(lvi);
+
             }
 
         }
 
         private void inactifView_Click(object sender, EventArgs e)
         {
-            effacer();
+            effacer_champs();
             listView1.Items.Clear();
 
             IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
-                                        where x.STATUT_COMMERCIAL == "INACTIF"
-                                        select x);
+                                                 where x.STATUT_COMMERCIAL == "INACTIF"
+                                                 select x);
 
             foreach (COMMERCIAL c in commercial)
             {
@@ -190,6 +256,7 @@ namespace EcranAccueil
                 lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
                 lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
                 lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                lvi.SubItems.Add(c.IDCOMMERCIAL.ToString());
                 listView1.Items.Add(lvi);
             }
 
@@ -197,332 +264,172 @@ namespace EcranAccueil
 
         private void tousView_Click(object sender, EventArgs e)
         {
-            effacer();
+            effacer_champs();
             listView1.Items.Clear();
-   
-            IQueryable<COMMERCIAL> commercial = (from x in Accueil.modeleBase.COMMERCIAL
-                                        select x);
-
-            foreach (COMMERCIAL c in commercial)
-            {
-
-                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
-                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
-                lvi.SubItems.Add(c.EMAIL);
-                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
-                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
-                listView1.Items.Add(lvi);
-            }
+            charger_listView_commerciaux();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button_quitter_Click(object sender, EventArgs e)
         {
-            sauvegarde();
-            Accueil accueil = new Accueil();
-            accueil.Show();
-            this.Hide();
-
-
+            Close();
         }
-        private void VueCommerciaux_FormClosing(object sender, FormClosingEventArgs e)
-        {
+      
 
 
-
-            DialogResult result;
-
-            if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
-            {
-                result = MessageBox.Show("sauvegarder", "quitter", MessageBoxButtons.YesNo);
-                if (result == System.Windows.Forms.DialogResult.Yes)
-                    sauvegarde();
-
-                nom.Text = ""; prenom.Text = ""; email.Text = ""; portablePro.Text = ""; fixePro.Text = ""; telephonePerso.Text = ""; email.Text = "";
-                this.Close();
-
-
-            }
-
-        }
         private bool verifier_champs()
         {
             bool valide = true;
+            string message_erreur = "Commande impossible  \nVeuillez renseigner les champs vides \n";
 
-            string message_erreur = "Recherche impossible  \nVeuillez renseigner les champs vides \n";
+            if (nom.Text == "" || prenom.Text == "" || email.Text == "" || portablePro.Text == "" || fixePro.Text == "" || telPerso.Text == "" || email.Text == "")
+                valide = false;
 
-            // switch()
-            if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
-            {
-
-                if (nom.Text == "" || prenom.Text == "" || email.Text == "" || portablePro.Text == "" || fixePro.Text == "" || telephonePerso.Text == "" || email.Text == "")
-                {
-                    // message_erreur += " --> Budget à définir \n";
-                    valide = false;
-                }
-         /*   if( prenom.Text == "")
-                {
-                     message_erreur += " --> prenom \n";
-                    valide = false;
-                }
-                */
-            }
-
-            /*      if (villes_selectionnees.Count() == 0)
-                  {
-                      message_erreur += " --> Aucune ville n'est sélectionnée.";
-                      valide = false;
-                  }
-
-          */
             if (!valide)
-            {
                 MessageBox.Show(message_erreur);
 
-            }
-            
             return valide;
-
-
         }
 
-        private void sauvegarde()
-        {
-            if (!verifier_champs()) return;
-
-            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
-                                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                         select x);
-
-            if (ca.Count() == 0)
-            {
-                actif.Checked = true;
-                actif.Enabled = false;
-                inactif.Checked = false;
-                inactif.Enabled = false;
-                status = "ACTIF";
-                COMMERCIAL commercial = new COMMERCIAL();
-                commercial.NOM_COMMERCIAL = nom.Text;
-                commercial.PRENOM_COMMERCIAL = prenom.Text;
-                commercial.EMAIL = email.Text;
-                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-                commercial.EMAIL = email.Text;
-                commercial.STATUT_COMMERCIAL = status;
-
-                Accueil.modeleBase.COMMERCIAL.Add(commercial);
-                Accueil.modeleBase.SaveChanges();
-            }
-            else
-            {
-                COMMERCIAL c = (from x in Accueil.modeleBase.COMMERCIAL
-                                where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                select x).First();
-                actif.Enabled = true;
-                inactif.Enabled = true;
-                status = c.STATUT_COMMERCIAL;
 
 
-                COMMERCIAL commercial = new COMMERCIAL();
-
-                commercial.NOM_COMMERCIAL = nom.Text;
-                commercial.PRENOM_COMMERCIAL = prenom.Text;
-                commercial.EMAIL = email.Text;
-                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-                commercial.EMAIL = email.Text;
-                commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
-
-
-                foreach (ACHETEUR r in c.ACHETEUR)
-                {
-                    commercial.ACHETEUR.Add(r);
-                }
-
-                commercial.STATUT_COMMERCIAL = status;
-                Accueil.modeleBase.COMMERCIAL.Add(commercial);
-                Accueil.modeleBase.COMMERCIAL.Remove(c);
-                Accueil.modeleBase.SaveChanges();
-            }
-            nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listView2.Items.Clear();
-            IQueryable<COMMERCIAL> commercials = (from x in Accueil.modeleBase.COMMERCIAL
-                                                 select x);
-
-            foreach (COMMERCIAL c in commercials)
-            {
-
-                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
-                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
-                lvi.SubItems.Add(c.EMAIL);
-                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
-                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
-                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
-                listView1.Items.Add(lvi);
-            }
-        }
 
         private void rechercherCommercial_Click_1(object sender, EventArgs e)
         {
             listView1.Items.Clear();
 
-            IQueryable<COMMERCIAL> c = (from v in Accueil.modeleBase.COMMERCIAL
-                                            where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
-                                            (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
-                                              (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
-                                            (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text) : true) &&
-                                                  (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text) : true)
+            IQueryable<COMMERCIAL> liste_commerciaux = (from v in Accueil.modeleBase.COMMERCIAL
+                                                        where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text.Replace(" ", string.Empty)) : true) &&
+                                                        (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text.Replace(" ", string.Empty)) : true) &&
+                                                          (email.Text != "" ? v.EMAIL.StartsWith(email.Text.Replace(" ", string.Empty)) : true) &&
+                                                        (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text.Replace(" ", string.Empty)) : true) &&
+                                                              (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text.Replace(" ", string.Empty)) : true)
+                                                        select v);
 
-                                            select v);
-                foreach (COMMERCIAL commercial in c)
-                {
+            foreach (COMMERCIAL c in liste_commerciaux)
+            {
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
 
-                      nom.Text = commercial.NOM_COMMERCIAL;
-                     prenom.Text = commercial.PRENOM_COMMERCIAL;
-                    email.Text= commercial.EMAIL;
-                    portablePro.Text = commercial.TÉLÉPHONE_MOBILE_PRO.ToString();
-                    fixePro.Text = commercial.TÉLÉPHONE_FIXE_PRO.ToString() ;
-                     telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
-                    
-                    if (actif.Checked == true)
-                    {
-                        commercial.STATUT_COMMERCIAL= actifs;
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                lvi.SubItems.Add(c.IDCOMMERCIAL.ToString());
 
-                    }
-                    else if (actif.Checked == true)
-                    {
-                        commercial.STATUT_COMMERCIAL = inactifs;
-
-                    }
-
-                    listView1.Items.Clear();
-                    ListViewItem lvi = new ListViewItem(commercial.NOM_COMMERCIAL);
-
-                    lvi.SubItems.Add(commercial.PRENOM_COMMERCIAL);
-                    lvi.SubItems.Add(commercial.EMAIL);
-                    lvi.SubItems.Add(commercial.TÉLÉPHONE_MOBILE_PRO.ToString());
-                    lvi.SubItems.Add(commercial.TÉLÉPHONE_FIXE_PRO.ToString());
-                    lvi.SubItems.Add(commercial.TÉLÉPHONE_PERSONNEL.ToString());
-                    lvi.SubItems.Add(commercial.STATUT_COMMERCIAL);
-
-                    listView1.Items.Add(lvi);
-
-                }
-
-            
+                listView1.Items.Add(lvi);
+            }
         }
 
-    
+
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-             ACHETEUR acheteur=new ACHETEUR();
-
-            for (int i = 1; i < listView2.SelectedItems.Count; i++)
+            if (listView2.SelectedItems.Count > 0)
             {
-                int phone = Int32.Parse(listView2.SelectedItems[i].SubItems[3].Text);
-                int postal = Int32.Parse(listView2.SelectedItems[i].SubItems[5].Text);
-                string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString(),
-                   mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
-                   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString(),date = listView2.SelectedItems[i].SubItems[7].Text.ToString();
-                
-                acheteur = (from v in Accueil.modeleBase.ACHETEUR
-                            where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
-                               (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
-                               (v.TÉLÉPHONE.Equals(phone)) &&
-                               (v.EMAIL.StartsWith(mail)) &&
-                               (v.ADRESSE.StartsWith(adresse)) &&
-                               (v.VILLE.CODE_POSTAL.Equals(postal)) &&
-                               (v.VILLE.NOM_VILLE.StartsWith(ville))&&
-                               (v.DATE_CREATION.ToString().StartsWith(date))
 
-                               )
+                string a1 = listView2.SelectedItems[0].SubItems[6].Text;
 
-                            select v).First();
+                int id = int.Parse(a1);
 
+                ACHETEUR acheteur = (from a in Accueil.modeleBase.ACHETEUR
+                                     where a.IDACHETEUR == id
+                                     select a).FirstOrDefault();
+
+                AjoutClient ajoutClient = new AjoutClient(acheteur);
+                ajoutClient.Show();
+                Close();
             }
-            
-
-          //  AjoutClient ajoutClient = new AjoutClient();
-                 AjoutClient ajoutClient = new AjoutClient(acheteur);
-
-                ajoutClient.Show() ;
-                this.Hide();
-
-            
         }
 
-        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+
+
+
+
+
+
+        private void charger_listView_commerciaux()
+        {
+
+            listView1.Items.Clear();
+
+            IQueryable<COMMERCIAL> ca = (from x in Accueil.modeleBase.COMMERCIAL
+                                         select x);
+            foreach (COMMERCIAL c in ca)
+            {
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                lvi.SubItems.Add(c.IDCOMMERCIAL.ToString());
+                listView1.Items.Add(lvi);
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listView2.Items.Clear();
-            if (listView1.SelectedItems != null)
+            if (listView1.SelectedItems.Count > 0)
             {
+                remplir_champs_selection();
 
 
-                for (int i = 0; i < listView1.SelectedItems.Count; i++)
+                string string_id = listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty);
+
+                int id = int.Parse(string_id);
+
+                COMMERCIAL c = (from c1 in Accueil.modeleBase.COMMERCIAL
+                                where c1.IDCOMMERCIAL == id
+                                select c1).FirstOrDefault();
+
+
+                foreach (ACHETEUR a in c.ACHETEUR)
                 {
-                    nom.Text = listView1.SelectedItems[i].SubItems[0].Text.ToString();
-                    prenom.Text = listView1.SelectedItems[i].SubItems[1].Text.ToString();
-                    email.Text = listView1.SelectedItems[i].SubItems[2].Text.ToString();
-                    portablePro.Text = listView1.SelectedItems[i].SubItems[3].Text.ToString();
-                    fixePro.Text = listView1.SelectedItems[i].SubItems[4].Text.ToString();
-                    telephonePerso.Text = listView1.SelectedItems[i].SubItems[5].Text.ToString();
-                    status = listView1.SelectedItems[i].SubItems[6].Text.ToString();
 
-                    if (String.Compare(status.ToUpper(), inactifs.ToUpper()) == 1)
-                    {
-                        actif.Checked = false;
-                        inactif.Checked = true;
+                    ListViewItem lvi = new ListViewItem(a.NOM_ACHETEUR);
 
-                    }
-                    else if (String.Compare(status.ToUpper(), actifs.ToUpper()) == 1)
-                    {
-                        actif.Checked = true;
-                        inactif.Checked = false;
-                    }
-                    
-                    COMMERCIAL commercial = (from v in Accueil.modeleBase.COMMERCIAL
-                                             where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
-                                             (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
-                                               (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
-                                             (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text) : true) &&
-                                                   (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text) : true)
-                                            
-                                             select v).First();
-                    foreach (ACHETEUR acheteur in commercial.ACHETEUR)
-                    {
-
-                        ListViewItem lvi = new ListViewItem(acheteur.NOM_ACHETEUR);
-
-                        lvi.SubItems.Add(acheteur.PRENOM_ACHETEUR);
-                        lvi.SubItems.Add(acheteur.EMAIL);
-                        lvi.SubItems.Add(acheteur.TÉLÉPHONE.ToString());
-
-                        lvi.SubItems.Add(acheteur.ADRESSE);
-
-                        lvi.SubItems.Add(acheteur.CODE_POSTAL.ToString());
-                        lvi.SubItems.Add(acheteur .VILLE.ToString());
-                        lvi.SubItems.Add(acheteur.DATE_CREATION.ToString());
-
-                     //   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString(),date = listView2.SelectedItems[i].SubItems[7].Text.ToString();
-
-                        listView2.Items.Add(lvi);
-                    }
+                    lvi.SubItems.Add(a.PRENOM_ACHETEUR);
+                    lvi.SubItems.Add(a.EMAIL);
+                    lvi.SubItems.Add(a.TÉLÉPHONE.ToString());
+                    lvi.SubItems.Add(a.ADRESSE);
+                    lvi.SubItems.Add(a.CODE_POSTAL.ToString());
+                    lvi.SubItems.Add(a.IDACHETEUR.ToString());
+                    listView2.Items.Add(lvi);
                 }
             }
+        }
 
+        private void remplir_champs_selection()
+        {
+            nom.Text = listView1.SelectedItems[0].SubItems[0].Text;
+            prenom.Text = listView1.SelectedItems[0].SubItems[1].Text;
+            email.Text = listView1.SelectedItems[0].SubItems[2].Text;
+            portablePro.Text = listView1.SelectedItems[0].SubItems[3].Text;
+            fixePro.Text = listView1.SelectedItems[0].SubItems[4].Text;
+            telPerso.Text = listView1.SelectedItems[0].SubItems[5].Text;
+            string statut = listView1.SelectedItems[0].SubItems[6].Text;
+
+            statut = statut.Replace(" ", string.Empty);
+
+            if (statut == "ACTIF")
+            {
+
+                actif.Checked = true;
+                inactif.Checked = false;
+
+            }
+            else
+            {
+                inactif.Checked = true;
+                actif.Checked = false;
             }
         }
     }
+}
+
 
 
