@@ -82,6 +82,8 @@
             this.titreFenetreAjoutBien = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).BeginInit();
@@ -93,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(591, 321);
+            this.label1.Location = new System.Drawing.Point(600, 335);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
@@ -106,7 +108,7 @@
             "DISPONIBLE",
             "RESERVE",
             "VENDU"});
-            this.comboBox1_status.Location = new System.Drawing.Point(595, 337);
+            this.comboBox1_status.Location = new System.Drawing.Point(604, 351);
             this.comboBox1_status.Name = "comboBox1_status";
             this.comboBox1_status.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_status.TabIndex = 1;
@@ -122,7 +124,7 @@
             // 
             // nomClient
             // 
-            this.nomClient.Location = new System.Drawing.Point(90, 122);
+            this.nomClient.Location = new System.Drawing.Point(101, 122);
             this.nomClient.Name = "nomClient";
             this.nomClient.Size = new System.Drawing.Size(137, 20);
             this.nomClient.TabIndex = 3;
@@ -150,7 +152,7 @@
             // 
             // prénomVendeur
             // 
-            this.prénomVendeur.Location = new System.Drawing.Point(312, 122);
+            this.prénomVendeur.Location = new System.Drawing.Point(293, 122);
             this.prénomVendeur.Name = "prénomVendeur";
             this.prénomVendeur.Size = new System.Drawing.Size(162, 20);
             this.prénomVendeur.TabIndex = 6;
@@ -167,9 +169,9 @@
             // 
             // adresseVendeur
             // 
-            this.adresseVendeur.Location = new System.Drawing.Point(90, 156);
+            this.adresseVendeur.Location = new System.Drawing.Point(101, 156);
             this.adresseVendeur.Name = "adresseVendeur";
-            this.adresseVendeur.Size = new System.Drawing.Size(384, 20);
+            this.adresseVendeur.Size = new System.Drawing.Size(354, 20);
             this.adresseVendeur.TabIndex = 8;
             // 
             // label6
@@ -184,7 +186,7 @@
             // 
             // codePostalVendeur
             // 
-            this.codePostalVendeur.Location = new System.Drawing.Point(90, 193);
+            this.codePostalVendeur.Location = new System.Drawing.Point(101, 193);
             this.codePostalVendeur.Name = "codePostalVendeur";
             this.codePostalVendeur.Size = new System.Drawing.Size(118, 20);
             this.codePostalVendeur.TabIndex = 10;
@@ -203,7 +205,7 @@
             // 
             this.villeVendeur.Location = new System.Drawing.Point(293, 193);
             this.villeVendeur.Name = "villeVendeur";
-            this.villeVendeur.Size = new System.Drawing.Size(166, 20);
+            this.villeVendeur.Size = new System.Drawing.Size(162, 20);
             this.villeVendeur.TabIndex = 12;
             // 
             // label8
@@ -252,15 +254,15 @@
             // 
             // emailVendeur
             // 
-            this.emailVendeur.Location = new System.Drawing.Point(90, 233);
+            this.emailVendeur.Location = new System.Drawing.Point(101, 233);
             this.emailVendeur.Name = "emailVendeur";
-            this.emailVendeur.Size = new System.Drawing.Size(384, 20);
+            this.emailVendeur.Size = new System.Drawing.Size(354, 20);
             this.emailVendeur.TabIndex = 18;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 300);
+            this.label11.Location = new System.Drawing.Point(26, 314);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 19;
@@ -270,7 +272,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(19, 329);
+            this.label12.Location = new System.Drawing.Point(28, 343);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 13);
             this.label12.TabIndex = 20;
@@ -278,7 +280,7 @@
             // 
             // numericUpDown1_surfHab
             // 
-            this.numericUpDown1_surfHab.Location = new System.Drawing.Point(129, 322);
+            this.numericUpDown1_surfHab.Location = new System.Drawing.Point(138, 336);
             this.numericUpDown1_surfHab.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -292,7 +294,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(19, 365);
+            this.label13.Location = new System.Drawing.Point(28, 379);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 13);
             this.label13.TabIndex = 22;
@@ -300,7 +302,7 @@
             // 
             // numericUpDown2_surfParc
             // 
-            this.numericUpDown2_surfParc.Location = new System.Drawing.Point(129, 358);
+            this.numericUpDown2_surfParc.Location = new System.Drawing.Point(138, 372);
             this.numericUpDown2_surfParc.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -314,7 +316,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(19, 403);
+            this.label14.Location = new System.Drawing.Point(28, 417);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 24;
@@ -322,7 +324,7 @@
             // 
             // numericUpDown3_nbPieces
             // 
-            this.numericUpDown3_nbPieces.Location = new System.Drawing.Point(129, 396);
+            this.numericUpDown3_nbPieces.Location = new System.Drawing.Point(138, 410);
             this.numericUpDown3_nbPieces.Maximum = new decimal(new int[] {
             200,
             0,
@@ -336,7 +338,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(21, 444);
+            this.label15.Location = new System.Drawing.Point(30, 458);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 26;
@@ -344,7 +346,7 @@
             // 
             // numericUpDown4_nbChambres
             // 
-            this.numericUpDown4_nbChambres.Location = new System.Drawing.Point(129, 437);
+            this.numericUpDown4_nbChambres.Location = new System.Drawing.Point(138, 451);
             this.numericUpDown4_nbChambres.Maximum = new decimal(new int[] {
             200,
             0,
@@ -358,7 +360,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(21, 481);
+            this.label16.Location = new System.Drawing.Point(30, 495);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(73, 13);
             this.label16.TabIndex = 28;
@@ -366,7 +368,7 @@
             // 
             // numericUpDown5_nbSdb
             // 
-            this.numericUpDown5_nbSdb.Location = new System.Drawing.Point(129, 474);
+            this.numericUpDown5_nbSdb.Location = new System.Drawing.Point(138, 488);
             this.numericUpDown5_nbSdb.Maximum = new decimal(new int[] {
             200,
             0,
@@ -380,7 +382,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(281, 360);
+            this.label17.Location = new System.Drawing.Point(290, 374);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 30;
@@ -388,7 +390,7 @@
             // 
             // numericUpDown6_prix
             // 
-            this.numericUpDown6_prix.Location = new System.Drawing.Point(374, 353);
+            this.numericUpDown6_prix.Location = new System.Drawing.Point(383, 367);
             this.numericUpDown6_prix.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -402,7 +404,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(281, 396);
+            this.label18.Location = new System.Drawing.Point(290, 410);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(45, 13);
             this.label18.TabIndex = 32;
@@ -410,7 +412,7 @@
             // 
             // textBox9_adresse
             // 
-            this.textBox9_adresse.Location = new System.Drawing.Point(374, 389);
+            this.textBox9_adresse.Location = new System.Drawing.Point(383, 403);
             this.textBox9_adresse.Name = "textBox9_adresse";
             this.textBox9_adresse.Size = new System.Drawing.Size(372, 20);
             this.textBox9_adresse.TabIndex = 33;
@@ -419,7 +421,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(281, 434);
+            this.label19.Location = new System.Drawing.Point(290, 448);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(64, 13);
             this.label19.TabIndex = 34;
@@ -427,7 +429,7 @@
             // 
             // textBox10_codePostal
             // 
-            this.textBox10_codePostal.Location = new System.Drawing.Point(374, 432);
+            this.textBox10_codePostal.Location = new System.Drawing.Point(383, 446);
             this.textBox10_codePostal.Name = "textBox10_codePostal";
             this.textBox10_codePostal.Size = new System.Drawing.Size(100, 20);
             this.textBox10_codePostal.TabIndex = 35;
@@ -436,7 +438,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(528, 435);
+            this.label20.Location = new System.Drawing.Point(537, 449);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(26, 13);
             this.label20.TabIndex = 36;
@@ -444,7 +446,7 @@
             // 
             // textBox11_ville
             // 
-            this.textBox11_ville.Location = new System.Drawing.Point(580, 432);
+            this.textBox11_ville.Location = new System.Drawing.Point(589, 446);
             this.textBox11_ville.Name = "textBox11_ville";
             this.textBox11_ville.Size = new System.Drawing.Size(166, 20);
             this.textBox11_ville.TabIndex = 37;
@@ -453,7 +455,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(281, 475);
+            this.label21.Location = new System.Drawing.Point(290, 489);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(114, 13);
             this.label21.TabIndex = 38;
@@ -461,7 +463,7 @@
             // 
             // dateTimePicker1_miseEnVente
             // 
-            this.dateTimePicker1_miseEnVente.Location = new System.Drawing.Point(412, 469);
+            this.dateTimePicker1_miseEnVente.Location = new System.Drawing.Point(421, 483);
             this.dateTimePicker1_miseEnVente.Name = "dateTimePicker1_miseEnVente";
             this.dateTimePicker1_miseEnVente.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1_miseEnVente.TabIndex = 39;
@@ -529,7 +531,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(281, 321);
+            this.label24.Location = new System.Drawing.Point(290, 335);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(42, 13);
             this.label24.TabIndex = 49;
@@ -539,7 +541,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(406, 322);
+            this.label25.Location = new System.Drawing.Point(415, 336);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(32, 13);
             this.label25.TabIndex = 50;
@@ -548,7 +550,7 @@
             // checkBox1_garage
             // 
             this.checkBox1_garage.AutoSize = true;
-            this.checkBox1_garage.Location = new System.Drawing.Point(335, 321);
+            this.checkBox1_garage.Location = new System.Drawing.Point(344, 335);
             this.checkBox1_garage.Name = "checkBox1_garage";
             this.checkBox1_garage.Size = new System.Drawing.Size(15, 14);
             this.checkBox1_garage.TabIndex = 51;
@@ -557,7 +559,7 @@
             // checkBox2_cave
             // 
             this.checkBox2_cave.AutoSize = true;
-            this.checkBox2_cave.Location = new System.Drawing.Point(444, 321);
+            this.checkBox2_cave.Location = new System.Drawing.Point(453, 335);
             this.checkBox2_cave.Name = "checkBox2_cave";
             this.checkBox2_cave.Size = new System.Drawing.Size(15, 14);
             this.checkBox2_cave.TabIndex = 52;
@@ -588,11 +590,30 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // dateTimePicker1_créationClient
+            // 
+            this.dateTimePicker1_créationClient.Location = new System.Drawing.Point(101, 265);
+            this.dateTimePicker1_créationClient.Name = "dateTimePicker1_créationClient";
+            this.dateTimePicker1_créationClient.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1_créationClient.TabIndex = 57;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(24, 272);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(71, 13);
+            this.label23.TabIndex = 56;
+            this.label23.Text = "Date création";
+            // 
             // AjoutBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 765);
+            this.Controls.Add(this.dateTimePicker1_créationClient);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.titreFenetreAjoutBien);
             this.Controls.Add(this.checkBox2_cave);
             this.Controls.Add(this.checkBox1_garage);
@@ -716,6 +737,8 @@
         private System.Windows.Forms.Label titreFenetreAjoutBien;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
+        private System.Windows.Forms.Label label23;
     }
 }
 

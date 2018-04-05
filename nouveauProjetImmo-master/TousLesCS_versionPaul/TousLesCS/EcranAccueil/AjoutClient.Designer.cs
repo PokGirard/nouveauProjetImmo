@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.titreFenetre = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.mobile = new System.Windows.Forms.TextBox();
@@ -71,15 +71,15 @@
             this.buttonAccepterVisite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // titreFenetre
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(265, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "AJOUT D\'UN CLIENT";
+            this.titreFenetre.AutoSize = true;
+            this.titreFenetre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titreFenetre.Location = new System.Drawing.Point(265, 9);
+            this.titreFenetre.Name = "titreFenetre";
+            this.titreFenetre.Size = new System.Drawing.Size(209, 24);
+            this.titreFenetre.TabIndex = 1;
+            this.titreFenetre.Text = "AJOUT D\'UN CLIENT";
             // 
             // email
             // 
@@ -288,11 +288,12 @@
             // 
             // éditerInfos
             // 
+            this.éditerInfos.Enabled = false;
             this.éditerInfos.Location = new System.Drawing.Point(403, 539);
             this.éditerInfos.Name = "éditerInfos";
             this.éditerInfos.Size = new System.Drawing.Size(128, 40);
             this.éditerInfos.TabIndex = 47;
-            this.éditerInfos.Text = "Mettre à jour les informations";
+            this.éditerInfos.Text = "Editer les informations";
             this.éditerInfos.UseVisualStyleBackColor = true;
             this.éditerInfos.Click += new System.EventHandler(this.éditerInfos_Click);
             // 
@@ -462,7 +463,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nom);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.titreFenetre);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AjoutClient";
             this.Text = "AjoutClient";
@@ -473,7 +474,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label titreFenetre;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox mobile;

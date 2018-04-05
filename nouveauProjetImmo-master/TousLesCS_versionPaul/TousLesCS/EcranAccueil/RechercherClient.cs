@@ -12,6 +12,7 @@ namespace EcranAccueil
 {
     public partial class RechercherClient : Form
     {
+        //BUG EN CLIQUANT SUR LES ACHETEURS !!!
 
         static AjoutClient fenetreModificationClient;
 
@@ -221,7 +222,7 @@ namespace EcranAccueil
             }
             else if (typeClientChoisi == TypeClient.ACHETEUR)
             {
-                ID_client_selectionne = acheteurs[0].IDACHETEUR;
+                ID_client_selectionne = acheteurs[0].IDACHETEUR; //BUG NULL REFERENCE
             }
 
             Console.WriteLine(ID_client_selectionne);

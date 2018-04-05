@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
+    //METTRE DES VERIFS QUIL Y A DES BIENS DANS LES LISTES SINON PLANTAGE LORS DE VOIR PROPOSITION FICHES ETC...
+    //FAIRE CREER LE CLIENT AU CLIC SUR CREER LE CLIENT ?? OU JUSTE EN CREANT LA FICHE DE SOUHAIT/UN BIEN A VENDRE ??
+    //MODIFS NON SAUVEES ??
 
     public partial class AjoutClient : Form
     {
@@ -22,7 +25,7 @@ namespace EcranAccueil
         public FICHE_DE_SOUHAITS MA_FICHE { get; set; }
         public ACHETEUR MON_ACHETEUR { get; set; }
         public VENDEUR MON_VENDEUR { get; set; }
-
+        private bool existeDeja = false;
         public ChoixAffichage monChoixAffichage { get; set; }
 
         public enum ChoixAffichage
@@ -39,11 +42,13 @@ namespace EcranAccueil
             chargerComboboxCommerciaux();
 
         }
-      
+
         public AjoutClient(ACHETEUR monAcheteur)
         {
+
             this.MON_ACHETEUR = monAcheteur;
             InitializeComponent();
+            initialisationClientExistant();
             this.checkBox_Acheteur.Checked = true;
             this.nom.Text = monAcheteur.NOM_ACHETEUR;
             this.prénom.Text = monAcheteur.PRENOM_ACHETEUR;
@@ -61,6 +66,7 @@ namespace EcranAccueil
         {
             this.MON_VENDEUR = vendeur_en_cours_fc;
             InitializeComponent();
+            initialisationClientExistant();
             this.checkBox_Vendeur.Checked = true;
             this.nom.Text = vendeur_en_cours_fc.NOM_VENDEUR;
             this.prénom.Text = vendeur_en_cours_fc.PRÉNOM_VENDEUR;
@@ -74,6 +80,29 @@ namespace EcranAccueil
             chargerComboboxCommerciaux();
         }
 
+        private void initialisationClientExistant()
+        {
+
+            this.titreFenetre.Text = "Fiche Client";
+            this.éditerInfos.Enabled = true;
+            existeDeja = true;
+            blocageBoxVendeur(false);
+
+        }
+
+        private void blocageBoxVendeur(bool estModifiable)
+        {
+            nom.Enabled = estModifiable;
+            prénom.Enabled = estModifiable;
+            adresse.Enabled = estModifiable;
+            codePostal.Enabled = estModifiable;
+            fixe.Enabled = estModifiable;
+            mobile.Enabled = estModifiable;
+            email.Enabled = estModifiable;
+            comboBox1_villes.Enabled = estModifiable;
+            comboBoxCommerciaux.Enabled = estModifiable;
+            dateTimePicker1_créationClient.Enabled = estModifiable;
+        }
         #endregion constructeurs
 
         private void chargerComboboxCommerciaux()
@@ -318,7 +347,23 @@ namespace EcranAccueil
 
         private void éditerInfos_Click(object sender, EventArgs e)
         {
+            if (éditerInfos.Text == "Editer les informations")
+            {
+            
+                blocageBoxVendeur(true);
+                éditerInfos.Text = "Valider les modifications";
+            }
+            else
+            {
+                envoyer_les_modifications();
+                blocageBoxVendeur(false);
+                éditerInfos.Text = "Editer les informations";
+            }
 
+        }
+
+        private void envoyer_les_modifications()
+        {
             if (checkBox_Vendeur.Checked && MON_VENDEUR != null && verifier_champs_vendeur())
             {
                 try
@@ -359,13 +404,7 @@ namespace EcranAccueil
                     MessageBox.Show(e45.Message);
                 }
             }
-
-
-
-
-
         }
-
         private bool verifier_champs_acheteur()   // créer 2ème méthode vérif' pour champs vendeur
         {
             bool valide = true;

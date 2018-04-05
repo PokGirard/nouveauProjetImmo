@@ -12,6 +12,7 @@ namespace EcranAccueil
 {
     public partial class FicheDeSouhaits : Form
     {
+        //AJOUT ACHETEUR DE REFERENCE DANS CONSTRUCTEUR FENETRE PROPOSITION VISITE
 
         List<BIEN> biens_selectionnes;
         BIEN bien_en_cours;

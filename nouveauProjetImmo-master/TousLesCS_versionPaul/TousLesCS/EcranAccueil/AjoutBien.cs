@@ -13,27 +13,29 @@ namespace EcranAccueil
 {
 
     //RESTE A FAIRE UNE BELLE IMPRESSION
+    // METTRE ALERTE QUAND TOUS LES CHAMPS NE SONT PAS COMPLETES, DONT LE STATUT !
     public partial class AjoutBien : Form
     {
 
-        public BIEN bien_en_cours { get; set; }
-        private bool existeDeja = false;
-        #region propriétés
 
+        #region propriétés
+        public BIEN bien_en_cours { get; set; }
+        private bool bienExisteDeja = false;
+        private bool clientExisteDeja = false;
         public VENDEUR monVendeur { get; set; }
         public ACHETEUR monAcheteur { get; set; }
         #endregion
 
+        #region constructeurs
         public AjoutBien()
         {
             InitializeComponent();
-
         }
 
         public AjoutBien(VENDEUR monVendeur)
         {
             InitializeComponent();
-
+            clientExisteDeja = true;
             this.titreFenetreAjoutBien.Text = "CREER UN BIEN";
 
             blocageBoxVendeur(false);
@@ -63,7 +65,7 @@ namespace EcranAccueil
 
             this.titreFenetreAjoutBien.Text = "VOIR LE BIEN";
             this.button1_ajouterBien.Text = "MODIFIER LE BIEN";
-
+            clientExisteDeja = true;
             blocageBoxVendeur(false);
             blocageBoxBien(false);
 
@@ -72,9 +74,9 @@ namespace EcranAccueil
             actualisationBien();
 
 
-            existeDeja = true;
+            bienExisteDeja = true;
         }
-
+        #endregion constructeurs
         private void blocageBoxBien(Boolean estModifiable)
         {
             numericUpDown1_surfHab.Enabled = estModifiable;
@@ -98,9 +100,9 @@ namespace EcranAccueil
         }
         private void blocageBoxVendeur(bool estModifiable)
         {
-            this.nomClient.Enabled = estModifiable;
-            this.prénomVendeur.Enabled = estModifiable;
-            this.adresseVendeur.Enabled = estModifiable;
+            nomClient.Enabled = estModifiable;
+            prénomVendeur.Enabled = estModifiable;
+            adresseVendeur.Enabled = estModifiable;
             codePostalVendeur.Enabled = estModifiable;
             fixeVendeur.Enabled = estModifiable;
             mobileVendeur.Enabled = estModifiable;
@@ -130,7 +132,7 @@ namespace EcranAccueil
 
         private void button1_ajouterBien_Click(object sender, EventArgs e)
         {
-            if (bien_en_cours == null && verifier_champs() && !existeDeja)
+            if (bien_en_cours == null && verifier_champs() && !bienExisteDeja)
             {
                 modification_ou_creation_bien();
                 button1_ajouterBien.Text = "MODIFIER LE BIEN";
@@ -144,7 +146,6 @@ namespace EcranAccueil
             }
             else
             {
-
                 try
                 {
                     modification_ou_creation_bien();
@@ -249,7 +250,34 @@ namespace EcranAccueil
         private void modification_ou_creation_bien()
         {
             BIEN bien_en_modification;
-            if (!existeDeja)
+            if (!clientExisteDeja)
+            {
+                VENDEUR vendeur = new VENDEUR();
+
+                var idville = (from v in Accueil.modeleBase.VILLE
+                               where v.CODE_POSTAL.ToString() == codePostalVendeur.Text &&
+                                v.NOM_VILLE == villeVendeur.Text
+                               select v.IDVILLE).FirstOrDefault();
+
+
+                vendeur.IDVILLE = idville;
+                vendeur.CODE_POSTAL = Int32.Parse(codePostalVendeur.Text);
+                vendeur.NOM_VENDEUR = nomClient.Text;
+                vendeur.PRÉNOM_VENDEUR = prénomVendeur.Text;
+                vendeur.ADRESSE_VENDEUR = adresseVendeur.Text;
+                vendeur.EMAIL = emailVendeur.Text;
+
+                string a = fixeVendeur.Text.Replace(" ", string.Empty);
+                string b = mobileVendeur.Text.Replace(" ", string.Empty);
+                vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
+                vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
+
+                vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
+
+                Accueil.modeleBase.VENDEUR.Add(vendeur);
+                Accueil.modeleBase.SaveChanges();
+            }
+            if (!bienExisteDeja)
             {
                 bien_en_modification = new BIEN();
 
@@ -257,6 +285,7 @@ namespace EcranAccueil
                                where v.NOM_VILLE == textBox11_ville.Text
                                select v.IDVILLE);
                 bien_en_modification.IDVILLE = idville.First();
+
 
                 var idvendeur = (from ve in Accueil.modeleBase.VENDEUR
                                  where ve.EMAIL == emailVendeur.Text
@@ -279,20 +308,23 @@ namespace EcranAccueil
             bien_en_modification.CODE_POSTAL = Int32.Parse(textBox10_codePostal.Text);
             bien_en_modification.DATE_MISEENVENTE = dateTimePicker1_miseEnVente.Value;
             bien_en_modification.STATUT = comboBox1_status.Text;
-            
 
-            if (checkBox1_garage.Checked) bien_en_modification.GARAGE = true;  
+
+            if (checkBox1_garage.Checked) bien_en_modification.GARAGE = true;
             else bien_en_modification.GARAGE = false;
 
             if (checkBox2_cave.Checked) bien_en_modification.CAVE = true;
             else bien_en_modification.CAVE = false;
 
-            if (!existeDeja)
+            if (!bienExisteDeja)
             {
                 Accueil.modeleBase.BIEN.Add(bien_en_modification);
                 bien_en_modification.NB_VISITES = 0;
             }
-                Accueil.modeleBase.SaveChanges();
+
+            Accueil.modeleBase.SaveChanges();
+            bienExisteDeja = true;
+            clientExisteDeja = true;
         }
 
         private void button3_supprimer_Click(object sender, EventArgs e)
