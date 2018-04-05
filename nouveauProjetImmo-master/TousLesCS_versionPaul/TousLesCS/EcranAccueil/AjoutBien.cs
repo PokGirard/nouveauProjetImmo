@@ -13,7 +13,7 @@ namespace EcranAccueil
 {
 
     //RESTE A FAIRE UNE BELLE IMPRESSION
-    // METTRE ALERTE QUAND TOUS LES CHAMPS NE SONT PAS COMPLETES, DONT LE STATUT !
+    // CONFIRMATION CREATION BIEN + BLOCAGE DATEPICKER
     public partial class AjoutBien : Form
     {
 
@@ -30,6 +30,8 @@ namespace EcranAccueil
         public AjoutBien()
         {
             InitializeComponent();
+            comboBox1_status.Text = "DISPONIBLE";
+            
         }
 
         public AjoutBien(VENDEUR monVendeur)
@@ -136,6 +138,7 @@ namespace EcranAccueil
             {
                 modification_ou_creation_bien();
                 button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                blocageBoxVendeur(false);
                 blocageBoxBien(false);
             }
             else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
@@ -249,6 +252,7 @@ namespace EcranAccueil
 
         private void modification_ou_creation_bien()
         {
+            
             BIEN bien_en_modification;
             if (!clientExisteDeja)
             {

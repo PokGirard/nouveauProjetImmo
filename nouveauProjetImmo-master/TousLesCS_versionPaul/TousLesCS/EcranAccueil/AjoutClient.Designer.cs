@@ -46,7 +46,6 @@
             this.nom = new System.Windows.Forms.TextBox();
             this.labelCommercial = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.buttonSupprimer = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button4_biensVente = new System.Windows.Forms.Button();
             this.button5_bienVisités = new System.Windows.Forms.Button();
@@ -219,16 +218,6 @@
             this.label13.Size = new System.Drawing.Size(124, 15);
             this.label13.TabIndex = 38;
             this.label13.Text = "BIENS ET SOUHAITS";
-            // 
-            // buttonSupprimer
-            // 
-            this.buttonSupprimer.Location = new System.Drawing.Point(567, 539);
-            this.buttonSupprimer.Name = "buttonSupprimer";
-            this.buttonSupprimer.Size = new System.Drawing.Size(128, 40);
-            this.buttonSupprimer.TabIndex = 39;
-            this.buttonSupprimer.Text = "Supprimer le client";
-            this.buttonSupprimer.UseVisualStyleBackColor = true;
-            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // imageList1
             // 
@@ -446,7 +435,6 @@
             this.Controls.Add(this.button6_ficheSouhaits);
             this.Controls.Add(this.button5_bienVisités);
             this.Controls.Add(this.button4_biensVente);
-            this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.labelCommercial);
             this.Controls.Add(this.email);
@@ -491,7 +479,6 @@
         private System.Windows.Forms.TextBox nom;
         private System.Windows.Forms.Label labelCommercial;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button button4_biensVente;
         private System.Windows.Forms.Button button5_bienVisités;

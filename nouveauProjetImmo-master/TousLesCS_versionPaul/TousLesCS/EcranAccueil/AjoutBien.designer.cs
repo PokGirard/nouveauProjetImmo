@@ -106,8 +106,9 @@
             this.comboBox1_status.FormattingEnabled = true;
             this.comboBox1_status.Items.AddRange(new object[] {
             "DISPONIBLE",
-            "RESERVE",
-            "VENDU"});
+            "RETIRE",
+            "VENDU",
+            "SOUS-SEING"});
             this.comboBox1_status.Location = new System.Drawing.Point(604, 351);
             this.comboBox1_status.Name = "comboBox1_status";
             this.comboBox1_status.Size = new System.Drawing.Size(121, 21);

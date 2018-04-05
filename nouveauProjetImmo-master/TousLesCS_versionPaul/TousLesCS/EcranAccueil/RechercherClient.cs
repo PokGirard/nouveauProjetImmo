@@ -212,10 +212,10 @@ namespace EcranAccueil
 
         }
 
-        private void listView_resultat_Click(object sender, EventArgs e)
+       private void listView_resultat_Click(object sender, EventArgs e)
         {
 
-            if (typeClientChoisi == TypeClient.VENDEUR)
+           /* if (typeClientChoisi == TypeClient.VENDEUR)
             {
                 ID_client_selectionne = vendeurs[0].IDVENDEUR;
 
@@ -225,7 +225,7 @@ namespace EcranAccueil
                 ID_client_selectionne = acheteurs[0].IDACHETEUR; //BUG NULL REFERENCE
             }
 
-            Console.WriteLine(ID_client_selectionne);
+            Console.WriteLine(ID_client_selectionne);*/
         }
     }
 }

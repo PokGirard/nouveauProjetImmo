@@ -12,8 +12,9 @@ using System.Windows.Forms;
 namespace EcranAccueil
 {
     //METTRE DES VERIFS QUIL Y A DES BIENS DANS LES LISTES SINON PLANTAGE LORS DE VOIR PROPOSITION FICHES ETC...
-    //FAIRE CREER LE CLIENT AU CLIC SUR CREER LE CLIENT ?? OU JUSTE EN CREANT LA FICHE DE SOUHAIT/UN BIEN A VENDRE ??
-    //MODIFS NON SAUVEES ??
+    //MODIFS COMMERCIAL A SAUVER
+    //BOUTON RETOUR MENU A AJOUTER
+    //AFFICHAGE CODEPOSTAL + BLOQUER COMBOBOX_COMMERCIAUX
 
     public partial class AjoutClient : Form
     {
@@ -25,7 +26,7 @@ namespace EcranAccueil
         public FICHE_DE_SOUHAITS MA_FICHE { get; set; }
         public ACHETEUR MON_ACHETEUR { get; set; }
         public VENDEUR MON_VENDEUR { get; set; }
-        private bool existeDeja = false;
+        private bool clientExisteDeja = false;
         public ChoixAffichage monChoixAffichage { get; set; }
 
         public enum ChoixAffichage
@@ -76,7 +77,7 @@ namespace EcranAccueil
             this.fixe.Text = vendeur_en_cours_fc.TÉLÉPHONE_FIXE.ToString();
             this.mobile.Text = vendeur_en_cours_fc.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = vendeur_en_cours_fc.EMAIL;
-
+            
             chargerComboboxCommerciaux();
         }
 
@@ -85,7 +86,7 @@ namespace EcranAccueil
 
             this.titreFenetre.Text = "Fiche Client";
             this.éditerInfos.Enabled = true;
-            existeDeja = true;
+            clientExisteDeja = true;
             blocageBoxVendeur(false);
 
         }
@@ -102,6 +103,7 @@ namespace EcranAccueil
             comboBox1_villes.Enabled = estModifiable;
             comboBoxCommerciaux.Enabled = estModifiable;
             dateTimePicker1_créationClient.Enabled = estModifiable;
+
         }
         #endregion constructeurs
 
@@ -117,7 +119,14 @@ namespace EcranAccueil
                 comboBoxCommerciaux.Items.Add(c.NOM_COMMERCIAL);
             }
 
-
+            if (clientExisteDeja && checkBox_Acheteur.Checked)
+            {
+                int idcommercial = MON_ACHETEUR.IDCOMMERCIAL;
+                var nomCommercial = (from c in Accueil.modeleBase.COMMERCIAL
+                                        where c.IDCOMMERCIAL == idcommercial
+                                        select c).ToList();
+                comboBoxCommerciaux.Text = nomCommercial[0].NOM_COMMERCIAL;
+            }
         }
 
         private void créer_Click(object sender, EventArgs e)
@@ -193,7 +202,6 @@ namespace EcranAccueil
                 button5_bienVisités.Enabled = true;
                 button6_ficheSouhaits.Enabled = true;
                 button4_biensVente.Enabled = false;
-
                 /*   comboBoxCommerciaux.Items.Clear();
                    var nomCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
                                          select c.NOM_COMMERCIAL);

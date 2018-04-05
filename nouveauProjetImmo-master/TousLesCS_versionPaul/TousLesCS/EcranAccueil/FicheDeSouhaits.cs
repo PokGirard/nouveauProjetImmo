@@ -12,7 +12,7 @@ namespace EcranAccueil
 {
     public partial class FicheDeSouhaits : Form
     {
-        //AJOUT ACHETEUR DE REFERENCE DANS CONSTRUCTEUR FENETRE PROPOSITION VISITE
+        //DISABLE FICHE DE SOUHAIT QUAND OBSOLETE
 
         List<BIEN> biens_selectionnes;
         BIEN bien_en_cours;
@@ -31,7 +31,6 @@ namespace EcranAccueil
             InitializeComponent();
             Charger_Liste_Villes();
             ChargerListe_Villes_selectionnees();
-            Charger_Liste_Commerciaux();
             Preremplir_champs_client();
             statut_fiche = "EN COURS";
         }
@@ -40,7 +39,6 @@ namespace EcranAccueil
             this.acheteur_de_reference = acheteur_de_reference;
             InitializeComponent();
             Charger_Liste_Villes();
-            Charger_Liste_Commerciaux();
             Preremplir_champs_client();
             statut_fiche = "EN COURS";
         }
@@ -67,7 +65,6 @@ namespace EcranAccueil
             InitializeComponent();
             Charger_Liste_Villes();
             ChargerListe_Villes_selectionnees();
-            Charger_Liste_Commerciaux();
             Preremplir_champs_client();
             Preremplir_champs_fiche();
             statut_fiche = fiche_de_reference.STATUT;
@@ -136,14 +133,7 @@ namespace EcranAccueil
                 listViewVillesDeroulante.Items.Add(nomV);
             }
         }
-        private void Charger_Liste_Commerciaux()
-        {
-            List<COMMERCIAL> commerciaux = (from c in Accueil.modeleBase.COMMERCIAL
-                                            select c).ToList();
-
-            foreach (COMMERCIAL c in commerciaux)
-                comboBoxListeCommerciaux.Items.Add(c.NOM_COMMERCIAL);
-        }
+      
         private void button_creation_fiche_Click(object sender, EventArgs e)
         {
             FICHE_DE_SOUHAITS nouvelleFiche = null;
@@ -380,7 +370,7 @@ namespace EcranAccueil
                              where b.IDBIEN == sel
                              select b).FirstOrDefault();
 
-            fenetreProposition = new PropositionVisite(fiche_de_reference, bien_en_cours, acheteur_de_reference.COMMERCIAL);
+            fenetreProposition = new PropositionVisite(fiche_de_reference, bien_en_cours);
 
             fenetreProposition.Show();
         }
@@ -442,6 +432,30 @@ namespace EcranAccueil
             buttonStatut_En_Cours.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
             buttonStatut_Obsolete.ForeColor = Color.Black;
             buttonStatut_Obsolete.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
+        }
+
+        private void FicheDeSouhaits_Load(object sender, EventArgs e)
+        {
+            //vide et c'est normal
+        }
+
+        private void button_creerProposition_Click(object sender, EventArgs e)
+        {
+            PropositionVisite proposition = new PropositionVisite(fiche_de_reference, bien_en_cours);
+            proposition.Show();
+        }
+
+        private void listView_resultats_Click(object sender, EventArgs e)
+        {
+            if (listView_resultats.SelectedItems.Count != 0)
+            {
+                int idBien = int.Parse(listView_resultats.SelectedItems[0].SubItems[7].Text);
+
+                bien_en_cours = (from b in Accueil.modeleBase.BIEN
+                                 where (b.IDBIEN == idBien)
+                                 select b).First();
+
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace EcranAccueil
 
         public BIEN bien_en_cours { get; set; }
 
-        public COMMERCIAL commercial_fenetre_proposition { get; set; }
+        public string commercial_fenetre_proposition;
 
         public FICHE_DE_SOUHAITS fiche_en_cours { get; set; }
 
@@ -30,11 +30,17 @@ namespace EcranAccueil
             InitializeComponent();
         }
 
-        public PropositionVisite(FICHE_DE_SOUHAITS fiche_en_cours, BIEN bien_en_cours, COMMERCIAL commercial_en_cours)
+        public PropositionVisite(FICHE_DE_SOUHAITS fiche_en_cours, BIEN bien_en_cours)
         {
             this.fiche_en_cours = fiche_en_cours;
             this.bien_en_cours = bien_en_cours;
-            commercial_fenetre_proposition = commercial_en_cours;
+
+            int idcommercial = fiche_en_cours.ACHETEUR.IDCOMMERCIAL;
+            var nomCommercial = (from c in Accueil.modeleBase.COMMERCIAL
+                                 where c.IDCOMMERCIAL == idcommercial
+                                 select c).ToList();
+            commercial_fenetre_proposition = nomCommercial[0].NOM_COMMERCIAL;
+     
             InitializeComponent();
             Initialisation_des_champs();
 
@@ -46,8 +52,7 @@ namespace EcranAccueil
             textBoxPrenomClient.Text = fiche_en_cours.ACHETEUR.PRENOM_ACHETEUR;
             textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE + " ) ";
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
-            commercial_fenetre_proposition.NOM_COMMERCIAL = commercial_fenetre_proposition.NOM_COMMERCIAL.Replace(" ", string.Empty);
-            textBoxCommercial.Text = commercial_fenetre_proposition.NOM_COMMERCIAL;
+            textBoxCommercial.Text = commercial_fenetre_proposition;
         }
 
         private void buttonAnnuler_Click(object sender, EventArgs e)

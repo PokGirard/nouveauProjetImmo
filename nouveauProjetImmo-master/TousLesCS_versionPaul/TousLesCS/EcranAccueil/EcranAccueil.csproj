@@ -225,6 +225,9 @@
     <EmbeddedResource Include="PropositionVisite.resx">
       <DependentUpon>PropositionVisite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RDV_Visite.resx">
+      <DependentUpon>RDV_Visite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RechercherClient.resx">
       <DependentUpon>RechercherClient.cs</DependentUpon>
     </EmbeddedResource>
