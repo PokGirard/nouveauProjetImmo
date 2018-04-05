@@ -68,6 +68,7 @@
             this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
             this.buttonBienProposes = new System.Windows.Forms.Button();
             this.buttonAccepterVisite = new System.Windows.Forms.Button();
+            this.button1_retourMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titreFenetre
@@ -267,7 +268,7 @@
             // 
             // créerFicheSouhaits
             // 
-            this.créerFicheSouhaits.Location = new System.Drawing.Point(131, 539);
+            this.créerFicheSouhaits.Location = new System.Drawing.Point(144, 539);
             this.créerFicheSouhaits.Name = "créerFicheSouhaits";
             this.créerFicheSouhaits.Size = new System.Drawing.Size(113, 40);
             this.créerFicheSouhaits.TabIndex = 46;
@@ -278,7 +279,7 @@
             // éditerInfos
             // 
             this.éditerInfos.Enabled = false;
-            this.éditerInfos.Location = new System.Drawing.Point(403, 539);
+            this.éditerInfos.Location = new System.Drawing.Point(413, 539);
             this.éditerInfos.Name = "éditerInfos";
             this.éditerInfos.Size = new System.Drawing.Size(128, 40);
             this.éditerInfos.TabIndex = 47;
@@ -370,6 +371,7 @@
             // 
             // comboBoxCommerciaux
             // 
+            this.comboBoxCommerciaux.Enabled = false;
             this.comboBoxCommerciaux.FormattingEnabled = true;
             this.comboBoxCommerciaux.Location = new System.Drawing.Point(112, 263);
             this.comboBoxCommerciaux.Name = "comboBoxCommerciaux";
@@ -405,19 +407,32 @@
             // 
             // buttonAccepterVisite
             // 
-            this.buttonAccepterVisite.Location = new System.Drawing.Point(250, 539);
+            this.buttonAccepterVisite.Location = new System.Drawing.Point(272, 539);
             this.buttonAccepterVisite.Name = "buttonAccepterVisite";
             this.buttonAccepterVisite.Size = new System.Drawing.Size(113, 40);
             this.buttonAccepterVisite.TabIndex = 61;
             this.buttonAccepterVisite.Text = "Accepter la visite";
             this.buttonAccepterVisite.UseVisualStyleBackColor = true;
+            this.buttonAccepterVisite.Visible = false;
             this.buttonAccepterVisite.Click += new System.EventHandler(this.buttonAccepterVisite_Click);
+            // 
+            // button1_retourMenu
+            // 
+            this.button1_retourMenu.Enabled = false;
+            this.button1_retourMenu.Location = new System.Drawing.Point(567, 539);
+            this.button1_retourMenu.Name = "button1_retourMenu";
+            this.button1_retourMenu.Size = new System.Drawing.Size(128, 40);
+            this.button1_retourMenu.TabIndex = 62;
+            this.button1_retourMenu.Text = "Revenir à l\'accueil";
+            this.button1_retourMenu.UseVisualStyleBackColor = true;
+            this.button1_retourMenu.Click += new System.EventHandler(this.button1_retourMenu_Click);
             // 
             // AjoutClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 659);
+            this.Controls.Add(this.button1_retourMenu);
             this.Controls.Add(this.buttonAccepterVisite);
             this.Controls.Add(this.buttonBienProposes);
             this.Controls.Add(this.comboBoxCommerciaux);
@@ -500,5 +515,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
         private System.Windows.Forms.Button buttonBienProposes;
         private System.Windows.Forms.Button buttonAccepterVisite;
+        private System.Windows.Forms.Button button1_retourMenu;
     }
 }

@@ -55,11 +55,12 @@
             this.buttonLancerRecherche = new System.Windows.Forms.Button();
             this.buttonModifierClient = new System.Windows.Forms.Button();
             this.checkBox1_toutesFiches = new System.Windows.Forms.CheckBox();
+            this.LabelTitre = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxNom
             // 
-            this.textBoxNom.Location = new System.Drawing.Point(19, 48);
+            this.textBoxNom.Location = new System.Drawing.Point(44, 80);
             this.textBoxNom.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(76, 20);
@@ -67,7 +68,7 @@
             // 
             // textBoxPrenom
             // 
-            this.textBoxPrenom.Location = new System.Drawing.Point(19, 96);
+            this.textBoxPrenom.Location = new System.Drawing.Point(44, 117);
             this.textBoxPrenom.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPrenom.Name = "textBoxPrenom";
             this.textBoxPrenom.Size = new System.Drawing.Size(76, 20);
@@ -75,7 +76,7 @@
             // 
             // textBoxFixe
             // 
-            this.textBoxFixe.Location = new System.Drawing.Point(19, 177);
+            this.textBoxFixe.Location = new System.Drawing.Point(44, 191);
             this.textBoxFixe.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFixe.Name = "textBoxFixe";
             this.textBoxFixe.Size = new System.Drawing.Size(76, 20);
@@ -83,7 +84,7 @@
             // 
             // textBoxCommercial
             // 
-            this.textBoxCommercial.Location = new System.Drawing.Point(19, 331);
+            this.textBoxCommercial.Location = new System.Drawing.Point(44, 345);
             this.textBoxCommercial.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCommercial.Name = "textBoxCommercial";
             this.textBoxCommercial.Size = new System.Drawing.Size(76, 20);
@@ -91,7 +92,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(19, 250);
+            this.textBoxEmail.Location = new System.Drawing.Point(44, 265);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(76, 20);
@@ -99,7 +100,7 @@
             // 
             // textBoxMobile
             // 
-            this.textBoxMobile.Location = new System.Drawing.Point(19, 214);
+            this.textBoxMobile.Location = new System.Drawing.Point(44, 228);
             this.textBoxMobile.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMobile.Name = "textBoxMobile";
             this.textBoxMobile.Size = new System.Drawing.Size(76, 20);
@@ -107,7 +108,7 @@
             // 
             // textBoxVille
             // 
-            this.textBoxVille.Location = new System.Drawing.Point(19, 141);
+            this.textBoxVille.Location = new System.Drawing.Point(44, 154);
             this.textBoxVille.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxVille.Name = "textBoxVille";
             this.textBoxVille.Size = new System.Drawing.Size(76, 20);
@@ -116,17 +117,18 @@
             // CritèreRecherche
             // 
             this.CritèreRecherche.AutoSize = true;
-            this.CritèreRecherche.Location = new System.Drawing.Point(16, 7);
+            this.CritèreRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CritèreRecherche.Location = new System.Drawing.Point(41, 43);
             this.CritèreRecherche.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CritèreRecherche.Name = "CritèreRecherche";
-            this.CritèreRecherche.Size = new System.Drawing.Size(103, 13);
+            this.CritèreRecherche.Size = new System.Drawing.Size(123, 13);
             this.CritèreRecherche.TabIndex = 8;
             this.CritèreRecherche.Text = "Critère de recherche";
             // 
             // LabelNom
             // 
             this.LabelNom.AutoSize = true;
-            this.LabelNom.Location = new System.Drawing.Point(36, 32);
+            this.LabelNom.Location = new System.Drawing.Point(41, 65);
             this.LabelNom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelNom.Name = "LabelNom";
             this.LabelNom.Size = new System.Drawing.Size(32, 13);
@@ -136,7 +138,7 @@
             // LabelPrenom
             // 
             this.LabelPrenom.AutoSize = true;
-            this.LabelPrenom.Location = new System.Drawing.Point(36, 80);
+            this.LabelPrenom.Location = new System.Drawing.Point(41, 102);
             this.LabelPrenom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelPrenom.Name = "LabelPrenom";
             this.LabelPrenom.Size = new System.Drawing.Size(49, 13);
@@ -146,7 +148,7 @@
             // labelVille
             // 
             this.labelVille.AutoSize = true;
-            this.labelVille.Location = new System.Drawing.Point(24, 124);
+            this.labelVille.Location = new System.Drawing.Point(41, 139);
             this.labelVille.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelVille.Name = "labelVille";
             this.labelVille.Size = new System.Drawing.Size(32, 13);
@@ -156,7 +158,7 @@
             // LabelTelephoneFixe
             // 
             this.LabelTelephoneFixe.AutoSize = true;
-            this.LabelTelephoneFixe.Location = new System.Drawing.Point(16, 161);
+            this.LabelTelephoneFixe.Location = new System.Drawing.Point(41, 176);
             this.LabelTelephoneFixe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelTelephoneFixe.Name = "LabelTelephoneFixe";
             this.LabelTelephoneFixe.Size = new System.Drawing.Size(83, 13);
@@ -166,7 +168,7 @@
             // LabelTelephoneMobile
             // 
             this.LabelTelephoneMobile.AutoSize = true;
-            this.LabelTelephoneMobile.Location = new System.Drawing.Point(9, 197);
+            this.LabelTelephoneMobile.Location = new System.Drawing.Point(41, 213);
             this.LabelTelephoneMobile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelTelephoneMobile.Name = "LabelTelephoneMobile";
             this.LabelTelephoneMobile.Size = new System.Drawing.Size(95, 13);
@@ -176,7 +178,7 @@
             // LabelEmail
             // 
             this.LabelEmail.AutoSize = true;
-            this.LabelEmail.Location = new System.Drawing.Point(36, 234);
+            this.LabelEmail.Location = new System.Drawing.Point(41, 250);
             this.LabelEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelEmail.Name = "LabelEmail";
             this.LabelEmail.Size = new System.Drawing.Size(32, 13);
@@ -186,7 +188,7 @@
             // LabelDateAjout
             // 
             this.LabelDateAjout.AutoSize = true;
-            this.LabelDateAjout.Location = new System.Drawing.Point(22, 278);
+            this.LabelDateAjout.Location = new System.Drawing.Point(41, 287);
             this.LabelDateAjout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelDateAjout.Name = "LabelDateAjout";
             this.LabelDateAjout.Size = new System.Drawing.Size(67, 13);
@@ -196,7 +198,7 @@
             // LabelCommercial
             // 
             this.LabelCommercial.AutoSize = true;
-            this.LabelCommercial.Location = new System.Drawing.Point(16, 314);
+            this.LabelCommercial.Location = new System.Drawing.Point(41, 330);
             this.LabelCommercial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelCommercial.Name = "LabelCommercial";
             this.LabelCommercial.Size = new System.Drawing.Size(88, 13);
@@ -205,7 +207,7 @@
             // 
             // dateTimeAjout
             // 
-            this.dateTimeAjout.Location = new System.Drawing.Point(19, 294);
+            this.dateTimeAjout.Location = new System.Drawing.Point(44, 302);
             this.dateTimeAjout.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimeAjout.Name = "dateTimeAjout";
             this.dateTimeAjout.Size = new System.Drawing.Size(151, 20);
@@ -213,10 +215,10 @@
             // 
             // buttonVendeur
             // 
-            this.buttonVendeur.Location = new System.Drawing.Point(249, 32);
+            this.buttonVendeur.Location = new System.Drawing.Point(243, 323);
             this.buttonVendeur.Margin = new System.Windows.Forms.Padding(2);
             this.buttonVendeur.Name = "buttonVendeur";
-            this.buttonVendeur.Size = new System.Drawing.Size(205, 21);
+            this.buttonVendeur.Size = new System.Drawing.Size(212, 42);
             this.buttonVendeur.TabIndex = 18;
             this.buttonVendeur.Text = "Vendeur";
             this.buttonVendeur.UseVisualStyleBackColor = true;
@@ -224,12 +226,12 @@
             // 
             // buttonAcheteur
             // 
-            this.buttonAcheteur.Location = new System.Drawing.Point(452, 32);
+            this.buttonAcheteur.Location = new System.Drawing.Point(471, 323);
             this.buttonAcheteur.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAcheteur.Name = "buttonAcheteur";
-            this.buttonAcheteur.Size = new System.Drawing.Size(237, 21);
+            this.buttonAcheteur.Size = new System.Drawing.Size(212, 42);
             this.buttonAcheteur.TabIndex = 19;
-            this.buttonAcheteur.Text = "Acheteur";
+            this.buttonAcheteur.Text = "Acheteur \r\navec une fiche de souhait";
             this.buttonAcheteur.UseVisualStyleBackColor = true;
             this.buttonAcheteur.Click += new System.EventHandler(this.buttonAcheteur_Click);
             // 
@@ -241,7 +243,7 @@
             this.columnHeader2,
             this.columnHeader3});
             this.listView_resultat.FullRowSelect = true;
-            this.listView_resultat.Location = new System.Drawing.Point(249, 83);
+            this.listView_resultat.Location = new System.Drawing.Point(243, 87);
             this.listView_resultat.MultiSelect = false;
             this.listView_resultat.Name = "listView_resultat";
             this.listView_resultat.Size = new System.Drawing.Size(440, 231);
@@ -271,7 +273,7 @@
             // 
             // buttonLancerRecherche
             // 
-            this.buttonLancerRecherche.Location = new System.Drawing.Point(19, 390);
+            this.buttonLancerRecherche.Location = new System.Drawing.Point(44, 370);
             this.buttonLancerRecherche.Name = "buttonLancerRecherche";
             this.buttonLancerRecherche.Size = new System.Drawing.Size(151, 23);
             this.buttonLancerRecherche.TabIndex = 21;
@@ -281,7 +283,7 @@
             // 
             // buttonModifierClient
             // 
-            this.buttonModifierClient.Location = new System.Drawing.Point(235, 390);
+            this.buttonModifierClient.Location = new System.Drawing.Point(44, 399);
             this.buttonModifierClient.Name = "buttonModifierClient";
             this.buttonModifierClient.Size = new System.Drawing.Size(151, 23);
             this.buttonModifierClient.TabIndex = 22;
@@ -292,18 +294,29 @@
             // checkBox1_toutesFiches
             // 
             this.checkBox1_toutesFiches.AutoSize = true;
-            this.checkBox1_toutesFiches.Location = new System.Drawing.Point(498, 60);
+            this.checkBox1_toutesFiches.Location = new System.Drawing.Point(243, 64);
             this.checkBox1_toutesFiches.Name = "checkBox1_toutesFiches";
             this.checkBox1_toutesFiches.Size = new System.Drawing.Size(116, 17);
             this.checkBox1_toutesFiches.TabIndex = 23;
             this.checkBox1_toutesFiches.Text = "Tous les acheteurs";
             this.checkBox1_toutesFiches.UseVisualStyleBackColor = true;
             // 
+            // LabelTitre
+            // 
+            this.LabelTitre.AutoSize = true;
+            this.LabelTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTitre.Location = new System.Drawing.Point(170, 9);
+            this.LabelTitre.Name = "LabelTitre";
+            this.LabelTitre.Size = new System.Drawing.Size(389, 25);
+            this.LabelTitre.TabIndex = 24;
+            this.LabelTitre.Text = "INTERFACE DE RECHERCHE CLIENT";
+            // 
             // RechercherClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 452);
+            this.ClientSize = new System.Drawing.Size(720, 426);
+            this.Controls.Add(this.LabelTitre);
             this.Controls.Add(this.checkBox1_toutesFiches);
             this.Controls.Add(this.buttonModifierClient);
             this.Controls.Add(this.buttonLancerRecherche);
@@ -330,6 +343,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RechercherClient";
             this.Text = "RechercherClient";
+            this.Load += new System.EventHandler(this.RechercherClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +378,6 @@
         private System.Windows.Forms.Button buttonLancerRecherche;
         private System.Windows.Forms.Button buttonModifierClient;
         private System.Windows.Forms.CheckBox checkBox1_toutesFiches;
+        private System.Windows.Forms.Label LabelTitre;
     }
 }

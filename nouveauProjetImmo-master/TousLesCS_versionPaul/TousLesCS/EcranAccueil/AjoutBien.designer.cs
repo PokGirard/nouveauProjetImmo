@@ -191,6 +191,7 @@
             this.codePostalVendeur.Name = "codePostalVendeur";
             this.codePostalVendeur.Size = new System.Drawing.Size(118, 20);
             this.codePostalVendeur.TabIndex = 10;
+            this.codePostalVendeur.TextChanged += new System.EventHandler(this.codePostalVendeur_TextChanged);
             // 
             // label7
             // 
@@ -427,6 +428,7 @@
             this.textBox10_codePostal.Name = "textBox10_codePostal";
             this.textBox10_codePostal.Size = new System.Drawing.Size(100, 20);
             this.textBox10_codePostal.TabIndex = 35;
+            this.textBox10_codePostal.TextChanged += new System.EventHandler(this.textBox10_codePostal_TextChanged);
             // 
             // label20
             // 

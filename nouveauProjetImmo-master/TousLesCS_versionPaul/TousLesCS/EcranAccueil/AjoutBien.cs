@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
-    //COMBOBOX DES VILLES N'AFFICHENT PAS LA VILLE CORRESPONDANT AU CODE POSTAL
+    // BUG DES 2 COMBOBOX CORRIGE 
     public partial class AjoutBien : Form
     {
 
@@ -385,6 +385,7 @@ namespace EcranAccueil
             e.Graphics.DrawImage(bmp, 0, 0);
         }
 
+        
         private void codePostalVendeur_TextChanged(object sender, EventArgs e)
         {
             comboBox1_villesClient.Items.Clear();

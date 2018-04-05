@@ -12,10 +12,10 @@ using System.Windows.Forms;
 namespace EcranAccueil
 {
     //METTRE DES VERIFS QUIL Y A DES BIENS DANS LES LISTES SINON PLANTAGE LORS DE VOIR PROPOSITION FICHES ETC...
-    //MODIFS COMMERCIAL A SAUVER (NE SE SAUVE PAS CORRECTEMENT)
+    //MODIFS COMMERCIAL A SAUVER (NE SE SAUVE PAS CORRECTEMENT) >>>>> Checked
     //AFFICHAGE
-    //BOUTON RETOUR MENU A AJOUTER
-    //AFFICHAGE VILLE CORRESPONDANT AU CODEPOSTAL A LOUVERTURE NE FONCTIONNE PAS + BLOQUER COMBOBOX_COMMERCIAUX
+    //BOUTON RETOUR MENU A AJOUTER    >>>>>>>> Checked
+    //AFFICHAGE VILLE CORRESPONDANT AU CODEPOSTAL A LOUVERTURE NE FONCTIONNE PAS + BLOQUER COMBOBOX_COMMERCIAUX  >>>>> Checked
 
     public partial class AjoutClient : Form
     {
@@ -40,7 +40,7 @@ namespace EcranAccueil
         {
 
             InitializeComponent();
-
+            button1_retourMenu.Enabled = true;
             chargerComboboxCommerciaux();
 
         }
@@ -62,6 +62,7 @@ namespace EcranAccueil
             this.email.Text = monAcheteur.EMAIL;
 
             chargerComboboxCommerciaux();
+            chargerComboboxVilles();
         }
 
         public AjoutClient(VENDEUR vendeur_en_cours_fc)
@@ -80,6 +81,7 @@ namespace EcranAccueil
             this.email.Text = vendeur_en_cours_fc.EMAIL;
             
             chargerComboboxCommerciaux();
+            chargerComboboxVilles();
         }
 
         private void initialisationClientExistant()
@@ -104,6 +106,7 @@ namespace EcranAccueil
             comboBox1_villes.Enabled = estModifiable;
             comboBoxCommerciaux.Enabled = estModifiable;
             dateTimePicker1_créationClient.Enabled = estModifiable;
+            button1_retourMenu.Enabled = !estModifiable;
 
         }
         #endregion constructeurs
@@ -128,6 +131,15 @@ namespace EcranAccueil
                                         select c).ToList();
                 comboBoxCommerciaux.Text = nomCommercial[0].NOM_COMMERCIAL;
             }
+        }
+
+        private void chargerComboboxVilles()
+        {
+            var nomVille = (from v in Accueil.modeleBase.VILLE
+                            where v.IDVILLE == MON_ACHETEUR.IDVILLE
+                            select v.NOM_VILLE).First();
+            this.comboBox1_villes.Text = nomVille;
+
         }
 
         private void créer_Click(object sender, EventArgs e)
@@ -324,6 +336,7 @@ namespace EcranAccueil
             MON_ACHETEUR.NOM_ACHETEUR = nom.Text;
             MON_ACHETEUR.PRENOM_ACHETEUR = prénom.Text;
             MON_ACHETEUR.ADRESSE = adresse.Text;
+            MON_ACHETEUR.CODE_POSTAL = Int32.Parse(codePostal.Text);
             MON_ACHETEUR.EMAIL = email.Text;
             MON_ACHETEUR.TÉLÉPHONE = Int32.Parse(fixe.Text);
             MON_ACHETEUR.TÉLÉPHONE_MOBILE = Int32.Parse(mobile.Text);
@@ -342,10 +355,20 @@ namespace EcranAccueil
         private void codePostal_TextChanged(object sender, EventArgs e)
         {
             comboBox1_villes.Items.Clear();
+            comboBox1_villes.Text = "";
+
+            //var cp = (from c in Accueil.modeleBase.VILLE
+            //                  select c.CODE_POSTAL).ToList();
+
+            //foreach (int c in cp)
+            //{
+                
+            //}
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
                             where v.CODE_POSTAL.ToString() == codePostal.Text
                             select v.NOM_VILLE);
+
 
             foreach (string ville in nomVille)
             {
@@ -402,6 +425,11 @@ namespace EcranAccueil
                     MON_ACHETEUR.TÉLÉPHONE_MOBILE = int.Parse(mobile.Text);
                     MON_ACHETEUR.TÉLÉPHONE = int.Parse(fixe.Text);
                     MON_ACHETEUR.CODE_POSTAL = int.Parse(codePostal.Text);
+
+                    var commercial = (from c in Accueil.modeleBase.COMMERCIAL
+                                      where c.NOM_COMMERCIAL == comboBoxCommerciaux.Text
+                                      select c).First();
+                    MON_ACHETEUR.COMMERCIAL = commercial;
 
 
                     Accueil.modeleBase.SaveChanges();
@@ -591,13 +619,7 @@ namespace EcranAccueil
                     listView1.Items[i].SubItems.Add(biens_En_Vente[i].NB_PIÈCES.ToString());
                     listView1.Items[i].SubItems.Add(biens_En_Vente[i].ADRESSE_BIEN);
 
-
-
                 }
-
-
-
-
             }
         }
 
@@ -863,8 +885,26 @@ namespace EcranAccueil
 
             maFenetreRDV = new RDV_Visite(proposition_retenue);
 
+
+
+            RDV rdv = new RDV
+            {
+                IDVISITE = proposition_retenue.IDVISITE
+            };
+
+            Accueil.modeleBase.RDV.Add(rdv);
+            Accueil.modeleBase.SaveChanges();
+
             maFenetreRDV.Show();
 
+
+
+
+        }
+
+        private void button1_retourMenu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
