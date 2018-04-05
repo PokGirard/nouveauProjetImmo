@@ -11,9 +11,7 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
-
-    //RESTE A FAIRE UNE BELLE IMPRESSION
-    // CONFIRMATION CREATION BIEN + BLOCAGE DATEPICKER
+    //COMBOBOX DES VILLES N'AFFICHENT PAS LA VILLE CORRESPONDANT AU CODE POSTAL
     public partial class AjoutBien : Form
     {
 
@@ -30,8 +28,6 @@ namespace EcranAccueil
         public AjoutBien()
         {
             InitializeComponent();
-            comboBox1_status.Text = "DISPONIBLE";
-            
         }
 
         public AjoutBien(VENDEUR monVendeur)
@@ -52,7 +48,7 @@ namespace EcranAccueil
                            where v.IDVILLE == monVendeur.IDVILLE
                            select v.NOM_VILLE).First();
 
-            this.villeVendeur.Text = maVille;
+            this.comboBox1_villesClient.Text = maVille;
             this.codePostalVendeur.Text = monVendeur.CODE_POSTAL.ToString();
             this.fixeVendeur.Text = monVendeur.TÉLÉPHONE_FIXE.ToString();
             this.mobileVendeur.Text = monVendeur.TÉLÉPHONE_MOBILE.ToString();
@@ -81,13 +77,14 @@ namespace EcranAccueil
         #endregion constructeurs
         private void blocageBoxBien(Boolean estModifiable)
         {
+
             numericUpDown1_surfHab.Enabled = estModifiable;
             numericUpDown2_surfParc.Enabled = estModifiable;
             numericUpDown3_nbPieces.Enabled = estModifiable;
             numericUpDown4_nbChambres.Enabled = estModifiable;
             numericUpDown5_nbSdb.Enabled = estModifiable;
             numericUpDown6_prix.Enabled = estModifiable;
-            textBox11_ville.Enabled = estModifiable;
+            //textBox11_ville.Enabled = estModifiable;
             textBox12_commentaires.Enabled = estModifiable;
             textBox9_adresse.Enabled = estModifiable;
             textBox10_codePostal.Enabled = estModifiable;
@@ -98,7 +95,7 @@ namespace EcranAccueil
             //on peut supprimer et imprimer par contre
             button2_imprimerFiche.Enabled = !estModifiable;
             button3_supprimer.Enabled = !estModifiable;
-
+            dateTimePicker1_miseEnVente.Enabled = !estModifiable;
         }
         private void blocageBoxVendeur(bool estModifiable)
         {
@@ -109,7 +106,8 @@ namespace EcranAccueil
             fixeVendeur.Enabled = estModifiable;
             mobileVendeur.Enabled = estModifiable;
             emailVendeur.Enabled = estModifiable;
-            villeVendeur.Enabled = estModifiable;
+            comboBox1_villesClient.Enabled = estModifiable;
+            dateTimePicker1_créationClient.Enabled = estModifiable;
         }
         private void button5_annuler_Click(object sender, EventArgs e)
         {
@@ -134,22 +132,21 @@ namespace EcranAccueil
 
         private void button1_ajouterBien_Click(object sender, EventArgs e)
         {
-            if (bien_en_cours == null && verifier_champs() && !bienExisteDeja)
+            if (verifier_champs())
             {
-                modification_ou_creation_bien();
-                button1_ajouterBien.Text = "MODIFIER LE BIEN";
-                blocageBoxVendeur(false);
-                blocageBoxBien(false);
-            }
-            else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
-            {
-                blocageBoxBien(true);
-                button1_ajouterBien.Text = "VALIDER LES MODIFICATIONS";
-                button5_annuler.Text = "ANNULER LES MODIFICATIONS";
-            }
-            else
-            {
-                try
+                if (bien_en_cours == null /*&& verifier_champs()*/ && !bienExisteDeja)
+                {
+                    modification_ou_creation_bien();
+                    button1_ajouterBien.Text = "MODIFIER LE BIEN";
+                    blocageBoxBien(false);
+                }
+                else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
+                {
+                    blocageBoxBien(true);
+                    button1_ajouterBien.Text = "VALIDER LES MODIFICATIONS";
+                    button5_annuler.Text = "ANNULER LES MODIFICATIONS";
+                }
+                else
                 {
                     modification_ou_creation_bien();
                     Accueil.modeleBase.SaveChanges();
@@ -159,12 +156,7 @@ namespace EcranAccueil
                     actualisationBien();
                     MessageBox.Show("Modifications sauvegardées");
                 }
-                catch (Exception e1)
-                {
-                    MessageBox.Show("Echec de la sauvegarde");
-                }
             }
-
         }
 
         private bool verifier_champs()
@@ -226,14 +218,14 @@ namespace EcranAccueil
 
             // vérifier si la ville est contenue dans la base
 
-            if (textBox11_ville.Text == "" || textBox11_ville.Text == null)
+            if (comboBox2_villesBien.Text == "" || comboBox2_villesBien.Text == null)
             {
                 message_erreur += " --> Veuillez indiquer une ville."; valide = false;
             }
 
             else
             {
-                string ville1 = textBox11_ville.Text.Replace(" ", string.Empty);
+                string ville1 = comboBox2_villesBien.Text.Replace(" ", string.Empty);
                 int cp = int.Parse(textBox10_codePostal.Text); // vérifier si la ville est contenue dans la base 
                 var ville = (from v in Accueil.modeleBase.VILLE
                              where v.NOM_VILLE == ville1 && v.CODE_POSTAL == cp
@@ -252,7 +244,6 @@ namespace EcranAccueil
 
         private void modification_ou_creation_bien()
         {
-            
             BIEN bien_en_modification;
             if (!clientExisteDeja)
             {
@@ -260,7 +251,7 @@ namespace EcranAccueil
 
                 var idville = (from v in Accueil.modeleBase.VILLE
                                where v.CODE_POSTAL.ToString() == codePostalVendeur.Text &&
-                                v.NOM_VILLE == villeVendeur.Text
+                                v.NOM_VILLE == comboBox1_villesClient.Text
                                select v.IDVILLE).FirstOrDefault();
 
 
@@ -286,7 +277,7 @@ namespace EcranAccueil
                 bien_en_modification = new BIEN();
 
                 var idville = (from v in Accueil.modeleBase.VILLE
-                               where v.NOM_VILLE == textBox11_ville.Text
+                               where v.NOM_VILLE == comboBox2_villesBien.Text
                                select v.IDVILLE);
                 bien_en_modification.IDVILLE = idville.First();
 
@@ -329,6 +320,7 @@ namespace EcranAccueil
             Accueil.modeleBase.SaveChanges();
             bienExisteDeja = true;
             clientExisteDeja = true;
+
         }
 
         private void button3_supprimer_Click(object sender, EventArgs e)
@@ -349,7 +341,7 @@ namespace EcranAccueil
             this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
             this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
-            this.villeVendeur.Text = bien_en_cours.VENDEUR.VILLE.NOM_VILLE;
+            this.comboBox1_villesClient.Text = bien_en_cours.VENDEUR.VILLE.NOM_VILLE;
             this.codePostalVendeur.Text = bien_en_cours.VENDEUR.VILLE.CODE_POSTAL.ToString();
             this.fixeVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_FIXE.ToString();
             this.mobileVendeur.Text = bien_en_cours.VENDEUR.TÉLÉPHONE_MOBILE.ToString();
@@ -371,7 +363,7 @@ namespace EcranAccueil
             var ville = (from v in Accueil.modeleBase.VILLE
                          where v.IDVILLE == bien_en_cours.IDVILLE
                          select v.NOM_VILLE).FirstOrDefault();
-            this.textBox11_ville.Text = ville;
+            this.comboBox2_villesBien.Text = ville;
             this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
             this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
         }
@@ -391,6 +383,36 @@ namespace EcranAccueil
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        private void codePostalVendeur_TextChanged(object sender, EventArgs e)
+        {
+            comboBox1_villesClient.Items.Clear();
+
+            var nomVille = (from v in Accueil.modeleBase.VILLE
+                            where v.CODE_POSTAL.ToString() == codePostalVendeur.Text
+                            select v.NOM_VILLE);
+
+            foreach (string ville in nomVille)
+            {
+                string villes_normales = ville.Replace(" ", string.Empty);
+                comboBox1_villesClient.Items.Add(ville);
+            }
+        }
+
+        private void textBox10_codePostal_TextChanged(object sender, EventArgs e)
+        {
+            comboBox2_villesBien.Items.Clear();
+
+            var nomVille = (from v in Accueil.modeleBase.VILLE
+                            where v.CODE_POSTAL.ToString() == textBox10_codePostal.Text
+                            select v.NOM_VILLE);
+
+            foreach (string ville in nomVille)
+            {
+                string villes_normales = ville.Replace(" ", string.Empty);
+                comboBox2_villesBien.Items.Add(ville);
+            }
         }
     }
 }

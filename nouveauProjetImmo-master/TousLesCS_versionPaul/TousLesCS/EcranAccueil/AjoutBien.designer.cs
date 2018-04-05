@@ -41,7 +41,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.codePostalVendeur = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.villeVendeur = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.fixeVendeur = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -66,7 +65,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.textBox10_codePostal = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox11_ville = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dateTimePicker1_miseEnVente = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
@@ -84,6 +82,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
             this.label23 = new System.Windows.Forms.Label();
+            this.comboBox1_villesClient = new System.Windows.Forms.ComboBox();
+            this.comboBox2_villesBien = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).BeginInit();
@@ -201,13 +201,6 @@
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Ville";
-            // 
-            // villeVendeur
-            // 
-            this.villeVendeur.Location = new System.Drawing.Point(293, 193);
-            this.villeVendeur.Name = "villeVendeur";
-            this.villeVendeur.Size = new System.Drawing.Size(162, 20);
-            this.villeVendeur.TabIndex = 12;
             // 
             // label8
             // 
@@ -445,13 +438,6 @@
             this.label20.TabIndex = 36;
             this.label20.Text = "Ville";
             // 
-            // textBox11_ville
-            // 
-            this.textBox11_ville.Location = new System.Drawing.Point(589, 446);
-            this.textBox11_ville.Name = "textBox11_ville";
-            this.textBox11_ville.Size = new System.Drawing.Size(166, 20);
-            this.textBox11_ville.TabIndex = 37;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -608,11 +594,29 @@
             this.label23.TabIndex = 56;
             this.label23.Text = "Date création";
             // 
+            // comboBox1_villesClient
+            // 
+            this.comboBox1_villesClient.FormattingEnabled = true;
+            this.comboBox1_villesClient.Location = new System.Drawing.Point(293, 192);
+            this.comboBox1_villesClient.Name = "comboBox1_villesClient";
+            this.comboBox1_villesClient.Size = new System.Drawing.Size(162, 21);
+            this.comboBox1_villesClient.TabIndex = 58;
+            // 
+            // comboBox2_villesBien
+            // 
+            this.comboBox2_villesBien.FormattingEnabled = true;
+            this.comboBox2_villesBien.Location = new System.Drawing.Point(593, 440);
+            this.comboBox2_villesBien.Name = "comboBox2_villesBien";
+            this.comboBox2_villesBien.Size = new System.Drawing.Size(162, 21);
+            this.comboBox2_villesBien.TabIndex = 59;
+            // 
             // AjoutBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 765);
+            this.Controls.Add(this.comboBox2_villesBien);
+            this.Controls.Add(this.comboBox1_villesClient);
             this.Controls.Add(this.dateTimePicker1_créationClient);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.titreFenetreAjoutBien);
@@ -628,7 +632,6 @@
             this.Controls.Add(this.label22);
             this.Controls.Add(this.dateTimePicker1_miseEnVente);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox11_ville);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.textBox10_codePostal);
             this.Controls.Add(this.label19);
@@ -653,7 +656,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.fixeVendeur);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.villeVendeur);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.codePostalVendeur);
             this.Controls.Add(this.label6);
@@ -714,7 +716,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBox10_codePostal;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox11_ville;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dateTimePicker1_miseEnVente;
         private System.Windows.Forms.Label label22;
@@ -730,7 +731,6 @@
         internal System.Windows.Forms.TextBox prénomVendeur;
         internal System.Windows.Forms.TextBox adresseVendeur;
         internal System.Windows.Forms.TextBox codePostalVendeur;
-        internal System.Windows.Forms.TextBox villeVendeur;
         internal System.Windows.Forms.TextBox fixeVendeur;
         internal System.Windows.Forms.TextBox mobileVendeur;
         internal System.Windows.Forms.TextBox emailVendeur;
@@ -740,6 +740,8 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBox1_villesClient;
+        private System.Windows.Forms.ComboBox comboBox2_villesBien;
     }
 }
 
