@@ -337,6 +337,7 @@
             this.column4,
             this.column5});
             this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 344);
             this.listView1.MultiSelect = false;
@@ -431,6 +432,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(707, 659);
             this.Controls.Add(this.button1_retourMenu);
             this.Controls.Add(this.buttonAccepterVisite);

@@ -41,6 +41,7 @@
             this.nom_client,
             this.prenom_client,
             this.date_visite});
+            this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(310, 408);
@@ -77,6 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(334, 461);
             this.Controls.Add(this.retour);
             this.Controls.Add(this.listView1);

@@ -34,6 +34,7 @@
             this.vendu_button = new System.Windows.Forms.Button();
             this.archive_button = new System.Windows.Forms.Button();
             this.listViewbiens = new System.Windows.Forms.ListView();
+            this.idBien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ville = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.surface_parcelle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,7 +43,6 @@
             this.garage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.voir_bien_button = new System.Windows.Forms.Button();
-            this.idBien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label15
@@ -107,6 +107,7 @@
             this.garage,
             this.cave});
             this.listViewbiens.FullRowSelect = true;
+            this.listViewbiens.GridLines = true;
             this.listViewbiens.Location = new System.Drawing.Point(23, 145);
             this.listViewbiens.MultiSelect = false;
             this.listViewbiens.Name = "listViewbiens";
@@ -115,6 +116,10 @@
             this.listViewbiens.UseCompatibleStateImageBehavior = false;
             this.listViewbiens.View = System.Windows.Forms.View.Details;
             this.listViewbiens.Click += new System.EventHandler(this.listViewbiens_Click);
+            // 
+            // idBien
+            // 
+            this.idBien.Text = "IDBien";
             // 
             // ville
             // 
@@ -128,31 +133,26 @@
             // 
             // surface_parcelle
             // 
-            this.surface_parcelle.DisplayIndex = 2;
             this.surface_parcelle.Text = "Parcelle";
             this.surface_parcelle.Width = 75;
             // 
             // surface_habitable
             // 
-            this.surface_habitable.DisplayIndex = 3;
             this.surface_habitable.Text = "Habitable";
             this.surface_habitable.Width = 71;
             // 
             // nb_pieces
             // 
-            this.nb_pieces.DisplayIndex = 4;
             this.nb_pieces.Text = "Nombre de pièces";
             this.nb_pieces.Width = 106;
             // 
             // garage
             // 
-            this.garage.DisplayIndex = 5;
             this.garage.Text = "Garage";
             this.garage.Width = 89;
             // 
             // cave
             // 
-            this.cave.DisplayIndex = 6;
             this.cave.Text = "Cave";
             this.cave.Width = 86;
             // 
@@ -166,14 +166,11 @@
             this.voir_bien_button.UseVisualStyleBackColor = true;
             this.voir_bien_button.Click += new System.EventHandler(this.voir_bien_button_Click);
             // 
-            // idBien
-            // 
-            this.idBien.Text = "IDBien";
-            // 
             // CatalogueBiens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.voir_bien_button);
             this.Controls.Add(this.listViewbiens);

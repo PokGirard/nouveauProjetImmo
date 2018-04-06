@@ -48,6 +48,7 @@ namespace EcranAccueil
 
         private void Initialisation_des_champs()
         {
+
             textBoxNomClient.Text = fiche_en_cours.ACHETEUR.NOM_ACHETEUR;
             textBoxPrenomClient.Text = fiche_en_cours.ACHETEUR.PRENOM_ACHETEUR;
             textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE + " ) ";

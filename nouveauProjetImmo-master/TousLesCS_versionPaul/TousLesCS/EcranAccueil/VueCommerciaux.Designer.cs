@@ -86,27 +86,27 @@ namespace EcranAccueil
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 80);
+            this.label1.Location = new System.Drawing.Point(24, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.Size = new System.Drawing.Size(135, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Liste des Commerciaux";
+            this.label1.Text = "Liste des commerciaux";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(899, 80);
+            this.label2.Location = new System.Drawing.Point(24, 302);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.Size = new System.Drawing.Size(260, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Portefeuille Client";
+            this.label2.Text = "Portefeuille client du commercial sélectionné";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(37, 309);
+            this.label3.Location = new System.Drawing.Point(24, 488);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 4;
@@ -116,7 +116,7 @@ namespace EcranAccueil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 339);
+            this.label4.Location = new System.Drawing.Point(24, 518);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 5;
@@ -124,14 +124,14 @@ namespace EcranAccueil
             // 
             // nom
             // 
-            this.nom.Location = new System.Drawing.Point(98, 332);
+            this.nom.Location = new System.Drawing.Point(85, 511);
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(145, 20);
             this.nom.TabIndex = 6;
             // 
             // prenom
             // 
-            this.prenom.Location = new System.Drawing.Point(313, 332);
+            this.prenom.Location = new System.Drawing.Point(300, 511);
             this.prenom.Name = "prenom";
             this.prenom.Size = new System.Drawing.Size(159, 20);
             this.prenom.TabIndex = 7;
@@ -140,7 +140,7 @@ namespace EcranAccueil
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(261, 335);
+            this.label5.Location = new System.Drawing.Point(248, 514);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 8;
@@ -150,7 +150,7 @@ namespace EcranAccueil
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(37, 390);
+            this.label9.Location = new System.Drawing.Point(24, 541);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 17;
@@ -158,7 +158,7 @@ namespace EcranAccueil
             // 
             // email
             // 
-            this.email.Location = new System.Drawing.Point(98, 386);
+            this.email.Location = new System.Drawing.Point(85, 537);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(374, 20);
             this.email.TabIndex = 18;
@@ -167,7 +167,7 @@ namespace EcranAccueil
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(37, 422);
+            this.label10.Location = new System.Drawing.Point(24, 560);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 13);
             this.label10.TabIndex = 19;
@@ -177,7 +177,7 @@ namespace EcranAccueil
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(39, 452);
+            this.label11.Location = new System.Drawing.Point(26, 580);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 20;
@@ -185,7 +185,7 @@ namespace EcranAccueil
             // 
             // portablePro
             // 
-            this.portablePro.Location = new System.Drawing.Point(91, 448);
+            this.portablePro.Location = new System.Drawing.Point(85, 576);
             this.portablePro.Name = "portablePro";
             this.portablePro.Size = new System.Drawing.Size(145, 20);
             this.portablePro.TabIndex = 21;
@@ -194,7 +194,7 @@ namespace EcranAccueil
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(261, 448);
+            this.label12.Location = new System.Drawing.Point(248, 581);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(26, 13);
             this.label12.TabIndex = 22;
@@ -204,7 +204,7 @@ namespace EcranAccueil
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(39, 495);
+            this.label13.Location = new System.Drawing.Point(26, 604);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(107, 13);
             this.label13.TabIndex = 24;
@@ -213,7 +213,7 @@ namespace EcranAccueil
             // supprimerCommercial
             // 
             this.supprimerCommercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.supprimerCommercial.Location = new System.Drawing.Point(570, 436);
+            this.supprimerCommercial.Location = new System.Drawing.Point(624, 387);
             this.supprimerCommercial.Name = "supprimerCommercial";
             this.supprimerCommercial.Size = new System.Drawing.Size(166, 29);
             this.supprimerCommercial.TabIndex = 45;
@@ -224,7 +224,7 @@ namespace EcranAccueil
             // ajoutCommercial
             // 
             this.ajoutCommercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ajoutCommercial.Location = new System.Drawing.Point(570, 352);
+            this.ajoutCommercial.Location = new System.Drawing.Point(624, 317);
             this.ajoutCommercial.Name = "ajoutCommercial";
             this.ajoutCommercial.Size = new System.Drawing.Size(166, 29);
             this.ajoutCommercial.TabIndex = 46;
@@ -235,7 +235,7 @@ namespace EcranAccueil
             // editerCommercial
             // 
             this.editerCommercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.editerCommercial.Location = new System.Drawing.Point(570, 394);
+            this.editerCommercial.Location = new System.Drawing.Point(624, 352);
             this.editerCommercial.Name = "editerCommercial";
             this.editerCommercial.Size = new System.Drawing.Size(166, 29);
             this.editerCommercial.TabIndex = 47;
@@ -246,11 +246,11 @@ namespace EcranAccueil
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button4.Location = new System.Drawing.Point(570, 520);
+            this.button4.Location = new System.Drawing.Point(624, 585);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 29);
+            this.button4.Size = new System.Drawing.Size(166, 55);
             this.button4.TabIndex = 51;
-            this.button4.Text = "Retour Accueil";
+            this.button4.Text = "RETOUR MENU";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button_quitter_Click);
             // 
@@ -258,7 +258,7 @@ namespace EcranAccueil
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(382, 18);
+            this.label15.Location = new System.Drawing.Point(295, 9);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(176, 25);
             this.label15.TabIndex = 52;
@@ -266,21 +266,21 @@ namespace EcranAccueil
             // 
             // fixePro
             // 
-            this.fixePro.Location = new System.Drawing.Point(313, 444);
+            this.fixePro.Location = new System.Drawing.Point(300, 576);
             this.fixePro.Name = "fixePro";
             this.fixePro.Size = new System.Drawing.Size(159, 20);
             this.fixePro.TabIndex = 55;
             // 
             // telPerso
             // 
-            this.telPerso.Location = new System.Drawing.Point(152, 493);
+            this.telPerso.Location = new System.Drawing.Point(85, 620);
             this.telPerso.Name = "telPerso";
             this.telPerso.Size = new System.Drawing.Size(145, 20);
             this.telPerso.TabIndex = 57;
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(570, 479);
+            this.clear.Location = new System.Drawing.Point(624, 421);
             this.clear.Margin = new System.Windows.Forms.Padding(2);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(166, 29);
@@ -292,7 +292,7 @@ namespace EcranAccueil
             // actif
             // 
             this.actif.AutoSize = true;
-            this.actif.Location = new System.Drawing.Point(352, 487);
+            this.actif.Location = new System.Drawing.Point(327, 623);
             this.actif.Margin = new System.Windows.Forms.Padding(2);
             this.actif.Name = "actif";
             this.actif.Size = new System.Drawing.Size(46, 17);
@@ -304,7 +304,7 @@ namespace EcranAccueil
             // inactif
             // 
             this.inactif.AutoSize = true;
-            this.inactif.Location = new System.Drawing.Point(430, 487);
+            this.inactif.Location = new System.Drawing.Point(405, 623);
             this.inactif.Margin = new System.Windows.Forms.Padding(2);
             this.inactif.Name = "inactif";
             this.inactif.Size = new System.Drawing.Size(54, 17);
@@ -315,10 +315,10 @@ namespace EcranAccueil
             // 
             // actifView
             // 
-            this.actifView.Location = new System.Drawing.Point(131, 268);
+            this.actifView.Location = new System.Drawing.Point(640, 171);
             this.actifView.Margin = new System.Windows.Forms.Padding(2);
             this.actifView.Name = "actifView";
-            this.actifView.Size = new System.Drawing.Size(87, 19);
+            this.actifView.Size = new System.Drawing.Size(107, 39);
             this.actifView.TabIndex = 61;
             this.actifView.Text = "Actif";
             this.actifView.UseVisualStyleBackColor = true;
@@ -326,10 +326,10 @@ namespace EcranAccueil
             // 
             // inactifView
             // 
-            this.inactifView.Location = new System.Drawing.Point(250, 268);
+            this.inactifView.Location = new System.Drawing.Point(641, 231);
             this.inactifView.Margin = new System.Windows.Forms.Padding(2);
             this.inactifView.Name = "inactifView";
-            this.inactifView.Size = new System.Drawing.Size(92, 19);
+            this.inactifView.Size = new System.Drawing.Size(106, 39);
             this.inactifView.TabIndex = 62;
             this.inactifView.Text = "Ancien Employé";
             this.inactifView.UseVisualStyleBackColor = true;
@@ -337,10 +337,10 @@ namespace EcranAccueil
             // 
             // tousView
             // 
-            this.tousView.Location = new System.Drawing.Point(41, 268);
+            this.tousView.Location = new System.Drawing.Point(641, 106);
             this.tousView.Margin = new System.Windows.Forms.Padding(2);
             this.tousView.Name = "tousView";
-            this.tousView.Size = new System.Drawing.Size(56, 19);
+            this.tousView.Size = new System.Drawing.Size(106, 39);
             this.tousView.TabIndex = 63;
             this.tousView.Text = "Tous";
             this.tousView.UseVisualStyleBackColor = true;
@@ -358,6 +358,7 @@ namespace EcranAccueil
             this.columnStatut,
             this.columnID});
             this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(27, 106);
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
@@ -412,11 +413,12 @@ namespace EcranAccueil
             this.adresseacheteur,
             this.villeacheteur,
             this.ID});
-            this.listView2.Location = new System.Drawing.Point(653, 106);
+            this.listView2.GridLines = true;
+            this.listView2.Location = new System.Drawing.Point(27, 317);
             this.listView2.Margin = new System.Windows.Forms.Padding(2);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(658, 158);
+            this.listView2.Size = new System.Drawing.Size(592, 158);
             this.listView2.TabIndex = 65;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -459,7 +461,8 @@ namespace EcranAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 561);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(811, 738);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.tousView);
@@ -491,7 +494,7 @@ namespace EcranAccueil
             this.Controls.Add(this.label1);
             this.Name = "VueCommerciaux";
             this.Text = "VueCommerciaux";
-     //       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VueCommerciaux_FormClosing);
+            this.Load += new System.EventHandler(this.VueCommerciaux_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -278,6 +278,7 @@
             this.columnGarage,
             this.columnCave});
             this.listView_resultats.FullRowSelect = true;
+            this.listView_resultats.GridLines = true;
             this.listView_resultats.HideSelection = false;
             this.listView_resultats.Location = new System.Drawing.Point(11, 465);
             this.listView_resultats.MultiSelect = false;
@@ -583,6 +584,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(660, 768);
             this.Controls.Add(this.button_creerProposition);
             this.Controls.Add(this.checkBoxGarage);

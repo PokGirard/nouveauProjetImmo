@@ -428,6 +428,11 @@ namespace EcranAccueil
                 actif.Checked = false;
             }
         }
+
+        private void VueCommerciaux_Load(object sender, EventArgs e)
+        {
+            //vide et c'est normal
+        }
     }
 }
 
