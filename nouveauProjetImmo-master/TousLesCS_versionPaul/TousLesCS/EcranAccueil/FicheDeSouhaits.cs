@@ -441,6 +441,9 @@ namespace EcranAccueil
 
         private void button_creerProposition_Click(object sender, EventArgs e)
         {
+
+            if (fiche_de_reference == null || bien_en_cours == null) return;
+
             PropositionVisite proposition = new PropositionVisite(fiche_de_reference, bien_en_cours);
             proposition.Show();
         }

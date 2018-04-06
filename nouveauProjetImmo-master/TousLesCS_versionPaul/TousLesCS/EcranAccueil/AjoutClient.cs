@@ -60,7 +60,8 @@ namespace EcranAccueil
             this.fixe.Text = monAcheteur.TÉLÉPHONE.ToString();
             this.mobile.Text = monAcheteur.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = monAcheteur.EMAIL;
-
+            this.checkBox_Vendeur.Enabled = false;
+            this.checkBox_Acheteur.Enabled = false;
             chargerComboboxCommerciaux();
             chargerComboboxVilles();
         }
@@ -79,7 +80,8 @@ namespace EcranAccueil
             this.fixe.Text = vendeur_en_cours_fc.TÉLÉPHONE_FIXE.ToString();
             this.mobile.Text = vendeur_en_cours_fc.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = vendeur_en_cours_fc.EMAIL;
-            
+            this.checkBox_Vendeur.Enabled = false;
+            this.checkBox_Acheteur.Enabled = false;
             chargerComboboxCommerciaux();
             chargerComboboxVilles();
         }
@@ -134,7 +136,7 @@ namespace EcranAccueil
         }
 
         private void chargerComboboxVilles()
-        {
+        {//bug ici comment  ou pourquoi quand aucune idée
             var nomVille = (from v in Accueil.modeleBase.VILLE
                             where v.IDVILLE == MON_ACHETEUR.IDVILLE
                             select v.NOM_VILLE).First();
@@ -215,13 +217,7 @@ namespace EcranAccueil
                 button5_bienVisités.Enabled = true;
                 button6_ficheSouhaits.Enabled = true;
                 button4_biensVente.Enabled = false;
-                /*   comboBoxCommerciaux.Items.Clear();
-                   var nomCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
-                                         select c.NOM_COMMERCIAL);
-                   foreach (string nom in nomCommerciaux)
-                   {
-                       comboBoxCommerciaux.Items.Add(nom);
-                   } */
+                
                 Refresh();
             }
         }
@@ -282,13 +278,14 @@ namespace EcranAccueil
                     Accueil.modeleBase.SaveChanges();
 
 
-
-                    maFenetreBien = new AjoutBien(vendeur/*, false*/);
+                    this.checkBox_Vendeur.Enabled = false;
+                    this.checkBox_Acheteur.Enabled = false;
+                    maFenetreBien = new AjoutBien(vendeur);
 
                 }
                 else
                 {
-                    maFenetreBien = new AjoutBien(MON_VENDEUR/*, false*/);
+                    maFenetreBien = new AjoutBien(MON_VENDEUR);
                 }
                 maFenetreBien.Show();
             }
@@ -348,6 +345,8 @@ namespace EcranAccueil
             MON_ACHETEUR.IDCOMMERCIAL = idcommercial;
 
             Accueil.modeleBase.ACHETEUR.Add(MON_ACHETEUR);
+            this.checkBox_Vendeur.Enabled = false;
+            this.checkBox_Acheteur.Enabled = false;
             Accueil.modeleBase.SaveChanges();
 
         }
@@ -356,14 +355,6 @@ namespace EcranAccueil
         {
             comboBox1_villes.Items.Clear();
             comboBox1_villes.Text = "";
-
-            //var cp = (from c in Accueil.modeleBase.VILLE
-            //                  select c.CODE_POSTAL).ToList();
-
-            //foreach (int c in cp)
-            //{
-                
-            //}
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
                             where v.CODE_POSTAL.ToString() == codePostal.Text
@@ -781,13 +772,10 @@ namespace EcranAccueil
 
                     if (checkBox_Acheteur.Checked)
                     {
-
-                        // supprimer les fiches de souhait ?
-
+                      // supprimer les fiches de souhait ?
 
                         Accueil.modeleBase.ACHETEUR.Remove(MON_ACHETEUR);
                         MON_ACHETEUR = null;
-
                     }
 
                     if (checkBox_Vendeur.Checked)
@@ -906,6 +894,7 @@ namespace EcranAccueil
         {
             this.Close();
         }
+
     }
 }
 

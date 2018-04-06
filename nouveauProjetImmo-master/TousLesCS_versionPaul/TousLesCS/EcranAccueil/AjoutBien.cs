@@ -125,7 +125,7 @@ namespace EcranAccueil
         {
             if (verifier_champs())
             {
-                if (bien_en_cours == null /*&& verifier_champs()*/ && !bienExisteDeja)
+                if (bien_en_cours == null && !bienExisteDeja)
                 {
                     modification_ou_creation_bien();
                     button1_ajouterBien.Text = "MODIFIER LE BIEN";

@@ -346,6 +346,7 @@
             this.listView1.TabIndex = 58;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+//            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // column1
@@ -414,7 +415,6 @@
             this.buttonAccepterVisite.TabIndex = 61;
             this.buttonAccepterVisite.Text = "Accepter la visite";
             this.buttonAccepterVisite.UseVisualStyleBackColor = true;
-            this.buttonAccepterVisite.Visible = false;
             this.buttonAccepterVisite.Click += new System.EventHandler(this.buttonAccepterVisite_Click);
             // 
             // button1_retourMenu

@@ -214,25 +214,7 @@ namespace EcranAccueil
             {
                 MessageBox.Show("Sélectionnez un client.");
             }
-
         }
-
-       private void listView_resultat_Click(object sender, EventArgs e)
-        {
-
-           /* if (typeClientChoisi == TypeClient.VENDEUR)
-            {
-                ID_client_selectionne = vendeurs[0].IDVENDEUR;
-
-            }
-            else if (typeClientChoisi == TypeClient.ACHETEUR)
-            {
-                ID_client_selectionne = acheteurs[0].IDACHETEUR; //BUG NULL REFERENCE
-            }
-
-            Console.WriteLine(ID_client_selectionne);*/
-        }
-
         private void RechercherClient_Load(object sender, EventArgs e)
         {
             //vide et c'est normal
