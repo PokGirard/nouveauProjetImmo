@@ -251,7 +251,6 @@
             this.listView_resultat.TabIndex = 20;
             this.listView_resultat.UseCompatibleStateImageBehavior = false;
             this.listView_resultat.View = System.Windows.Forms.View.Details;
-            this.listView_resultat.Click += new System.EventHandler(this.listView_resultat_Click);
             // 
             // columnHeader4
             // 

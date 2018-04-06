@@ -1,4 +1,4 @@
-﻿namespace FicheDuBien
+﻿namespace EcranAccueil
 {
     partial class FicheDuBien
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_titre_fiche_bien = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FicheDuBien));
             this.label_bien = new System.Windows.Forms.Label();
             this.desc_surface_habitable = new System.Windows.Forms.Label();
             this.label_desc_nb_pieces = new System.Windows.Forms.Label();
@@ -41,33 +41,26 @@
             this.label_desc_code_postal = new System.Windows.Forms.Label();
             this.label_desc_ville = new System.Windows.Forms.Label();
             this.label_desc_commentaires = new System.Windows.Forms.Label();
-            this.numericUpDown_surf_habitable = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_surf_parcelle = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_nb_pieces = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_nb_chambres = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_nb_sdb = new System.Windows.Forms.NumericUpDown();
+            this.surface_hab = new System.Windows.Forms.NumericUpDown();
+            this.surface_parc = new System.Windows.Forms.NumericUpDown();
+            this.nb_pieces = new System.Windows.Forms.NumericUpDown();
+            this.nb_chambres = new System.Windows.Forms.NumericUpDown();
+            this.nb_sdb = new System.Windows.Forms.NumericUpDown();
             this.comboBox_garage = new System.Windows.Forms.ComboBox();
             this.comboBox_cave = new System.Windows.Forms.ComboBox();
             this.textBox_descr_bien = new System.Windows.Forms.TextBox();
-            this.textBox_code_postal = new System.Windows.Forms.TextBox();
-            this.textBox_ville = new System.Windows.Forms.TextBox();
-            this.textBox_commentaires = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_surf_habitable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_surf_parcelle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_pieces)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_chambres)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_sdb)).BeginInit();
+            this.code_postal = new System.Windows.Forms.TextBox();
+            this.ville = new System.Windows.Forms.TextBox();
+            this.commentaires = new System.Windows.Forms.TextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.titreFenetreFicheBien = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.surface_hab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.surface_parc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_pieces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_chambres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_sdb)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label_titre_fiche_bien
-            // 
-            this.label_titre_fiche_bien.AutoSize = true;
-            this.label_titre_fiche_bien.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_titre_fiche_bien.Location = new System.Drawing.Point(97, 25);
-            this.label_titre_fiche_bien.Name = "label_titre_fiche_bien";
-            this.label_titre_fiche_bien.Size = new System.Drawing.Size(98, 13);
-            this.label_titre_fiche_bien.TabIndex = 0;
-            this.label_titre_fiche_bien.Text = "FICHE DU BIEN";
             // 
             // label_bien
             // 
@@ -87,7 +80,6 @@
             this.desc_surface_habitable.Size = new System.Drawing.Size(90, 13);
             this.desc_surface_habitable.TabIndex = 2;
             this.desc_surface_habitable.Text = "Surface habitable";
-            this.desc_surface_habitable.Click += new System.EventHandler(this.desc_surface_habitable_Click);
             // 
             // label_desc_nb_pieces
             // 
@@ -97,7 +89,6 @@
             this.label_desc_nb_pieces.Size = new System.Drawing.Size(93, 13);
             this.label_desc_nb_pieces.TabIndex = 3;
             this.label_desc_nb_pieces.Text = "Nombre de pièces";
-            this.label_desc_nb_pieces.Click += new System.EventHandler(this.label_desc_nb_pieces_Click);
             // 
             // label_desc_surf_parcelle
             // 
@@ -107,7 +98,6 @@
             this.label_desc_surf_parcelle.Size = new System.Drawing.Size(110, 13);
             this.label_desc_surf_parcelle.TabIndex = 4;
             this.label_desc_surf_parcelle.Text = "Surface de la parcelle";
-            this.label_desc_surf_parcelle.Click += new System.EventHandler(this.label_desc_surf_parcelle_Click);
             // 
             // label_desc_nb_chambres
             // 
@@ -117,7 +107,6 @@
             this.label_desc_nb_chambres.Size = new System.Drawing.Size(108, 13);
             this.label_desc_nb_chambres.TabIndex = 5;
             this.label_desc_nb_chambres.Text = "Nombre de chambres";
-            this.label_desc_nb_chambres.Click += new System.EventHandler(this.label_desc_nb_chambres_Click);
             // 
             // label_desc_salles_de_bain
             // 
@@ -182,40 +171,65 @@
             this.label_desc_commentaires.TabIndex = 12;
             this.label_desc_commentaires.Text = "Commentaires :";
             // 
-            // numericUpDown_surf_habitable
+            // surface_hab
             // 
-            this.numericUpDown_surf_habitable.Location = new System.Drawing.Point(194, 90);
-            this.numericUpDown_surf_habitable.Name = "numericUpDown_surf_habitable";
-            this.numericUpDown_surf_habitable.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_surf_habitable.TabIndex = 13;
+            this.surface_hab.Location = new System.Drawing.Point(194, 90);
+            this.surface_hab.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.surface_hab.Name = "surface_hab";
+            this.surface_hab.Size = new System.Drawing.Size(60, 20);
+            this.surface_hab.TabIndex = 13;
             // 
-            // numericUpDown_surf_parcelle
+            // surface_parc
             // 
-            this.numericUpDown_surf_parcelle.Location = new System.Drawing.Point(194, 117);
-            this.numericUpDown_surf_parcelle.Name = "numericUpDown_surf_parcelle";
-            this.numericUpDown_surf_parcelle.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_surf_parcelle.TabIndex = 14;
+            this.surface_parc.Location = new System.Drawing.Point(194, 117);
+            this.surface_parc.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.surface_parc.Name = "surface_parc";
+            this.surface_parc.Size = new System.Drawing.Size(60, 20);
+            this.surface_parc.TabIndex = 14;
             // 
-            // numericUpDown_nb_pieces
+            // nb_pieces
             // 
-            this.numericUpDown_nb_pieces.Location = new System.Drawing.Point(194, 147);
-            this.numericUpDown_nb_pieces.Name = "numericUpDown_nb_pieces";
-            this.numericUpDown_nb_pieces.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_nb_pieces.TabIndex = 15;
+            this.nb_pieces.Location = new System.Drawing.Point(194, 147);
+            this.nb_pieces.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nb_pieces.Name = "nb_pieces";
+            this.nb_pieces.Size = new System.Drawing.Size(60, 20);
+            this.nb_pieces.TabIndex = 15;
             // 
-            // numericUpDown_nb_chambres
+            // nb_chambres
             // 
-            this.numericUpDown_nb_chambres.Location = new System.Drawing.Point(194, 177);
-            this.numericUpDown_nb_chambres.Name = "numericUpDown_nb_chambres";
-            this.numericUpDown_nb_chambres.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_nb_chambres.TabIndex = 16;
+            this.nb_chambres.Location = new System.Drawing.Point(194, 177);
+            this.nb_chambres.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nb_chambres.Name = "nb_chambres";
+            this.nb_chambres.Size = new System.Drawing.Size(60, 20);
+            this.nb_chambres.TabIndex = 16;
             // 
-            // numericUpDown_nb_sdb
+            // nb_sdb
             // 
-            this.numericUpDown_nb_sdb.Location = new System.Drawing.Point(194, 207);
-            this.numericUpDown_nb_sdb.Name = "numericUpDown_nb_sdb";
-            this.numericUpDown_nb_sdb.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown_nb_sdb.TabIndex = 17;
+            this.nb_sdb.Location = new System.Drawing.Point(194, 207);
+            this.nb_sdb.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nb_sdb.Name = "nb_sdb";
+            this.nb_sdb.Size = new System.Drawing.Size(60, 20);
+            this.nb_sdb.TabIndex = 17;
             // 
             // comboBox_garage
             // 
@@ -247,45 +261,72 @@
             this.textBox_descr_bien.Size = new System.Drawing.Size(403, 58);
             this.textBox_descr_bien.TabIndex = 20;
             // 
-            // textBox_code_postal
+            // code_postal
             // 
-            this.textBox_code_postal.Location = new System.Drawing.Point(105, 404);
-            this.textBox_code_postal.Name = "textBox_code_postal";
-            this.textBox_code_postal.Size = new System.Drawing.Size(124, 20);
-            this.textBox_code_postal.TabIndex = 21;
+            this.code_postal.Location = new System.Drawing.Point(105, 404);
+            this.code_postal.Name = "code_postal";
+            this.code_postal.Size = new System.Drawing.Size(124, 20);
+            this.code_postal.TabIndex = 21;
             // 
-            // textBox_ville
+            // ville
             // 
-            this.textBox_ville.Location = new System.Drawing.Point(105, 432);
-            this.textBox_ville.Name = "textBox_ville";
-            this.textBox_ville.Size = new System.Drawing.Size(124, 20);
-            this.textBox_ville.TabIndex = 22;
+            this.ville.Location = new System.Drawing.Point(105, 432);
+            this.ville.Name = "ville";
+            this.ville.Size = new System.Drawing.Size(124, 20);
+            this.ville.TabIndex = 22;
             // 
-            // textBox_commentaires
+            // commentaires
             // 
-            this.textBox_commentaires.Location = new System.Drawing.Point(32, 497);
-            this.textBox_commentaires.Multiline = true;
-            this.textBox_commentaires.Name = "textBox_commentaires";
-            this.textBox_commentaires.Size = new System.Drawing.Size(403, 58);
-            this.textBox_commentaires.TabIndex = 23;
+            this.commentaires.Location = new System.Drawing.Point(32, 497);
+            this.commentaires.Multiline = true;
+            this.commentaires.Name = "commentaires";
+            this.commentaires.Size = new System.Drawing.Size(403, 58);
+            this.commentaires.TabIndex = 23;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // titreFenetreFicheBien
+            // 
+            this.titreFenetreFicheBien.AutoSize = true;
+            this.titreFenetreFicheBien.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titreFenetreFicheBien.Location = new System.Drawing.Point(131, 9);
+            this.titreFenetreFicheBien.Name = "titreFenetreFicheBien";
+            this.titreFenetreFicheBien.Size = new System.Drawing.Size(167, 25);
+            this.titreFenetreFicheBien.TabIndex = 55;
+            this.titreFenetreFicheBien.Text = "FICHE DU BIEN";
             // 
             // FicheDuBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(505, 598);
-            this.Controls.Add(this.textBox_commentaires);
-            this.Controls.Add(this.textBox_ville);
-            this.Controls.Add(this.textBox_code_postal);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(461, 598);
+            this.Controls.Add(this.titreFenetreFicheBien);
+            this.Controls.Add(this.commentaires);
+            this.Controls.Add(this.ville);
+            this.Controls.Add(this.code_postal);
             this.Controls.Add(this.textBox_descr_bien);
             this.Controls.Add(this.comboBox_cave);
             this.Controls.Add(this.comboBox_garage);
-            this.Controls.Add(this.numericUpDown_nb_sdb);
-            this.Controls.Add(this.numericUpDown_nb_chambres);
-            this.Controls.Add(this.numericUpDown_nb_pieces);
-            this.Controls.Add(this.numericUpDown_surf_parcelle);
-            this.Controls.Add(this.numericUpDown_surf_habitable);
+            this.Controls.Add(this.nb_sdb);
+            this.Controls.Add(this.nb_chambres);
+            this.Controls.Add(this.nb_pieces);
+            this.Controls.Add(this.surface_parc);
+            this.Controls.Add(this.surface_hab);
             this.Controls.Add(this.label_desc_commentaires);
             this.Controls.Add(this.label_desc_ville);
             this.Controls.Add(this.label_desc_code_postal);
@@ -298,23 +339,21 @@
             this.Controls.Add(this.label_desc_nb_pieces);
             this.Controls.Add(this.desc_surface_habitable);
             this.Controls.Add(this.label_bien);
-            this.Controls.Add(this.label_titre_fiche_bien);
             this.Name = "FicheDuBien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Impression fiche de bien";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_surf_habitable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_surf_parcelle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_pieces)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_chambres)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_nb_sdb)).EndInit();
+            this.Click += new System.EventHandler(this.FicheDuBien_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.surface_hab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.surface_parc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_pieces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_chambres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_sdb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_titre_fiche_bien;
         private System.Windows.Forms.Label label_bien;
         private System.Windows.Forms.Label desc_surface_habitable;
         private System.Windows.Forms.Label label_desc_nb_pieces;
@@ -327,17 +366,20 @@
         private System.Windows.Forms.Label label_desc_code_postal;
         private System.Windows.Forms.Label label_desc_ville;
         private System.Windows.Forms.Label label_desc_commentaires;
-        private System.Windows.Forms.NumericUpDown numericUpDown_surf_habitable;
-        private System.Windows.Forms.NumericUpDown numericUpDown_surf_parcelle;
-        private System.Windows.Forms.NumericUpDown numericUpDown_nb_pieces;
-        private System.Windows.Forms.NumericUpDown numericUpDown_nb_chambres;
-        private System.Windows.Forms.NumericUpDown numericUpDown_nb_sdb;
+        private System.Windows.Forms.NumericUpDown surface_hab;
+        private System.Windows.Forms.NumericUpDown surface_parc;
+        private System.Windows.Forms.NumericUpDown nb_pieces;
+        private System.Windows.Forms.NumericUpDown nb_chambres;
+        private System.Windows.Forms.NumericUpDown nb_sdb;
         private System.Windows.Forms.ComboBox comboBox_garage;
         private System.Windows.Forms.ComboBox comboBox_cave;
         private System.Windows.Forms.TextBox textBox_descr_bien;
-        private System.Windows.Forms.TextBox textBox_code_postal;
-        private System.Windows.Forms.TextBox textBox_ville;
-        private System.Windows.Forms.TextBox textBox_commentaires;
+        private System.Windows.Forms.TextBox code_postal;
+        private System.Windows.Forms.TextBox ville;
+        private System.Windows.Forms.TextBox commentaires;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Label titreFenetreFicheBien;
     }
 }
 

@@ -121,15 +121,6 @@ namespace EcranAccueil
             else this.Close();
         }
 
-
-        private void nom_TextChanged(object sender, EventArgs e)
-        {
-            //var nomVendeur = (from v in modeleBase.VENDEUR
-            //                  where v.NOM_VENDEUR.StartsWith(this.nomVendeur.Text)
-            //                  select v.NOM_VENDEUR);
-            //this.nomVendeur.Text = nomVendeur.First();
-        }
-
         private void button1_ajouterBien_Click(object sender, EventArgs e)
         {
             if (verifier_champs())
@@ -366,25 +357,15 @@ namespace EcranAccueil
             this.comboBox2_villesBien.Text = ville;
             this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
             this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
-        }
 
-        Bitmap bmp;
+            
+        }
 
         private void button2_imprimerFiche_Click(object sender, EventArgs e)
         {
-
-            Graphics g = this.CreateGraphics();
-            bmp = new Bitmap(this.Size.Width, this.Size.Height, g);
-            Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-            printPreviewDialog1.ShowDialog();
+            FicheDuBien fiche = new FicheDuBien(bien_en_cours);
+            fiche.Show();
         }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(bmp, 0, 0);
-        }
-
         
         private void codePostalVendeur_TextChanged(object sender, EventArgs e)
         {

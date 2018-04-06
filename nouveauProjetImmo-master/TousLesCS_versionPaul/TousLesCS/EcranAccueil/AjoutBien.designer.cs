@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AjoutBien));
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1_status = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,8 +77,6 @@
             this.checkBox1_garage = new System.Windows.Forms.CheckBox();
             this.checkBox2_cave = new System.Windows.Forms.CheckBox();
             this.titreFenetreAjoutBien = new System.Windows.Forms.Label();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
             this.label23 = new System.Windows.Forms.Label();
             this.comboBox1_villesClient = new System.Windows.Forms.ComboBox();
@@ -129,7 +126,6 @@
             this.nomClient.Name = "nomClient";
             this.nomClient.Size = new System.Drawing.Size(137, 20);
             this.nomClient.TabIndex = 3;
-            this.nomClient.TextChanged += new System.EventHandler(this.nom_TextChanged);
             // 
             // label3
             // 
@@ -564,21 +560,6 @@
             this.titreFenetreAjoutBien.TabIndex = 54;
             this.titreFenetreAjoutBien.Text = "AJOUT D\'UN BIEN";
             // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // dateTimePicker1_créationClient
             // 
             this.dateTimePicker1_créationClient.Location = new System.Drawing.Point(101, 265);
@@ -616,6 +597,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(787, 765);
             this.Controls.Add(this.comboBox2_villesBien);
             this.Controls.Add(this.comboBox1_villesClient);
@@ -738,8 +720,6 @@
         internal System.Windows.Forms.TextBox emailVendeur;
         public System.Windows.Forms.TextBox nomClient;
         private System.Windows.Forms.Label titreFenetreAjoutBien;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1_créationClient;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox comboBox1_villesClient;

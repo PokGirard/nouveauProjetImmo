@@ -12,12 +12,11 @@ namespace EcranAccueil
 {
     public partial class RechercherClient : Form
     {
-        //DOIT CLEAR LES LISTES DE RESULTATS LOSQUE L ON CLIQUE SUR RECHERCHER A NOUVEAU (SINON RESULTATS EN DOUBLON, TRIPLE, ETC...)
+        //DOIT CLEAR LES LISTES DE RESULTATS LOSQUE L ON CLIQUE SUR RECHERCHER A NOUVEAU (SINON RESULTATS EN DOUBLON, TRIPLE, ETC...) >>>>OK
 
         static AjoutClient fenetreModificationClient;
 
         TypeClient typeClientChoisi = TypeClient.ACHETEUR;
-        int ID_client_selectionne;
         List<ACHETEUR> acheteurs;
         List<VENDEUR> vendeurs;
         ACHETEUR acheteur_en_cours_fc;
@@ -155,7 +154,7 @@ namespace EcranAccueil
 
         private void buttonLancerRecherche_Click(object sender, EventArgs e)
         {
-
+            listView_resultat.Items.Clear();
             if (typeClientChoisi == TypeClient.ACHETEUR)
             {
 
