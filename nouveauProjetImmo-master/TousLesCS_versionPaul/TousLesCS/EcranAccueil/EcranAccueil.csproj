@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACHETEUR.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="AjoutBien.cs">
       <SubType>Form</SubType>
@@ -81,8 +81,23 @@
     <Compile Include="AjoutClient.Designer.cs">
       <DependentUpon>AjoutClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="base_finale.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base_finale.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base_finale.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base_finale.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base_finale.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>base_finale.edmx</DependentUpon>
+    </Compile>
     <Compile Include="BIEN.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="CatalogueBiens.cs">
       <SubType>Form</SubType>
@@ -91,7 +106,7 @@
       <DependentUpon>CatalogueBiens.cs</DependentUpon>
     </Compile>
     <Compile Include="COMMERCIAL.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="EditionCommercial.cs">
       <SubType>Form</SubType>
@@ -124,7 +139,7 @@
       <DependentUpon>FicheDuBien.cs</DependentUpon>
     </Compile>
     <Compile Include="FICHE_DE_SOUHAITS.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="ListeVisites.cs">
       <SubType>Form</SubType>
@@ -156,10 +171,10 @@
       <DependentUpon>PropositionVisite.cs</DependentUpon>
     </Compile>
     <Compile Include="PROPOSITION_VISITE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="RDV.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="RDV_Visite.cs">
       <SubType>Form</SubType>
@@ -174,10 +189,10 @@
       <DependentUpon>RechercherClient.cs</DependentUpon>
     </Compile>
     <Compile Include="VENDEUR.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="VILLE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
     <Compile Include="VueCommerciaux.cs">
       <SubType>Form</SubType>
@@ -238,6 +253,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="base_finale.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>base_finale.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="base_finale.edmx.diagram">
+      <DependentUpon>base_finale.edmx</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -262,6 +284,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="base_finale.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>base_finale.edmx</DependentUpon>
+      <LastGenOutput>base_finale.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="base_finale.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>base_finale.edmx</DependentUpon>
+      <LastGenOutput>base_finale.cs</LastGenOutput>
+    </Content>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

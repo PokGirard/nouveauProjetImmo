@@ -42,6 +42,7 @@ namespace EcranAccueil
             InitializeComponent();
             button1_retourMenu.Enabled = true;
             chargerComboboxCommerciaux();
+            comboBoxCommerciaux.Enabled = true;
 
         }
 

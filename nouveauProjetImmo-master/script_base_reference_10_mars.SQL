@@ -157,8 +157,8 @@ create table PROPOSITION_VISITE
      IDVISITE smallint identity (1, 1)   ,
      IDFICHESOUHAITS smallint  not null  ,
      IDBIEN smallint  not null  ,
-     DATERDV datetime  not null  
-     ,
+     DATERDV datetime  not null  ,
+	STATUT_PROPOSITION char(32) null CHECK(statut_proposition in ('ACCEPTEE', 'REFUSEE', 'EN ATTENTE')) DEFAULT 'EN ATTENTE',
      constraint PK_PROPOSITION_VISITE primary key (IDVISITE)
   ) 
 go

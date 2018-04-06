@@ -24,6 +24,7 @@ namespace EcranAccueil
         public short IDFICHESOUHAITS { get; set; }
         public short IDBIEN { get; set; }
         public System.DateTime DATERDV { get; set; }
+        public string STATUT_PROPOSITION { get; set; }
     
         public virtual BIEN BIEN { get; set; }
         public virtual FICHE_DE_SOUHAITS FICHE_DE_SOUHAITS { get; set; }
