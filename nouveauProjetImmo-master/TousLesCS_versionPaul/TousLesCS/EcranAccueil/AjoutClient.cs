@@ -644,25 +644,44 @@ namespace EcranAccueil
 
             if (monChoixAffichage == ChoixAffichage.FICHE_DE_SOUHAITS)
             {
-                string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
-                int id_selec = Int32.Parse(t);
-                MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                            where f.IDFICHESOUHAITS == id_selec
-                            select f).First();
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    buttonAccepterVisite.Enabled = true;
+                }
+                else
+                {
+                    buttonAccepterVisite.Enabled = false;
+                }
+                
+                //string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                //int id_selec = Int32.Parse(t);
+                //MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                //            where f.IDFICHESOUHAITS == id_selec
+                //            select f).First();
 
-                maFenetreFiche = new FicheDeSouhaits(MA_FICHE);
-                maFenetreFiche.Show();
-                return;
+                //maFenetreFiche = new FicheDeSouhaits(MA_FICHE);
+                //maFenetreFiche.Show();
+                //return;
             }
 
-
-
+           if (monChoixAffichage == ChoixAffichage.BIENS_PROPOSES)
+            {
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    buttonAccepterVisite.Enabled = true;
+                }
+                else
+                {
+                    buttonAccepterVisite.Enabled = false;
+                }
+            }
 
         }
 
         private void button6_ficheSouhaits_Click(object sender, EventArgs e)
         {
             monChoixAffichage = ChoixAffichage.FICHE_DE_SOUHAITS;
+            buttonAccepterVisite.Text = "Voir la fiche";
             buttonAccepterVisite.Enabled = false;
 
             if (MON_ACHETEUR != null)
@@ -812,7 +831,8 @@ namespace EcranAccueil
         {
 
             monChoixAffichage = ChoixAffichage.BIENS_PROPOSES;
-            buttonAccepterVisite.Enabled = true;
+            buttonAccepterVisite.Text = "Accepter la visite";
+            buttonAccepterVisite.Enabled = false;
 
             if (MON_ACHETEUR != null)
             {
@@ -851,7 +871,7 @@ namespace EcranAccueil
 
                     listView1.Items.Add(visites_proposees[i].IDVISITE.ToString()).SubItems.Add(ville);
 
-                   listView1.Items[i].SubItems.Add(b.ADRESSE_BIEN);
+                    listView1.Items[i].SubItems.Add(b.ADRESSE_BIEN);
                     listView1.Items[i].SubItems.Add(b.PRIX_SOUHAITÉ.ToString());
                     listView1.Items[i].SubItems.Add(visites_proposees[i].DATERDV.ToString());
                     listView1.Items[i].SubItems.Add(visites_proposees[i].STATUT_PROPOSITION);
@@ -868,14 +888,26 @@ namespace EcranAccueil
 
         private void buttonAccepterVisite_Click(object sender, EventArgs e)
         {
+            if(buttonAccepterVisite.Text == "Voir la fiche")
+            {
+                string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                int id_selec = Int32.Parse(t);
+                MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                            where f.IDFICHESOUHAITS == id_selec
+                            select f).First();
 
+                maFenetreFiche = new FicheDeSouhaits(MA_FICHE);
+                maFenetreFiche.Show();
+                return;
+            }
+           
             int id_proposition = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
             PROPOSITION_VISITE proposition_retenue = (from p in Accueil.modeleBase.PROPOSITION_VISITE
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "EN ATTENTE")
+            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée."); return;
             }
@@ -906,6 +938,7 @@ namespace EcranAccueil
             this.Close();
         }
 
+        
     }
 }
 

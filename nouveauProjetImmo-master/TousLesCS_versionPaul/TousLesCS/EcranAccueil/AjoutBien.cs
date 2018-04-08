@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -95,7 +97,7 @@ namespace EcranAccueil
             //on peut supprimer et imprimer par contre
             button2_imprimerFiche.Enabled = !estModifiable;
             button3_supprimer.Enabled = !estModifiable;
-            
+
         }
         private void blocageBoxVendeur(bool estModifiable)
         {
@@ -228,7 +230,7 @@ namespace EcranAccueil
                 valide = false;
             }
 
-            if(textBox12_commentaires.Text.Count() > 150)
+            if (textBox12_commentaires.Text.Count() > 150)
             {
                 message_erreur += " --> Veuillez réduire le nombre de caractères dans la section commentaires. \n";
                 valide = false;
@@ -362,7 +364,6 @@ namespace EcranAccueil
                     {
                         Accueil.modeleBase.BIEN.Add(bien_en_modification);
                         bien_en_modification.NB_VISITES = 0;
-                        MessageBox.Show(" Le bien a été ajouté dans la base.");
                     }
                     catch (Exception e2)
                     {
@@ -476,7 +477,35 @@ namespace EcranAccueil
 
         private void generation_mail()
         {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("appli.immobilly@gmail.com");
 
+            var mailCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
+                                  select c.EMAIL).ToList();
+            foreach(string email in mailCommerciaux)
+            {
+                mail.To.Add(email);
+            }
+           
+            mail.Subject = "Un bien a été ajouté dans la base";
+            mail.Body = "Un bien a été ajouté dans la base : \n";
+            mail.Body += "Descriptif : " + bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) "; 
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("appli.immobilly@gmail.com", "immobilly2018");
+            SmtpServer.EnableSsl = true;
+
+            try
+            {
+                SmtpServer.Send(mail);
+                MessageBox.Show("Mail envoyé aux commerciaux.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(
+                    "Exception caught in CreateTestMessage1(): {0}",
+                    ex.ToString());
+            }
         }
     }
 }
