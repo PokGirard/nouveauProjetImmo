@@ -69,6 +69,7 @@
             this.buttonBienProposes = new System.Windows.Forms.Button();
             this.buttonAccepterVisite = new System.Windows.Forms.Button();
             this.button1_retourMenu = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // titreFenetre
@@ -335,7 +336,8 @@
             this.column2,
             this.column3,
             this.column4,
-            this.column5});
+            this.column5,
+            this.columnHeader1});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
@@ -346,7 +348,6 @@
             this.listView1.TabIndex = 58;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-//            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // column1
@@ -518,5 +519,6 @@
         private System.Windows.Forms.Button buttonBienProposes;
         private System.Windows.Forms.Button buttonAccepterVisite;
         private System.Windows.Forms.Button button1_retourMenu;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

@@ -64,7 +64,11 @@ namespace EcranAccueil
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
             chargerComboboxCommerciaux();
-            chargerComboboxVilles();
+
+            var nomVille = (from v in Accueil.modeleBase.VILLE
+                            where v.IDVILLE == MON_ACHETEUR.IDVILLE
+                            select v.NOM_VILLE).First();
+            this.comboBox1_villes.Text = nomVille;
         }
 
         public AjoutClient(VENDEUR vendeur_en_cours_fc)
@@ -84,7 +88,11 @@ namespace EcranAccueil
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
             chargerComboboxCommerciaux();
-            chargerComboboxVilles();
+
+            var nomVille = (from v in Accueil.modeleBase.VILLE
+                            where v.IDVILLE == MON_VENDEUR.IDVILLE
+                            select v.NOM_VILLE).First();
+            this.comboBox1_villes.Text = nomVille;
         }
 
         private void initialisationClientExistant()
@@ -130,19 +138,10 @@ namespace EcranAccueil
             {
                 int idcommercial = MON_ACHETEUR.IDCOMMERCIAL;
                 var nomCommercial = (from c in Accueil.modeleBase.COMMERCIAL
-                                        where c.IDCOMMERCIAL == idcommercial
-                                        select c).ToList();
+                                     where c.IDCOMMERCIAL == idcommercial
+                                     select c).ToList();
                 comboBoxCommerciaux.Text = nomCommercial[0].NOM_COMMERCIAL;
             }
-        }
-
-        private void chargerComboboxVilles()
-        {//bug ici comment  ou pourquoi quand aucune idée
-            var nomVille = (from v in Accueil.modeleBase.VILLE
-                            where v.IDVILLE == MON_ACHETEUR.IDVILLE
-                            select v.NOM_VILLE).First();
-            this.comboBox1_villes.Text = nomVille;
-
         }
 
         private void créer_Click(object sender, EventArgs e)
@@ -218,7 +217,7 @@ namespace EcranAccueil
                 button5_bienVisités.Enabled = true;
                 button6_ficheSouhaits.Enabled = true;
                 button4_biensVente.Enabled = false;
-                
+
                 Refresh();
             }
         }
@@ -373,7 +372,7 @@ namespace EcranAccueil
         {
             if (éditerInfos.Text == "Editer les informations")
             {
-            
+
                 blocageBoxVendeur(true);
                 éditerInfos.Text = "Valider les modifications";
             }
@@ -678,6 +677,7 @@ namespace EcranAccueil
                 listView1.Columns[2].Text = "Budget";
                 listView1.Columns[3].Text = "Surface";
                 listView1.Columns[4].Text = "Nombre pièces";
+                listView1.Columns[5].Text = "Statut fiche";
 
                 for (int i = 0; i < fd_souhait_acheteur.Count; i++)
                 {
@@ -687,8 +687,8 @@ namespace EcranAccueil
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].BUDGET.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].SURFACE_HABITABLE.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].NB_PIÈCE.ToString());
-
-                }
+                    listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].STATUT);
+                                    }
 
 
                 listView1.Refresh();
@@ -700,17 +700,18 @@ namespace EcranAccueil
             monChoixAffichage = ChoixAffichage.BIENS_VISITES;
             buttonAccepterVisite.Enabled = false;
 
-            var id_fiche = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+            var fiches_souhait = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                             where f.IDACHETEUR == MON_ACHETEUR.IDACHETEUR
                             select f.IDFICHESOUHAITS).ToList();
 
-            var id_prop_visites = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
-                                   where id_fiche.Contains(pv.IDFICHESOUHAITS)
+            var prop_visites_acceptees = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                                   where fiches_souhait.Contains(pv.IDFICHESOUHAITS) &&
+                                   pv.STATUT_PROPOSITION == "ACCEPTEE"
                                    select pv.IDVISITE).ToList();
 
             var visites_effectuees = (from r in Accueil.modeleBase.RDV
-                                      where id_prop_visites.Contains(r.IDVISITE)
-                                      select r).ToList();
+                                      where prop_visites_acceptees.Contains(r.IDVISITE)
+                                      select r).Distinct().ToList(); 
 
             listView1.Items.Clear();
             listView1.Columns[0].Text = "ID Rdv";
@@ -724,7 +725,8 @@ namespace EcranAccueil
 
                 int index = visites_effectuees[i].IDVISITE;
                 PROPOSITION_VISITE proposition = (from p in Accueil.modeleBase.PROPOSITION_VISITE
-                                                  where p.IDVISITE == index
+                                                  where p.IDVISITE == index &&
+                                                   p.STATUT_PROPOSITION == "ACCEPTEE"
                                                   select p).FirstOrDefault();
 
                 BIEN b = (from b2 in Accueil.modeleBase.BIEN
@@ -773,7 +775,7 @@ namespace EcranAccueil
 
                     if (checkBox_Acheteur.Checked)
                     {
-                      // supprimer les fiches de souhait ?
+                        // supprimer les fiches de souhait ?
 
                         Accueil.modeleBase.ACHETEUR.Remove(MON_ACHETEUR);
                         MON_ACHETEUR = null;
@@ -831,6 +833,7 @@ namespace EcranAccueil
                 listView1.Columns[2].Text = "Adresse";
                 listView1.Columns[3].Text = "Prix";
                 listView1.Columns[4].Text = "Date";
+                listView1.Columns[5].Text = "Statut";
 
                 for (int i = 0; i < visites_proposees.Count; i++)
                 {
@@ -848,10 +851,10 @@ namespace EcranAccueil
 
                     listView1.Items.Add(visites_proposees[i].IDVISITE.ToString()).SubItems.Add(ville);
 
-
-                    listView1.Items[i].SubItems.Add(b.ADRESSE_BIEN);
+                   listView1.Items[i].SubItems.Add(b.ADRESSE_BIEN);
                     listView1.Items[i].SubItems.Add(b.PRIX_SOUHAITÉ.ToString());
                     listView1.Items[i].SubItems.Add(visites_proposees[i].DATERDV.ToString());
+                    listView1.Items[i].SubItems.Add(visites_proposees[i].STATUT_PROPOSITION);
 
                 }
 
@@ -872,18 +875,25 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
+            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            {
+                MessageBox.Show(" La proposition a déjà été traitée."); return;
+            }
+
             maFenetreRDV = new RDV_Visite(proposition_retenue);
 
 
 
-            RDV rdv = new RDV
+         /*   RDV rdv = new RDV
             {
                 IDVISITE = proposition_retenue.IDVISITE
             };
 
             Accueil.modeleBase.RDV.Add(rdv);
-            Accueil.modeleBase.SaveChanges();
+            Accueil.modeleBase.SaveChanges(); */
 
+            // ---------> se fait via le bouton créer de la fenêtre RDV..non ?
+          
             maFenetreRDV.Show();
 
 

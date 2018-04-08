@@ -6,7 +6,6 @@ namespace EcranAccueil
     public partial class Accueil : Form
     {
         public static basefinaleEntities modeleBase = new basefinaleEntities();
-
         public Accueil()
         {
             InitializeComponent();

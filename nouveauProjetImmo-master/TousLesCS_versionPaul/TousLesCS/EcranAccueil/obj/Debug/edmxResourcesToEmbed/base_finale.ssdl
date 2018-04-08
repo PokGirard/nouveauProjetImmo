@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="sept_avrilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="basefinaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ACHETEUR">
     <Key>
       <PropertyRef Name="IDACHETEUR" />
@@ -248,7 +248,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="sept_avrilModelStoreContainer">
+  <EntityContainer Name="basefinaleModelStoreContainer">
     <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BIEN" EntityType="Self.BIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" Schema="dbo" store:Type="Tables" />

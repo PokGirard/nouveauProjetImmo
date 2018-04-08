@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca0e4c6b42a14d438ad4bd21000e73c4" Name="Diagram1">
+        <EntityTypeShape EntityType="basefinaleModel.ACHETEUR" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.BIEN" Width="1.5" PointX="12" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.COMMERCIAL" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.FICHE_DE_SOUHAITS" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.PROPOSITION_VISITE" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.RDV" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.VENDEUR" Width="1.5" PointX="9.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="basefinaleModel.VILLE" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="basefinaleModel.FK_ACHETEUR_COMMERCIAL" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_ACHETEUR_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_FICHE_DE_SOUHAITS_ACHETEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_BIEN_VENDEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_BIEN_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_PROPOSITION_VISITE_BIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_PROPOSITION_VISITE_FICHE_DE_SOUHAITS" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_RDV_PROPOSITION_VISITE" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.FK_VENDEUR_VILLE" ManuallyRouted="false" />
+        <AssociationConnector Association="basefinaleModel.RECHERCHE_DANS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="sept_avrilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="basefinaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ACHETEUR">
     <Key>
       <PropertyRef Name="IDACHETEUR" />
@@ -240,7 +240,7 @@
     <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
     <End Role="VILLE" Type="Self.VILLE" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="sept_avrilEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="basefinaleEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" />
     <EntitySet Name="BIEN" EntityType="Self.BIEN" />
     <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" />

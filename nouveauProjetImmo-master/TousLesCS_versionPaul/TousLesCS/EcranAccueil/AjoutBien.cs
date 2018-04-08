@@ -164,7 +164,7 @@ namespace EcranAccueil
 
             if (numericUpDown2_surfParc.Value == 0)
             {
-                message_erreur += " --> Veuillez indiquer une surface de parcelle";
+                message_erreur += " --> Veuillez indiquer une surface de parcelle. \n";
                 valide = false;
             }
 
@@ -177,7 +177,7 @@ namespace EcranAccueil
 
             if (numericUpDown4_nbChambres.Value == 0)
             {
-                message_erreur += " --> Veuillez indiquer un nombre de chambres";
+                message_erreur += " --> Veuillez indiquer un nombre de chambres. \n";
                 valide = false;
             }
 
@@ -189,7 +189,7 @@ namespace EcranAccueil
 
             if (numericUpDown6_prix.Value == 0)
             {
-                message_erreur += " --> Veuillez indiquer un prix.";
+                message_erreur += " --> Veuillez indiquer un prix. \n";
                 valide = false;
             }
 
@@ -202,7 +202,13 @@ namespace EcranAccueil
 
             if (textBox10_codePostal.Text == "" || textBox10_codePostal.Text == null)
             {
-                message_erreur += " --> Veuillez indiquer un code postal.";
+                message_erreur += " --> Veuillez indiquer un code postal.\n";
+                valide = false;
+            }
+
+            if(textBox12_commentaires.TextLength >= 150)
+            {
+                message_erreur += " --> Veuillez réduire le nombre de caractères dans la section commentaires. \n";
                 valide = false;
             }
 
@@ -262,8 +268,16 @@ namespace EcranAccueil
 
                     vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
-                    Accueil.modeleBase.VENDEUR.Add(vendeur);
-                    Accueil.modeleBase.SaveChanges();
+                    try
+                    {
+                        Accueil.modeleBase.VENDEUR.Add(vendeur);
+                        Accueil.modeleBase.SaveChanges();
+                        MessageBox.Show("Le vendeur a bien été créé.");
+                    }
+                    catch (Exception e1)
+                    {
+                        MessageBox.Show("erreur -- " + e1.Message);
+                    }
                 }
                 if (!bienExisteDeja)
                 {
@@ -306,8 +320,16 @@ namespace EcranAccueil
 
                 if (!bienExisteDeja)
                 {
-                    Accueil.modeleBase.BIEN.Add(bien_en_modification);
-                    bien_en_modification.NB_VISITES = 0;
+                    try
+                    {
+                        Accueil.modeleBase.BIEN.Add(bien_en_modification);
+                        bien_en_modification.NB_VISITES = 0;
+                        MessageBox.Show(" Le bien a été ajouté dans la base.");
+                    }
+                    catch (Exception e2)
+                    {
+                        MessageBox.Show(e2.Message);
+                    }
                 }
 
                 Accueil.modeleBase.SaveChanges();
@@ -362,7 +384,7 @@ namespace EcranAccueil
             this.dateTimePicker1_miseEnVente.Value = bien_en_cours.DATE_MISEENVENTE;
             this.textBox12_commentaires.Text = bien_en_cours.ZONE_DE_SAISIE;
 
-            
+
         }
 
         private void button2_imprimerFiche_Click(object sender, EventArgs e)
@@ -370,7 +392,7 @@ namespace EcranAccueil
             FicheDuBien fiche = new FicheDuBien(bien_en_cours);
             fiche.Show();
         }
-        
+
         private void codePostalVendeur_TextChanged(object sender, EventArgs e)
         {
             comboBox1_villesClient.Items.Clear();
@@ -399,6 +421,19 @@ namespace EcranAccueil
                 string villes_normales = ville.Replace(" ", string.Empty);
                 comboBox2_villesBien.Items.Add(ville);
             }
+        }
+
+        private void textBox12_commentaires_TextChanged(object sender, EventArgs e)
+        {
+
+            var listechar = textBox12_commentaires.Text.ToCharArray();
+            int nbc = 0;
+            foreach (char c in listechar)
+            {
+                nbc++;
+            }
+            label26.Text = "(" + (150 - nbc) + " caractères restants)";
+
         }
     }
 }

@@ -81,6 +81,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.comboBox1_villesClient = new System.Windows.Forms.ComboBox();
             this.comboBox2_villesBien = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).BeginInit();
@@ -464,11 +465,12 @@
             // 
             // textBox12_commentaires
             // 
-            this.textBox12_commentaires.Location = new System.Drawing.Point(16, 570);
+            this.textBox12_commentaires.Location = new System.Drawing.Point(16, 555);
             this.textBox12_commentaires.Multiline = true;
             this.textBox12_commentaires.Name = "textBox12_commentaires";
             this.textBox12_commentaires.Size = new System.Drawing.Size(734, 107);
             this.textBox12_commentaires.TabIndex = 41;
+            this.textBox12_commentaires.TextChanged += new System.EventHandler(this.textBox12_commentaires_TextChanged);
             // 
             // button1_ajouterBien
             // 
@@ -593,12 +595,22 @@
             this.comboBox2_villesBien.Size = new System.Drawing.Size(162, 21);
             this.comboBox2_villesBien.TabIndex = 59;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(15, 665);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(141, 13);
+            this.label26.TabIndex = 60;
+            this.label26.Text = "150 caractères restants";
+            // 
             // AjoutBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(787, 765);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.comboBox2_villesBien);
             this.Controls.Add(this.comboBox1_villesClient);
             this.Controls.Add(this.dateTimePicker1_créationClient);
@@ -724,6 +736,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox comboBox1_villesClient;
         private System.Windows.Forms.ComboBox comboBox2_villesBien;
+        private System.Windows.Forms.Label label26;
     }
 }
 

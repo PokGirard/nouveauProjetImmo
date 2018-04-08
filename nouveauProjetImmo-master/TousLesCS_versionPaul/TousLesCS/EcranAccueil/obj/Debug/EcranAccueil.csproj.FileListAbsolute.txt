@@ -330,3 +330,58 @@ C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.RDV
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutBien.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.CatalogueBiens.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDuBien.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Visites_bien.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.PropositionVisite.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RDV_Visite.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.dll
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\Paul\Desktop\version 7 avril\nouveauProjetImmo-master\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.dll
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutBien.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.CatalogueBiens.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDuBien.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Visites_bien.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.PropositionVisite.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RDV_Visite.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache

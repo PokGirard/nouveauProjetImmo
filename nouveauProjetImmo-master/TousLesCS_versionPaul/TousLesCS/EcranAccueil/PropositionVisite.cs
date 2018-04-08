@@ -66,7 +66,7 @@ namespace EcranAccueil
 
             if(dateTimePicker1.Value < DateTime.Now)
             {
-                MessageBox.Show("La date choisie ne peut être antérieure à aujourd'hui.");
+                MessageBox.Show("La date choisie ne peut être antérieure ou égale à aujourd'hui.");
                 return;
             }
 
@@ -74,9 +74,10 @@ namespace EcranAccueil
             {
                 IDFICHESOUHAITS = fiche_en_cours.IDFICHESOUHAITS,
                 IDBIEN = bien_en_cours.IDBIEN,
-                DATERDV = dateTimePicker1.Value
+                DATERDV = dateTimePicker1.Value,
+                STATUT_PROPOSITION = "EN ATTENTE"
             };
-
+           
             Accueil.modeleBase.PROPOSITION_VISITE.Add(proposition);
 
             try

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="sept_avrilModelStoreContainer" CdmEntityContainer="sept_avrilEntities">
+  <EntityContainerMapping StorageEntityContainer="basefinaleModelStoreContainer" CdmEntityContainer="basefinaleEntities">
     <EntitySetMapping Name="ACHETEUR">
-      <EntityTypeMapping TypeName="sept_avrilModel.ACHETEUR">
+      <EntityTypeMapping TypeName="basefinaleModel.ACHETEUR">
         <MappingFragment StoreEntitySet="ACHETEUR">
           <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
           <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BIEN">
-      <EntityTypeMapping TypeName="sept_avrilModel.BIEN">
+      <EntityTypeMapping TypeName="basefinaleModel.BIEN">
         <MappingFragment StoreEntitySet="BIEN">
           <ScalarProperty Name="IDBIEN" ColumnName="IDBIEN" />
           <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
@@ -42,7 +42,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="COMMERCIAL">
-      <EntityTypeMapping TypeName="sept_avrilModel.COMMERCIAL">
+      <EntityTypeMapping TypeName="basefinaleModel.COMMERCIAL">
         <MappingFragment StoreEntitySet="COMMERCIAL">
           <ScalarProperty Name="IDCOMMERCIAL" ColumnName="IDCOMMERCIAL" />
           <ScalarProperty Name="NOM_COMMERCIAL" ColumnName="NOM_COMMERCIAL" />
@@ -56,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FICHE_DE_SOUHAITS">
-      <EntityTypeMapping TypeName="sept_avrilModel.FICHE_DE_SOUHAITS">
+      <EntityTypeMapping TypeName="basefinaleModel.FICHE_DE_SOUHAITS">
         <MappingFragment StoreEntitySet="FICHE_DE_SOUHAITS">
           <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
           <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
@@ -74,7 +74,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PROPOSITION_VISITE">
-      <EntityTypeMapping TypeName="sept_avrilModel.PROPOSITION_VISITE">
+      <EntityTypeMapping TypeName="basefinaleModel.PROPOSITION_VISITE">
         <MappingFragment StoreEntitySet="PROPOSITION_VISITE">
           <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
           <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
@@ -85,7 +85,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RDV">
-      <EntityTypeMapping TypeName="sept_avrilModel.RDV">
+      <EntityTypeMapping TypeName="basefinaleModel.RDV">
         <MappingFragment StoreEntitySet="RDV">
           <ScalarProperty Name="IDRDV" ColumnName="IDRDV" />
           <ScalarProperty Name="IDVISITE" ColumnName="IDVISITE" />
@@ -93,7 +93,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VENDEUR">
-      <EntityTypeMapping TypeName="sept_avrilModel.VENDEUR">
+      <EntityTypeMapping TypeName="basefinaleModel.VENDEUR">
         <MappingFragment StoreEntitySet="VENDEUR">
           <ScalarProperty Name="IDVENDEUR" ColumnName="IDVENDEUR" />
           <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
@@ -109,7 +109,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VILLE">
-      <EntityTypeMapping TypeName="sept_avrilModel.VILLE">
+      <EntityTypeMapping TypeName="basefinaleModel.VILLE">
         <MappingFragment StoreEntitySet="VILLE">
           <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
           <ScalarProperty Name="NOM_VILLE" ColumnName="NOM_VILLE" />
@@ -117,7 +117,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="RECHERCHE_DANS" TypeName="sept_avrilModel.RECHERCHE_DANS" StoreEntitySet="RECHERCHE_DANS">
+    <AssociationSetMapping Name="RECHERCHE_DANS" TypeName="basefinaleModel.RECHERCHE_DANS" StoreEntitySet="RECHERCHE_DANS">
       <EndProperty Name="FICHE_DE_SOUHAITS">
         <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
       </EndProperty>

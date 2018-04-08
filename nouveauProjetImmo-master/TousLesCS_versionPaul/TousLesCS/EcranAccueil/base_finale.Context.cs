@@ -13,10 +13,10 @@ namespace EcranAccueil
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class base1Entities : DbContext
+    public partial class basefinaleEntities : DbContext
     {
-        public base1Entities()
-            : base("name=base1Entities")
+        public basefinaleEntities()
+            : base("name=basefinaleEntities")
         {
         }
     

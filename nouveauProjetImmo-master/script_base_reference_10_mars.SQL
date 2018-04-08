@@ -42,7 +42,7 @@ create table BIEN
      CODE_POSTAL int not null  ,
      DATE_MISEENVENTE datetime  not null  ,
      STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RETIRE', 'SOUS-SEING')),
-     ZONE_DE_SAISIE char(32)  null,  
+     ZONE_DE_SAISIE char(150)  null,  
      NB_VISITES smallint not null default 0 
      ,
      constraint PK_BIEN primary key (IDBIEN)

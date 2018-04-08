@@ -151,6 +151,7 @@ namespace EcranAccueil
                     STATUT = "EN COURS"
                 };
                 Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
+                MessageBox.Show(" La fiche a bien été créée.");
 
             }
             catch (Exception e1)
@@ -294,47 +295,21 @@ namespace EcranAccueil
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void button_modifier_fiche_Click(object sender, EventArgs e)
         {
 
+            if (listView_resultats.SelectedItems.Count == 0) return;
             List<VILLE> villes_stockees_base = fiche_de_reference.VILLE1.ToList();
 
             try
             {
-
-                if (!villes_stockees_base.All(villes_selectionnees.Contains) || !villes_selectionnees.All(villes_stockees_base.Contains))
-
-                    MAJ_villes_recherche(villes_stockees_base);
-                if (fiche_de_reference.BUDGET != int.Parse(textBoxBudget.Text))
-
-                    fiche_de_reference.BUDGET = int.Parse(textBoxBudget.Text);
-                if (checkBoxCave.Checked != fiche_de_reference.CAVE)
-                    fiche_de_reference.CAVE = checkBoxCave.Checked;
-
-                if (checkBoxGarage.Checked != fiche_de_reference.GARAGE)
-
-                    fiche_de_reference.GARAGE = checkBoxGarage.Checked;
-
-                if (numericUpDownNbPieces.Value != fiche_de_reference.NB_PIÈCE)
-
-                    fiche_de_reference.NB_PIÈCE = (int)numericUpDownNbPieces.Value;
-                if (numericSurfaceHab.Value != fiche_de_reference.SURFACE_HABITABLE)
-
-                    fiche_de_reference.SURFACE_HABITABLE = (int)numericSurfaceHab.Value;
-
-                if (numericSurfParcelle.Value != fiche_de_reference.SURFACE_PARCELLE)
-
-                    fiche_de_reference.SURFACE_PARCELLE = (int)numericSurfParcelle.Value;
-
-                if (statut_fiche != fiche_de_reference.STATUT)
-                {
-                    fiche_de_reference.STATUT = statut_fiche;
-                }
+                champs_modifies(villes_stockees_base);
 
                 Accueil.modeleBase.SaveChanges();
+                MessageBox.Show(" La fiche a bien été modifiée.");
             }
             catch (Exception e4)
             {
@@ -343,6 +318,44 @@ namespace EcranAccueil
             }
 
             MessageBox.Show("Les modifications ont bien été enregistrées");
+
+        }
+
+        private void champs_modifies(List<VILLE> villes_stockees_base)
+        {
+
+            
+
+            if (!villes_stockees_base.All(villes_selectionnees.Contains) || !villes_selectionnees.All(villes_stockees_base.Contains))
+
+                MAJ_villes_recherche(villes_stockees_base);
+
+            if (fiche_de_reference.BUDGET != int.Parse(textBoxBudget.Text))
+
+                fiche_de_reference.BUDGET = int.Parse(textBoxBudget.Text);
+            if (checkBoxCave.Checked != fiche_de_reference.CAVE)
+                fiche_de_reference.CAVE = checkBoxCave.Checked;
+
+            if (checkBoxGarage.Checked != fiche_de_reference.GARAGE)
+
+                fiche_de_reference.GARAGE = checkBoxGarage.Checked;
+
+            if (numericUpDownNbPieces.Value != fiche_de_reference.NB_PIÈCE)
+
+                fiche_de_reference.NB_PIÈCE = (int)numericUpDownNbPieces.Value;
+            if (numericSurfaceHab.Value != fiche_de_reference.SURFACE_HABITABLE)
+
+                fiche_de_reference.SURFACE_HABITABLE = (int)numericSurfaceHab.Value;
+
+            if (numericSurfParcelle.Value != fiche_de_reference.SURFACE_PARCELLE)
+
+                fiche_de_reference.SURFACE_PARCELLE = (int)numericSurfParcelle.Value;
+
+            if (statut_fiche != fiche_de_reference.STATUT)
+            {
+                fiche_de_reference.STATUT = statut_fiche;
+            }
+
 
         }
 

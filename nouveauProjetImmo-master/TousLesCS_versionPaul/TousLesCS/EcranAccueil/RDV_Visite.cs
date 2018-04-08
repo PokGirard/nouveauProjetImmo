@@ -43,6 +43,7 @@ namespace EcranAccueil
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
             commercial_fenetre_proposition.NOM_COMMERCIAL = commercial_fenetre_proposition.NOM_COMMERCIAL.Replace(" ", string.Empty);
             textBoxCommercial.Text = commercial_fenetre_proposition.NOM_COMMERCIAL;
+            dateTimePicker1.Value = proposition_selectionnee.DATERDV;
         }
 
         private void buttonAnnuler_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace EcranAccueil
             Close();
         }
 
-        private void buttonCréer_Click(object sender, EventArgs e)
+     /*   private void buttonCréer_Click(object sender, EventArgs e)
         {
 
             if (dateTimePicker1.Value < DateTime.Now)
@@ -79,7 +80,7 @@ namespace EcranAccueil
                 MessageBox.Show("erreur");
             }
 
-        }
+        } */
 
         private void buttonAnnuler_Click_1(object sender, EventArgs e)
         {
@@ -97,8 +98,28 @@ namespace EcranAccueil
 
             Accueil.modeleBase.RDV.Add(rdv);
             Accueil.modeleBase.SaveChanges();
+            MessageBox.Show(" Le rdv a bien été confirmé.");
 
             imprimerFiche(sender, e);
+
+            // mise à jour du statut de la proposition de visite 
+
+            var prop = (from p in Accueil.modeleBase.PROPOSITION_VISITE
+                        where p.IDVISITE == proposition_selectionnee.IDVISITE
+                        select p).FirstOrDefault();
+
+            prop.STATUT_PROPOSITION = "ACCEPTEE";
+
+
+            try
+            {
+                Accueil.modeleBase.SaveChanges();
+            } catch(Exception e1)
+            {
+                MessageBox.Show(" erreur lors de la mise à jour " + e1.Message);
+            }
+
+            Close();
         }
 
         Bitmap bmp;

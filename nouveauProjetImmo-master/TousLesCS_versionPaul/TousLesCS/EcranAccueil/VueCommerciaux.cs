@@ -26,6 +26,9 @@ namespace EcranAccueil
 
         private void supprimerCommercial_Click(object sender, EventArgs e)
         {
+
+            if (listView1.SelectedItems.Count == 0) return;
+
             var id_selec = listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty);
 
             short id = short.Parse(id_selec);
