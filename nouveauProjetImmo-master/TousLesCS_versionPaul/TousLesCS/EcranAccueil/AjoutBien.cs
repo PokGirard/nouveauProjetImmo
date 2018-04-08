@@ -130,6 +130,7 @@ namespace EcranAccueil
                     button1_ajouterBien.Text = "MODIFIER LE BIEN";
                     blocageBoxBien(false);
                     MessageBox.Show("L'ajout du bien a été réalisé avec succès");
+                    generation_mail();
                 }
                 else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
                 {
@@ -309,6 +310,7 @@ namespace EcranAccueil
                         Accueil.modeleBase.VENDEUR.Add(vendeur);
                         Accueil.modeleBase.SaveChanges();
                         MessageBox.Show("Le vendeur a bien été créé.");
+                        blocageBoxVendeur(false);
                     }
                     catch (Exception e1)
                     {
@@ -469,6 +471,11 @@ namespace EcranAccueil
                 nbc++;
             }
             label26.Text = "(" + (150 - nbc) + " caractères restants)";
+
+        }
+
+        private void generation_mail()
+        {
 
         }
     }

@@ -115,8 +115,9 @@ namespace EcranAccueil
             {
                 AjoutBien fenetreBien = new AjoutBien(bien_en_cours);
                 fenetreBien.Show();
+                this.Close();
             }
-            this.Close();
+            
         }
 
        private void listViewbiens_Click(object sender, EventArgs e)

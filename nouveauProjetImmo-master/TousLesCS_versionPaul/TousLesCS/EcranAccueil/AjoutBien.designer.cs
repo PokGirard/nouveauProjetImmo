@@ -111,6 +111,7 @@
             this.comboBox1_status.Name = "comboBox1_status";
             this.comboBox1_status.Size = new System.Drawing.Size(121, 21);
             this.comboBox1_status.TabIndex = 1;
+            this.comboBox1_status.Text = "DISPONIBLE";
             // 
             // label2
             // 
