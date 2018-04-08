@@ -53,6 +53,7 @@ namespace EcranAccueil
             this.fixeVendeur.Text = monVendeur.TÉLÉPHONE_FIXE.ToString();
             this.mobileVendeur.Text = monVendeur.TÉLÉPHONE_MOBILE.ToString();
             this.emailVendeur.Text = monVendeur.EMAIL;
+            this.dateTimePicker1_créationClient.Value = monVendeur.DATE_CREATION;
 
 
         }
@@ -84,18 +85,17 @@ namespace EcranAccueil
             numericUpDown4_nbChambres.Enabled = estModifiable;
             numericUpDown5_nbSdb.Enabled = estModifiable;
             numericUpDown6_prix.Enabled = estModifiable;
-            //textBox11_ville.Enabled = estModifiable;
             textBox12_commentaires.Enabled = estModifiable;
             textBox9_adresse.Enabled = estModifiable;
             textBox10_codePostal.Enabled = estModifiable;
             checkBox1_garage.Enabled = estModifiable;
             checkBox2_cave.Enabled = estModifiable;
             comboBox1_status.Enabled = estModifiable;
-            dateTimePicker1_miseEnVente.Enabled = estModifiable;
+            comboBox2_villesBien.Enabled = estModifiable;
             //on peut supprimer et imprimer par contre
             button2_imprimerFiche.Enabled = !estModifiable;
             button3_supprimer.Enabled = !estModifiable;
-            dateTimePicker1_miseEnVente.Enabled = !estModifiable;
+            
         }
         private void blocageBoxVendeur(bool estModifiable)
         {
@@ -107,7 +107,6 @@ namespace EcranAccueil
             mobileVendeur.Enabled = estModifiable;
             emailVendeur.Enabled = estModifiable;
             comboBox1_villesClient.Enabled = estModifiable;
-            dateTimePicker1_créationClient.Enabled = estModifiable;
         }
         private void button5_annuler_Click(object sender, EventArgs e)
         {
@@ -130,6 +129,7 @@ namespace EcranAccueil
                     modification_ou_creation_bien();
                     button1_ajouterBien.Text = "MODIFIER LE BIEN";
                     blocageBoxBien(false);
+                    MessageBox.Show("L'ajout du bien a été réalisé avec succès");
                 }
                 else if (button1_ajouterBien.Text.Equals("MODIFIER LE BIEN"))
                 {
@@ -150,12 +150,33 @@ namespace EcranAccueil
             }
         }
 
+        #region verifications
         private bool verifier_champs()
         {
             bool valide = true;
 
             string message_erreur = "Informations manquantes : \nVeuillez renseigner les champs suivants :\n";
 
+            if (!estNumerique(mobileVendeur) || mobileVendeur.Text.Count() == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un numéro de mobile valide. \n";
+                valide = false;
+            }
+            if (!estNumerique(fixeVendeur) || fixeVendeur.Text.Count() == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un numéro fixe valide. \n";
+                valide = false;
+            }
+            if (!estNumerique(codePostalVendeur) || codePostalVendeur.Text.Count() == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un code postal client valide. \n";
+                valide = false;
+            }
+            if (!estNumerique(textBox10_codePostal) || textBox10_codePostal.Text.Count() == 0)
+            {
+                message_erreur += " --> Veuillez indiquer un code postal du bien valide. \n";
+                valide = false;
+            }
             if (numericUpDown1_surfHab.Value == 0)
             {
                 message_erreur += " --> Veuillez indiquer une surface habitable \n";
@@ -206,12 +227,11 @@ namespace EcranAccueil
                 valide = false;
             }
 
-            if(textBox12_commentaires.TextLength >= 150)
+            if(textBox12_commentaires.Text.Count() > 150)
             {
                 message_erreur += " --> Veuillez réduire le nombre de caractères dans la section commentaires. \n";
                 valide = false;
             }
-
 
             // vérifier si la ville est contenue dans la base
 
@@ -238,6 +258,22 @@ namespace EcranAccueil
 
             return valide;
         }
+
+        private Boolean estNumerique(TextBox box)
+        {
+            bool isNumeric = true;
+            foreach (char c in box.Text)
+            {
+                if (!Char.IsNumber(c))
+                {
+                    isNumeric = false;
+                    break;
+                }
+            }
+            return isNumeric;
+        }
+
+        #endregion verifications
 
         private void modification_ou_creation_bien()
         {

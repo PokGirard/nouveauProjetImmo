@@ -74,6 +74,7 @@ namespace EcranAccueil
             this.adresseacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.villeacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1_voirFicheClient = new System.Windows.Forms.Button();
             portablesPro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -315,10 +316,10 @@ namespace EcranAccueil
             // 
             // actifView
             // 
-            this.actifView.Location = new System.Drawing.Point(640, 171);
+            this.actifView.Location = new System.Drawing.Point(660, 169);
             this.actifView.Margin = new System.Windows.Forms.Padding(2);
             this.actifView.Name = "actifView";
-            this.actifView.Size = new System.Drawing.Size(107, 39);
+            this.actifView.Size = new System.Drawing.Size(106, 39);
             this.actifView.TabIndex = 61;
             this.actifView.Text = "Actif";
             this.actifView.UseVisualStyleBackColor = true;
@@ -326,7 +327,7 @@ namespace EcranAccueil
             // 
             // inactifView
             // 
-            this.inactifView.Location = new System.Drawing.Point(641, 231);
+            this.inactifView.Location = new System.Drawing.Point(660, 231);
             this.inactifView.Margin = new System.Windows.Forms.Padding(2);
             this.inactifView.Name = "inactifView";
             this.inactifView.Size = new System.Drawing.Size(106, 39);
@@ -337,7 +338,7 @@ namespace EcranAccueil
             // 
             // tousView
             // 
-            this.tousView.Location = new System.Drawing.Point(641, 106);
+            this.tousView.Location = new System.Drawing.Point(660, 106);
             this.tousView.Margin = new System.Windows.Forms.Padding(2);
             this.tousView.Name = "tousView";
             this.tousView.Size = new System.Drawing.Size(106, 39);
@@ -413,7 +414,9 @@ namespace EcranAccueil
             this.adresseacheteur,
             this.villeacheteur,
             this.ID});
+            this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
+            this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(27, 317);
             this.listView2.Margin = new System.Windows.Forms.Padding(2);
             this.listView2.MultiSelect = false;
@@ -422,7 +425,7 @@ namespace EcranAccueil
             this.listView2.TabIndex = 65;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_Click);
             // 
             // nomacheteur
             // 
@@ -457,12 +460,25 @@ namespace EcranAccueil
             // 
             this.ID.Text = "ID";
             // 
+            // button1_voirFicheClient
+            // 
+            this.button1_voirFicheClient.Enabled = false;
+            this.button1_voirFicheClient.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1_voirFicheClient.Location = new System.Drawing.Point(624, 511);
+            this.button1_voirFicheClient.Name = "button1_voirFicheClient";
+            this.button1_voirFicheClient.Size = new System.Drawing.Size(166, 55);
+            this.button1_voirFicheClient.TabIndex = 66;
+            this.button1_voirFicheClient.Text = "Voir la fiche Client";
+            this.button1_voirFicheClient.UseVisualStyleBackColor = true;
+            this.button1_voirFicheClient.Click += new System.EventHandler(this.button1_voirFicheClient_Click);
+            // 
             // VueCommerciaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(811, 738);
+            this.Controls.Add(this.button1_voirFicheClient);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.tousView);
@@ -558,5 +574,6 @@ namespace EcranAccueil
         private System.Windows.Forms.ColumnHeader telephoneClient;
         private System.Windows.Forms.ColumnHeader columnID;
         private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.Button button1_voirFicheClient;
     }
 }

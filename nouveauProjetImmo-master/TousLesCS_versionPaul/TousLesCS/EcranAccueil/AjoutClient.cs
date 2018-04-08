@@ -875,7 +875,7 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "EN ATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée."); return;
             }

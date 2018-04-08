@@ -325,32 +325,6 @@ namespace EcranAccueil
         }
 
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (listView2.SelectedItems.Count > 0)
-            {
-
-                string a1 = listView2.SelectedItems[0].SubItems[6].Text;
-
-                int id = int.Parse(a1);
-
-                ACHETEUR acheteur = (from a in Accueil.modeleBase.ACHETEUR
-                                     where a.IDACHETEUR == id
-                                     select a).FirstOrDefault();
-
-                AjoutClient ajoutClient = new AjoutClient(acheteur);
-                ajoutClient.Show();
-                Close();
-            }
-        }
-
-
-
-
-
-
-
         private void charger_listView_commerciaux()
         {
 
@@ -435,6 +409,37 @@ namespace EcranAccueil
         private void VueCommerciaux_Load(object sender, EventArgs e)
         {
             //vide et c'est normal
+        }
+
+        private void button1_voirFicheClient_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                button1_voirFicheClient.Enabled = true;
+                string a1 = listView2.SelectedItems[0].SubItems[6].Text;
+
+                int id = int.Parse(a1);
+
+                ACHETEUR acheteur = (from a in Accueil.modeleBase.ACHETEUR
+                                     where a.IDACHETEUR == id
+                                     select a).FirstOrDefault();
+
+                AjoutClient ajoutClient = new AjoutClient(acheteur);
+                ajoutClient.Show();
+                Close();
+            }
+        }
+
+        private void listView2_Click(object sender, EventArgs e)
+        {
+            if(listView2.SelectedItems.Count != 0)
+            {
+                button1_voirFicheClient.Enabled = true;
+            }
+            else
+            {
+                button1_voirFicheClient.Enabled = false;
+            }
         }
     }
 }

@@ -449,6 +449,7 @@
             // 
             // dateTimePicker1_miseEnVente
             // 
+            this.dateTimePicker1_miseEnVente.Enabled = false;
             this.dateTimePicker1_miseEnVente.Location = new System.Drawing.Point(421, 483);
             this.dateTimePicker1_miseEnVente.Name = "dateTimePicker1_miseEnVente";
             this.dateTimePicker1_miseEnVente.Size = new System.Drawing.Size(200, 20);
@@ -564,6 +565,7 @@
             // 
             // dateTimePicker1_créationClient
             // 
+            this.dateTimePicker1_créationClient.Enabled = false;
             this.dateTimePicker1_créationClient.Location = new System.Drawing.Point(101, 265);
             this.dateTimePicker1_créationClient.Name = "dateTimePicker1_créationClient";
             this.dateTimePicker1_créationClient.Size = new System.Drawing.Size(200, 20);
