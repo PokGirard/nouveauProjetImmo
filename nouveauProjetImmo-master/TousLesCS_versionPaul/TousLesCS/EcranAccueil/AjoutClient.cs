@@ -54,13 +54,14 @@ namespace EcranAccueil
             InitializeComponent();
             initialisationClientExistant();
             this.checkBox_Acheteur.Checked = true;
-            this.nom.Text = monAcheteur.NOM_ACHETEUR;
-            this.prénom.Text = monAcheteur.PRENOM_ACHETEUR;
+            this.textBoxNom.Text = monAcheteur.NOM_ACHETEUR;
+            this.textBoxprénom.Text = monAcheteur.PRENOM_ACHETEUR;
             this.adresse.Text = monAcheteur.ADRESSE;
-            this.codePostal.Text = monAcheteur.CODE_POSTAL.ToString();
+            this.textBoxcodePostal.Text = monAcheteur.CODE_POSTAL.ToString();
             this.dateTimePicker1_créationClient.Value = monAcheteur.DATE_CREATION;
-            this.fixe.Text = monAcheteur.TÉLÉPHONE.ToString();
-            this.mobile.Text = monAcheteur.TÉLÉPHONE_MOBILE.ToString();
+            this.dateTimePicker1_créationClient.Enabled = false;
+            this.textBoxfixe.Text = monAcheteur.TÉLÉPHONE.ToString();
+            this.textBoxMobile.Text = monAcheteur.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = monAcheteur.EMAIL;
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
@@ -79,17 +80,20 @@ namespace EcranAccueil
             InitializeComponent();
             initialisationClientExistant();
             this.checkBox_Vendeur.Checked = true;
-            this.nom.Text = vendeur_en_cours_fc.NOM_VENDEUR;
-            this.prénom.Text = vendeur_en_cours_fc.PRÉNOM_VENDEUR;
+            this.textBoxNom.Text = vendeur_en_cours_fc.NOM_VENDEUR;
+            this.textBoxprénom.Text = vendeur_en_cours_fc.PRÉNOM_VENDEUR;
             this.adresse.Text = vendeur_en_cours_fc.ADRESSE_VENDEUR;
-            this.codePostal.Text = vendeur_en_cours_fc.CODE_POSTAL.ToString();
+            this.textBoxcodePostal.Text = vendeur_en_cours_fc.CODE_POSTAL.ToString();
             this.dateTimePicker1_créationClient.Value = vendeur_en_cours_fc.DATE_CREATION;
-            this.fixe.Text = vendeur_en_cours_fc.TÉLÉPHONE_FIXE.ToString();
-            this.mobile.Text = vendeur_en_cours_fc.TÉLÉPHONE_MOBILE.ToString();
+            
+            this.textBoxfixe.Text = vendeur_en_cours_fc.TÉLÉPHONE_FIXE.ToString();
+            this.textBoxMobile.Text = vendeur_en_cours_fc.TÉLÉPHONE_MOBILE.ToString();
             this.email.Text = vendeur_en_cours_fc.EMAIL;
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
             comboBoxCommerciaux.Enabled = false;
+            this.dateTimePicker1_créationClient.Enabled = false;
+            buttonBienProposes.Enabled = false;
             chargerComboboxCommerciaux();
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
@@ -110,16 +114,16 @@ namespace EcranAccueil
 
         private void blocageBoxVendeur(bool estModifiable)
         {
-            nom.Enabled = estModifiable;
-            prénom.Enabled = estModifiable;
+            textBoxNom.Enabled = estModifiable;
+            textBoxprénom.Enabled = estModifiable;
             adresse.Enabled = estModifiable;
-            codePostal.Enabled = estModifiable;
-            fixe.Enabled = estModifiable;
-            mobile.Enabled = estModifiable;
+            textBoxcodePostal.Enabled = estModifiable;
+            textBoxfixe.Enabled = estModifiable;
+            textBoxMobile.Enabled = estModifiable;
             email.Enabled = estModifiable;
             comboBox1_villes.Enabled = estModifiable;
             comboBoxCommerciaux.Enabled = estModifiable;
-            dateTimePicker1_créationClient.Enabled = estModifiable;
+          //  dateTimePicker1_créationClient.Enabled = estModifiable;
             button1_retourMenu.Enabled = !estModifiable;
 
         }
@@ -155,18 +159,18 @@ namespace EcranAccueil
                 VENDEUR vendeur = new VENDEUR();
 
                 var idville = (from v in Accueil.modeleBase.VILLE
-                               where v.CODE_POSTAL.ToString() == codePostal.Text
+                               where v.CODE_POSTAL.ToString() == textBoxcodePostal.Text
                                select v.IDVILLE);
 
                 vendeur.IDVILLE = idville.First();
-                vendeur.CODE_POSTAL = Int32.Parse(codePostal.Text);
-                vendeur.NOM_VENDEUR = nom.Text;
-                vendeur.PRÉNOM_VENDEUR = prénom.Text;
+                vendeur.CODE_POSTAL = Int32.Parse(textBoxcodePostal.Text);
+                vendeur.NOM_VENDEUR = textBoxNom.Text;
+                vendeur.PRÉNOM_VENDEUR = textBoxprénom.Text;
                 vendeur.ADRESSE_VENDEUR = adresse.Text;
                 vendeur.EMAIL = email.Text;
 
-                string a = fixe.Text.Replace(" ", string.Empty);
-                string b = mobile.Text.Replace(" ", string.Empty);
+                string a = textBoxfixe.Text.Replace(" ", string.Empty);
+                string b = textBoxMobile.Text.Replace(" ", string.Empty);
                 vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
                 vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
                 vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
@@ -185,17 +189,17 @@ namespace EcranAccueil
 
                 ACHETEUR acheteur = new ACHETEUR();
                 var idville = (from v in Accueil.modeleBase.VILLE
-                               where v.CODE_POSTAL.ToString() == codePostal.Text
+                               where v.CODE_POSTAL.ToString() == textBoxcodePostal.Text
                                select v.IDVILLE);
 
                 acheteur.IDVILLE = idville.First();
-                acheteur.NOM_ACHETEUR = nom.Text;
-                acheteur.PRENOM_ACHETEUR = prénom.Text;
+                acheteur.NOM_ACHETEUR = textBoxNom.Text;
+                acheteur.PRENOM_ACHETEUR = textBoxprénom.Text;
                 acheteur.ADRESSE = adresse.Text;
-                acheteur.CODE_POSTAL = Int32.Parse(codePostal.Text);
+                acheteur.CODE_POSTAL = Int32.Parse(textBoxcodePostal.Text);
                 acheteur.EMAIL = email.Text;
-                acheteur.TÉLÉPHONE = Int32.Parse(fixe.Text);
-                acheteur.TÉLÉPHONE_MOBILE = Int32.Parse(mobile.Text);
+                acheteur.TÉLÉPHONE = Int32.Parse(textBoxfixe.Text);
+                acheteur.TÉLÉPHONE_MOBILE = Int32.Parse(textBoxMobile.Text);
                 acheteur.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
                 var idcommercial = (from v in Accueil.modeleBase.COMMERCIAL
@@ -258,20 +262,20 @@ namespace EcranAccueil
                     VENDEUR vendeur = new VENDEUR();
 
                     var idville = (from v in Accueil.modeleBase.VILLE
-                                   where v.CODE_POSTAL.ToString() == codePostal.Text &&
+                                   where v.CODE_POSTAL.ToString() == textBoxcodePostal.Text &&
                                     v.NOM_VILLE == comboBox1_villes.Text
                                    select v.IDVILLE).FirstOrDefault();
 
 
                     vendeur.IDVILLE = idville;
-                    vendeur.CODE_POSTAL = Int32.Parse(codePostal.Text);
-                    vendeur.NOM_VENDEUR = nom.Text;
-                    vendeur.PRÉNOM_VENDEUR = prénom.Text;
+                    vendeur.CODE_POSTAL = Int32.Parse(textBoxcodePostal.Text);
+                    vendeur.NOM_VENDEUR = textBoxNom.Text;
+                    vendeur.PRÉNOM_VENDEUR = textBoxprénom.Text;
                     vendeur.ADRESSE_VENDEUR = adresse.Text;
                     vendeur.EMAIL = email.Text;
 
-                    string a = fixe.Text.Replace(" ", string.Empty);
-                    string b = mobile.Text.Replace(" ", string.Empty);
+                    string a = textBoxfixe.Text.Replace(" ", string.Empty);
+                    string b = textBoxMobile.Text.Replace(" ", string.Empty);
                     vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
                     vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
 
@@ -328,18 +332,18 @@ namespace EcranAccueil
         {
             MON_ACHETEUR = new ACHETEUR();
             var idville = (from v in Accueil.modeleBase.VILLE
-                           where v.CODE_POSTAL.ToString() == codePostal.Text &&
+                           where v.CODE_POSTAL.ToString() == textBoxcodePostal.Text &&
                            v.NOM_VILLE == comboBox1_villes.Text
                            select v.IDVILLE).First();
 
             MON_ACHETEUR.IDVILLE = idville;
-            MON_ACHETEUR.NOM_ACHETEUR = nom.Text;
-            MON_ACHETEUR.PRENOM_ACHETEUR = prénom.Text;
+            MON_ACHETEUR.NOM_ACHETEUR = textBoxNom.Text;
+            MON_ACHETEUR.PRENOM_ACHETEUR = textBoxprénom.Text;
             MON_ACHETEUR.ADRESSE = adresse.Text;
-            MON_ACHETEUR.CODE_POSTAL = Int32.Parse(codePostal.Text);
+            MON_ACHETEUR.CODE_POSTAL = Int32.Parse(textBoxcodePostal.Text);
             MON_ACHETEUR.EMAIL = email.Text;
-            MON_ACHETEUR.TÉLÉPHONE = Int32.Parse(fixe.Text);
-            MON_ACHETEUR.TÉLÉPHONE_MOBILE = Int32.Parse(mobile.Text);
+            MON_ACHETEUR.TÉLÉPHONE = Int32.Parse(textBoxfixe.Text);
+            MON_ACHETEUR.TÉLÉPHONE_MOBILE = Int32.Parse(textBoxMobile.Text);
             MON_ACHETEUR.DATE_CREATION = dateTimePicker1_créationClient.Value;
 
             var idcommercial = (from v in Accueil.modeleBase.COMMERCIAL
@@ -360,7 +364,7 @@ namespace EcranAccueil
             comboBox1_villes.Text = "";
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
-                            where v.CODE_POSTAL.ToString() == codePostal.Text
+                            where v.CODE_POSTAL.ToString() == textBoxcodePostal.Text
                             select v.NOM_VILLE);
 
 
@@ -394,11 +398,21 @@ namespace EcranAccueil
             {
                 try
                 {
-                    MON_VENDEUR.NOM_VENDEUR = nom.Text;
-                    MON_VENDEUR.PRÉNOM_VENDEUR = prénom.Text;
-                    MON_VENDEUR.TÉLÉPHONE_MOBILE = int.Parse(mobile.Text);
-                    MON_VENDEUR.TÉLÉPHONE_FIXE = int.Parse(fixe.Text);
-                    MON_VENDEUR.CODE_POSTAL = int.Parse(codePostal.Text);
+                    MON_VENDEUR.NOM_VENDEUR = textBoxNom.Text;
+                    MON_VENDEUR.PRÉNOM_VENDEUR = textBoxprénom.Text;
+                    MON_VENDEUR.TÉLÉPHONE_MOBILE = int.Parse(textBoxMobile.Text);
+                    MON_VENDEUR.TÉLÉPHONE_FIXE = int.Parse(textBoxfixe.Text);
+                    MON_VENDEUR.CODE_POSTAL = int.Parse(textBoxcodePostal.Text);
+                    MON_VENDEUR.ADRESSE_VENDEUR = adresse.Text;
+
+                    int codePostal2 = int.Parse(textBoxcodePostal.Text);
+
+                    int idVille = (from v in Accueil.modeleBase.VILLE
+                                   where v.CODE_POSTAL == codePostal2
+                                   select v.IDVILLE).FirstOrDefault();
+
+                    MON_VENDEUR.IDVILLE = idVille;
+                    MON_VENDEUR.CODE_POSTAL = codePostal2;
 
                     Accueil.modeleBase.SaveChanges();
                     MessageBox.Show("Les modifications ont bien été enregistrées");
@@ -414,16 +428,24 @@ namespace EcranAccueil
             {
                 try
                 {
-                    MON_ACHETEUR.NOM_ACHETEUR = nom.Text;
-                    MON_ACHETEUR.PRENOM_ACHETEUR = prénom.Text;
-                    MON_ACHETEUR.TÉLÉPHONE_MOBILE = int.Parse(mobile.Text);
-                    MON_ACHETEUR.TÉLÉPHONE = int.Parse(fixe.Text);
-                    MON_ACHETEUR.CODE_POSTAL = int.Parse(codePostal.Text);
+                    MON_ACHETEUR.NOM_ACHETEUR = textBoxNom.Text;
+                    MON_ACHETEUR.PRENOM_ACHETEUR = textBoxprénom.Text;
+                    MON_ACHETEUR.TÉLÉPHONE_MOBILE = int.Parse(textBoxMobile.Text);
+                    MON_ACHETEUR.TÉLÉPHONE = int.Parse(textBoxfixe.Text);
+                    int codePostal2 = int.Parse(textBoxcodePostal.Text);
+
+                    int idVille = (from v in Accueil.modeleBase.VILLE
+                                   where v.CODE_POSTAL == codePostal2
+                                   select v.IDVILLE).FirstOrDefault();
+
+                    MON_ACHETEUR.IDVILLE = idVille;
+                    MON_ACHETEUR.CODE_POSTAL = codePostal2;
 
                     var commercial = (from c in Accueil.modeleBase.COMMERCIAL
                                       where c.NOM_COMMERCIAL == comboBoxCommerciaux.Text
                                       select c).First();
                     MON_ACHETEUR.COMMERCIAL = commercial;
+                    MON_ACHETEUR.ADRESSE = adresse.Text;
 
 
                     Accueil.modeleBase.SaveChanges();
@@ -442,13 +464,13 @@ namespace EcranAccueil
 
             string message_erreur = "Informations manquantes : \nVeuillez renseigner les champs suivants :\n";
 
-            if (nom.Text == null || nom.Text == "")
+            if (textBoxNom.Text == null || textBoxNom.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un nom de client \n";
                 valide = false;
             }
 
-            if (prénom.Text == null || prénom.Text == "")
+            if (textBoxprénom.Text == null || textBoxprénom.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un prénom de client.";
                 valide = false;
@@ -461,7 +483,7 @@ namespace EcranAccueil
                 valide = false;
             }
 
-            if (codePostal.Text == null || codePostal.Text == "")
+            if (textBoxcodePostal.Text == null || textBoxcodePostal.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un code postal.";
                 valide = false;
@@ -481,13 +503,13 @@ namespace EcranAccueil
             }
 
 
-            if (fixe.Text == null || fixe.Text == "")
+            if (textBoxfixe.Text == null || textBoxfixe.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un numéro de fixe. \n";
                 valide = false;
             }
 
-            if (mobile.Text == null || mobile.Text == "")
+            if (textBoxMobile.Text == null || textBoxMobile.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un numéro de mobile.";
                 valide = false;
@@ -521,13 +543,13 @@ namespace EcranAccueil
 
             string message_erreur = "Informations manquantes : \nVeuillez renseigner les champs suivants :\n";
 
-            if (nom.Text == null || nom.Text == "")
+            if (textBoxNom.Text == null || textBoxNom.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un nom de client \n";
                 valide = false;
             }
 
-            if (prénom.Text == null || prénom.Text == "")
+            if (textBoxprénom.Text == null || textBoxprénom.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un prénom de client.";
                 valide = false;
@@ -540,7 +562,7 @@ namespace EcranAccueil
                 valide = false;
             }
 
-            if (codePostal.Text == null || codePostal.Text == "")
+            if (textBoxcodePostal.Text == null || textBoxcodePostal.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un code postal.";
                 valide = false;
@@ -559,13 +581,13 @@ namespace EcranAccueil
             }
 
 
-            if (fixe.Text == null || fixe.Text == "")
+            if (textBoxfixe.Text == null || textBoxfixe.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un numéro de fixe. \n";
                 valide = false;
             }
 
-            if (mobile.Text == null || mobile.Text == "")
+            if (textBoxMobile.Text == null || textBoxMobile.Text == "")
             {
                 message_erreur += " --> Veuillez indiquer un numéro de mobile.";
                 valide = false;
@@ -603,6 +625,8 @@ namespace EcranAccueil
                 listView1.Columns[2].Text = "Surface";
                 listView1.Columns[3].Text = "Nb Pièces";
                 listView1.Columns[4].Text = "Adresse";
+
+                if (biens_En_Vente.Count == 0) return;
 
                 for (int i = 0; i < biens_En_Vente.Count; i++)
                 {
@@ -655,7 +679,7 @@ namespace EcranAccueil
                 {
                     buttonAccepterVisite.Enabled = false;
                 }
-                
+
                 //string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
                 //int id_selec = Int32.Parse(t);
                 //MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
@@ -667,7 +691,7 @@ namespace EcranAccueil
                 //return;
             }
 
-           if (monChoixAffichage == ChoixAffichage.BIENS_PROPOSES)
+            if (monChoixAffichage == ChoixAffichage.BIENS_PROPOSES)
             {
 
                 if (listView1.SelectedItems.Count != 0)
@@ -707,6 +731,8 @@ namespace EcranAccueil
                 listView1.Columns[4].Text = "Nombre pièces";
                 listView1.Columns[5].Text = "Statut fiche";
 
+                if (fd_souhait_acheteur.Count == 0) return;
+
                 for (int i = 0; i < fd_souhait_acheteur.Count; i++)
                 {
 
@@ -716,7 +742,7 @@ namespace EcranAccueil
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].SURFACE_HABITABLE.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].NB_PIÈCE.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].STATUT);
-                                    }
+                }
 
 
                 listView1.Refresh();
@@ -729,13 +755,13 @@ namespace EcranAccueil
             buttonAccepterVisite.Enabled = false;
 
             var fiches_souhait = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                            where f.IDACHETEUR == MON_ACHETEUR.IDACHETEUR
-                            select f.IDFICHESOUHAITS).ToList();
+                                  where f.IDACHETEUR == MON_ACHETEUR.IDACHETEUR
+                                  select f.IDFICHESOUHAITS).ToList();
 
             var prop_visites_acceptees = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
-                                   where fiches_souhait.Contains(pv.IDFICHESOUHAITS) &&
-                                   pv.STATUT_PROPOSITION == "ACCEPTEE"
-                                   select pv.IDVISITE).ToList();
+                                          where fiches_souhait.Contains(pv.IDFICHESOUHAITS) &&
+                                          pv.STATUT_PROPOSITION == "ACCEPTEE"
+                                          select pv.IDVISITE).ToList();
 
             /*var visites_effectuees = (from r in Accueil.modeleBase.RDV
                                       where prop_visites_acceptees.Contains(r.IDVISITE)
@@ -752,6 +778,8 @@ namespace EcranAccueil
             listView1.Columns[2].Text = "Adresse";
             listView1.Columns[3].Text = "Prix";
             listView1.Columns[4].Text = "Date";
+
+            if (dateRDV.Count == 0) return;
 
             for (int i = 0; i < dateRDV.Count; i++)
             {
@@ -861,6 +889,7 @@ namespace EcranAccueil
                                          where id_fiches.Contains(pv.IDFICHESOUHAITS)
                                          select pv).ToList();
 
+
                 listView1.Items.Clear();
                 listView1.Columns[0].Text = "ID Proposition";
                 listView1.Columns[1].Text = "Ville";
@@ -868,6 +897,8 @@ namespace EcranAccueil
                 listView1.Columns[3].Text = "Prix";
                 listView1.Columns[4].Text = "Date";
                 listView1.Columns[5].Text = "Statut";
+
+                if (visites_proposees.Count == 0) return;
 
                 for (int i = 0; i < visites_proposees.Count; i++)
                 {
@@ -899,7 +930,7 @@ namespace EcranAccueil
 
         private void buttonAccepterVisite_Click(object sender, EventArgs e)
         {
-            if(buttonAccepterVisite.Text == "Voir la fiche")
+            if (buttonAccepterVisite.Text == "Voir la fiche")
             {
                 string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
                 int id_selec = Int32.Parse(t);
@@ -911,14 +942,14 @@ namespace EcranAccueil
                 maFenetreFiche.Show();
                 return;
             }
-           
+
             int id_proposition = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
 
             PROPOSITION_VISITE proposition_retenue = (from p in Accueil.modeleBase.PROPOSITION_VISITE
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            if (proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée.");
                 return;

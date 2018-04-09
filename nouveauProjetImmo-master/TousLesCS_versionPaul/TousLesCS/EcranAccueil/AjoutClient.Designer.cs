@@ -32,18 +32,18 @@
             this.titreFenetre = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.mobile = new System.Windows.Forms.TextBox();
+            this.textBoxMobile = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.fixe = new System.Windows.Forms.TextBox();
+            this.textBoxfixe = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.codePostal = new System.Windows.Forms.TextBox();
+            this.textBoxcodePostal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.adresse = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.prénom = new System.Windows.Forms.TextBox();
+            this.textBoxprénom = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.nom = new System.Windows.Forms.TextBox();
+            this.textBoxNom = new System.Windows.Forms.TextBox();
             this.labelCommercial = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -102,10 +102,10 @@
             // 
             // mobile
             // 
-            this.mobile.Location = new System.Drawing.Point(369, 149);
-            this.mobile.Name = "mobile";
-            this.mobile.Size = new System.Drawing.Size(162, 20);
-            this.mobile.TabIndex = 33;
+            this.textBoxMobile.Location = new System.Drawing.Point(369, 149);
+            this.textBoxMobile.Name = "mobile";
+            this.textBoxMobile.Size = new System.Drawing.Size(162, 20);
+            this.textBoxMobile.TabIndex = 33;
             // 
             // label9
             // 
@@ -119,10 +119,10 @@
             // 
             // fixe
             // 
-            this.fixe.Location = new System.Drawing.Point(112, 149);
-            this.fixe.Name = "fixe";
-            this.fixe.Size = new System.Drawing.Size(145, 20);
-            this.fixe.TabIndex = 31;
+            this.textBoxfixe.Location = new System.Drawing.Point(112, 149);
+            this.textBoxfixe.Name = "fixe";
+            this.textBoxfixe.Size = new System.Drawing.Size(145, 20);
+            this.textBoxfixe.TabIndex = 31;
             // 
             // label8
             // 
@@ -136,11 +136,11 @@
             // 
             // codePostal
             // 
-            this.codePostal.Location = new System.Drawing.Point(112, 123);
-            this.codePostal.Name = "codePostal";
-            this.codePostal.Size = new System.Drawing.Size(145, 20);
-            this.codePostal.TabIndex = 27;
-            this.codePostal.TextChanged += new System.EventHandler(this.codePostal_TextChanged);
+            this.textBoxcodePostal.Location = new System.Drawing.Point(112, 123);
+            this.textBoxcodePostal.Name = "codePostal";
+            this.textBoxcodePostal.Size = new System.Drawing.Size(145, 20);
+            this.textBoxcodePostal.TabIndex = 27;
+            this.textBoxcodePostal.TextChanged += new System.EventHandler(this.codePostal_TextChanged);
             // 
             // label6
             // 
@@ -171,10 +171,10 @@
             // 
             // prénom
             // 
-            this.prénom.Location = new System.Drawing.Point(369, 67);
-            this.prénom.Name = "prénom";
-            this.prénom.Size = new System.Drawing.Size(162, 20);
-            this.prénom.TabIndex = 23;
+            this.textBoxprénom.Location = new System.Drawing.Point(369, 67);
+            this.textBoxprénom.Name = "prénom";
+            this.textBoxprénom.Size = new System.Drawing.Size(162, 20);
+            this.textBoxprénom.TabIndex = 23;
             // 
             // label4
             // 
@@ -198,10 +198,10 @@
             // 
             // nom
             // 
-            this.nom.Location = new System.Drawing.Point(112, 70);
-            this.nom.Name = "nom";
-            this.nom.Size = new System.Drawing.Size(145, 20);
-            this.nom.TabIndex = 20;
+            this.textBoxNom.Location = new System.Drawing.Point(112, 70);
+            this.textBoxNom.Name = "nom";
+            this.textBoxNom.Size = new System.Drawing.Size(145, 20);
+            this.textBoxNom.TabIndex = 20;
             // 
             // labelCommercial
             // 
@@ -471,18 +471,18 @@
             this.Controls.Add(this.labelCommercial);
             this.Controls.Add(this.email);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.mobile);
+            this.Controls.Add(this.textBoxMobile);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.fixe);
+            this.Controls.Add(this.textBoxfixe);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.codePostal);
+            this.Controls.Add(this.textBoxcodePostal);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.adresse);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.prénom);
+            this.Controls.Add(this.textBoxprénom);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.nom);
+            this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.titreFenetre);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AjoutClient";
@@ -497,18 +497,18 @@
         private System.Windows.Forms.Label titreFenetre;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox mobile;
+        private System.Windows.Forms.TextBox textBoxMobile;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox fixe;
+        private System.Windows.Forms.TextBox textBoxfixe;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox codePostal;
+        private System.Windows.Forms.TextBox textBoxcodePostal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox adresse;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox prénom;
+        private System.Windows.Forms.TextBox textBoxprénom;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nom;
+        private System.Windows.Forms.TextBox textBoxNom;
         private System.Windows.Forms.Label labelCommercial;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ImageList imageList1;

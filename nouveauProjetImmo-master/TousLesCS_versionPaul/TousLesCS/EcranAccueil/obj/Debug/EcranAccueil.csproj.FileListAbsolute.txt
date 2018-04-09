@@ -385,3 +385,4 @@ C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\E
 C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
 C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VisitesBien.resources
+C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache

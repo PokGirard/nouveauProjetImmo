@@ -32,6 +32,7 @@ namespace EcranAccueil
         public AjoutBien()
         {
             InitializeComponent();
+            this.button_voir_visites.Enabled = false;
         }
 
         public AjoutBien(VENDEUR monVendeur)
@@ -376,6 +377,11 @@ namespace EcranAccueil
                 bien_en_modification.CODE_POSTAL = Int32.Parse(textBox10_codePostal.Text);
                 bien_en_modification.DATE_MISEENVENTE = dateTimePicker1_miseEnVente.Value;
                 bien_en_modification.STATUT = comboBox1_status.Text;
+                var idville2 = (from v in Accueil.modeleBase.VILLE
+                               where v.NOM_VILLE == comboBox2_villesBien.Text &&
+                               v.CODE_POSTAL.ToString() == textBox10_codePostal.Text
+                               select v.IDVILLE);
+                bien_en_modification.IDVILLE = idville2.First();
 
 
                 if (checkBox1_garage.Checked) bien_en_modification.GARAGE = true;
