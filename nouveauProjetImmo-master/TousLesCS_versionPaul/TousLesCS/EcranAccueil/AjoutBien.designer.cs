@@ -69,7 +69,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.textBox12_commentaires = new System.Windows.Forms.TextBox();
             this.button1_ajouterBien = new System.Windows.Forms.Button();
-            this.button2_imprimerFiche = new System.Windows.Forms.Button();
             this.button3_supprimer = new System.Windows.Forms.Button();
             this.button5_annuler = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -82,6 +81,7 @@
             this.comboBox1_villesClient = new System.Windows.Forms.ComboBox();
             this.comboBox2_villesBien = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
+            this.button_voir_visites = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_surfHab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2_surfParc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3_nbPieces)).BeginInit();
@@ -484,17 +484,6 @@
             this.button1_ajouterBien.UseVisualStyleBackColor = true;
             this.button1_ajouterBien.Click += new System.EventHandler(this.button1_ajouterBien_Click);
             // 
-            // button2_imprimerFiche
-            // 
-            this.button2_imprimerFiche.Enabled = false;
-            this.button2_imprimerFiche.Location = new System.Drawing.Point(409, 706);
-            this.button2_imprimerFiche.Name = "button2_imprimerFiche";
-            this.button2_imprimerFiche.Size = new System.Drawing.Size(156, 47);
-            this.button2_imprimerFiche.TabIndex = 43;
-            this.button2_imprimerFiche.Text = "IMPRIMER FICHE";
-            this.button2_imprimerFiche.UseVisualStyleBackColor = true;
-            this.button2_imprimerFiche.Click += new System.EventHandler(this.button2_imprimerFiche_Click);
-            // 
             // button3_supprimer
             // 
             this.button3_supprimer.Enabled = false;
@@ -607,12 +596,23 @@
             this.label26.TabIndex = 60;
             this.label26.Text = "150 caractères restants";
             // 
+            // button_voir_visites
+            // 
+            this.button_voir_visites.Location = new System.Drawing.Point(407, 706);
+            this.button_voir_visites.Name = "button_voir_visites";
+            this.button_voir_visites.Size = new System.Drawing.Size(156, 47);
+            this.button_voir_visites.TabIndex = 61;
+            this.button_voir_visites.Text = "VISITES DU BIEN";
+            this.button_voir_visites.UseVisualStyleBackColor = true;
+            this.button_voir_visites.Click += new System.EventHandler(this.button_voir_visites_Click);
+            // 
             // AjoutBien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(772, 758);
+            this.Controls.Add(this.button_voir_visites);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.comboBox2_villesBien);
             this.Controls.Add(this.comboBox1_villesClient);
@@ -625,7 +625,6 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.button5_annuler);
             this.Controls.Add(this.button3_supprimer);
-            this.Controls.Add(this.button2_imprimerFiche);
             this.Controls.Add(this.button1_ajouterBien);
             this.Controls.Add(this.textBox12_commentaires);
             this.Controls.Add(this.label22);
@@ -720,7 +719,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox12_commentaires;
         private System.Windows.Forms.Button button1_ajouterBien;
-        private System.Windows.Forms.Button button2_imprimerFiche;
         private System.Windows.Forms.Button button3_supprimer;
         private System.Windows.Forms.Button button5_annuler;
         private System.Windows.Forms.Label label24;
@@ -740,6 +738,7 @@
         private System.Windows.Forms.ComboBox comboBox1_villesClient;
         private System.Windows.Forms.ComboBox comboBox2_villesBien;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button_voir_visites;
     }
 }
 

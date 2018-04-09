@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +53,7 @@ namespace EcranAccueil
 
             textBoxNomClient.Text = fiche_en_cours.ACHETEUR.NOM_ACHETEUR;
             textBoxPrenomClient.Text = fiche_en_cours.ACHETEUR.PRENOM_ACHETEUR;
-            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE + " ) ";
+            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) ";
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
             textBoxCommercial.Text = commercial_fenetre_proposition;
         }
@@ -84,7 +86,8 @@ namespace EcranAccueil
             {
                 Accueil.modeleBase.SaveChanges();
                 MessageBox.Show("La proposition de visite a bien été créée");
-                Close();
+                impression_fiche_bien();
+                this.Close();
             }
             catch (Exception e9)
             {
@@ -93,6 +96,72 @@ namespace EcranAccueil
 
         }
 
+        private void impression_fiche_bien()
+        {
+            //GENERER FICHIER TEXTE A IMPRIMER(BON DE VISITE)
+            string line1 = "PROPOSITION DE VISITE POUR LE BIEN :";
+            string blank0 = " ";
+            string line2 = "" + textBoxDesignation.Text.TrimEnd();
+            string blank1 = " ";
+            string line3 = "Adresse : " + textBoxAdresse.Text.TrimEnd();
+            string blank2 = " ";
+            string line5 = "Surface habitable : \t" + bien_en_cours.SURFACE_HABITABLE;
+            string line6 = "Surface parcelle : \t" + bien_en_cours.SURFACE_PARCELLE;
+            string line7 = "Nb pièces : \t" + bien_en_cours.NB_PIÈCES;
+            string line8 = "Nb chambres : \t" + bien_en_cours.NB_CHAMBRES;
+            string line9 = "Nb Salle de bain : \t" + bien_en_cours.NB_SALLEDEBAIN;
+            string line10 = "Garage : \t";
+            if (bien_en_cours.GARAGE == true) { line10 += "oui"; }
+            else { line10 += "non"; }
+            string line11 = "Cave : \t";
+            if (bien_en_cours.CAVE == true) { line11 += "oui"; }
+            else { line11 += "non"; }
+
+            string[] texte = { line1, blank0, line2, blank1, line3, blank2, line5, line6, line7, line8, line9, line10, line11};
+            File.WriteAllLines(@"c:\temp\propositionVisite.txt", texte);
+            //IMPRESSION DU FICHIER TEXTE
+            StreamReader Printfile;
+            Font printFont = new Font("Times New Roman", 14.0f);
+            using (Printfile = new StreamReader(@"c:\temp\propositionVisite.txt"))
+            {
+                try
+                {
+                    PrintDocument docToPrint = new PrintDocument();
+                    docToPrint.DocumentName = "propositionVisite";
+                    docToPrint.PrintPage += (s, ev) =>
+                    {
+                        float linesPerPage = 0;
+                        float yPos = 0;
+                        int count = 0;
+                        float leftMargin = ev.MarginBounds.Left;
+                        float topMargin = ev.MarginBounds.Top;
+                        string line = null;
+
+
+                        linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics);
+
+
+                        while (count < linesPerPage && ((line = Printfile.ReadLine()) != null))
+                        {
+                            yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+                            ev.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                            count++;
+                        }
+
+
+                        if (line != null)
+                            ev.HasMorePages = true;
+                        else
+                            ev.HasMorePages = false;
+                    };
+                    docToPrint.Print();
+                }
+                catch (System.Exception f)
+                {
+                    MessageBox.Show(f.Message);
+                }
+            }
+        }
      
     }
 }

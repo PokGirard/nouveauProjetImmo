@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -74,7 +76,6 @@ namespace EcranAccueil
 
             actualisationBien();
 
-
             bienExisteDeja = true;
         }
         #endregion constructeurs
@@ -95,7 +96,8 @@ namespace EcranAccueil
             comboBox1_status.Enabled = estModifiable;
             comboBox2_villesBien.Enabled = estModifiable;
             //on peut supprimer et imprimer par contre
-            button2_imprimerFiche.Enabled = !estModifiable;
+            //button2_imprimerFiche.Enabled = !estModifiable;
+            button_voir_visites.Enabled = !estModifiable;
             button3_supprimer.Enabled = !estModifiable;
 
         }
@@ -426,11 +428,72 @@ namespace EcranAccueil
 
         }
 
-        private void button2_imprimerFiche_Click(object sender, EventArgs e)
+        /*private void button2_imprimerFiche_Click(object sender, EventArgs e)
         {
-            FicheDuBien fiche = new FicheDuBien(bien_en_cours);
-            fiche.Show();
-        }
+            //GENERER FICHIER TEXTE A IMPRIMER(BON DE VISITE)
+            string line1 = "FICHE DE DESCRIPTION DU BIEN :";
+            string blank0 = " ";
+            string line3 = "Adresse : " + bien_en_cours.ADRESSE_BIEN;
+            string blank2 = " ";
+            string line5 = "Surface habitable : \t" + bien_en_cours.SURFACE_HABITABLE;
+            string line6 = "Surface parcelle : \t" + bien_en_cours.SURFACE_PARCELLE;
+            string line7 = "Nb pièces : \t" + bien_en_cours.NB_PIÈCES;
+            string line8 = "Nb chambres : \t" + bien_en_cours.NB_CHAMBRES;
+            string line9 = "Nb Salle de bain : \t" + bien_en_cours.NB_SALLEDEBAIN;
+            string line10 = "Garage : \t";
+            if (bien_en_cours.GARAGE == true) { line10 += "oui"; }
+            else { line10 += "non"; }
+            string line11 = "Cave : \t";
+            if (bien_en_cours.CAVE == true) { line11 += "oui"; }
+            else { line11 += "non"; }
+
+            string[] texte = { line1, blank0, line3, blank2, line5, line6, line7, line8, line9, line10, line11 };
+            File.WriteAllLines(@"c:\temp\FichedeBien.txt", texte);
+            //IMPRESSION DU FICHIER TEXTE
+            StreamReader Printfile;
+            Font printFont = new Font("Times New Roman", 14.0f);
+            using (Printfile = new StreamReader(@"c:\temp\FichedeBien.txt"))
+            {
+                try
+                {
+                    PrintDocument docToPrint = new PrintDocument();
+                    docToPrint.DocumentName = "FichedeBien";
+                    docToPrint.PrintPage += (s, ev) =>
+                    {
+                        float linesPerPage = 0;
+                        float yPos = 0;
+                        int count = 0;
+                        float leftMargin = ev.MarginBounds.Left;
+                        float topMargin = ev.MarginBounds.Top;
+                        string line = null;
+
+
+                        linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics);
+
+
+                        while (count < linesPerPage && ((line = Printfile.ReadLine()) != null))
+                        {
+                            yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+                            ev.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                            count++;
+                        }
+
+
+                        if (line != null)
+                            ev.HasMorePages = true;
+                        else
+                            ev.HasMorePages = false;
+                    };
+                    docToPrint.Print();
+                }
+                catch (System.Exception f)
+                {
+                    MessageBox.Show(f.Message);
+                }
+            }
+        }*/
+
+
 
         private void codePostalVendeur_TextChanged(object sender, EventArgs e)
         {
@@ -482,15 +545,15 @@ namespace EcranAccueil
             mail.From = new MailAddress("appli.immobilly@gmail.com");
 
             var mailCommerciaux = (from c in Accueil.modeleBase.COMMERCIAL
-                                  select c.EMAIL).ToList();
-            foreach(string email in mailCommerciaux)
+                                   select c.EMAIL).ToList();
+            foreach (string email in mailCommerciaux)
             {
                 mail.To.Add(email);
             }
-           
+
             mail.Subject = "Un bien a été ajouté dans la base";
             mail.Body = "Un bien a été ajouté dans la base : \n";
-            mail.Body += "Descriptif : " + bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) "; 
+            mail.Body += "Descriptif : " + bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) ";
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("appli.immobilly@gmail.com", "immobilly2018");
             SmtpServer.EnableSsl = true;
@@ -506,6 +569,12 @@ namespace EcranAccueil
                     "Exception caught in CreateTestMessage1(): {0}",
                     ex.ToString());
             }
+        }
+
+        private void button_voir_visites_Click(object sender, EventArgs e)
+        {
+            VisitesBien affichage_visites = new VisitesBien(bien_en_cours);
+            affichage_visites.Show();
         }
     }
 }

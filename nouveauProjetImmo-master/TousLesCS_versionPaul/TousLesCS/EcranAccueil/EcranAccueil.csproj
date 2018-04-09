@@ -179,6 +179,12 @@
     <Compile Include="VILLE.cs">
       <DependentUpon>base_finale.tt</DependentUpon>
     </Compile>
+    <Compile Include="VisitesBien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitesBien.Designer.cs">
+      <DependentUpon>VisitesBien.cs</DependentUpon>
+    </Compile>
     <Compile Include="VueCommerciaux.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RechercherClient.resx">
       <DependentUpon>RechercherClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitesBien.resx">
+      <DependentUpon>VisitesBien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VueCommerciaux.resx">
       <DependentUpon>VueCommerciaux.cs</DependentUpon>

@@ -18,7 +18,7 @@ namespace EcranAccueil
         List<BIEN> biens_selectionnes;
         BIEN bien_en_cours;
         List<VILLE> villes_selectionnees = new List<VILLE>();
-        VILLE ville_en_cours;
+        VILLE ville_a_supprimer;
         string statut_fiche;
         private bool ficheExiste;
 
@@ -47,6 +47,11 @@ namespace EcranAccueil
             button_modifier_fiche.Enabled = false;
             buttonStatut_Obsolete.Enabled = false;
             buttonLancerRecherche.Enabled = false;
+
+            buttonStatut_En_Cours.ForeColor = Color.Green;
+            buttonStatut_En_Cours.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
+            buttonStatut_Obsolete.ForeColor = Color.Black;
+            buttonStatut_Obsolete.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
         }
 
         private void Preremplir_champs_client()
@@ -65,14 +70,12 @@ namespace EcranAccueil
             textBoxTelFixe.Enabled = false;
             textBoxTelMobile.Text = acheteur_de_reference.TÉLÉPHONE_MOBILE.ToString();
             textBoxTelMobile.Enabled = false;
-
         }
 
         public FicheDeSouhaits(FICHE_DE_SOUHAITS fiche_de_reference)
         {
 
             this.fiche_de_reference = fiche_de_reference;
-
             acheteur_de_reference = fiche_de_reference.ACHETEUR;
 
             InitializeComponent();
@@ -104,7 +107,7 @@ namespace EcranAccueil
             {
                 if (fiche_de_reference.STATUT == "EN COURS")
                 {
-                    button_creerProposition.Enabled = !interactionPossible;
+                    button_creerProposition.Enabled = false;
                     buttonLancerRecherche.Enabled = !interactionPossible;
                     buttonStatut_En_Cours.Enabled = interactionPossible;
                     buttonStatut_Obsolete.Enabled = interactionPossible;
@@ -125,12 +128,10 @@ namespace EcranAccueil
 
             if (statut == "ENCOURS")
             {
-
                 graphisme_statut_en_cours();
             }
             else if (statut == "OBSOLETE")
             {
-
                 graphisme_statut_obsolete();
             }
 
@@ -246,8 +247,10 @@ namespace EcranAccueil
                 }
 
                 ficheExiste = true;
+                fiche_de_reference = fiche_recup;
+                bloquer_button(false);
                 button_creer_fiche.Enabled = false;
-                button_creerProposition.Enabled = true;
+                button_creerProposition.Enabled = false;
                 buttonLancerRecherche.Enabled = true;
                 button_modifier_fiche.Enabled = true;
             }
@@ -271,9 +274,9 @@ namespace EcranAccueil
 
         private void buttonAjouterVille_Click(object sender, EventArgs e)
         {
-            if (listViewVillesDeroulante.SelectedItems.Count != 0 && !villes_selectionnees.Contains(ville_en_cours))
+            if (listViewVillesDeroulante.SelectedItems.Count != 0 && !villes_selectionnees.Contains(ville_a_supprimer))
             {
-                villes_selectionnees.Add(ville_en_cours);
+                villes_selectionnees.Add(ville_a_supprimer);
                 listVillesSelectionnees.Clear();
                 villes_selectionnees.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
                 foreach (VILLE v in villes_selectionnees)
@@ -303,7 +306,7 @@ namespace EcranAccueil
                             where (v.IDVILLE == idVille)
                             select v).First();
 
-                ville_en_cours = v2;
+                ville_a_supprimer = v2;
             }
         }
 
@@ -311,14 +314,27 @@ namespace EcranAccueil
         {
             if (villes_selectionnees.Count() != 0 && listVillesSelectionnees.SelectedItems.Count != 0)
             {
-                string a = listVillesSelectionnees.SelectedItems[0].Text.Replace(" ", string.Empty);
-                ville_en_cours = (from v1 in Accueil.modeleBase.VILLE
-                                  where v1.NOM_VILLE == a
+                string aSupprimer = listVillesSelectionnees.SelectedItems[0].Text.Replace(" ", string.Empty);
+                ville_a_supprimer = (from v1 in Accueil.modeleBase.VILLE
+                                  where v1.NOM_VILLE == aSupprimer
                                   select v1).FirstOrDefault();
                 listVillesSelectionnees.Items.Remove(listVillesSelectionnees.SelectedItems[0]);
-                villes_selectionnees.Remove(ville_en_cours);
+                villes_selectionnees.Remove(ville_a_supprimer);
 
+            }/*
+            if (listViewVillesDeroulante.SelectedItems.Count != 0 && !villes_selectionnees.Contains(ville_en_cours))
+            {
+                villes_selectionnees.Add(ville_en_cours);
+                listVillesSelectionnees.Clear();
+                villes_selectionnees.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
+                foreach (VILLE v in villes_selectionnees)
+                {
+                    string nomV = v.NOM_VILLE;
+                    nomV = nomV.Replace(" ", string.Empty);
+                    listVillesSelectionnees.Items.Add(nomV);
+                }
             }
+            listVillesSelectionnees.Refresh();*/
         }
         private bool verifier_champs()
         {
@@ -379,6 +395,7 @@ namespace EcranAccueil
                 
                 button_modifier_fiche.Text = "Modifier la fiche";
                 buttonLancerRecherche.Enabled = true;
+                bloquer_button(false);
             }
         }
 
@@ -490,9 +507,13 @@ namespace EcranAccueil
                     listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].IDBIEN.ToString());
 
                 }
-                
+
             }
-            else button_creerProposition.Enabled = false;
+            else
+            {
+                MessageBox.Show("La recherche n'a donné aucun résultats. \nModifiez les critères.");
+                button_creerProposition.Enabled = false;
+            }
         }
         private void graphisme_statut_obsolete()
         {
@@ -518,7 +539,11 @@ namespace EcranAccueil
         private void button_creerProposition_Click(object sender, EventArgs e)
         {
 
-            if (fiche_de_reference == null || bien_en_cours == null) return;
+            if (fiche_de_reference == null || bien_en_cours == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un bien pour créer une proposition de visite.");
+                return;
+            }
 
             PropositionVisite proposition = new PropositionVisite(fiche_de_reference, bien_en_cours);
             proposition.Show();
