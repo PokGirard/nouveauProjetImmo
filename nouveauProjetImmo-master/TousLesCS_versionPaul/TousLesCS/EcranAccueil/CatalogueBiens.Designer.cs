@@ -43,6 +43,7 @@
             this.garage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.voir_bien_button = new System.Windows.Forms.Button();
+            this.nb_visites = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label15
@@ -105,7 +106,8 @@
             this.surface_habitable,
             this.nb_pieces,
             this.garage,
-            this.cave});
+            this.cave,
+            this.nb_visites});
             this.listViewbiens.FullRowSelect = true;
             this.listViewbiens.GridLines = true;
             this.listViewbiens.Location = new System.Drawing.Point(23, 145);
@@ -120,6 +122,7 @@
             // idBien
             // 
             this.idBien.Text = "IDBien";
+            this.idBien.Width = 46;
             // 
             // ville
             // 
@@ -129,17 +132,17 @@
             // prix
             // 
             this.prix.Text = "Prix";
-            this.prix.Width = 108;
+            this.prix.Width = 81;
             // 
             // surface_parcelle
             // 
             this.surface_parcelle.Text = "Parcelle";
-            this.surface_parcelle.Width = 75;
+            this.surface_parcelle.Width = 62;
             // 
             // surface_habitable
             // 
             this.surface_habitable.Text = "Habitable";
-            this.surface_habitable.Width = 71;
+            this.surface_habitable.Width = 65;
             // 
             // nb_pieces
             // 
@@ -149,12 +152,12 @@
             // garage
             // 
             this.garage.Text = "Garage";
-            this.garage.Width = 89;
+            this.garage.Width = 50;
             // 
             // cave
             // 
             this.cave.Text = "Cave";
-            this.cave.Width = 86;
+            this.cave.Width = 43;
             // 
             // voir_bien_button
             // 
@@ -165,6 +168,11 @@
             this.voir_bien_button.Text = "VOIR LE BIEN";
             this.voir_bien_button.UseVisualStyleBackColor = true;
             this.voir_bien_button.Click += new System.EventHandler(this.voir_bien_button_Click);
+            // 
+            // nb_visites
+            // 
+            this.nb_visites.Text = "Nombre de visites";
+            this.nb_visites.Width = 98;
             // 
             // CatalogueBiens
             // 
@@ -203,5 +211,6 @@
         private System.Windows.Forms.ColumnHeader cave;
         private System.Windows.Forms.ColumnHeader idBien;
         private System.Windows.Forms.ColumnHeader prix;
+        private System.Windows.Forms.ColumnHeader nb_visites;
     }
 }

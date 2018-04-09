@@ -231,7 +231,7 @@
             this.buttonAcheteur.Name = "buttonAcheteur";
             this.buttonAcheteur.Size = new System.Drawing.Size(212, 42);
             this.buttonAcheteur.TabIndex = 19;
-            this.buttonAcheteur.Text = "Acheteur \r\navec une fiche de souhait";
+            this.buttonAcheteur.Text = "Acheteur \r\navec fiche de souhaits \"en cours\"";
             this.buttonAcheteur.UseVisualStyleBackColor = true;
             this.buttonAcheteur.Click += new System.EventHandler(this.buttonAcheteur_Click);
             // 
@@ -300,6 +300,7 @@
             this.checkBox1_toutesFiches.TabIndex = 23;
             this.checkBox1_toutesFiches.Text = "Tous les acheteurs";
             this.checkBox1_toutesFiches.UseVisualStyleBackColor = true;
+            this.checkBox1_toutesFiches.CheckedChanged += new System.EventHandler(this.checkBox1_toutesFiches_CheckedChanged);
             // 
             // LabelTitre
             // 

@@ -105,31 +105,47 @@ namespace EcranAccueil
                     listViewbiens.Items[i].SubItems.Add(biens[i].GARAGE == true ? "Oui" : "Non");
                     listViewbiens.Items[i].SubItems.Add(biens[i].CAVE == true ? "Oui" : "Non");
 
+
+                    // nombre de visites du bien
+                    int id = biens[i].IDBIEN;
+                   
+
+                    var prop = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                                where pv.IDBIEN == id
+                                select pv.IDVISITE).Distinct().ToList();
+
+                    var rdv = (from r in Accueil.modeleBase.RDV
+                               where prop.Contains(r.IDVISITE)
+                               select r).Distinct().ToList();
+
+                     listViewbiens.Items[i].SubItems.Add(rdv.Count().ToString());
+
+
                 }
             }
         }
 
         private void voir_bien_button_Click(object sender, EventArgs e)
         {
-            if(bien_en_cours != null)
+            if (bien_en_cours != null)
             {
                 AjoutBien fenetreBien = new AjoutBien(bien_en_cours);
                 fenetreBien.Show();
                 this.Close();
             }
-            
+
         }
 
-       private void listViewbiens_Click(object sender, EventArgs e)
+        private void listViewbiens_Click(object sender, EventArgs e)
         {
-          if(listViewbiens.SelectedItems.Count != 0)
+            if (listViewbiens.SelectedItems.Count != 0)
             {
                 int idBien = int.Parse(listViewbiens.SelectedItems[0].Text);
 
                 bien_en_cours = (from b in Accueil.modeleBase.BIEN
-                            where (b.IDBIEN == idBien)
-                            select b).First();
-                
+                                 where (b.IDBIEN == idBien)
+                                 select b).First();
+
             }
         }
     }

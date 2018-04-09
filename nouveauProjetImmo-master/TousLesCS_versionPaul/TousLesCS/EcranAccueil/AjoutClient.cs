@@ -64,6 +64,7 @@ namespace EcranAccueil
             this.email.Text = monAcheteur.EMAIL;
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
+            comboBoxCommerciaux.Enabled = false;
             chargerComboboxCommerciaux();
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
@@ -88,6 +89,7 @@ namespace EcranAccueil
             this.email.Text = vendeur_en_cours_fc.EMAIL;
             this.checkBox_Vendeur.Enabled = false;
             this.checkBox_Acheteur.Enabled = false;
+            comboBoxCommerciaux.Enabled = false;
             chargerComboboxCommerciaux();
 
             var nomVille = (from v in Accueil.modeleBase.VILLE
