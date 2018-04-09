@@ -10,15 +10,17 @@ using System.Windows.Forms;
 
 namespace EcranAccueil
 {
+ 
     public partial class FicheDeSouhaits : Form
     {
         //DISABLE FICHE DE SOUHAIT QUAND OBSOLETE
-
+        
         List<BIEN> biens_selectionnes;
         BIEN bien_en_cours;
         List<VILLE> villes_selectionnees = new List<VILLE>();
         VILLE ville_en_cours;
         string statut_fiche;
+        private bool ficheExiste;
 
         PropositionVisite fenetreProposition;
 
@@ -41,17 +43,28 @@ namespace EcranAccueil
             Charger_Liste_Villes();
             Preremplir_champs_client();
             statut_fiche = "EN COURS";
+            button_creerProposition.Enabled = false;
+            button_modifier_fiche.Enabled = false;
+            buttonStatut_Obsolete.Enabled = false;
+            buttonLancerRecherche.Enabled = false;
         }
 
         private void Preremplir_champs_client()
         {
             textBoxNom.Text = acheteur_de_reference.NOM_ACHETEUR;
+            textBoxNom.Enabled = false;
             textBoxPrenom.Text = acheteur_de_reference.PRENOM_ACHETEUR;
+            textBoxPrenom.Enabled = false;
             textBoxAdresseClient.Text = acheteur_de_reference.ADRESSE;
+            textBoxAdresseClient.Enabled = false;
             textBoxEmail.Text = acheteur_de_reference.EMAIL;
+            textBoxEmail.Enabled = false;
             textBoxVilleClient.Text = acheteur_de_reference.VILLE.NOM_VILLE;
+            textBoxVilleClient.Enabled = false;
             textBoxTelFixe.Text = acheteur_de_reference.TÉLÉPHONE.ToString();
+            textBoxTelFixe.Enabled = false;
             textBoxTelMobile.Text = acheteur_de_reference.TÉLÉPHONE_MOBILE.ToString();
+            textBoxTelMobile.Enabled = false;
 
         }
 
@@ -63,14 +76,41 @@ namespace EcranAccueil
             acheteur_de_reference = fiche_de_reference.ACHETEUR;
 
             InitializeComponent();
+            ficheExiste = true;
             Charger_Liste_Villes();
             ChargerListe_Villes_selectionnees();
             Preremplir_champs_client();
             Preremplir_champs_fiche();
             statut_fiche = fiche_de_reference.STATUT;
+            button_creer_fiche.Enabled = false;
+            button_creerProposition.Enabled = false;
+            bloquer_button(false);
+            
 
         }
 
+        private void bloquer_button(bool interactionPossible)
+        {
+            buttonAjouterVille.Enabled = interactionPossible;
+            buttonSupprimerVille.Enabled = interactionPossible;
+            textBoxBudget.Enabled = interactionPossible;
+            checkBoxCave.Enabled = interactionPossible;
+            checkBoxGarage.Enabled = interactionPossible;
+            numericSurfaceHab.Enabled = interactionPossible;
+            numericSurfParcelle.Enabled = interactionPossible;
+            numericUpDownNbPieces.Enabled = interactionPossible;
+           
+            if (ficheExiste)
+            {
+                if (fiche_de_reference.STATUT == "EN COURS")
+                {
+                    button_creerProposition.Enabled = !interactionPossible;
+                    buttonLancerRecherche.Enabled = !interactionPossible;
+                    buttonStatut_En_Cours.Enabled = interactionPossible;
+                    buttonStatut_Obsolete.Enabled = interactionPossible;
+                }
+            }
+        }
         private void Preremplir_champs_fiche()
         {
             textBoxBudget.Text = fiche_de_reference.BUDGET.ToString();
@@ -136,70 +176,82 @@ namespace EcranAccueil
       
         private void button_creation_fiche_Click(object sender, EventArgs e)
         {
-            FICHE_DE_SOUHAITS nouvelleFiche = null;
-            try
+            if (verifier_champs())
             {
-                nouvelleFiche = new FICHE_DE_SOUHAITS()
+                FICHE_DE_SOUHAITS nouvelleFiche = null;
+                try
                 {
-                    IDACHETEUR = acheteur_de_reference.IDACHETEUR,
-                    BUDGET = int.Parse(textBoxBudget.Text),
-                    SURFACE_HABITABLE = (int)numericSurfaceHab.Value,
-                    SURFACE_PARCELLE = (int)numericSurfParcelle.Value,
-                    NB_PIÈCE = (int)numericUpDownNbPieces.Value,
-                    CAVE = checkBoxCave.Checked,
-                    GARAGE = checkBoxGarage.Checked,
-                    STATUT = "EN COURS"
-                };
-                Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
-                MessageBox.Show(" La fiche a bien été créée.");
+                    nouvelleFiche = new FICHE_DE_SOUHAITS()
+                    {
+                        IDACHETEUR = acheteur_de_reference.IDACHETEUR,
+                        BUDGET = int.Parse(textBoxBudget.Text),
+                        SURFACE_HABITABLE = (int)numericSurfaceHab.Value,
+                        SURFACE_PARCELLE = (int)numericSurfParcelle.Value,
+                        NB_PIÈCE = (int)numericUpDownNbPieces.Value,
+                        CAVE = checkBoxCave.Checked,
+                        GARAGE = checkBoxGarage.Checked,
+                        STATUT = "EN COURS"
+                    };
+                    Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
+                    MessageBox.Show(" La fiche a bien été créée.");
 
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show(e1.Message);
 
-            }
-            // Submit the change to the database.
-            try
-            {
-                Accueil.modeleBase.SaveChanges();
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show(e2.Message);
+                }
+                catch (Exception e1)
+                {
+                    MessageBox.Show(e1.Message);
 
-            }
-            FICHE_DE_SOUHAITS fiche_recup = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                                             where f.IDACHETEUR == nouvelleFiche.IDACHETEUR &&
-                                              f.BUDGET == nouvelleFiche.BUDGET &&
-                                                f.SURFACE_HABITABLE == nouvelleFiche.SURFACE_HABITABLE &&
-                    f.SURFACE_PARCELLE == nouvelleFiche.SURFACE_PARCELLE &&
-                    f.CAVE == nouvelleFiche.CAVE &&
-                    f.GARAGE == nouvelleFiche.GARAGE &&
-                    f.STATUT == nouvelleFiche.STATUT
-                                             select f).FirstOrDefault();
-            var f1 = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                      where f.IDFICHESOUHAITS == fiche_recup.IDFICHESOUHAITS
-                      select f).First();
+                }
+                // Submit the change to the database.
+                try
+                {
+                    Accueil.modeleBase.SaveChanges();
 
-            Accueil.modeleBase.FICHE_DE_SOUHAITS.Attach(f1);
+                }
+                catch (Exception e2)
+                {
+                    MessageBox.Show(e2.Message);
 
-            foreach (VILLE v in villes_selectionnees)
-            {
-                Accueil.modeleBase.VILLE.Attach(v);
-                f1.VILLE1.Add(v);
-                Accueil.modeleBase.SaveChanges();
+                }
+                FICHE_DE_SOUHAITS fiche_recup = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                                                 where f.IDACHETEUR == nouvelleFiche.IDACHETEUR &&
+                                                  f.BUDGET == nouvelleFiche.BUDGET &&
+                                                    f.SURFACE_HABITABLE == nouvelleFiche.SURFACE_HABITABLE &&
+                        f.SURFACE_PARCELLE == nouvelleFiche.SURFACE_PARCELLE &&
+                        f.CAVE == nouvelleFiche.CAVE &&
+                        f.GARAGE == nouvelleFiche.GARAGE &&
+                        f.STATUT == nouvelleFiche.STATUT
+                                                 select f).FirstOrDefault();
+                var f1 = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                          where f.IDFICHESOUHAITS == fiche_recup.IDFICHESOUHAITS
+                          select f).First();
+
+                Accueil.modeleBase.FICHE_DE_SOUHAITS.Attach(f1);
+
+                foreach (VILLE v in villes_selectionnees)
+                {
+                    Accueil.modeleBase.VILLE.Attach(v);
+                    f1.VILLE1.Add(v);
+                    Accueil.modeleBase.SaveChanges();
+                }
+
+                try
+                {
+                    Accueil.modeleBase.SaveChanges();
+
+                }
+                catch (Exception e78)
+                {
+                    MessageBox.Show("non");
+                }
+
+                ficheExiste = true;
+                button_creer_fiche.Enabled = false;
+                button_creerProposition.Enabled = true;
+                buttonLancerRecherche.Enabled = true;
+                button_modifier_fiche.Enabled = true;
             }
 
-            try
-            {
-                Accueil.modeleBase.SaveChanges();
-
-            }
-            catch (Exception e78)
-            {
-                MessageBox.Show("non");
-            }
         }
 
         private void buttonStatut_En_Cours_Click(object sender, EventArgs e)
@@ -213,6 +265,7 @@ namespace EcranAccueil
         {
             statut_fiche = "OBSOLETE";
             graphisme_statut_obsolete();
+            bloquer_button(false);
             Refresh();
         }
 
@@ -300,25 +353,33 @@ namespace EcranAccueil
 
         private void button_modifier_fiche_Click(object sender, EventArgs e)
         {
-
-            if (listView_resultats.SelectedItems.Count == 0) return;
-            List<VILLE> villes_stockees_base = fiche_de_reference.VILLE1.ToList();
-
-            try
+            if (button_modifier_fiche.Text == "Modifier la fiche")
             {
-                champs_modifies(villes_stockees_base);
-
-                Accueil.modeleBase.SaveChanges();
-                MessageBox.Show(" La fiche a bien été modifiée.");
+                bloquer_button(true);
+                button_modifier_fiche.Text = "Valider les modifications";
+                buttonLancerRecherche.Enabled = false;
             }
-            catch (Exception e4)
+            else
             {
-                MessageBox.Show("Erreur de sauvegarde.");
-                return;
+               // if (listView_resultats.SelectedItems.Count == 0) return;
+                List<VILLE> villes_stockees_base = fiche_de_reference.VILLE1.ToList();
+
+                try
+                {
+                    champs_modifies(villes_stockees_base);
+
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show(" La fiche a bien été modifiée.");
+                }
+                catch (Exception e4)
+                {
+                    MessageBox.Show("Erreur de sauvegarde.");
+                    return;
+                }
+                
+                button_modifier_fiche.Text = "Modifier la fiche";
+                buttonLancerRecherche.Enabled = true;
             }
-
-            MessageBox.Show("Les modifications ont bien été enregistrées");
-
         }
 
         private void champs_modifies(List<VILLE> villes_stockees_base)
@@ -429,7 +490,9 @@ namespace EcranAccueil
                     listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].IDBIEN.ToString());
 
                 }
+                
             }
+            else button_creerProposition.Enabled = false;
         }
         private void graphisme_statut_obsolete()
         {
@@ -471,7 +534,14 @@ namespace EcranAccueil
                                  where (b.IDBIEN == idBien)
                                  select b).First();
 
+                button_creerProposition.Enabled = true;
             }
+            else button_creerProposition.Enabled = false;
+        }
+
+        private void button_imprimer_fiche_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

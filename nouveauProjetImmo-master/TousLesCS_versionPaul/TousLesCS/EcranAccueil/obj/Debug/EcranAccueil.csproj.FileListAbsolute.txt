@@ -303,7 +303,6 @@ C:\Users\Léa\Desktop\TousLesCS_27_03\EcranAccueil\bin\Debug\EntityFramework.Sql
 C:\Users\Léa\Desktop\TousLesCS_27_03\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
 C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RDV_Visite.resources
 C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDuBien.resources
-C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\bin\Debug\EcranAccueil.exe.config
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\Léa\Desktop\immobilly git 0604\EcranAccueil\obj\Debug\EcranAccueil.pdb
@@ -385,4 +384,3 @@ C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\E
 C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Léa\Desktop\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
-C:\Users\Léa\Documents\GitHub\ProjetImmo\nouveauProjetImmo\nouveauProjetImmo-master\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
