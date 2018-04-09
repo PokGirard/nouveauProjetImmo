@@ -86,6 +86,7 @@
             this.Controls.Add(this.listViewbiens);
             this.Name = "VisitesBien";
             this.Text = "VisitesBien";
+            this.Load += new System.EventHandler(this.VisitesBien_Load);
             this.ResumeLayout(false);
 
         }

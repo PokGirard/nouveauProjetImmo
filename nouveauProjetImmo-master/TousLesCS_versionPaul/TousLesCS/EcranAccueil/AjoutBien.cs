@@ -69,11 +69,9 @@ namespace EcranAccueil
             this.titreFenetreAjoutBien.Text = "VOIR LE BIEN";
             this.button1_ajouterBien.Text = "MODIFIER LE BIEN";
             clientExisteDeja = true;
+            this.bien_en_cours = bien_en_cours;
             blocageBoxVendeur(false);
             blocageBoxBien(false);
-
-            this.bien_en_cours = bien_en_cours;
-
             actualisationBien();
 
             bienExisteDeja = true;
@@ -81,24 +79,50 @@ namespace EcranAccueil
         #endregion constructeurs
         private void blocageBoxBien(Boolean estModifiable)
         {
+            if (bien_en_cours.STATUT != "RETIRE")
+            {
+                numericUpDown1_surfHab.Enabled = estModifiable;
+                numericUpDown2_surfParc.Enabled = estModifiable;
+                numericUpDown3_nbPieces.Enabled = estModifiable;
+                numericUpDown4_nbChambres.Enabled = estModifiable;
+                numericUpDown5_nbSdb.Enabled = estModifiable;
+                numericUpDown6_prix.Enabled = estModifiable;
+                textBox12_commentaires.Enabled = estModifiable;
+                textBox9_adresse.Enabled = estModifiable;
+                textBox10_codePostal.Enabled = estModifiable;
+                checkBox1_garage.Enabled = estModifiable;
+                checkBox2_cave.Enabled = estModifiable;
 
-            numericUpDown1_surfHab.Enabled = estModifiable;
-            numericUpDown2_surfParc.Enabled = estModifiable;
-            numericUpDown3_nbPieces.Enabled = estModifiable;
-            numericUpDown4_nbChambres.Enabled = estModifiable;
-            numericUpDown5_nbSdb.Enabled = estModifiable;
-            numericUpDown6_prix.Enabled = estModifiable;
-            textBox12_commentaires.Enabled = estModifiable;
-            textBox9_adresse.Enabled = estModifiable;
-            textBox10_codePostal.Enabled = estModifiable;
-            checkBox1_garage.Enabled = estModifiable;
-            checkBox2_cave.Enabled = estModifiable;
+                comboBox2_villesBien.Enabled = estModifiable;
+                //on peut supprimer et imprimer par contre
+                //button2_imprimerFiche.Enabled = !estModifiable;
+                button_voir_visites.Enabled = !estModifiable;
+                button3_supprimer.Enabled = !estModifiable;
+                button_voir_visites.Enabled = !estModifiable;
+            }
+            else
+            {
+                numericUpDown1_surfHab.Enabled = false;
+                numericUpDown2_surfParc.Enabled = false;
+                numericUpDown3_nbPieces.Enabled = false;
+                numericUpDown4_nbChambres.Enabled = false;
+                numericUpDown5_nbSdb.Enabled = false;
+                numericUpDown6_prix.Enabled = false;
+                textBox12_commentaires.Enabled = false;
+                textBox9_adresse.Enabled = false;
+                textBox10_codePostal.Enabled = false;
+                checkBox1_garage.Enabled = false;
+                checkBox2_cave.Enabled = false;
+
+                comboBox2_villesBien.Enabled = false;
+                //on peut supprimer et imprimer par contre
+                //button2_imprimerFiche.Enabled = !estModifiable;
+                button_voir_visites.Enabled = !estModifiable;
+                button3_supprimer.Enabled = !estModifiable;
+                button_voir_visites.Enabled = !estModifiable;
+
+            }
             comboBox1_status.Enabled = estModifiable;
-            comboBox2_villesBien.Enabled = estModifiable;
-            //on peut supprimer et imprimer par contre
-            //button2_imprimerFiche.Enabled = !estModifiable;
-            button_voir_visites.Enabled = !estModifiable;
-            button3_supprimer.Enabled = !estModifiable;
 
         }
         private void blocageBoxVendeur(bool estModifiable)
@@ -383,19 +407,50 @@ namespace EcranAccueil
 
         private void button3_supprimer_Click(object sender, EventArgs e)
         {
-            bien_en_cours.STATUT = "RETIRE";
-            Accueil.modeleBase.SaveChanges();
-            actualisationBien();
+            //code rajouté pour suppression du bien : compte des visites du bien
+            
+            var prop = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                        where pv.IDBIEN == bien_en_cours.IDBIEN
+                        select pv.IDVISITE).Distinct().ToList();
+
+            var rdv = (from r in Accueil.modeleBase.RDV
+                       where prop.Contains(r.IDVISITE)
+                       select r).Distinct().ToList();
+
+            if (rdv.Count() == 0)
+            {
+                if (prop.Count != 0)
+                {
+                    foreach (int p in prop)
+                    {
+                        var proposition_a_supprimer = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                                                       where pv.IDBIEN == p
+                                                       select pv).FirstOrDefault();
+
+                        Accueil.modeleBase.PROPOSITION_VISITE.Remove(proposition_a_supprimer);
+                    }
+                }
+                Accueil.modeleBase.BIEN.Remove(bien_en_cours);
+                Accueil.modeleBase.SaveChanges();
+                MessageBox.Show("Bien supprimé de la base.");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Le bien n'a pu être supprimé car des rendez-vous lui sont associés.");
+            }
+            //bien_en_cours.STATUT = "RETIRE";
+
 
         }
 
         private void actualisationBien()
         {
             this.comboBox1_status.Text = bien_en_cours.STATUT.Replace(" ", string.Empty);
-            if (comboBox1_status.Text.Equals("RETIRE"))
+            /*if (comboBox1_status.Text.Equals("RETIRE"))
             {
                 button1_ajouterBien.Enabled = false;
-            }
+            }****/
             this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
             this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
@@ -428,6 +483,7 @@ namespace EcranAccueil
 
         }
 
+        #region impression
         /*private void button2_imprimerFiche_Click(object sender, EventArgs e)
         {
             //GENERER FICHIER TEXTE A IMPRIMER(BON DE VISITE)
@@ -492,8 +548,7 @@ namespace EcranAccueil
                 }
             }
         }*/
-
-
+        #endregion impression
 
         private void codePostalVendeur_TextChanged(object sender, EventArgs e)
         {

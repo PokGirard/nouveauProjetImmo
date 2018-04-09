@@ -100,11 +100,11 @@ namespace EcranAccueil
         {
             //GENERER FICHIER TEXTE A IMPRIMER(BON DE VISITE)
             string line1 = "PROPOSITION DE VISITE POUR LE BIEN :";
-            string blank0 = " ";
+            string blank = " ";
             string line2 = "" + textBoxDesignation.Text.TrimEnd();
-            string blank1 = " ";
+            
             string line3 = "Adresse : " + textBoxAdresse.Text.TrimEnd();
-            string blank2 = " ";
+        
             string line5 = "Surface habitable : \t" + bien_en_cours.SURFACE_HABITABLE;
             string line6 = "Surface parcelle : \t" + bien_en_cours.SURFACE_PARCELLE;
             string line7 = "Nb pièces : \t" + bien_en_cours.NB_PIÈCES;
@@ -116,8 +116,10 @@ namespace EcranAccueil
             string line11 = "Cave : \t";
             if (bien_en_cours.CAVE == true) { line11 += "oui"; }
             else { line11 += "non"; }
+  
+            string line12 = "Prix souhaité : \t" + bien_en_cours.PRIX_SOUHAITÉ;
 
-            string[] texte = { line1, blank0, line2, blank1, line3, blank2, line5, line6, line7, line8, line9, line10, line11};
+            string[] texte = { line1, blank, line2, blank, line3, blank, line5, line6, line7, line8, line9, line10, line11, blank, line12};
             File.WriteAllLines(@"c:\temp\propositionVisite.txt", texte);
             //IMPRESSION DU FICHIER TEXTE
             StreamReader Printfile;

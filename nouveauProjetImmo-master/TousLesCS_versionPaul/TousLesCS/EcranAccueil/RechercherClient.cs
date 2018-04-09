@@ -32,6 +32,8 @@ namespace EcranAccueil
         public RechercherClient()
         {
             InitializeComponent();
+            buttonAcheteur.Font = new Font(buttonAcheteur.Font, FontStyle.Bold);
+            recherche_acheteurs_actifs();
         }
 
 
@@ -50,14 +52,14 @@ namespace EcranAccueil
         }
 
 
-        public void fonction_recherche()
+      /*  public void fonction_recherche()
         {
             listView_resultat.Items.Clear();
 
             if (typeClientChoisi == TypeClient.ACHETEUR) recherche_acheteurs();
             else recherche_vendeurs();
 
-        }
+        }*/
 
         public void recherche_acheteurs()
         {
@@ -110,28 +112,10 @@ namespace EcranAccueil
 
         private void Requetes_tout_acheteurs()
         {
-            if (checkBox1_toutesFiches.Checked)
-            {
-                acheteurs = (from a in Accueil.modeleBase.ACHETEUR
-                             select a).ToList();
-            }
 
-            else
-            {
-                acheteurs = (from a in Accueil.modeleBase.ACHETEUR
-                             where (textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text) : true) &&
-                             (textBoxPrenom.Text != "" ? a.PRENOM_ACHETEUR.StartsWith(textBoxPrenom.Text) : true) &&
-                               (textBoxEmail.Text != "" ? a.EMAIL.StartsWith(textBoxEmail.Text) : true) &&
-                             (textBoxVille.Text != "" ? a.IDVILLE == (from v in Accueil.modeleBase.VILLE
-                                                                      where v.NOM_VILLE.Equals(textBoxVille.Text)
-                                                                      select v.IDVILLE).FirstOrDefault() : true) &&
-                            (textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text) : true) &&
-                             (textBoxMobile.Text != "" ? a.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text) : true) &&
-                                (textBoxCommercial.Text != "" ? a.COMMERCIAL.NOM_COMMERCIAL.StartsWith(textBoxCommercial.Text) : true)
-                                && (a.DATE_CREATION <= dateTimeAjout.Value)
+            acheteurs = (from a in Accueil.modeleBase.ACHETEUR
+                         select a).ToList();
 
-                             select a).ToList();
-            }
         }
 
         public void recherche_vendeurs()
@@ -169,33 +153,16 @@ namespace EcranAccueil
         private void buttonLancerRecherche_Click(object sender, EventArgs e)
         {
             listView_resultat.Items.Clear();
+
             if (checkBox1_toutesFiches.Checked)
             {
-
-                if (checkBox1_toutesFiches.Checked)
-                {
-                    acheteurs = (from a in Accueil.modeleBase.ACHETEUR
-                                 select a).ToList();
-
-                    fonction_recherche();
-                    
-                }
-
-                else
-                {
-                    recherche_acheteurs_actifs();
-                }
-
+                recherche_acheteurs();
             }
             else
             {
-                fonction_recherche();
+                if (typeClientChoisi == TypeClient.ACHETEUR) recherche_acheteurs_actifs();
+                else recherche_vendeurs();
             }
-
-
-
-
-
         }
 
         private void buttonModifierClient_Click(object sender, EventArgs e)
@@ -258,7 +225,7 @@ namespace EcranAccueil
             else
             {
                 buttonAcheteur.Enabled = true;
-                buttonVendeur.Enabled = false;
+                buttonVendeur.Enabled = true;
                 textBoxNom.Enabled = true;
                 textBoxPrenom.Enabled = true;
                 textBoxVille.Enabled = true;
