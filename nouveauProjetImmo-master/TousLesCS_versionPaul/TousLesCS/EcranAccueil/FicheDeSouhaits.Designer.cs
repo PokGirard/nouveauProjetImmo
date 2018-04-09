@@ -46,7 +46,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.labelBiens_correspondants = new System.Windows.Forms.Label();
             this.listView_resultats = new System.Windows.Forms.ListView();
             this.columnVille = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnPrix = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -76,7 +75,6 @@
             this.buttonAjouterVille = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewVillesDeroulante = new System.Windows.Forms.ListView();
-            this.buttonPropositionVisite = new System.Windows.Forms.Button();
             this.listVillesSelectionnees = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -256,16 +254,6 @@
             this.button8.TabIndex = 59;
             this.button8.Text = "Imprimer la fiche";
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // labelBiens_correspondants
-            // 
-            this.labelBiens_correspondants.AutoSize = true;
-            this.labelBiens_correspondants.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBiens_correspondants.Location = new System.Drawing.Point(1370, 53);
-            this.labelBiens_correspondants.Name = "labelBiens_correspondants";
-            this.labelBiens_correspondants.Size = new System.Drawing.Size(253, 13);
-            this.labelBiens_correspondants.TabIndex = 60;
-            this.labelBiens_correspondants.Text = "BIENS CORRESPONDANTS DISPONIBLES\r\n";
             // 
             // listView_resultats
             // 
@@ -509,16 +497,6 @@
             this.listViewVillesDeroulante.View = System.Windows.Forms.View.Details;
             this.listViewVillesDeroulante.Click += new System.EventHandler(this.listViewVillesDeroulante_Click);
             // 
-            // buttonPropositionVisite
-            // 
-            this.buttonPropositionVisite.Location = new System.Drawing.Point(1548, 302);
-            this.buttonPropositionVisite.Name = "buttonPropositionVisite";
-            this.buttonPropositionVisite.Size = new System.Drawing.Size(130, 44);
-            this.buttonPropositionVisite.TabIndex = 87;
-            this.buttonPropositionVisite.Text = "Créer proposition de visite";
-            this.buttonPropositionVisite.UseVisualStyleBackColor = true;
-            this.buttonPropositionVisite.Click += new System.EventHandler(this.buttonPropositionVisite_Click);
-            // 
             // listVillesSelectionnees
             // 
             this.listVillesSelectionnees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -585,14 +563,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(660, 768);
+            this.ClientSize = new System.Drawing.Size(663, 767);
             this.Controls.Add(this.button_creerProposition);
             this.Controls.Add(this.checkBoxGarage);
             this.Controls.Add(this.checkBoxCave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listVillesSelectionnees);
-            this.Controls.Add(this.buttonPropositionVisite);
             this.Controls.Add(this.listViewVillesDeroulante);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSupprimerVille);
@@ -615,7 +592,6 @@
             this.Controls.Add(this.buttonStatut_Obsolete);
             this.Controls.Add(this.buttonStatut_En_Cours);
             this.Controls.Add(this.listView_resultats);
-            this.Controls.Add(this.labelBiens_correspondants);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -661,7 +637,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label labelBiens_correspondants;
         private System.Windows.Forms.ListView listView_resultats;
         private System.Windows.Forms.ColumnHeader columnParcelle;
         private System.Windows.Forms.ColumnHeader columnSurfHab;
@@ -691,7 +666,6 @@
         private System.Windows.Forms.Button buttonAjouterVille;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listViewVillesDeroulante;
-        private System.Windows.Forms.Button buttonPropositionVisite;
         private System.Windows.Forms.ListView listVillesSelectionnees;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;

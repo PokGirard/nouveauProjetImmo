@@ -38,11 +38,15 @@ namespace EcranAccueil
         private void buttonAcheteur_Click(object sender, EventArgs e)
         {
             typeClientChoisi = TypeClient.ACHETEUR;
+            buttonAcheteur.Font = new Font(buttonAcheteur.Font, FontStyle.Bold);
+            buttonVendeur.Font = new Font(buttonVendeur.Font, FontStyle.Regular);
         }
 
         private void button_vendeur_Click(object sender, EventArgs e)
         {
             typeClientChoisi = TypeClient.VENDEUR;
+            buttonAcheteur.Font = new Font(buttonAcheteur.Font, FontStyle.Regular);
+            buttonVendeur.Font = new Font(buttonVendeur.Font, FontStyle.Bold);
         }
 
 

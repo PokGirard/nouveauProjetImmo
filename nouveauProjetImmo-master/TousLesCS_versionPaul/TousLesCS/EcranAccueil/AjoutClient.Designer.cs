@@ -63,13 +63,14 @@
             this.column3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.column5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBoxCommerciaux = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1_créationClient = new System.Windows.Forms.DateTimePicker();
             this.buttonBienProposes = new System.Windows.Forms.Button();
             this.buttonAccepterVisite = new System.Windows.Forms.Button();
             this.button1_retourMenu = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonRefuserVisite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titreFenetre
@@ -348,6 +349,7 @@
             this.listView1.TabIndex = 58;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // column1
@@ -410,6 +412,7 @@
             // 
             // buttonAccepterVisite
             // 
+            this.buttonAccepterVisite.Enabled = false;
             this.buttonAccepterVisite.Location = new System.Drawing.Point(272, 539);
             this.buttonAccepterVisite.Name = "buttonAccepterVisite";
             this.buttonAccepterVisite.Size = new System.Drawing.Size(113, 40);
@@ -429,12 +432,24 @@
             this.button1_retourMenu.UseVisualStyleBackColor = true;
             this.button1_retourMenu.Click += new System.EventHandler(this.button1_retourMenu_Click);
             // 
+            // buttonRefuserVisite
+            // 
+            this.buttonRefuserVisite.Enabled = false;
+            this.buttonRefuserVisite.Location = new System.Drawing.Point(272, 585);
+            this.buttonRefuserVisite.Name = "buttonRefuserVisite";
+            this.buttonRefuserVisite.Size = new System.Drawing.Size(113, 40);
+            this.buttonRefuserVisite.TabIndex = 63;
+            this.buttonRefuserVisite.Text = "Refuser la visite";
+            this.buttonRefuserVisite.UseVisualStyleBackColor = true;
+            this.buttonRefuserVisite.Click += new System.EventHandler(this.buttonRefuserVisite_Click);
+            // 
             // AjoutClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(707, 659);
+            this.Controls.Add(this.buttonRefuserVisite);
             this.Controls.Add(this.button1_retourMenu);
             this.Controls.Add(this.buttonAccepterVisite);
             this.Controls.Add(this.buttonBienProposes);
@@ -520,5 +535,6 @@
         private System.Windows.Forms.Button buttonAccepterVisite;
         private System.Windows.Forms.Button button1_retourMenu;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button buttonRefuserVisite;
     }
 }

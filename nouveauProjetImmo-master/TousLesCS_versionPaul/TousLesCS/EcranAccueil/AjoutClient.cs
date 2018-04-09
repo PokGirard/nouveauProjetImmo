@@ -43,6 +43,7 @@ namespace EcranAccueil
             button1_retourMenu.Enabled = true;
             chargerComboboxCommerciaux();
             comboBoxCommerciaux.Enabled = true;
+            dateTimePicker1_créationClient.Enabled = false;
 
         }
 
@@ -666,13 +667,19 @@ namespace EcranAccueil
 
            if (monChoixAffichage == ChoixAffichage.BIENS_PROPOSES)
             {
-                if (listView1.SelectedItems.Count > 0)
+
+                if (listView1.SelectedItems.Count != 0)
                 {
-                    buttonAccepterVisite.Enabled = true;
-                }
-                else
-                {
-                    buttonAccepterVisite.Enabled = false;
+                    if (listView1.SelectedItems[0].SubItems[5].Text.Replace(" ", string.Empty) == "ACCEPTEE" || listView1.SelectedItems[0].SubItems[5].Text.Replace(" ", string.Empty) == "REFUSEE")
+                    {
+                        buttonRefuserVisite.Enabled = false;
+                        buttonAccepterVisite.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonRefuserVisite.Enabled = true;
+                        buttonAccepterVisite.Enabled = true;
+                    }
                 }
             }
 
@@ -728,9 +735,14 @@ namespace EcranAccueil
                                    pv.STATUT_PROPOSITION == "ACCEPTEE"
                                    select pv.IDVISITE).ToList();
 
-            var visites_effectuees = (from r in Accueil.modeleBase.RDV
+            /*var visites_effectuees = (from r in Accueil.modeleBase.RDV
                                       where prop_visites_acceptees.Contains(r.IDVISITE)
-                                      select r).Distinct().ToList(); 
+                                      select r).Distinct().ToList();*/
+
+            var dateRDV = (from r in Accueil.modeleBase.RDV
+                           where r.PROPOSITION_VISITE.DATERDV <= DateTime.Today &&
+                           prop_visites_acceptees.Contains(r.IDVISITE)
+                           select r).Distinct().ToList();
 
             listView1.Items.Clear();
             listView1.Columns[0].Text = "ID Rdv";
@@ -739,10 +751,10 @@ namespace EcranAccueil
             listView1.Columns[3].Text = "Prix";
             listView1.Columns[4].Text = "Date";
 
-            for (int i = 0; i < visites_effectuees.Count; i++)
+            for (int i = 0; i < dateRDV.Count; i++)
             {
 
-                int index = visites_effectuees[i].IDVISITE;
+                int index = dateRDV[i].IDVISITE;
                 PROPOSITION_VISITE proposition = (from p in Accueil.modeleBase.PROPOSITION_VISITE
                                                   where p.IDVISITE == index &&
                                                    p.STATUT_PROPOSITION == "ACCEPTEE"
@@ -756,7 +768,7 @@ namespace EcranAccueil
                                 where v.IDVILLE == b.IDVILLE
                                 select v.NOM_VILLE).FirstOrDefault();
 
-                listView1.Items.Add(visites_effectuees[i].IDVISITE.ToString()).SubItems.Add(ville);
+                listView1.Items.Add(dateRDV[i].IDVISITE.ToString()).SubItems.Add(ville);
                 listView1.Items[i].SubItems.Add(b.ADRESSE_BIEN);
                 listView1.Items[i].SubItems.Add(b.PRIX_SOUHAITÉ.ToString());
                 listView1.Items[i].SubItems.Add(proposition.DATERDV.ToString());
@@ -827,7 +839,7 @@ namespace EcranAccueil
 
         }
 
-        private void buttonBienProposes_Click(object sender, EventArgs e)
+        public void buttonBienProposes_Click(object sender, EventArgs e)
         {
 
             monChoixAffichage = ChoixAffichage.BIENS_PROPOSES;
@@ -881,9 +893,6 @@ namespace EcranAccueil
 
                 listView1.Refresh();
             }
-
-
-
         }
 
         private void buttonAccepterVisite_Click(object sender, EventArgs e)
@@ -909,24 +918,32 @@ namespace EcranAccueil
 
             if(proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
             {
-                MessageBox.Show(" La proposition a déjà été traitée."); return;
+                MessageBox.Show(" La proposition a déjà été traitée.");
+                return;
             }
 
             maFenetreRDV = new RDV_Visite(proposition_retenue);
 
 
 
-         /*   RDV rdv = new RDV
-            {
-                IDVISITE = proposition_retenue.IDVISITE
-            };
+            /*   RDV rdv = new RDV
+               {
+                   IDVISITE = proposition_retenue.IDVISITE
+               };
 
-            Accueil.modeleBase.RDV.Add(rdv);
-            Accueil.modeleBase.SaveChanges(); */
+               Accueil.modeleBase.RDV.Add(rdv);
+               Accueil.modeleBase.SaveChanges(); */
 
             // ---------> se fait via le bouton créer de la fenêtre RDV..non ?
-          
+
             maFenetreRDV.Show();
+            /*while (maFenetreRDV.IsAccessible)
+            {
+                continue;
+            }
+            buttonBienProposes_Click(sender, e);
+            buttonRefuserVisite.Enabled = false;
+            buttonAccepterVisite.Enabled = false;*/
 
 
 
@@ -938,7 +955,29 @@ namespace EcranAccueil
             this.Close();
         }
 
-        
+        private void buttonRefuserVisite_Click(object sender, EventArgs e)
+        {
+            int id_proposition = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+
+            PROPOSITION_VISITE proposition_retenue = (from p in Accueil.modeleBase.PROPOSITION_VISITE
+                                                      where p.IDVISITE == id_proposition
+                                                      select p).FirstOrDefault();
+
+            if (proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            {
+                MessageBox.Show(" La proposition a déjà été traitée.");
+                return;
+            }
+            proposition_retenue.STATUT_PROPOSITION = "REFUSEE";
+            Accueil.modeleBase.SaveChanges();
+            buttonBienProposes_Click(sender, e);
+            buttonRefuserVisite.Enabled = false;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //vide
+        }
     }
 }
 
