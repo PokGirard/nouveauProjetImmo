@@ -33,7 +33,7 @@ namespace EcranAccueil
         {
             InitializeComponent();
             buttonAcheteur.Font = new Font(buttonAcheteur.Font, FontStyle.Bold);
-            recherche_acheteurs_actifs();
+            //   recherche_acheteurs_actifs();
         }
 
 
@@ -52,14 +52,7 @@ namespace EcranAccueil
         }
 
 
-      /*  public void fonction_recherche()
-        {
-            listView_resultat.Items.Clear();
 
-            if (typeClientChoisi == TypeClient.ACHETEUR) recherche_acheteurs();
-            else recherche_vendeurs();
-
-        }*/
 
         public void recherche_acheteurs()
         {
@@ -79,20 +72,45 @@ namespace EcranAccueil
                                where f.STATUT == "EN COURS"
                                select f.IDACHETEUR).Distinct().ToList();
 
-            if (idAcheteurs.Count != 0)
+            int id_ville = 0;
+
+            if (textBoxVille.Text != "")
             {
 
-                for (int i = 0; i < idAcheteurs.Count; i++)
-                {
-                    int t = idAcheteurs[i];
+                id_ville = (from v in Accueil.modeleBase.VILLE
+                            where v.CODE_POSTAL.ToString() == textBoxVille.Text.Replace(" ", string.Empty)
+                            select v.IDVILLE).FirstOrDefault();
 
-                    ACHETEUR a = (from a1 in Accueil.modeleBase.ACHETEUR
-                                  where a1.IDACHETEUR == t
-                                  select a1).FirstOrDefault();
-                    afficher_resultats_acheteurs(a, i);
-
-                }
             }
+
+
+            var acheteurs_actifs = (from a in Accueil.modeleBase.ACHETEUR
+                                    where idAcheteurs.Contains(a.IDACHETEUR)
+                              && textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text.Replace(" ", string.Empty)) : true
+                                    && textBoxPrenom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text.Replace(" ", string.Empty)) : true
+                                    && textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text.Replace(" ", string.Empty)) : true
+                                       && textBoxMobile.Text != "" ? a.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text.Replace(" ", string.Empty)) : true
+                                       && textBoxEmail.Text != "" ? a.EMAIL.ToString().StartsWith(textBoxEmail.Text.Replace(" ", string.Empty)) : true
+                                       && a.DATE_CREATION.ToString().StartsWith(dateTimeAjout.Value.ToString())
+                                       && textBoxCommercial.Text != "" ? a.COMMERCIAL.NOM_COMMERCIAL.StartsWith(textBoxCommercial.Text.ToString().Replace(" ", string.Empty)) : true
+                                       && textBoxVille.Text != "" ? a.IDVILLE == id_ville : true
+
+
+                                    select a).ToList();
+
+
+            if (acheteurs_actifs.Count() == 0) return;
+
+
+            for (int i = 0; i < acheteurs_actifs.Count(); i++)
+            {
+
+
+
+                afficher_resultats_acheteurs(acheteurs_actifs[i], i);
+
+            }
+
 
         }
 

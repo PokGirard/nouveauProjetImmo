@@ -133,6 +133,10 @@ namespace EcranAccueil
                 fenetreBien.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Sélectionnez un bien à afficher.");
+            }
 
         }
 

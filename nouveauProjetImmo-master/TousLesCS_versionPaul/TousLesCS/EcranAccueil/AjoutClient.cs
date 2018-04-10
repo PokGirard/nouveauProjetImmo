@@ -660,9 +660,18 @@ namespace EcranAccueil
             {
                 string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
                 int id_selec = Int32.Parse(t);
-                BIEN bien_selectionne = (from b in Accueil.modeleBase.BIEN
-                                         where b.IDBIEN == id_selec
-                                         select b).FirstOrDefault();
+
+                var RDV = (from b in Accueil.modeleBase.RDV
+                             where b.IDRDV == id_selec
+                             select b).FirstOrDefault();
+
+                var prop = (from p in Accueil.modeleBase.PROPOSITION_VISITE
+                            where p.IDVISITE == RDV.IDVISITE
+                              select p.IDBIEN).FirstOrDefault();
+
+                var bien_selectionne = (from b in Accueil.modeleBase.BIEN
+                                        where b.IDBIEN == prop
+                                        select b).FirstOrDefault();
 
                 maFenetreBien = new AjoutBien(bien_selectionne);
                 maFenetreBien.Show();
@@ -706,6 +715,22 @@ namespace EcranAccueil
                         buttonRefuserVisite.Enabled = true;
                         buttonAccepterVisite.Enabled = true;
                     }
+
+                    string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                    int id_selec = Int32.Parse(t);
+                  
+            
+                    var prop = (from p in Accueil.modeleBase.PROPOSITION_VISITE
+                                where p.IDVISITE == id_selec
+                                select p.IDBIEN).FirstOrDefault();
+
+                    var bien_selectionne = (from b in Accueil.modeleBase.BIEN
+                                            where b.IDBIEN == prop
+                                            select b).FirstOrDefault();
+
+                    maFenetreBien = new AjoutBien(bien_selectionne);
+                    maFenetreBien.Show();
+                    return;
                 }
             }
 
