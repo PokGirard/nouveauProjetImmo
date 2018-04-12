@@ -950,7 +950,7 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "ENATTENTE")
+            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "EN ATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée.");
                 return;
@@ -997,7 +997,7 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "ENATTENTE")
+            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "EN ATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée.");
                 return;

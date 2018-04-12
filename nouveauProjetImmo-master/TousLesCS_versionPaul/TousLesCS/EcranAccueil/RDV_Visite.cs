@@ -111,19 +111,19 @@ namespace EcranAccueil
             string linecodecivil5 = "vouloir compléter ce document.";
 
             string lineclient = "CLIENT :";
-            string line2 = "Madame, Monsieur " + textBoxNomClient.Text.TrimEnd() + " " + textBoxPrenomClient.Text.TrimEnd();
-            string line3 = "Résidant : " + acheteur_en_cours.ADRESSE.TrimEnd() + ", " + acheteur_en_cours.CODE_POSTAL + ", " + acheteur_en_cours.VILLE;
-            string line4 = "Date : " + proposition_selectionnee.DATERDV;
+            string line2 = "Madame, Monsieur .................................... " ;
+            string line3 = "Résidant : ........................................................................" ;
+            string line4 = "Date : ..../..../......";
 
-            string line5 = "Par l'intermédiaire de M/Mme : " + commercial_fenetre_proposition.NOM_COMMERCIAL.TrimEnd() + " " + commercial_fenetre_proposition.PRENOM_COMMERCIAL.TrimEnd();
+            string line5 = "Par l'intermédiaire de M/Mme : .................................... ";
             string line6 = "mandataire immobilier pour le compte de la SARL IMMO BAXTER";
 
             string linebien = "BIEN :";
-            string line7 = "Pour le bien " + textBoxDesignation.Text.TrimEnd();
-            string line8 = "Situé : " + textBoxAdresse.Text.TrimEnd() + ", " + bien_en_cours.CODE_POSTAL + ", " + bien_en_cours.VILLE;
+            string line7 = "Pour le bien situé ....................................  " ;
+            string line8 = "CP, Ville : ....................................  ";
 
             string line9 = "Pour valoir ce que de droit, ";
-            string line10 = "Fait à ..............., le ..../..../....";
+            string line10 = "Fait à .................., le ..../..../......";
 
 
             string line11 = "Le Visiteur                                        Le mandataire";
