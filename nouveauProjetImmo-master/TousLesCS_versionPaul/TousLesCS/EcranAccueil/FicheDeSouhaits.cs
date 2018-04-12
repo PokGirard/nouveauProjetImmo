@@ -13,7 +13,7 @@ namespace EcranAccueil
  
     public partial class FicheDeSouhaits : Form
     {
-        //DISABLE FICHE DE SOUHAIT QUAND OBSOLETE
+        //Re-ENABLE FICHE DE SOUHAIT QUAND OBSOLETE
         
         List<BIEN> biens_selectionnes;
         BIEN bien_en_cours;
@@ -44,27 +44,27 @@ namespace EcranAccueil
             Preremplir_champs_client();
             statut_fiche = "EN COURS";
             button_creerProposition.Enabled = false;
-            button_modifier_fiche.Enabled = false;
-            buttonStatut_Obsolete.Enabled = false;
             buttonLancerRecherche.Enabled = false;
 
             buttonStatut_En_Cours.ForeColor = Color.Green;
             buttonStatut_En_Cours.Font = new Font(buttonStatut_En_Cours.Font, FontStyle.Bold);
             buttonStatut_Obsolete.ForeColor = Color.Black;
             buttonStatut_Obsolete.Font = new Font(buttonStatut_Obsolete.Font, FontStyle.Regular);
+            button_modifier_fiche.Enabled = false;
+            buttonStatut_Obsolete.Enabled = false;
         }
 
         private void Preremplir_champs_client()
         {
-            textBoxNom.Text = acheteur_de_reference.NOM_ACHETEUR;
+            textBoxNom.Text = acheteur_de_reference.NOM_ACHETEUR.Trim();
             textBoxNom.Enabled = false;
-            textBoxPrenom.Text = acheteur_de_reference.PRENOM_ACHETEUR;
+            textBoxPrenom.Text = acheteur_de_reference.PRENOM_ACHETEUR.Trim();
             textBoxPrenom.Enabled = false;
-            textBoxAdresseClient.Text = acheteur_de_reference.ADRESSE;
+            textBoxAdresseClient.Text = acheteur_de_reference.ADRESSE.Trim();
             textBoxAdresseClient.Enabled = false;
-            textBoxEmail.Text = acheteur_de_reference.EMAIL;
+            textBoxEmail.Text = acheteur_de_reference.EMAIL.Trim();
             textBoxEmail.Enabled = false;
-            textBoxVilleClient.Text = acheteur_de_reference.VILLE.NOM_VILLE;
+            textBoxVilleClient.Text = acheteur_de_reference.VILLE.NOM_VILLE.Trim();
             textBoxVilleClient.Enabled = false;
             textBoxTelFixe.Text = acheteur_de_reference.TÉLÉPHONE.ToString();
             textBoxTelFixe.Enabled = false;
@@ -102,15 +102,17 @@ namespace EcranAccueil
             numericSurfaceHab.Enabled = interactionPossible;
             numericSurfParcelle.Enabled = interactionPossible;
             numericUpDownNbPieces.Enabled = interactionPossible;
-           
+
+
+            buttonStatut_En_Cours.Enabled = interactionPossible;
+            buttonStatut_Obsolete.Enabled = interactionPossible;
+
             if (ficheExiste)
             {
                 if (fiche_de_reference.STATUT == "EN COURS")
                 {
                     button_creerProposition.Enabled = false;
                     buttonLancerRecherche.Enabled = !interactionPossible;
-                    buttonStatut_En_Cours.Enabled = interactionPossible;
-                    buttonStatut_Obsolete.Enabled = interactionPossible;
                 }
             }
         }
@@ -124,9 +126,9 @@ namespace EcranAccueil
             if ((bool)fiche_de_reference.CAVE) checkBoxCave.Checked = true;
             if ((bool)fiche_de_reference.GARAGE) checkBoxGarage.Checked = true;
 
-            string statut = fiche_de_reference.STATUT.TrimEnd();
+            string statut = fiche_de_reference.STATUT.Trim();
 
-            if (statut == "ENCOURS")
+            if (statut == "EN COURS")
             {
                 graphisme_statut_en_cours();
             }
@@ -156,7 +158,7 @@ namespace EcranAccueil
 
             foreach (VILLE v in villes_selectionnees)
             {
-                listVillesSelectionnees.Items.Add(v.NOM_VILLE);
+                listVillesSelectionnees.Items.Add(v.NOM_VILLE.Trim());
 
             }
 
@@ -170,8 +172,8 @@ namespace EcranAccueil
             foreach (VILLE v in villes)
             {
                 string nomV = v.NOM_VILLE;
-                nomV = nomV.TrimEnd();
-                listViewVillesDeroulante.Items.Add(nomV);
+                nomV = nomV.Trim();
+                listViewVillesDeroulante.Items.Add(nomV.Trim());
             }
         }
       
@@ -191,6 +193,7 @@ namespace EcranAccueil
                         NB_PIÈCE = (int)numericUpDownNbPieces.Value,
                         CAVE = checkBoxCave.Checked,
                         GARAGE = checkBoxGarage.Checked,
+
                         STATUT = "EN COURS"
                     };
                     Accueil.modeleBase.FICHE_DE_SOUHAITS.Add(nouvelleFiche);
@@ -268,7 +271,6 @@ namespace EcranAccueil
         {
             statut_fiche = "OBSOLETE";
             graphisme_statut_obsolete();
-            bloquer_button(false);
             Refresh();
         }
 
@@ -282,7 +284,7 @@ namespace EcranAccueil
                 foreach (VILLE v in villes_selectionnees)
                 {
                     string nomV = v.NOM_VILLE;
-                    nomV = nomV.TrimEnd();
+                    nomV = nomV.Trim();
                     listVillesSelectionnees.Items.Add(nomV);
                 }
             }
@@ -314,28 +316,16 @@ namespace EcranAccueil
         {
             if (villes_selectionnees.Count() != 0 && listVillesSelectionnees.SelectedItems.Count != 0)
             {
-                string aSupprimer = listVillesSelectionnees.SelectedItems[0].Text.TrimEnd();
+                string aSupprimer = listVillesSelectionnees.SelectedItems[0].Text.Trim();
                 ville_a_supprimer = (from v1 in Accueil.modeleBase.VILLE
                                   where v1.NOM_VILLE == aSupprimer
                                   select v1).FirstOrDefault();
                 listVillesSelectionnees.Items.Remove(listVillesSelectionnees.SelectedItems[0]);
                 villes_selectionnees.Remove(ville_a_supprimer);
 
-            }/*
-            if (listViewVillesDeroulante.SelectedItems.Count != 0 && !villes_selectionnees.Contains(ville_en_cours))
-            {
-                villes_selectionnees.Add(ville_en_cours);
-                listVillesSelectionnees.Clear();
-                villes_selectionnees.Sort((x, y) => string.Compare(x.NOM_VILLE, y.NOM_VILLE));
-                foreach (VILLE v in villes_selectionnees)
-                {
-                    string nomV = v.NOM_VILLE;
-                    nomV = nomV.TrimEnd();
-                    listVillesSelectionnees.Items.Add(nomV);
-                }
             }
-            listVillesSelectionnees.Refresh();*/
         }
+
         private bool verifier_champs()
         {
             bool valide = true;
@@ -400,9 +390,7 @@ namespace EcranAccueil
         }
 
         private void champs_modifies(List<VILLE> villes_stockees_base)
-        {
-
-            
+        {            
 
             if (!villes_stockees_base.All(villes_selectionnees.Contains) || !villes_selectionnees.All(villes_stockees_base.Contains))
 
@@ -411,6 +399,7 @@ namespace EcranAccueil
             if (fiche_de_reference.BUDGET != int.Parse(textBoxBudget.Text))
 
                 fiche_de_reference.BUDGET = int.Parse(textBoxBudget.Text);
+
             if (checkBoxCave.Checked != fiche_de_reference.CAVE)
                 fiche_de_reference.CAVE = checkBoxCave.Checked;
 
@@ -433,7 +422,6 @@ namespace EcranAccueil
             {
                 fiche_de_reference.STATUT = statut_fiche;
             }
-
 
         }
 
@@ -466,8 +454,6 @@ namespace EcranAccueil
             fenetreProposition.Show();
         }
 
-
-
         private void button_recherche_biens_Click(object sender, EventArgs e)
         {
             if (!verifier_champs()) return;
@@ -497,7 +483,7 @@ namespace EcranAccueil
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
 
-                    listView_resultats.Items.Add(nomVille).SubItems.Add(biens_selectionnes[i].PRIX_SOUHAITÉ.ToString());
+                    listView_resultats.Items.Add(nomVille.Trim()).SubItems.Add(biens_selectionnes[i].PRIX_SOUHAITÉ.ToString());
 
                     listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].SURFACE_PARCELLE.ToString());
                     listView_resultats.Items[i].SubItems.Add(biens_selectionnes[i].SURFACE_HABITABLE.ToString());
@@ -551,7 +537,7 @@ namespace EcranAccueil
 
         private void listView_resultats_Click(object sender, EventArgs e)
         {
-            if (listView_resultats.SelectedItems.Count != 0)
+            if (listView_resultats.SelectedItems.Count != 0 && fiche_de_reference.STATUT.Trim() != "OBSOLETE")
             {
                 int idBien = int.Parse(listView_resultats.SelectedItems[0].SubItems[7].Text);
 

@@ -95,7 +95,7 @@
             // columnHeader2
             // 
             columnHeader2.Text = "";
-            columnHeader2.Width = 100;
+            columnHeader2.Width = 160;
             // 
             // label1
             // 
@@ -446,7 +446,7 @@
             // 
             // buttonSupprimerVille
             // 
-            this.buttonSupprimerVille.Location = new System.Drawing.Point(193, 296);
+            this.buttonSupprimerVille.Location = new System.Drawing.Point(224, 305);
             this.buttonSupprimerVille.Name = "buttonSupprimerVille";
             this.buttonSupprimerVille.Size = new System.Drawing.Size(75, 23);
             this.buttonSupprimerVille.TabIndex = 83;
@@ -456,7 +456,7 @@
             // 
             // buttonAjouterVille
             // 
-            this.buttonAjouterVille.Location = new System.Drawing.Point(193, 245);
+            this.buttonAjouterVille.Location = new System.Drawing.Point(224, 255);
             this.buttonAjouterVille.Name = "buttonAjouterVille";
             this.buttonAjouterVille.Size = new System.Drawing.Size(75, 23);
             this.buttonAjouterVille.TabIndex = 82;
@@ -481,7 +481,7 @@
             this.listViewVillesDeroulante.Location = new System.Drawing.Point(8, 228);
             this.listViewVillesDeroulante.MultiSelect = false;
             this.listViewVillesDeroulante.Name = "listViewVillesDeroulante";
-            this.listViewVillesDeroulante.Size = new System.Drawing.Size(179, 133);
+            this.listViewVillesDeroulante.Size = new System.Drawing.Size(203, 133);
             this.listViewVillesDeroulante.TabIndex = 86;
             this.listViewVillesDeroulante.UseCompatibleStateImageBehavior = false;
             this.listViewVillesDeroulante.View = System.Windows.Forms.View.Details;
@@ -492,10 +492,10 @@
             this.listVillesSelectionnees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             columnHeader2});
             this.listVillesSelectionnees.HideSelection = false;
-            this.listVillesSelectionnees.Location = new System.Drawing.Point(288, 245);
+            this.listVillesSelectionnees.Location = new System.Drawing.Point(372, 245);
             this.listVillesSelectionnees.MultiSelect = false;
             this.listVillesSelectionnees.Name = "listVillesSelectionnees";
-            this.listVillesSelectionnees.Size = new System.Drawing.Size(164, 74);
+            this.listVillesSelectionnees.Size = new System.Drawing.Size(205, 74);
             this.listVillesSelectionnees.TabIndex = 88;
             this.listVillesSelectionnees.UseCompatibleStateImageBehavior = false;
             this.listVillesSelectionnees.View = System.Windows.Forms.View.List;
@@ -504,7 +504,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(285, 228);
+            this.label2.Location = new System.Drawing.Point(369, 228);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 89;

@@ -364,22 +364,23 @@
             // 
             // column3
             // 
-            this.column3.Text = "\"\"";
+            this.column3.Text = "";
             this.column3.Width = 112;
             // 
             // column4
             // 
-            this.column4.Text = "\"\"";
+            this.column4.Text = "";
             this.column4.Width = 133;
             // 
             // column5
             // 
-            this.column5.Text = "\"\"";
+            this.column5.Text = "";
             this.column5.Width = 127;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "\"\"";
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 101;
             // 
             // comboBoxCommerciaux
             // 
