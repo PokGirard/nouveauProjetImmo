@@ -41,9 +41,9 @@ namespace EcranAccueil
         {
             textBoxNomClient.Text = acheteur_en_cours.NOM_ACHETEUR;
             textBoxPrenomClient.Text = acheteur_en_cours.PRENOM_ACHETEUR;
-            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) ";
+            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.TrimEnd() + " ) ";
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
-            commercial_fenetre_proposition.NOM_COMMERCIAL = commercial_fenetre_proposition.NOM_COMMERCIAL.Replace(" ", string.Empty);
+            commercial_fenetre_proposition.NOM_COMMERCIAL = commercial_fenetre_proposition.NOM_COMMERCIAL.TrimEnd();
             textBoxCommercial.Text = commercial_fenetre_proposition.NOM_COMMERCIAL;
             dateTimePicker1.Value = proposition_selectionnee.DATERDV;
         }
@@ -100,14 +100,35 @@ namespace EcranAccueil
         private void imprimerFiche(object sender, EventArgs e)
         {
             //GENERER FICHIER TEXTE A IMPRIMER(BON DE VISITE)
+            string line0 = "IMMOBILLY";
+            string blank = " ";
             string line1 = "BON DE VISITE";
-            string blank1 = " ";
-            string line2 = "Madame, Monsieur " + textBoxNomClient.Text.TrimEnd() + " " + textBoxPrenomClient.Text.TrimEnd();
-            string line3 = "Vous avez rendez-vous le : " + dateTimePicker1.Value;
-            string line4 = "Adresse : " + textBoxAdresse.Text.TrimEnd();
-            string line4b = "Pour le bien " + textBoxDesignation.Text.TrimEnd();
 
-            string[] texte = { line1, blank1, line2, line3, line4, line4b };
+            string linecodecivil1 = "Dans le cadre de sa mission d’intermédiaire (prévue par la loi Hoguet et plus";
+            string linecodecivil2 = "particulièrement par le Code Civil article 1993), Immobilly rend compte";
+            string linecodecivil3 = "systématiquement de ses visites à ses mandats.";
+            string linecodecivil4 = "A ce titre, et pour respecter nos engagements, nous vous remercions de bien";
+            string linecodecivil5 = "vouloir compléter ce document.";
+
+            string lineclient = "CLIENT :";
+            string line2 = "Madame, Monsieur " + textBoxNomClient.Text.TrimEnd() + " " + textBoxPrenomClient.Text.TrimEnd();
+            string line3 = "Résidant : " + acheteur_en_cours.ADRESSE.TrimEnd() + ", " + acheteur_en_cours.CODE_POSTAL + ", " + acheteur_en_cours.VILLE;
+            string line4 = "Date : " + proposition_selectionnee.DATERDV;
+
+            string line5 = "Par l'intermédiaire de M/Mme : " + commercial_fenetre_proposition.NOM_COMMERCIAL.TrimEnd() + " " + commercial_fenetre_proposition.PRENOM_COMMERCIAL.TrimEnd();
+            string line6 = "mandataire immobilier pour le compte de la SARL IMMO BAXTER";
+
+            string linebien = "BIEN :";
+            string line7 = "Pour le bien " + textBoxDesignation.Text.TrimEnd();
+            string line8 = "Situé : " + textBoxAdresse.Text.TrimEnd() + ", " + bien_en_cours.CODE_POSTAL + ", " + bien_en_cours.VILLE;
+
+            string line9 = "Pour valoir ce que de droit, ";
+            string line10 = "Fait à ..............., le ..../..../....";
+
+
+            string line11 = "Le Visiteur                                        Le mandataire";
+
+            string[] texte = { line0, blank, line1, blank, linecodecivil1,linecodecivil2, linecodecivil3, linecodecivil4, linecodecivil5, blank, lineclient, line2, line3, line4, blank, line5, line6, blank, linebien, line7, line8, blank, line9, line10, blank, line11 };
             File.WriteAllLines(@"c:\temp\bonDeVisite.txt", texte);
             //IMPRESSION DU FICHIER TEXTE
             StreamReader Printfile;

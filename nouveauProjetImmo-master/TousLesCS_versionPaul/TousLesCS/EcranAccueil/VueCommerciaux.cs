@@ -26,33 +26,43 @@ namespace EcranAccueil
 
         private void supprimerCommercial_Click(object sender, EventArgs e)
         {
-
             if (listView1.SelectedItems.Count == 0) return;
 
-            var id_selec = listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty);
-
-            short id = short.Parse(id_selec);
-
-            COMMERCIAL commercial_a_supprimer = (from c in Accueil.modeleBase.COMMERCIAL
-                                                 where c.IDCOMMERCIAL == id
-                                                 select c).FirstOrDefault();
-
-            try
+            else if (confirmation())
             {
+                var id_selec = listView1.SelectedItems[0].SubItems[7].Text.TrimEnd();
 
-                Accueil.modeleBase.COMMERCIAL.Remove(commercial_a_supprimer);
-                Accueil.modeleBase.SaveChanges();
-                MessageBox.Show("Le commmercial a bien été supprimé de la base de données");
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show(e1.Message + " -- erreur lors de la suppression.");
-            }
-            effacer_champs();
+                short id = short.Parse(id_selec);
 
-            charger_listView_commerciaux();
+                COMMERCIAL commercial_a_supprimer = (from c in Accueil.modeleBase.COMMERCIAL
+                                                     where c.IDCOMMERCIAL == id
+                                                     select c).FirstOrDefault();
+
+                try
+                {
+
+                    Accueil.modeleBase.COMMERCIAL.Remove(commercial_a_supprimer);
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show("Le commmercial a bien été supprimé de la base de données");
+                }
+                catch (Exception e1)
+                {
+                    MessageBox.Show(e1.Message + " -- erreur lors de la suppression.");
+                }
+                effacer_champs();
+
+                charger_listView_commerciaux();
+            }
         }
 
+        private bool confirmation()
+        {
+            if (MessageBox.Show(this, "Etes-vous sûr ?", "ATTENTION !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                return true;
+            }
+            else return false;
+        }
         private void ajoutCommercial_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count != 0)
@@ -79,13 +89,13 @@ namespace EcranAccueil
             }
 
             COMMERCIAL commercial = new COMMERCIAL();
-            commercial.NOM_COMMERCIAL = nom.Text.Replace(" ", string.Empty);
-            commercial.PRENOM_COMMERCIAL = prenom.Text.Replace(" ", string.Empty);
-            commercial.EMAIL = email.Text.Replace(" ", string.Empty);
-            commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.Replace(" ", string.Empty));
-            commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.Replace(" ", string.Empty));
-            commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.Replace(" ", string.Empty));
-            commercial.EMAIL = email.Text.Replace(" ", string.Empty);
+            commercial.NOM_COMMERCIAL = nom.Text.TrimEnd();
+            commercial.PRENOM_COMMERCIAL = prenom.Text.TrimEnd();
+            commercial.EMAIL = email.Text.TrimEnd();
+            commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.TrimEnd());
+            commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.TrimEnd());
+            commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.TrimEnd());
+            commercial.EMAIL = email.Text.TrimEnd();
             commercial.STATUT_COMMERCIAL = "ACTIF";
 
             try
@@ -106,12 +116,12 @@ namespace EcranAccueil
         {
 
             COMMERCIAL commercial_deja_present = (from v in Accueil.modeleBase.COMMERCIAL
-                                                  where v.NOM_COMMERCIAL.Replace(" ", string.Empty) == nom.Text.Replace(" ", string.Empty) &&
-                                                     v.PRENOM_COMMERCIAL.Replace(" ", string.Empty) == prenom.Text.Replace(" ", string.Empty) &&
-                                                    v.EMAIL.Replace(" ", string.Empty) == email.Text.Replace(" ", string.Empty) &&
-                                                    v.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty) == fixePro.Text.Replace(" ", string.Empty) &&
-                                                           v.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty) == portablePro.Text.Replace(" ", string.Empty) &&
-                                                          v.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty) == fixePro.Text.Replace(" ", string.Empty)
+                                                  where v.NOM_COMMERCIAL.TrimEnd() == nom.Text.TrimEnd() &&
+                                                     v.PRENOM_COMMERCIAL.TrimEnd() == prenom.Text.TrimEnd() &&
+                                                    v.EMAIL.TrimEnd() == email.Text.TrimEnd() &&
+                                                    v.TÉLÉPHONE_FIXE_PRO.ToString().TrimEnd() == fixePro.Text.TrimEnd() &&
+                                                           v.TÉLÉPHONE_MOBILE_PRO.ToString().TrimEnd() == portablePro.Text.TrimEnd() &&
+                                                          v.TÉLÉPHONE_FIXE_PRO.ToString().TrimEnd() == fixePro.Text.TrimEnd()
                                                   select v).FirstOrDefault();
 
             if (commercial_deja_present != null) return true;
@@ -127,55 +137,55 @@ namespace EcranAccueil
 
             try
             {
-                short id = short.Parse(listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty));
+                short id = short.Parse(listView1.SelectedItems[0].SubItems[7].Text.TrimEnd());
 
                 COMMERCIAL co = (from c in Accueil.modeleBase.COMMERCIAL
                                  where c.IDCOMMERCIAL == id
                                  select c).FirstOrDefault();
 
-                if (nom.Text.ToString().Replace(" ", string.Empty) != co.NOM_COMMERCIAL.Replace(" ", string.Empty))
+                if (nom.Text.ToString().TrimEnd() != co.NOM_COMMERCIAL.TrimEnd())
                 {
                     co.NOM_COMMERCIAL = nom.Text.ToString();
                 }
 
-                if (prenom.Text.ToString().Replace(" ", string.Empty) != co.PRENOM_COMMERCIAL.Replace(" ", string.Empty))
+                if (prenom.Text.ToString().TrimEnd() != co.PRENOM_COMMERCIAL.TrimEnd())
                 {
                     co.PRENOM_COMMERCIAL = prenom.Text.ToString();
                 }
 
-                if (email.Text.ToString().Replace(" ", string.Empty) != co.EMAIL.Replace(" ", string.Empty))
+                if (email.Text.ToString().TrimEnd() != co.EMAIL.TrimEnd())
                 {
                     co.EMAIL = email.Text.ToString();
                 }
 
-                if (telPerso.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_PERSONNEL.ToString().Replace(" ", string.Empty))
+                if (telPerso.Text.ToString().TrimEnd() != co.TÉLÉPHONE_PERSONNEL.ToString().TrimEnd())
                 {
-                    co.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.ToString().Replace(" ", string.Empty));
+                    co.TÉLÉPHONE_PERSONNEL = Int32.Parse(telPerso.Text.ToString().TrimEnd());
                 }
 
-                if (portablePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty))
+                if (portablePro.Text.ToString().TrimEnd() != co.TÉLÉPHONE_MOBILE_PRO.ToString().TrimEnd())
                 {
-                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().Replace(" ", string.Empty));
-                }
-
-
-                if (fixePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_FIXE_PRO.ToString().Replace(" ", string.Empty))
-                {
-                    co.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.ToString().Replace(" ", string.Empty));
-                }
-
-                if (portablePro.Text.ToString().Replace(" ", string.Empty) != co.TÉLÉPHONE_MOBILE_PRO.ToString().Replace(" ", string.Empty))
-                {
-                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().Replace(" ", string.Empty));
+                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().TrimEnd());
                 }
 
 
-                if (inactif.Checked && co.STATUT_COMMERCIAL.ToString().Replace(" ", string.Empty) == "ACTIF")
+                if (fixePro.Text.ToString().TrimEnd() != co.TÉLÉPHONE_FIXE_PRO.ToString().TrimEnd())
+                {
+                    co.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text.ToString().TrimEnd());
+                }
+
+                if (portablePro.Text.ToString().TrimEnd() != co.TÉLÉPHONE_MOBILE_PRO.ToString().TrimEnd())
+                {
+                    co.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text.ToString().TrimEnd());
+                }
+
+
+                if (inactif.Checked && co.STATUT_COMMERCIAL.ToString().TrimEnd() == "ACTIF")
                 {
                     co.STATUT_COMMERCIAL = "INACTIF";
                 }
 
-                if (actif.Checked && co.STATUT_COMMERCIAL.ToString().Replace(" ", string.Empty) == "INACTIF")
+                if (actif.Checked && co.STATUT_COMMERCIAL.ToString().TrimEnd() == "INACTIF")
                 {
                     co.STATUT_COMMERCIAL = "ACTIF";
                 }
@@ -301,11 +311,11 @@ namespace EcranAccueil
             listView1.Items.Clear();
 
             IQueryable<COMMERCIAL> liste_commerciaux = (from v in Accueil.modeleBase.COMMERCIAL
-                                                        where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text.Replace(" ", string.Empty)) : true) &&
-                                                        (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text.Replace(" ", string.Empty)) : true) &&
-                                                          (email.Text != "" ? v.EMAIL.StartsWith(email.Text.Replace(" ", string.Empty)) : true) &&
-                                                        (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text.Replace(" ", string.Empty)) : true) &&
-                                                              (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text.Replace(" ", string.Empty)) : true)
+                                                        where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text.TrimEnd()) : true) &&
+                                                        (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text.TrimEnd()) : true) &&
+                                                          (email.Text != "" ? v.EMAIL.StartsWith(email.Text.TrimEnd()) : true) &&
+                                                        (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text.TrimEnd()) : true) &&
+                                                              (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text.TrimEnd()) : true)
                                                         select v);
 
             foreach (COMMERCIAL c in liste_commerciaux)
@@ -355,7 +365,7 @@ namespace EcranAccueil
                 remplir_champs_selection();
 
 
-                string string_id = listView1.SelectedItems[0].SubItems[7].Text.Replace(" ", string.Empty);
+                string string_id = listView1.SelectedItems[0].SubItems[7].Text.TrimEnd();
 
                 int id = int.Parse(string_id);
 
@@ -390,7 +400,7 @@ namespace EcranAccueil
             telPerso.Text = listView1.SelectedItems[0].SubItems[5].Text;
             string statut = listView1.SelectedItems[0].SubItems[6].Text;
 
-            statut = statut.Replace(" ", string.Empty);
+            statut = statut.TrimEnd();
 
             if (statut == "ACTIF")
             {

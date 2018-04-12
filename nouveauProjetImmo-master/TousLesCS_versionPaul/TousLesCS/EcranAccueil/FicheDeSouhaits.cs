@@ -124,7 +124,7 @@ namespace EcranAccueil
             if ((bool)fiche_de_reference.CAVE) checkBoxCave.Checked = true;
             if ((bool)fiche_de_reference.GARAGE) checkBoxGarage.Checked = true;
 
-            string statut = fiche_de_reference.STATUT.Replace(" ", string.Empty);
+            string statut = fiche_de_reference.STATUT.TrimEnd();
 
             if (statut == "ENCOURS")
             {
@@ -170,7 +170,7 @@ namespace EcranAccueil
             foreach (VILLE v in villes)
             {
                 string nomV = v.NOM_VILLE;
-                nomV = nomV.Replace(" ", string.Empty);
+                nomV = nomV.TrimEnd();
                 listViewVillesDeroulante.Items.Add(nomV);
             }
         }
@@ -282,7 +282,7 @@ namespace EcranAccueil
                 foreach (VILLE v in villes_selectionnees)
                 {
                     string nomV = v.NOM_VILLE;
-                    nomV = nomV.Replace(" ", string.Empty);
+                    nomV = nomV.TrimEnd();
                     listVillesSelectionnees.Items.Add(nomV);
                 }
             }
@@ -314,7 +314,7 @@ namespace EcranAccueil
         {
             if (villes_selectionnees.Count() != 0 && listVillesSelectionnees.SelectedItems.Count != 0)
             {
-                string aSupprimer = listVillesSelectionnees.SelectedItems[0].Text.Replace(" ", string.Empty);
+                string aSupprimer = listVillesSelectionnees.SelectedItems[0].Text.TrimEnd();
                 ville_a_supprimer = (from v1 in Accueil.modeleBase.VILLE
                                   where v1.NOM_VILLE == aSupprimer
                                   select v1).FirstOrDefault();
@@ -330,7 +330,7 @@ namespace EcranAccueil
                 foreach (VILLE v in villes_selectionnees)
                 {
                     string nomV = v.NOM_VILLE;
-                    nomV = nomV.Replace(" ", string.Empty);
+                    nomV = nomV.TrimEnd();
                     listVillesSelectionnees.Items.Add(nomV);
                 }
             }

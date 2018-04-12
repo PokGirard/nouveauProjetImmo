@@ -272,7 +272,7 @@ namespace EcranAccueil
 
             else
             {
-                string ville1 = comboBox2_villesBien.Text.Replace(" ", string.Empty);
+                string ville1 = comboBox2_villesBien.Text.TrimEnd();
                 int cp = int.Parse(textBox10_codePostal.Text); // vérifier si la ville est contenue dans la base 
                 var ville = (from v in Accueil.modeleBase.VILLE
                              where v.NOM_VILLE == ville1 && v.CODE_POSTAL == cp
@@ -327,8 +327,8 @@ namespace EcranAccueil
                     vendeur.ADRESSE_VENDEUR = adresseVendeur.Text;
                     vendeur.EMAIL = emailVendeur.Text;
 
-                    string a = fixeVendeur.Text.Replace(" ", string.Empty);
-                    string b = mobileVendeur.Text.Replace(" ", string.Empty);
+                    string a = fixeVendeur.Text.TrimEnd();
+                    string b = mobileVendeur.Text.TrimEnd();
                     vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
                     vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
 
@@ -361,6 +361,7 @@ namespace EcranAccueil
                                      select ve.IDVENDEUR).FirstOrDefault();
 
                     bien_en_modification.IDVENDEUR = idvendeur;
+
                 }
                 else
                 {
@@ -414,49 +415,52 @@ namespace EcranAccueil
         private void button3_supprimer_Click(object sender, EventArgs e)
         {
             //code rajouté pour suppression du bien : compte des visites du bien
-            
-            var prop = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
-                        where pv.IDBIEN == bien_en_cours.IDBIEN
-                        select pv.IDVISITE).Distinct().ToList();
 
-            var rdv = (from r in Accueil.modeleBase.RDV
-                       where prop.Contains(r.IDVISITE)
-                       select r).Distinct().ToList();
-
-            if (rdv.Count() == 0)
+            if (confirmation())
             {
-                if (prop.Count != 0)
+                var prop = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                            where pv.IDBIEN == bien_en_cours.IDBIEN
+                            select pv.IDVISITE).Distinct().ToList();
+
+                var rdv = (from r in Accueil.modeleBase.RDV
+                           where prop.Contains(r.IDVISITE)
+                           select r).Distinct().ToList();
+
+                if (rdv.Count() == 0)
                 {
-                    foreach (int p in prop)
+                    if (prop.Count != 0)
                     {
-                        var proposition_a_supprimer = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
-                                                       where pv.IDBIEN == p
-                                                       select pv).FirstOrDefault();
+                        foreach (int p in prop)
+                        {
+                            var proposition_a_supprimer = (from pv in Accueil.modeleBase.PROPOSITION_VISITE
+                                                           where pv.IDBIEN == p
+                                                           select pv).FirstOrDefault();
 
-                        Accueil.modeleBase.PROPOSITION_VISITE.Remove(proposition_a_supprimer);
+                            Accueil.modeleBase.PROPOSITION_VISITE.Remove(proposition_a_supprimer);
+                        }
                     }
+                    Accueil.modeleBase.BIEN.Remove(bien_en_cours);
+                    Accueil.modeleBase.SaveChanges();
+                    MessageBox.Show("Bien supprimé de la base.");
+                    this.Close();
                 }
-                Accueil.modeleBase.BIEN.Remove(bien_en_cours);
-                Accueil.modeleBase.SaveChanges();
-                MessageBox.Show("Bien supprimé de la base.");
-                this.Close();
+                else
+                {
+                    MessageBox.Show("Le bien n'a pu être supprimé car des rendez-vous lui sont associés.");
+                }
             }
-            else
-            {
-                MessageBox.Show("Le bien n'a pu être supprimé car des rendez-vous lui sont associés.");
-            }
-            //bien_en_cours.STATUT = "RETIRE";
-
-
         }
-
+        private bool confirmation()
+        {
+            if (MessageBox.Show(this, "Etes-vous sûr ?", "ATTENTION !!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                return true;
+            }
+            else return false;
+        }
         private void actualisationBien()
         {
-            this.comboBox1_status.Text = bien_en_cours.STATUT.Replace(" ", string.Empty);
-            /*if (comboBox1_status.Text.Equals("RETIRE"))
-            {
-                button1_ajouterBien.Enabled = false;
-            }****/
+            this.comboBox1_status.Text = bien_en_cours.STATUT.TrimEnd();
             this.nomClient.Text = bien_en_cours.VENDEUR.NOM_VENDEUR;
             this.prénomVendeur.Text = bien_en_cours.VENDEUR.PRÉNOM_VENDEUR;
             this.adresseVendeur.Text = bien_en_cours.VENDEUR.ADRESSE_VENDEUR;
@@ -566,7 +570,7 @@ namespace EcranAccueil
 
             foreach (string ville in nomVille)
             {
-                string villes_normales = ville.Replace(" ", string.Empty);
+                string villes_normales = ville.TrimEnd();
                 comboBox1_villesClient.Items.Add(ville);
             }
         }
@@ -581,7 +585,7 @@ namespace EcranAccueil
 
             foreach (string ville in nomVille)
             {
-                string villes_normales = ville.Replace(" ", string.Empty);
+                string villes_normales = ville.TrimEnd();
                 comboBox2_villesBien.Items.Add(ville);
             }
         }
@@ -614,7 +618,7 @@ namespace EcranAccueil
 
             mail.Subject = "Un bien a été ajouté dans la base";
             mail.Body = "Un bien a été ajouté dans la base : \n";
-            mail.Body += "Descriptif : " + bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) ";
+            mail.Body += "Descriptif : " + bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.TrimEnd() + " ) ";
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("appli.immobilly@gmail.com", "immobilly2018");
             SmtpServer.EnableSsl = true;

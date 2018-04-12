@@ -68,9 +68,6 @@ namespace EcranAccueil
 
         public void recherche_acheteurs_actifs()
         {
-            var idAcheteurs = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
-                               where f.STATUT == "EN COURS"
-                               select f.IDACHETEUR).Distinct().ToList();
 
             int id_ville = 0;
 
@@ -78,36 +75,50 @@ namespace EcranAccueil
             {
 
                 id_ville = (from v in Accueil.modeleBase.VILLE
-                            where v.CODE_POSTAL.ToString() == textBoxVille.Text.Replace(" ", string.Empty)
+                            where v.CODE_POSTAL.ToString() == textBoxVille.Text.TrimEnd()
                             select v.IDVILLE).FirstOrDefault();
 
             }
 
 
             var acheteurs_actifs = (from a in Accueil.modeleBase.ACHETEUR
-                                    where idAcheteurs.Contains(a.IDACHETEUR)
-                              && textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text.Replace(" ", string.Empty)) : true
-                                    && textBoxPrenom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text.Replace(" ", string.Empty)) : true
-                                    && textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text.Replace(" ", string.Empty)) : true
-                                       && textBoxMobile.Text != "" ? a.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text.Replace(" ", string.Empty)) : true
-                                       && textBoxEmail.Text != "" ? a.EMAIL.ToString().StartsWith(textBoxEmail.Text.Replace(" ", string.Empty)) : true
-                                       && a.DATE_CREATION.ToString().StartsWith(dateTimeAjout.Value.ToString())
-                                       && textBoxCommercial.Text != "" ? a.COMMERCIAL.NOM_COMMERCIAL.StartsWith(textBoxCommercial.Text.ToString().Replace(" ", string.Empty)) : true
+
+
+                                    where textBoxNom.Text != "" ? a.NOM_ACHETEUR.StartsWith(textBoxNom.Text.TrimEnd()) : true
+                                  && textBoxPrenom.Text != "" ? a.PRENOM_ACHETEUR.StartsWith(textBoxPrenom.Text.TrimEnd()) : true
+
+                                && textBoxFixe.Text != "" ? a.TÉLÉPHONE.ToString().StartsWith(textBoxFixe.Text.TrimEnd()) : true
+                                       && textBoxMobile.Text != "" ? a.TÉLÉPHONE_MOBILE.ToString().StartsWith(textBoxMobile.Text.TrimEnd()) : true
+                                       && textBoxEmail.Text != "" ? a.EMAIL.StartsWith(textBoxEmail.Text.TrimEnd()) : true
+                                       //    && a.DATE_CREATION.ToString().StartsWith(dateTimeAjout.Value.ToString())
+                                       && textBoxCommercial.Text != "" ? a.COMMERCIAL.NOM_COMMERCIAL.StartsWith(textBoxCommercial.Text.TrimEnd()) : true
                                        && textBoxVille.Text != "" ? a.IDVILLE == id_ville : true
 
 
-                                    select a).ToList();
+                                    select a.IDACHETEUR).ToList();
 
 
-            if (acheteurs_actifs.Count() == 0) return;
+
+            var acheteurs_avec_fiches = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
+                                         where f.STATUT == "EN COURS"
+                                         where acheteurs_actifs.Contains(f.IDACHETEUR)
+                                         select f.IDACHETEUR).Distinct().ToList();
 
 
-            for (int i = 0; i < acheteurs_actifs.Count(); i++)
+
+            if (acheteurs_avec_fiches.Count() == 0) return;
+
+
+            for (int i = 0; i < acheteurs_avec_fiches.Count(); i++)
             {
 
+                int index = acheteurs_avec_fiches[i];
 
+                ACHETEUR a = (from a1 in Accueil.modeleBase.ACHETEUR
+                              where a1.IDACHETEUR == index
+                              select a1).FirstOrDefault();
 
-                afficher_resultats_acheteurs(acheteurs_actifs[i], i);
+                afficher_resultats_acheteurs(a, i);
 
             }
 

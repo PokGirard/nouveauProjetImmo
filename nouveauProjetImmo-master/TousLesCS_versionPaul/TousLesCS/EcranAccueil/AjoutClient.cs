@@ -169,8 +169,8 @@ namespace EcranAccueil
                 vendeur.ADRESSE_VENDEUR = adresse.Text;
                 vendeur.EMAIL = email.Text;
 
-                string a = textBoxfixe.Text.Replace(" ", string.Empty);
-                string b = textBoxMobile.Text.Replace(" ", string.Empty);
+                string a = textBoxfixe.Text.TrimEnd();
+                string b = textBoxMobile.Text.TrimEnd();
                 vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
                 vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
                 vendeur.DATE_CREATION = dateTimePicker1_créationClient.Value;
@@ -274,8 +274,8 @@ namespace EcranAccueil
                     vendeur.ADRESSE_VENDEUR = adresse.Text;
                     vendeur.EMAIL = email.Text;
 
-                    string a = textBoxfixe.Text.Replace(" ", string.Empty);
-                    string b = textBoxMobile.Text.Replace(" ", string.Empty);
+                    string a = textBoxfixe.Text.TrimEnd();
+                    string b = textBoxMobile.Text.TrimEnd();
                     vendeur.TÉLÉPHONE_FIXE = Int32.Parse(a);
                     vendeur.TÉLÉPHONE_MOBILE = Int32.Parse(b);
 
@@ -370,7 +370,7 @@ namespace EcranAccueil
 
             foreach (string ville in nomVille)
             {
-                string villes_normales = ville.Replace(" ", string.Empty);
+                string villes_normales = ville.TrimEnd();
                 comboBox1_villes.Items.Add(ville);
             }
         }
@@ -645,7 +645,7 @@ namespace EcranAccueil
         {
             if (monChoixAffichage == ChoixAffichage.BIENS_A_VENDRE)
             {
-                string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                string t = listView1.SelectedItems[0].SubItems[0].Text.TrimEnd();
                 int id_selec = Int32.Parse(t);
                 BIEN bien_selectionne = (from b in Accueil.modeleBase.BIEN
                                          where b.IDBIEN == id_selec
@@ -658,7 +658,7 @@ namespace EcranAccueil
 
             if (monChoixAffichage == ChoixAffichage.BIENS_VISITES)
             {
-                string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                string t = listView1.SelectedItems[0].SubItems[0].Text.TrimEnd();
                 int id_selec = Int32.Parse(t);
 
                 var RDV = (from b in Accueil.modeleBase.RDV
@@ -689,7 +689,7 @@ namespace EcranAccueil
                     buttonAccepterVisite.Enabled = false;
                 }
 
-                //string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                //string t = listView1.SelectedItems[0].SubItems[0].Text.TrimEnd();
                 //int id_selec = Int32.Parse(t);
                 //MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                 //            where f.IDFICHESOUHAITS == id_selec
@@ -705,7 +705,7 @@ namespace EcranAccueil
 
                 if (listView1.SelectedItems.Count != 0)
                 {
-                    if (listView1.SelectedItems[0].SubItems[5].Text.Replace(" ", string.Empty) == "ACCEPTEE" || listView1.SelectedItems[0].SubItems[5].Text.Replace(" ", string.Empty) == "REFUSEE")
+                    if (listView1.SelectedItems[0].SubItems[5].Text.TrimEnd() == "ACCEPTEE" || listView1.SelectedItems[0].SubItems[5].Text.TrimEnd() == "REFUSEE")
                     {
                         buttonRefuserVisite.Enabled = false;
                         buttonAccepterVisite.Enabled = false;
@@ -716,7 +716,7 @@ namespace EcranAccueil
                         buttonAccepterVisite.Enabled = true;
                     }
 
-                    string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                    string t = listView1.SelectedItems[0].SubItems[0].Text.TrimEnd();
                     int id_selec = Int32.Parse(t);
                   
             
@@ -754,7 +754,7 @@ namespace EcranAccueil
                 listView1.Columns[2].Text = "Budget";
                 listView1.Columns[3].Text = "Surface";
                 listView1.Columns[4].Text = "Nombre pièces";
-                listView1.Columns[5].Text = "Statut fiche";
+                
 
                 if (fd_souhait_acheteur.Count == 0) return;
 
@@ -766,7 +766,7 @@ namespace EcranAccueil
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].BUDGET.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].SURFACE_HABITABLE.ToString());
                     listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].NB_PIÈCE.ToString());
-                    listView1.Items[i].SubItems.Add(fd_souhait_acheteur[i].STATUT);
+                  
                 }
 
 
@@ -957,7 +957,7 @@ namespace EcranAccueil
         {
             if (buttonAccepterVisite.Text == "Voir la fiche")
             {
-                string t = listView1.SelectedItems[0].SubItems[0].Text.Replace(" ", string.Empty);
+                string t = listView1.SelectedItems[0].SubItems[0].Text.TrimEnd();
                 int id_selec = Int32.Parse(t);
                 MA_FICHE = (from f in Accueil.modeleBase.FICHE_DE_SOUHAITS
                             where f.IDFICHESOUHAITS == id_selec
@@ -974,7 +974,7 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if (proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "ENATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée.");
                 return;
@@ -1021,7 +1021,7 @@ namespace EcranAccueil
                                                       where p.IDVISITE == id_proposition
                                                       select p).FirstOrDefault();
 
-            if (proposition_retenue.STATUT_PROPOSITION.Replace(" ", string.Empty) != "ENATTENTE")
+            if (proposition_retenue.STATUT_PROPOSITION.TrimEnd() != "ENATTENTE")
             {
                 MessageBox.Show(" La proposition a déjà été traitée.");
                 return;

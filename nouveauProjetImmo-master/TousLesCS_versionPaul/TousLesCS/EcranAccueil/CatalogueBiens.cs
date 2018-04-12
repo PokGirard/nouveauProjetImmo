@@ -96,7 +96,7 @@ namespace EcranAccueil
                     string nomVille = (from v in Accueil.modeleBase.VILLE
                                        where (v.IDVILLE == numVille)
                                        select v.NOM_VILLE).First().ToString();
-                    nomVille = nomVille.Replace(" ", string.Empty);
+                    nomVille = nomVille.TrimEnd();
                     listViewbiens.Items.Add(biens[i].IDBIEN.ToString()).SubItems.Add(nomVille);
                     listViewbiens.Items[i].SubItems.Add(biens[i].PRIX_SOUHAITÉ.ToString());
                     listViewbiens.Items[i].SubItems.Add(biens[i].SURFACE_PARCELLE.ToString());

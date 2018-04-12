@@ -1,7 +1,5 @@
 ﻿go
 
-
-
 /* -----------------------------------------------------------------------------
       TABLE : RDV
 ----------------------------------------------------------------------------- */
@@ -38,11 +36,11 @@ create table BIEN
      GARAGE bit  not null  ,
      CAVE bit  not null  ,
      PRIX_SOUHAITÉ int  not null  ,
-     ADRESSE_BIEN char(32)  not null  ,
+     ADRESSE_BIEN varchar(60)  not null  ,
      CODE_POSTAL int not null  ,
      DATE_MISEENVENTE datetime  not null  ,
      STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RETIRE', 'SOUS-SEING')),
-     ZONE_DE_SAISIE char(150)  null,  
+     ZONE_DE_SAISIE varchar(250)  null,  
      NB_VISITES smallint not null default 0 
      ,
      constraint PK_BIEN primary key (IDBIEN)
@@ -62,7 +60,7 @@ go
 create table VILLE
   (
      IDVILLE int identity (1, 1)   ,
-     NOM_VILLE char(38)  not null  ,
+     NOM_VILLE varchar(32)  not null  ,
      CODE_POSTAL int  not null  
      ,
      constraint PK_VILLE primary key (IDVILLE)
@@ -78,12 +76,12 @@ go
 create table COMMERCIAL
   (
      IDCOMMERCIAL smallint identity (1, 1)   ,
-     NOM_COMMERCIAL char(32)  not null  ,
-     PRENOM_COMMERCIAL char(32)  not null  ,
-     TÉLÉPHONE_FIXE_PRO int  not null  ,
-     TÉLÉPHONE_MOBILE_PRO int  not null  ,
-     TÉLÉPHONE_PERSONNEL int  null  ,
-     EMAIL char(32)  not null  ,
+     NOM_COMMERCIAL varchar(20)  not null  ,
+     PRENOM_COMMERCIAL varchar(20)  not null  ,
+     TÉLÉPHONE_FIXE_PRO varchar(10)  not null  ,
+     TÉLÉPHONE_MOBILE_PRO varchar(10)  not null  ,
+     TÉLÉPHONE_PERSONNEL varchar(10)  null  ,
+     EMAIL varchar(30)  not null  ,
      STATUT_COMMERCIAL char(32)  not null       CHECK (STATUT_COMMERCIAL in ('ACTIF', 'INACTIF'))
      ,
      constraint PK_COMMERCIAL primary key (IDCOMMERCIAL)
@@ -101,7 +99,7 @@ create table FICHE_DE_SOUHAITS
      IDFICHESOUHAITS smallint identity (1, 1)   ,
      IDACHETEUR smallint  not null  ,
 	 STATUT char(32) null CHECK(statut in ('EN COURS', 'OBSOLETE')) DEFAULT 'EN COURS',
-     VILLE char(32) null,
+     VILLE varchar(32) null,
      SURFACE_PARCELLE int  null  ,
      SURFACE_HABITABLE int  null  ,
      NB_PIÈCE int  null  ,
@@ -129,12 +127,12 @@ create table VENDEUR
   (
      IDVENDEUR smallint identity (1, 1)   ,
      IDVILLE int  not null  ,
-     NOM_VENDEUR char(32)  not null  ,
-     PRÉNOM_VENDEUR char(32)  not null  ,
-     ADRESSE_VENDEUR char(32)  not null  ,
-     TÉLÉPHONE_FIXE int  not null  ,
-     TÉLÉPHONE_MOBILE int null  ,
-     EMAIL char(32)  not null  ,
+     NOM_VENDEUR varchar(32)  not null  ,
+     PRÉNOM_VENDEUR varchar(32)  not null  ,
+     ADRESSE_VENDEUR varchar(32)  not null  ,
+     TÉLÉPHONE_FIXE varchar(10)  not null  ,
+     TÉLÉPHONE_MOBILE varchar(10) null  ,
+     EMAIL varchar(20)  not null  ,
      CODE_POSTAL int not null  ,
      DATE_CREATION datetime NOT NULL DEFAULT (GETDATE()) 
      ,
@@ -178,13 +176,13 @@ create table ACHETEUR
      IDACHETEUR smallint identity (1, 1)   ,
      IDCOMMERCIAL smallint  not null  ,
      IDVILLE int  not null  ,
-     NOM_ACHETEUR char(32)  not null  ,
-     PRENOM_ACHETEUR char(32)  not null  ,
-     ADRESSE char(32)  not null  ,
-     EMAIL char(32)  not null  ,
-     TÉLÉPHONE int  not null  ,
+     NOM_ACHETEUR varchar(32)  not null  ,
+     PRENOM_ACHETEUR varchar(32)  not null  ,
+     ADRESSE varchar(32)  not null  ,
+     EMAIL varchar(32)  not null  ,
+     TÉLÉPHONE varchar(10)  not null  ,
      CODE_POSTAL int not null  ,
-     TÉLÉPHONE_MOBILE int  not null,
+     TÉLÉPHONE_MOBILE varchar(10)  not null,
      DATE_CREATION datetime NOT NULL DEFAULT (GETDATE())    
      ,
      constraint PK_ACHETEUR primary key (IDACHETEUR)

@@ -100,10 +100,10 @@
             this.label10.TabIndex = 34;
             this.label10.Text = "Email";
             // 
-            // mobile
+            // textBoxMobile
             // 
             this.textBoxMobile.Location = new System.Drawing.Point(369, 149);
-            this.textBoxMobile.Name = "mobile";
+            this.textBoxMobile.Name = "textBoxMobile";
             this.textBoxMobile.Size = new System.Drawing.Size(162, 20);
             this.textBoxMobile.TabIndex = 33;
             // 
@@ -117,10 +117,10 @@
             this.label9.TabIndex = 32;
             this.label9.Text = "Téléphone mobile";
             // 
-            // fixe
+            // textBoxfixe
             // 
             this.textBoxfixe.Location = new System.Drawing.Point(112, 149);
-            this.textBoxfixe.Name = "fixe";
+            this.textBoxfixe.Name = "textBoxfixe";
             this.textBoxfixe.Size = new System.Drawing.Size(145, 20);
             this.textBoxfixe.TabIndex = 31;
             // 
@@ -134,10 +134,10 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "Téléphone fixe";
             // 
-            // codePostal
+            // textBoxcodePostal
             // 
             this.textBoxcodePostal.Location = new System.Drawing.Point(112, 123);
-            this.textBoxcodePostal.Name = "codePostal";
+            this.textBoxcodePostal.Name = "textBoxcodePostal";
             this.textBoxcodePostal.Size = new System.Drawing.Size(145, 20);
             this.textBoxcodePostal.TabIndex = 27;
             this.textBoxcodePostal.TextChanged += new System.EventHandler(this.codePostal_TextChanged);
@@ -169,10 +169,10 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Adresse";
             // 
-            // prénom
+            // textBoxprénom
             // 
             this.textBoxprénom.Location = new System.Drawing.Point(369, 67);
-            this.textBoxprénom.Name = "prénom";
+            this.textBoxprénom.Name = "textBoxprénom";
             this.textBoxprénom.Size = new System.Drawing.Size(162, 20);
             this.textBoxprénom.TabIndex = 23;
             // 
@@ -196,10 +196,10 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Nom";
             // 
-            // nom
+            // textBoxNom
             // 
             this.textBoxNom.Location = new System.Drawing.Point(112, 70);
-            this.textBoxNom.Name = "nom";
+            this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(145, 20);
             this.textBoxNom.TabIndex = 20;
             // 
@@ -364,15 +364,22 @@
             // 
             // column3
             // 
+            this.column3.Text = "\"\"";
             this.column3.Width = 112;
             // 
             // column4
             // 
+            this.column4.Text = "\"\"";
             this.column4.Width = 133;
             // 
             // column5
             // 
+            this.column5.Text = "\"\"";
             this.column5.Width = 127;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "\"\"";
             // 
             // comboBoxCommerciaux
             // 

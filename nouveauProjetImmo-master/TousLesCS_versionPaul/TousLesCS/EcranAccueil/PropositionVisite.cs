@@ -53,7 +53,7 @@ namespace EcranAccueil
 
             textBoxNomClient.Text = fiche_en_cours.ACHETEUR.NOM_ACHETEUR;
             textBoxPrenomClient.Text = fiche_en_cours.ACHETEUR.PRENOM_ACHETEUR;
-            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.Replace(" ", string.Empty) + " ) ";
+            textBoxDesignation.Text = bien_en_cours.NB_PIÈCES + " pièces -- " + bien_en_cours.PRIX_SOUHAITÉ + " € -- ( " + bien_en_cours.VILLE.NOM_VILLE.TrimEnd() + " ) ";
             textBoxAdresse.Text = bien_en_cours.ADRESSE_BIEN;
             textBoxCommercial.Text = commercial_fenetre_proposition;
         }
